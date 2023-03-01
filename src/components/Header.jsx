@@ -7,7 +7,9 @@ function _Header() {
   return (
     <header className='header'>
       <div className='header__container'>
-        <h1 className='header__logo'>POP BLAST SNEAKERS</h1>
+        <div className='header__logo'>
+          <h1 className='header__logo__text'>POP BLAST SNEAKERS</h1>
+        </div>
         <div className='header__search'>
           <input
             type='text'

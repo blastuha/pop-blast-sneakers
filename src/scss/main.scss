@@ -1,20 +1,18 @@
 .main {
   width: 100%;
-  margin-bottom: 100px;
-  // flex: 1 1 auto;
-  // height: 100vw;
-  // background-color: aliceblue;
+  margin-bottom: 60px;
 }
 
 .main__container {
   width: calc(100vw - 100px);
+  max-width: 1480px;
   margin: 0 auto;
-  border: 1px solid rgb(0, 0, 0);
+  // border: 1px solid rgb(0, 0, 0);
 }
 
 .main__sneakers {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 20px;
+  // align-items: center;
+  // gap: 20px;
 }
