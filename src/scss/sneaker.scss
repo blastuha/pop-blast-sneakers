@@ -2,11 +2,40 @@
   display: flex;
   flex-direction: column;
   width: 280px;
-  background-color: aliceblue;
-  margin-right: 20px;
-  // border: 1px solid green;
+  max-width: 280px;
+  margin: 0 20px 60px 0;
+  outline: 1px solid rgb(80, 92, 80);
+
+  // @media (max-width: 1579px) {
+  //   width: 280px;
+  // }
 
   &:nth-of-type(5n + 5) {
     margin-right: 0px;
+  }
+
+  .sneaker__title {
+    font-family: Jura, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 1.21em;
+    margin: 8px 0 6px 0;
+
+    &:hover {
+      color: rgb(143, 145, 209);
+    }
+  }
+
+  .sneaker__price {
+    font-family: Jura, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-size: 18px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 1.25em;
   }
 }

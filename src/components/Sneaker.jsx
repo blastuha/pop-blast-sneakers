@@ -11,8 +11,18 @@ function Sneaker({ sneakers }) {
         alt='sneaker'
         className='sneaker__img'
       />
-      <h4 className='sneaker__title'>{sneaker.title}</h4>
-      <h3 className='sneaker__price'>{sneaker.price}</h3>
+      <a
+        href='/'
+        className='sneaker__title'
+      >
+        {sneaker.title}
+      </a>
+      <a
+        href='/'
+        className='sneaker__price'
+      >
+        {sneaker.price}
+      </a>
     </div>
   ))
 }

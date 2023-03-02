@@ -13,6 +13,10 @@
 }
 a {
   text-decoration: none;
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 ul,
 ol,
@@ -31,5 +35,5 @@ img {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  // overflow: hidden;
 }
