@@ -62,6 +62,15 @@
       font-style: normal;
       color: #333333;
       line-height: 1.52em;
+
+      &-icon {
+        font-size: 30px;
+        margin: 4px 4px 0 0;
+
+        &:last-child {
+          margin: 4px 0px 0 0;
+        }
+      }
     }
 
     &-links__link {
@@ -82,7 +91,7 @@
     }
   }
 
-  &__column-right {
-    padding-right: 100px;
+  &__column-contacts {
+    padding-right: 10%;
   }
 }

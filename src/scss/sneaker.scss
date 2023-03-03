@@ -1,17 +1,11 @@
 .sneaker {
   display: flex;
   flex-direction: column;
-  width: 280px;
   max-width: 280px;
-  margin: 0 20px 60px 0;
   outline: 1px solid rgb(80, 92, 80);
 
-  // @media (max-width: 1579px) {
-  //   width: 280px;
-  // }
-
-  &:nth-of-type(5n + 5) {
-    margin-right: 0px;
+  @media screen {
+    max-width: 280px;
   }
 
   .sneaker__title {

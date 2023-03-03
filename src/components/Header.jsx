@@ -19,8 +19,8 @@ function _Header() {
           <CiSearch className='header__search-icon' />
         </div>
         <div className='header__icons'>
-          <BsFillPersonFill className='header__icon' />
-          <FaShoppingCart className='header__icon' />
+          <BsFillPersonFill className='header__icons__icon' />
+          <FaShoppingCart className='header__icons__icon' />
         </div>
       </div>
     </header>

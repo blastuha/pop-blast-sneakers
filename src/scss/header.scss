@@ -14,7 +14,7 @@
   }
 
   &__logo {
-    width: 150px;
+    width: 110px;
   }
 
   &__logo__text {
@@ -35,12 +35,13 @@
 
   &__search {
     display: flex;
+    width: 40%;
     align-items: center;
     position: relative;
 
     &-input {
       background-color: #e7e7e7;
-      width: 400px;
+      width: 100%;
       padding: 10px;
       border-radius: 5px;
       font-size: 16px;
@@ -62,19 +63,25 @@
     }
   }
 
-  &__icon {
-    width: 22px;
-    height: 22px;
-    margin-right: 6px;
-    transition: all 0.4s ease-in;
+  &__icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
-    &:last-child {
-      margin-right: 0px;
-    }
+    &__icon {
+      width: 22px;
+      height: 22px;
+      margin-right: 6px;
+      transition: all 0.4s ease-in;
 
-    &:hover {
-      color: rgb(143, 145, 209);
-      scale: (1.08);
+      &:last-child {
+        margin-right: 0px;
+      }
+
+      &:hover {
+        color: rgb(143, 145, 209);
+        scale: (1.08);
+      }
     }
   }
 }
