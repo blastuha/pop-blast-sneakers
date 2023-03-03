@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Sneaker from './Sneaker'
+import Categories from './Categories'
 
 function Main() {
   const [sneakers, setSneakers] = useState([])
@@ -16,6 +17,7 @@ function Main() {
 
   return (
     <div className='main'>
+      <Categories sneakers={sneakers} />
       <div className='main__container'>
         <div className='main__sneakers'>
           <Sneaker sneakers={sneakers} />

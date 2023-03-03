@@ -1,8 +1,10 @@
 .sneaker {
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   max-width: 280px;
-  outline: 1px solid rgb(80, 92, 80);
+  // outline: 1px solid rgb(80, 92, 80);
+  // background-color: aliceblue;
 
   @media screen {
     max-width: 280px;
@@ -17,6 +19,7 @@
     color: #333333;
     line-height: 1.21em;
     margin: 8px 0 6px 0;
+    transition: color 0.2s ease-in;
 
     &:hover {
       color: rgb(143, 145, 209);
