@@ -6,7 +6,6 @@ import Submenu from './Submenu'
 function Categories({ sneakers }) {
   const [chosenCategory, setChosenCategory] = useState('')
   const [open, setOpen] = useState(false)
-  // const [openType, setOpenType] = useState(false)
 
   const list = [
     { name: 'Бренды', menu: brands },
@@ -32,14 +31,14 @@ function Categories({ sneakers }) {
             }}
           >
             <div className='categories__item-text'>{category.name}</div>
+            {open && (
+              <Submenu
+                list={list}
+                chosenCategory={chosenCategory}
+              />
+            )}
           </div>
         ))}
-        {open && (
-          <Submenu
-            list={list}
-            chosenCategory={chosenCategory}
-          />
-        )}
       </div>
     </div>
   )
