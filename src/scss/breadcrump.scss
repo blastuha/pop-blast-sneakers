@@ -1,0 +1,27 @@
+.breadcrumb {
+  margin-bottom: 30px;
+
+  &__container {
+    width: calc(100vw - 100px);
+    max-width: 752px;
+    // outline: 1px solid black;
+    margin: 0 auto;
+  }
+
+  &__item {
+    display: inline-block;
+    color: #bebebe;
+    font-family: Jura;
+    font-size: 16px;
+    font-weight: 400;
+    color: #999999;
+    line-height: 1.5em;
+  }
+
+  &__link {
+    &::after {
+      content: '_';
+      margin: 0.8rem;
+    }
+  }
+}

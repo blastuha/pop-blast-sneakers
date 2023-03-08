@@ -1,44 +1,18 @@
-import React, { useState } from 'react'
-import { brands } from '../data'
-import { types } from '../data'
-import Submenu from './Submenu'
+import React from 'react'
+import Category from './Category'
 
-function Categories({ sneakers }) {
-  const [chosenCategory, setChosenCategory] = useState('')
-  const [open, setOpen] = useState(false)
-
-  const list = [
-    { name: 'Бренды', menu: brands },
-    { name: 'Тип обуви', menu: types },
-    { name: 'Пол', menu: ['Для мужчин', 'Для женщин'] },
-  ]
-
-  const onClickCategoryList = (name) => {
-    setChosenCategory(name)
-    setOpen(!open)
-    console.log(open, chosenCategory)
-  }
-
+function Categories({ categoryList }) {
   return (
     <div className='categories'>
       <div className='categories__container'>
-        {list.map((category) => (
-          <div
-            key={category.name}
-            className='categories__item'
-            onClick={() => {
-              onClickCategoryList(category.name)
-            }}
-          >
-            <div className='categories__item-text'>{category.name}</div>
-            {open && (
-              <Submenu
-                list={list}
-                chosenCategory={chosenCategory}
-              />
-            )}
-          </div>
-        ))}
+        {categoryList.map((category) => {
+          return (
+            <Category
+              name={category.name}
+              menu={category.menu}
+            />
+          )
+        })}
       </div>
     </div>
   )
