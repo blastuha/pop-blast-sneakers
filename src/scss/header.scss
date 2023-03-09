@@ -2,14 +2,14 @@
   max-width: 100%;
   margin-bottom: 14px;
 
-  &__container {
+  .header__container {
+    // outline: 1px solid black;
     max-width: 1480px;
-    height: 80px;
     width: calc(100vw - 100px);
     margin: 0px auto;
   }
 
-  &__menu {
+  .header__menu {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -18,25 +18,53 @@
     font-size: 16px;
     color: #333333;
     line-height: 1.5em;
-    cursor: pointer;
 
     &-left {
       display: flex;
+      align-items: center;
+
+      .header__menu-item {
+        &:nth-child(3) {
+          margin-right: 0px;
+        }
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+      }
     }
 
     &-right {
       display: flex;
+      align-items: center;
 
-      a {
-        color: rgb(143, 145, 209);
+      .header__menu-item {
+        &:nth-child(2) {
+          margin-right: 0px;
+        }
       }
     }
 
-    &-item {
+    .header__menu-item {
+      display: flex;
+      position: relative;
       margin-right: 12px;
+      color: inherit;
 
-      &:last-child {
-        margin-right: 0px;
+      &-text {
+        display: flex;
+        align-self: center;
+        color: inherit;
+        transition: color 0.2s ease-in;
+
+        &:visited {
+          color: inherit;
+        }
+
+        &:hover {
+          color: rgb(143, 145, 209);
+        }
       }
     }
   }
@@ -101,22 +129,28 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-
-      &-icon {
-        width: 22px;
-        height: 22px;
-        margin-right: 6px;
-        transition: all 0.4s ease-in;
-
-        &:last-child {
-          margin-right: 0px;
-        }
-
-        &:hover {
-          color: rgb(143, 145, 209);
-          scale: (1.08);
-        }
-      }
     }
+  }
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  transition: all 0.4s ease-in;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  &:hover {
+    color: rgb(143, 145, 209);
+    scale: (1.08);
+  }
+}
+
+.header__menu-item-text--delivery {
+  &:hover {
+    color: inherit;
   }
 }

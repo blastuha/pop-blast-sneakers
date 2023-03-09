@@ -1,10 +1,11 @@
 import React from 'react'
-import styles from '../../scss/pages/contacts.scss'
+import Breadcrumb from '../Breadcrumb'
 
 function Contacts() {
   return (
     <div className='contacts-page'>
       <div className='contacts-page__container'>
+        <Breadcrumb />
         <div className='contacts-page__contacts'>
           <h1>Контакты и адреса</h1>
           <p>

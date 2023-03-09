@@ -10,28 +10,29 @@
   border: 0;
   box-sizing: border-box;
 }
+
 a {
   text-decoration: none;
+
   &:visited {
     text-decoration: none;
-    color: inherit;
   }
 }
+
 ul,
 ol,
 li {
   list-style: none;
 }
+
 img {
   vertical-align: top;
 }
 
 .wrapper {
   margin: 0 auto;
-  // background-color: aliceblue;
   border: 2px solid black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  // max-width: 1580px;
 }

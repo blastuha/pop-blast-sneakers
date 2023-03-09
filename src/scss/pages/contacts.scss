@@ -4,11 +4,6 @@
   margin: 0 auto;
   font-family: Jura;
 
-  a {
-    color: rgb(143, 145, 209);
-    text-decoration: underline;
-  }
-
   h1 {
     font-family: Jura;
     font-size: 25px;
@@ -46,6 +41,9 @@
   .contacts-page__contacts {
     margin-bottom: 20px;
     // border: 1px solid black;
+    a {
+      color: rgb(143, 145, 209);
+    }
   }
 
   .contacts-page__timetable {

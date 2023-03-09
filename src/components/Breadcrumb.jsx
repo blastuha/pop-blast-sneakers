@@ -1,17 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Breadcrumb() {
   return (
     <div className='breadcrumb'>
       <div className='breadcrumb__container'>
         <div className='breadcrumb__item'>
-          <a
-            href='/'
+          <Link
+            to='/'
             title='Главная'
-            className='breadcrumb__link'
+            className='breadcrumb__item-link'
           >
             Главная
-          </a>
+          </Link>
         </div>
         <div className='breadcrumb__item'>
           <span>Доставка и оплата</span>
