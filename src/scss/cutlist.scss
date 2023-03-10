@@ -11,5 +11,18 @@
     max-width: 220px;
     padding: 5px 10px;
     background-color: #ffffff;
+
+    .cutlist-item {
+      transition: color 0.2s ease-in;
+      cursor: pointer;
+
+      &:visited {
+        color: inherit;
+      }
+
+      &:hover {
+        color: rgb(143, 145, 209);
+      }
+    }
   }
 }

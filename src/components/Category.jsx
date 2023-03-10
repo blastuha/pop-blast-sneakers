@@ -10,14 +10,9 @@ function Category({ name, menu }) {
     window.addEventListener('click', (event) => {
       if (!categoryBlock.current.contains(event.target)) {
         setOpen(false)
-        console.log(event.target)
-        console.log('does not contain item')
-      }
-      if (categoryBlock.current.contains(event.target)) {
-        console.log('Куку вася')
       }
     })
-  }, [])
+  }, [open])
 
   const onChangeOpen = () => {
     setOpen(!open)

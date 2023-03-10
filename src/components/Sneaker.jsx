@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
+import { useOutletContext } from 'react-router-dom'
 
-function Sneaker({ sneakers }) {
+function Sneaker() {
+  const [sneakers] = useOutletContext()
+
+  // нужно добавить в массив адрес ссылки на продукт
+  // нужно массив sneakers - превратить в один прдукт
+
   return sneakers.map((sneaker) => (
     <div
       className='sneaker'

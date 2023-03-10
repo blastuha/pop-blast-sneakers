@@ -1,0 +1,25 @@
+.product {
+  margin-bottom: 60px;
+
+  .product__container {
+    max-width: 1480px;
+    width: calc(100vw - 100px);
+    margin: 0 auto;
+  }
+
+  .product__main {
+    display: flex;
+    outline: 1px solid black;
+
+    .product__photo {
+      img {
+        max-width: 500px;
+      }
+    }
+
+    .product__info {
+      width: 100%;
+      background-color: aliceblue;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { FaShoppingCart } from 'react-icons/fa'
@@ -14,16 +14,35 @@ const headerMenu = [
   { name: 'О нас', link: '/about' },
 ]
 
-function _Header() {
-  const [cutlistOpen, setCutlistOpen] = useState(true)
+function Header() {
+  const [cutlistOpen, setCutlistOpen] = useState(false)
+
+  const cutlistRef = useRef()
+
+  useEffect(() => {
+    if (!cutlistOpen) {
+      return
+    }
+
+    window.addEventListener('click', (event) => {
+      if (!cutlistRef.current.contains(event.target)) {
+        setCutlistOpen(false)
+      }
+    })
+  }, [cutlistOpen])
+
+  const handleOpen = () => {
+    setCutlistOpen(!cutlistOpen)
+  }
 
   return (
-    <header className='header'>
+    <div className='header'>
       <div className='header__container'>
         <div className='header__menu'>
           <div className='header__menu-left'>
-            {headerMenu.map((item, i) => {
-              if (i <= 1) {
+            {headerMenu
+              .filter((item, i) => i < 2)
+              .map((item) => {
                 return (
                   <Link
                     to={item.link}
@@ -32,13 +51,23 @@ function _Header() {
                     <div className='header__menu-item-text'>{item.name}</div>
                   </Link>
                 )
-              }
-            })}
+              })}
             <div className='header__menu-item'>
-              <div className='header__menu-item-text'>
-                <BsThreeDots className='icon' />
+              <div
+                className='header__menu-item-text'
+                ref={cutlistRef}
+              >
+                <BsThreeDots
+                  className='icon'
+                  onClick={handleOpen}
+                />
               </div>
-              {cutlistOpen && <Cutlist headerMenu={headerMenu} />}
+              {cutlistOpen && (
+                <Cutlist
+                  headerMenu={headerMenu}
+                  // ref={cutlistRef}
+                />
+              )}
             </div>
           </div>
           <div className='header__menu-right'>
@@ -75,8 +104,8 @@ function _Header() {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   )
 }
 
-export default _Header
+export default Header
