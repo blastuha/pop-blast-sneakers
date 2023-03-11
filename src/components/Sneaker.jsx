@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext, Link } from 'react-router-dom'
 
 function Sneaker() {
   const [sneakers] = useOutletContext()
 
-  // нужно добавить в массив адрес ссылки на продукт
-  // нужно массив sneakers - превратить в один прдукт
+  const linkId = (sneakerId) => {
+    return sneakers
+      .filter((obj) => obj.id === sneakerId)
+      .map((obj) => {
+        return obj.id
+      })
+  }
 
   return sneakers.map((sneaker) => (
     <div
@@ -17,12 +22,12 @@ function Sneaker() {
         alt='sneaker'
         className='sneaker__img'
       />
-      <a
-        href='/'
+      <Link
+        to={'/products/' + linkId(sneaker.id)}
         className='sneaker__title'
       >
         {sneaker.title}
-      </a>
+      </Link>
       <a
         href='/'
         className='sneaker__price'

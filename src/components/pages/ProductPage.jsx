@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import Select from '../Select'
 
 function ProductPage() {
-  const [sneaker] = useState(useLoaderData())
-
-  // const sneakerDTO = useLoaderData()
-
-  // нужно массив sneakers - превратить в один прдукт
+  const sneakerDTO = useLoaderData() // data transfer object
 
   return (
     <div className='product'>
@@ -22,15 +19,13 @@ function ProductPage() {
           <div className='product__info'>
             <div className='info-item'>
               <div className='info-header'>
-                <div className='info-title'>
-                  Tommy Hilfiger retro court trainer
-                </div>
+                <div className='info-title'>{sneakerDTO.data.title}</div>
                 <div className='info-price'>6000 руб.</div>
               </div>
             </div>
             <div className='info-item'>
-              <Select />
-              <Select />
+              <Select color={sneakerDTO.data.color} />
+              <Select sizes={sneakerDTO.data.sizes} />
             </div>
           </div>
         </div>
@@ -39,4 +34,12 @@ function ProductPage() {
   )
 }
 
+const productLoader = async ({ request, params }) => {
+  // console.log(params.id)
+  return axios.get(
+    `https://63fcd20c859df29986c57847.mockapi.io/sneakerpal/${params.id}`
+  )
+}
+
 export default ProductPage
+export { productLoader }

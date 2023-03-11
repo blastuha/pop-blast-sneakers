@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import axios from 'axios'
 import App from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Main from './components/Main'
 import Contacts from './components/pages/Contacts'
 import ProductPage from './components/pages/ProductPage'
+import { productLoader } from './components/pages/ProductPage'
 
 const router = createBrowserRouter([
   {
@@ -28,11 +28,8 @@ const router = createBrowserRouter([
       {
         path: 'products/:id',
         element: <ProductPage />,
-        loader: async ({ params }) => {
-          return axios.get(
-            `https://63fcd20c859df29986c57847.mockapi.io/sneakerpal/${params.id}`
-          )
-        },
+        loader: productLoader,
+        // мы делаем путь: products/:id, но сам запрос делается по ссылке из loadera
       },
     ],
   },

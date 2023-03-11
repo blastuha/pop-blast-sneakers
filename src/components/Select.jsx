@@ -1,6 +1,7 @@
 import React from 'react'
 
-function Select() {
+function Select({ color, sizes }) {
+  console.log(sizes)
   return (
     <div className='select-item'>
       <label>Цвет</label>
@@ -8,7 +9,7 @@ function Select() {
         name='color'
         id='color-select'
       >
-        <option value='white'>Белый</option>
+        <option value='white'>{color}</option>
       </select>
     </div>
   )
