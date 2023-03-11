@@ -1,6 +1,6 @@
 const data = [
   {
-    id: 1,
+    id: '1',
     imageUrl:
       'https://static.insales-cdn.com/r/WvM-a6seMTo/rs:fit:950:1187:1/q:100/plain/images/products/1/3145/643001417/118894836_1.jpg@webp',
     title: 'Tommy Hilfiger retro court trainer',
@@ -12,10 +12,10 @@ const data = [
       'Whether it’s an embroidered logo, a bold graphic print or its iconic red, white and blue colour-blocking, there’s no mistaking Tommy Hilfiger. Flying the flag for all things retro 90s, scroll our Tommy Hilfiger at CROSSKING edit, featuring wardrobe-ready casualwear – think T-shirts, sweatshirts and joggers, as well as smart shirts, accessories, underwear and swimwear. Shop Tommy Jeans for classic denim pieces, or filter by Tommy Sport for workout gear that’ll get you motivated.',
     category: 'кроссовки',
     sex: 'men',
-    link: 'product/Tommy-Hilfiger-retro-court-trainer',
+    link: 'product/1',
   },
   {
-    id: 2,
+    id: '2',
     imageUrl:
       'https://static.insales-cdn.com/r/f6TdeHfTVf8/rs:fit:950:1187:1/q:100/plain/images/products/1/3070/642477054/109505334_1.jpg@webp',
     title: 'New Balance 327 trainers in off white',
@@ -29,7 +29,7 @@ const data = [
     sex: 'men',
   },
   {
-    id: 3,
+    id: '3',
     imageUrl:
       'https://static.insales-cdn.com/r/785IDKBK0tA/rs:fit:950:1187:1/q:100/plain/images/products/1/347/642998619/107143782_1.jpg@webp',
     title: 'Salomon X-Mission 3 trainers in sand',
@@ -43,7 +43,7 @@ const data = [
     sex: 'men',
   },
   {
-    id: 4,
+    id: '4',
     imageUrl:
       'https://static.insales-cdn.com/r/zn2XorcbS68/rs:fit:950:1187:1/q:100/plain/images/products/1/5395/642479379/124216192_1.jpg@webp',
     title: 'Tommy Hilfiger comfort padded slipper in navy',
@@ -57,7 +57,7 @@ const data = [
     sex: 'men',
   },
   {
-    id: 5,
+    id: '5',
     imageUrl:
       'https://static.insales-cdn.com/r/cnRgr1J-deg/rs:fit:950:1187:1/q:100/plain/images/products/1/357/642474341/116525076_3.jpg@webp',
     title: 'New Balance XC-72 trainers in black and blue',
@@ -71,7 +71,7 @@ const data = [
     sex: 'men',
   },
   {
-    id: 6,
+    id: '6',
     imageUrl:
       'https://static.insales-cdn.com/r/q6vaDk0OwEo/rs:fit:950:1187:1/q:100/plain/images/products/1/4818/641905362/106878716_1.jpg@webp',
     title: 'Asics Gel-Quantum 180 trainers in white',
@@ -85,7 +85,7 @@ const data = [
     sex: 'men',
   },
   {
-    id: 7,
+    id: '7',
     imageUrl:
       'https://static.insales-cdn.com/r/M_JCyfbtWTw/rs:fit:950:1187:1/q:100/plain/images/products/1/1947/641894299/122024296_1.jpg@webp',
     title: 'Salomon XT-6 Mindful unisex trainers in beige',
@@ -99,7 +99,7 @@ const data = [
     sex: 'men',
   },
   {
-    id: 8,
+    id: '8',
     imageUrl:
       'https://static.insales-cdn.com/r/Zw-zihxQquQ/rs:fit:950:1187:1/q:100/plain/images/products/1/5889/642168577/120053718_1.jpg@webp',
     title: 'Asics Gel-Sonoma 15-50 trainers in orange and green',
@@ -113,7 +113,7 @@ const data = [
     sex: 'men',
   },
   {
-    id: 9,
+    id: '9',
     imageUrl:
       'https://static.insales-cdn.com/r/EuzGC_Yli8I/rs:fit:950:1187:1/q:100/plain/images/products/1/7563/641883531/123649193_2.jpg@webp',
     title: 'Ugg Tasman Lta Cali topo slippers in khaki quilted camouflage',
@@ -127,7 +127,7 @@ const data = [
     sex: 'men',
   },
   {
-    id: 10,
+    id: '10',
     imageUrl:
       'https://static.insales-cdn.com/r/iIb7S3cV0dg/rs:fit:950:1187:1/q:100/plain/images/products/1/2476/643000748/1964603_1.jpg@webp',
     title: 'Nike Running Air Zoom Pegasus 38 trainers in pink',
@@ -141,7 +141,7 @@ const data = [
     sex: 'women',
   },
   {
-    id: 11,
+    id: '11',
     imageUrl:
       'https://static.insales-cdn.com/r/z3LFJPyI7lc/rs:fit:950:1187:1/q:100/plain/images/products/1/921/642474905/117734124_1.jpg@webp',
     title: 'Vans Old Skool MTE-1 Varsity trainers in black/yellow',
@@ -155,7 +155,7 @@ const data = [
     sex: 'women',
   },
   {
-    id: 12,
+    id: '12',
     imageUrl:
       'https://static.insales-cdn.com/r/XUcyIhVG8xI/rs:fit:950:1187:1/q:100/plain/images/products/1/722/642474706/1480484_1.jpg@webp',
     title: 'Converse Chuck 70 Hi parchment trainers',
@@ -169,7 +169,7 @@ const data = [
     sex: 'women',
   },
   {
-    id: 13,
+    id: '13',
     imageUrl:
       'https://static.insales-cdn.com/r/V5tPJDyXcvI/rs:fit:950:1187:1/q:100/plain/images/products/1/6718/642480702/120813385_1.jpg@webp',
     title: 'adidas Originals Earlham trainers in white',
@@ -183,7 +183,7 @@ const data = [
     sex: 'women',
   },
   {
-    id: 14,
+    id: '14',
     imageUrl:
       'https://static.insales-cdn.com/r/rU26JIhqmPc/rs:fit:950:1187:1/q:100/plain/images/products/1/1295/642188559/119239211_1.jpg@webp',
     title: 'Nike Training MC 2 Trainers in white',
@@ -197,7 +197,7 @@ const data = [
     sex: 'women',
   },
   {
-    id: 15,
+    id: '15',
     imageUrl:
       'https://static.insales-cdn.com/r/rntwvA_Eeqo/rs:fit:950:1187:1/q:100/plain/images/products/1/7885/642154189/106758375_1.jpg@webp',
     title: 'Nike Space Hippie 04 trainers in lime and stone',

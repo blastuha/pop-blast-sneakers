@@ -1,9 +1,11 @@
-import React from 'react'
-import { useOutletContext } from 'react-router-dom'
-// import Breadcrumb from '../Breadcrumb'
+import React, { useState } from 'react'
+import { useLoaderData } from 'react-router-dom'
+import Select from '../Select'
 
 function ProductPage() {
-  const [sneakers] = useOutletContext()
+  const [sneaker] = useState(useLoaderData())
+
+  // const sneakerDTO = useLoaderData()
 
   // нужно массив sneakers - превратить в один прдукт
 
@@ -27,10 +29,8 @@ function ProductPage() {
               </div>
             </div>
             <div className='info-item'>
-              <select
-                name='color'
-                id=''
-              ></select>
+              <Select />
+              <Select />
             </div>
           </div>
         </div>
