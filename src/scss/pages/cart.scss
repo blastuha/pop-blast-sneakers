@@ -1,0 +1,125 @@
+.cart__container {
+  width: calc(100vw - 100px);
+  max-width: 1480px;
+  margin: 0 auto 0 auto;
+  outline: 1px solid black;
+
+  .cart__header {
+    margin-bottom: 20px;
+
+    .cart-title {
+      font-family: Jura;
+      font-size: 25px;
+      font-weight: 400;
+      color: #333333;
+      line-height: 1.2em;
+    }
+  }
+
+  .cart__main {
+    display: flex;
+    justify-content: space-between;
+
+    .cart__items {
+      .cart-item {
+        outline: 1px solid grey;
+        display: flex;
+
+        .item-image {
+          margin-right: 20px;
+          img {
+            max-width: 120px;
+          }
+        }
+
+        .item-title {
+          font-family: Jura;
+          font-size: 20px;
+          color: #333333;
+          line-height: 1.5em;
+          margin-right: 20px;
+        }
+
+        .item-counter {
+          margin-right: 20px;
+
+          .counter-button {
+            width: 20px;
+            background-color: #f7f7f7;
+            padding: 6px;
+            font-family: Jura;
+            font-size: 14px;
+            color: #333333;
+            text-align: center;
+            cursor: pointer;
+          }
+
+          .counter-input {
+            font-size: 14px;
+            width: 4rem;
+            padding: 6px;
+            background-color: #f7f7f7;
+            text-align: center;
+            font-family: Jura;
+          }
+        }
+
+        .item-delete {
+          font-size: 20px;
+          font-style: normal;
+          color: #999999;
+          line-height: 1em;
+          cursor: pointer;
+
+          .delete-icon {
+            padding: 6px;
+          }
+        }
+      }
+    }
+  }
+  .cart__counter {
+    width: fit-content;
+    padding: 1rem;
+    outline: 1px solid grey;
+    background-color: #f7f7f7;
+
+    .counter-total-items {
+      width: 100%;
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      font-family: Jura;
+      font-size: 1.05rem;
+      color: #333333;
+      line-height: 1.52em;
+      white-space: nowrap;
+
+      .total-products {
+      }
+
+      .total-price {
+        justify-self: flex-end;
+      }
+    }
+
+    .counter-total-price {
+      width: fit-content;
+
+      .price-text {
+        font-family: Jura;
+        font-size: 1.05rem;
+        color: #333333;
+        line-height: 2.23em;
+      }
+
+      .full-price {
+        font-family: Jura;
+        font-size: 2rem;
+        font-weight: 400;
+        color: #333333;
+        line-height: 1.5em;
+      }
+    }
+  }
+}

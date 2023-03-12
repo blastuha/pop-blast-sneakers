@@ -62,12 +62,7 @@ function Header() {
                   onClick={handleOpen}
                 />
               </div>
-              {cutlistOpen && (
-                <Cutlist
-                  headerMenu={headerMenu}
-                  // ref={cutlistRef}
-                />
-              )}
+              {cutlistOpen && <Cutlist headerMenu={headerMenu} />}
             </div>
           </div>
           <div className='header__menu-right'>
@@ -99,8 +94,18 @@ function Header() {
             <CiSearch className='header__bottom-search-icon' />
           </div>
           <div className='header__bottom-icons'>
-            <BsFillPersonFill className='icon' />
-            <FaShoppingCart className='icon' />
+            <Link
+              to='/person'
+              className='link'
+            >
+              <BsFillPersonFill className='link-icon' />
+            </Link>
+            <Link
+              to='/cart'
+              className='link'
+            >
+              <FaShoppingCart className='link-icon' />
+            </Link>
           </div>
         </div>
       </div>

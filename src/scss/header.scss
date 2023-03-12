@@ -2,6 +2,16 @@
   max-width: 100%;
   margin-bottom: 14px;
 
+  a {
+    color: inherit;
+  }
+
+  a:visited {
+    color: inherit;
+    // padding: 0;
+    // margin: 0;
+  }
+
   .header__container {
     // outline: 1px solid black;
     max-width: 1480px;
@@ -133,20 +143,22 @@
   }
 }
 
-.icon {
-  width: 22px;
-  height: 22px;
-  margin-right: 6px;
-  transition: all 0.4s ease-in;
-  cursor: pointer;
-
+.link {
+  margin-right: 8px;
   &:last-child {
     margin-right: 0px;
   }
 
-  &:hover {
-    color: rgb(143, 145, 209);
-    scale: (1.08);
+  .link-icon {
+    width: 23px;
+    height: 23px;
+    transition: all 0.4s ease-in;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(143, 145, 209);
+      scale: (1.08);
+    }
   }
 }
 
