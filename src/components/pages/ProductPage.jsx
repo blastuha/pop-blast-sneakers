@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import Select from '../Select'
+import { AiOutlineHeart } from 'react-icons/ai'
 
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
@@ -28,7 +29,7 @@ function ProductPage() {
             <div className='info-item'>
               <div className='info-header'>
                 <div className='info-title'>{sneakerDTO.data.title}</div>
-                <div className='info-price'>6000 руб.</div>
+                <div className='info-price'>{sneakerDTO.data.price}</div>
               </div>
             </div>
             <div className='info-item'>
@@ -40,18 +41,26 @@ function ProductPage() {
             <div className='info-buttons'>
               <button
                 type='button'
-                className='cart-btn'
+                className='info-btn cart'
               >
                 В корзину
               </button>
               <button
                 type='button'
-                className='favourite-btn'
+                className='info-btn'
               >
-                Понравилось
+                <AiOutlineHeart className='heart' />
               </button>
             </div>
           </form>
+        </div>
+        <div className='product__description'>
+          <div className='description-item'>
+            <div className='description-title'>Описание</div>
+            <div className='description-text'>
+              {sneakerDTO.data.description}
+            </div>
+          </div>
         </div>
       </div>
     </div>

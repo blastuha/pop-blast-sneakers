@@ -9,7 +9,8 @@
 
   .product__main {
     display: flex;
-    outline: 1px solid black;
+    // outline: 1px solid black;
+    margin-bottom: 40px;
 
     .product__photo {
       img {
@@ -19,7 +20,84 @@
 
     .product__info {
       width: 100%;
-      background-color: aliceblue;
+      // background-color: aliceblue;
+      margin-left: 40px;
+
+      .info-item {
+        .info-title {
+          font-family: Jura;
+          font-size: 16px;
+          font-weight: 500;
+          color: #333333;
+          line-height: 1.18em;
+          margin-bottom: 20px;
+        }
+        .info-price {
+          font-family: Jura;
+          font-size: 18px;
+          font-weight: 700;
+          color: #5c5c5c;
+          line-height: 1.18em;
+          letter-spacing: 0em;
+          margin-bottom: 50px;
+        }
+      }
+
+      .info-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+
+        .info-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 40px;
+          cursor: pointer;
+          background: #404040;
+          color: #ffffff;
+          font-family: Jura;
+          font-size: 14px;
+          font-weight: 500;
+          color: #ffffff;
+          line-height: 1.42em;
+          transition: all 0.4s ease;
+
+          &:hover {
+            background: #535353;
+          }
+        }
+      }
     }
   }
+
+  .product__description {
+    .description-title {
+      font-family: Jura;
+      font-size: 19px;
+      font-weight: 700;
+      color: #333333;
+      line-height: 1.47em;
+      margin-bottom: 10px;
+    }
+
+    .description-text {
+      font-family: Jura;
+      font-size: 16px;
+      font-weight: 400;
+      color: #333333;
+      line-height: 1.5em;
+    }
+  }
+}
+
+.cart {
+  width: 100%;
+  margin-right: 10px;
+  padding: 0 14px 0 14px;
+}
+
+.heart {
+  width: 40px;
+  font-size: 24px;
 }
