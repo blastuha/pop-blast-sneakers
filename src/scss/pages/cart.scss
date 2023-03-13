@@ -198,6 +198,12 @@
         line-height: 1em;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
+        transition: background 0.4s ease;
+        cursor: pointer;
+
+        &:hover {
+          background: #535353;
+        }
       }
     }
   }
