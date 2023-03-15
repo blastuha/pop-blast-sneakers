@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         element: <h1>ERROR!</h1>,
       },
       {
-        path: 'products/:id',
+        path: '/products/:id',
         element: <ProductPage />,
         loader: productLoader,
         // мы делаем путь: products/:id, но сам запрос делается по ссылке из loadera

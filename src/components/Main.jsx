@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import Sneaker from './Sneaker'
+import Sneakers from './Sneakers'
 
 function Main() {
   return (
     <div className='main'>
       <div className='main__container'>
         <div className='main__sneakers'>
-          <Sneaker />
+          <Sneakers />
         </div>
       </div>
     </div>

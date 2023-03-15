@@ -3,17 +3,19 @@ import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import Select from '../Select'
 import { AiOutlineHeart } from 'react-icons/ai'
+import Breadcrumb from '../Breadcrumb'
 
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scroll(0, 0)
   }, [])
 
   return (
     <div className='product'>
       <div className='product__container'>
+        <Breadcrumb />
         <div className='product__main'>
           <div className='product__photo'>
             <img
@@ -69,9 +71,9 @@ function ProductPage() {
 
 const productLoader = async ({ request, params }) => {
   // console.log(params.id)
-  return axios.get(
-    `https://63fcd20c859df29986c57847.mockapi.io/sneakerpal/${params.id}`
-  )
+  return axios
+    .get(`https://63fcd20c859df29986c57847.mockapi.io/sneakerpal/${params.id}`)
+    .catch((res) => console.warn(res))
 }
 
 export default ProductPage

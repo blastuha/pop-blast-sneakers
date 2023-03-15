@@ -1,16 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useOutletContext, Link } from 'react-router-dom'
 
 function Sneaker() {
   const [sneakers] = useOutletContext()
-
-  const linkId = (sneakerId) => {
-    return sneakers
-      .filter((obj) => obj.id === sneakerId)
-      .map((obj) => {
-        return obj.id
-      })
-  }
 
   return sneakers.map((sneaker) => (
     <div
@@ -23,7 +15,7 @@ function Sneaker() {
         className='sneaker__img'
       />
       <Link
-        to={'/products/' + linkId(sneaker.id)}
+        to={'/products/' + sneaker.id}
         className='sneaker__title'
       >
         {sneaker.title}

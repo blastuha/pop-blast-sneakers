@@ -1,10 +1,12 @@
 import React from 'react'
+import Breadcrumb from '../Breadcrumb'
 import { AiOutlineDelete } from 'react-icons/ai'
 
 function Cart() {
   return (
     <div className='cart-block'>
       <div className='cart__container'>
+        <Breadcrumb />
         <div className='cart__header'>
           <div className='cart-title'>Корзина</div>
         </div>
@@ -17,12 +19,15 @@ function Cart() {
                   alt='good-pic'
                 />
               </div>
-              <a
-                className='item-title'
-                href='/'
-              >
-                Tommy Hilfiger retro court trainer
-              </a>
+              <div className='item-header'>
+                <a
+                  className='header-title'
+                  href='/'
+                >
+                  Tommy Hilfiger retro court trainer
+                </a>
+                <div className='header-color'>Цвет: white</div>
+              </div>
               <div className='item-counter'>
                 <div className='counter'>
                   <button className='counter-button'>-</button>
@@ -48,12 +53,15 @@ function Cart() {
                   alt='good-pic'
                 />
               </div>
-              <a
-                className='item-title'
-                href='/'
-              >
-                Tommy Hilfiger retro court trainer
-              </a>
+              <div className='item-header'>
+                <a
+                  className='header-title'
+                  href='/'
+                >
+                  Tommy Hilfiger retro court trainer
+                </a>
+                <div className='header-color'>Цвет: white</div>
+              </div>
               <div className='item-counter'>
                 <div className='counter'>
                   <button className='counter-button'>-</button>

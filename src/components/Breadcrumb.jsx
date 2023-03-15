@@ -1,23 +1,43 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 function Breadcrumb() {
-  return (
-    <div className='breadcrumb'>
-      <div className='breadcrumb__container'>
-        <div className='breadcrumb__item'>
+  const location = useLocation()
+  console.log(location)
+
+  let currentLink = ''
+  const crumbs = location.pathname
+    .split('/')
+    .filter((crumb) => crumb !== '')
+    .map((crumb) => {
+      currentLink = +`/${crumb}`
+
+      return (
+        <div
+          className='breadcrumb__item'
+          key={crumb}
+        >
           <Link
-            to='/'
-            title='Главная'
+            to={currentLink}
             className='breadcrumb__item-link'
           >
-            Главная
+            {crumb}
           </Link>
         </div>
-        <div className='breadcrumb__item'>
-          <span>Доставка и оплата</span>
-        </div>
+      )
+    })
+
+  return (
+    <div className='breadcrumb'>
+      <div className='breadcrumb__item'>
+        <Link
+          to='/'
+          className='breadcrumb__item-link'
+        >
+          <span>Главная</span>
+        </Link>
       </div>
+      {crumbs}
     </div>
   )
 }

@@ -7,7 +7,6 @@ import Categories from './components/Categories'
 import { brands } from './data'
 import { types } from './data'
 import { Outlet } from 'react-router-dom'
-import { productLoader } from './components/pages/ProductPage'
 
 const categoryList = [
   { name: 'Бренды', menu: brands },
@@ -29,7 +28,7 @@ function App() {
     <div className='wrapper'>
       <Header />
       <Categories categoryList={categoryList} />
-      <Outlet context={[sneakers, productLoader]} />
+      <Outlet context={[sneakers]} />
       <Footer />
     </div>
   )

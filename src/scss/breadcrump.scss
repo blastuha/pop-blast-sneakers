@@ -1,13 +1,6 @@
 .breadcrumb {
   margin-bottom: 30px;
 
-  &__container {
-    width: calc(100vw - 100px);
-    max-width: 752px;
-    // outline: 1px solid black;
-    margin: 0 auto;
-  }
-
   &__item {
     display: inline-block;
     font-family: Jura;
@@ -17,14 +10,15 @@
     line-height: 1.5em;
     text-decoration: none;
 
-    &-link {
-      color: inherit;
+    &:not(:last-child)::after {
+      color: #999999;
+      content: '/';
+      margin: 0.8rem;
+    }
 
-      &::after {
-        color: #999999;
-        content: '/';
-        margin: 0.8rem;
-      }
+    &-link {
+      display: inline-block;
+      color: inherit;
     }
   }
 }
