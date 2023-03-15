@@ -101,7 +101,7 @@ function Header() {
               <BsFillPersonFill className='link-icon' />
             </Link>
             <Link
-              to='/cart'
+              to='cart'
               className='link'
             >
               <FaShoppingCart className='link-icon' />
