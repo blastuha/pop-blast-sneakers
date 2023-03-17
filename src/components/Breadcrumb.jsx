@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 function Breadcrumb({ sneakerDTO }) {
+  const [pageData, setPageData] = useState([
+    { id: '', path: '', title: '', url: '' },
+  ])
+
   const location = useLocation()
-  // console.log(sneakerDTO)
+  console.log(sneakerDTO)
 
   let currentLink = ''
   const crumbs = location.pathname
     .split('/')
-    // .filter((crumb) => crumb === sneakerDTO.data.id)
     .filter((crumb) => crumb)
     .map((crumb) => {
       currentLink = +`/${crumb}`
@@ -27,22 +30,48 @@ function Breadcrumb({ sneakerDTO }) {
           </div>
         )
       } else {
-        return (
-          <div
-            className='breadcrumb__item'
-            key={crumb}
-          >
-            <Link
-              to={currentLink}
-              className='breadcrumb__item-link'
-            >
-              {sneakerDTO.data.title}
-            </Link>
-          </div>
-        )
+        if (crumb === sneakerDTO.data.id) {
+          return (
+            <div style={{ display: 'inline-block' }}>
+              <div
+                className='breadcrumb__item'
+                key={Date.now()}
+              >
+                <Link
+                  to={currentLink}
+                  className='breadcrumb__item-link'
+                >
+                  {sneakerDTO.data.sex}
+                </Link>
+              </div>
+              <div
+                className='breadcrumb__item'
+                key={Date.now()}
+              >
+                <Link
+                  to={currentLink}
+                  className='breadcrumb__item-link'
+                >
+                  {sneakerDTO.data.category}
+                </Link>
+              </div>
+              <div
+                className='breadcrumb__item'
+                key={crumb}
+              >
+                <Link
+                  to={currentLink}
+                  className='breadcrumb__item-link'
+                >
+                  {sneakerDTO.data.title}
+                </Link>
+              </div>
+            </div>
+          )
+        }
       }
     })
-  console.log(crumbs)
+  // console.log(crumbs)
 
   return (
     <div className='breadcrumb'>
