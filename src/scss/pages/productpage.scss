@@ -23,48 +23,53 @@
       // background-color: aliceblue;
       margin-left: 40px;
 
-      .info-item {
-        .info-title {
-          font-family: Jura;
-          font-size: 16px;
-          font-weight: 500;
-          color: #333333;
-          line-height: 1.18em;
-          margin-bottom: 20px;
-        }
-        .info-price {
-          font-family: Jura;
-          font-size: 18px;
-          font-weight: 700;
-          color: #5c5c5c;
-          line-height: 1.18em;
-          letter-spacing: 0em;
-          margin-bottom: 50px;
-        }
-      }
+      .info__items {
+        position: sticky;
+        top: 1.5rem;
 
-      .info-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 50px;
+        .info-item {
+          .info-title {
+            font-family: Jura;
+            font-size: 17px;
+            font-weight: 500;
+            color: #333333;
+            line-height: 1.18em;
+            margin-bottom: 20px;
+          }
+          .info-price {
+            font-family: Jura;
+            font-size: 19px;
+            font-weight: 700;
+            color: #5c5c5c;
+            line-height: 1.18em;
+            letter-spacing: 0em;
+            margin-bottom: 50px;
+          }
+        }
 
-        .info-btn {
+        .info-buttons {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 40px;
-          cursor: pointer;
-          background: #404040;
-          color: #ffffff;
-          font-family: Jura;
-          font-size: 14px;
-          font-weight: 500;
-          color: #ffffff;
-          line-height: 1.42em;
-          transition: all 0.4s ease;
+          justify-content: space-between;
+          margin-bottom: 50px;
 
-          &:hover {
-            background: #535353;
+          .info-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            cursor: pointer;
+            background: #404040;
+            color: #ffffff;
+            font-family: Jura;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 1.42em;
+            transition: all 0.4s ease;
+
+            &:hover {
+              background: #535353;
+            }
           }
         }
       }

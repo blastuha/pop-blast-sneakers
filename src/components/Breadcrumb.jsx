@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-function Breadcrumb({ sneakerDTO }) {
-  const [pageData, setPageData] = useState([
-    { id: '', path: '', title: '', url: '' },
-  ])
+const pageNames = { contacts: 'Контакты', cart: 'Корзина' }
 
+function Breadcrumb({ sneakerDTO }) {
   const location = useLocation()
-  console.log(sneakerDTO)
 
   let currentLink = ''
   const crumbs = location.pathname
@@ -25,7 +22,7 @@ function Breadcrumb({ sneakerDTO }) {
               to={currentLink}
               className='breadcrumb__item-link'
             >
-              {crumb}
+              {pageNames[crumb]}
             </Link>
           </div>
         )
@@ -69,12 +66,12 @@ function Breadcrumb({ sneakerDTO }) {
             </div>
           )
         }
+        return null
       }
     })
-  // console.log(crumbs)
 
   return (
-    <div className='breadcrumb'>
+    <div className={`breadcrumb ${sneakerDTO ? 'low-margin' : ''}`}>
       <div className='breadcrumb__item'>
         <Link
           to='/'
