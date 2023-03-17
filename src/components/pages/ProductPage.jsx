@@ -8,6 +8,8 @@ import Breadcrumb from '../Breadcrumb'
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
 
+  // console.log(sneakerDTO)
+
   useEffect(() => {
     window.scroll(0, 0)
   }, [])
@@ -15,7 +17,7 @@ function ProductPage() {
   return (
     <div className='product'>
       <div className='product__container'>
-        <Breadcrumb />
+        <Breadcrumb sneakerDTO={sneakerDTO} />
         <div className='product__main'>
           <div className='product__photo'>
             <img

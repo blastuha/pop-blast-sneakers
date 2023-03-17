@@ -12,7 +12,7 @@ const data = [
       'Whether it’s an embroidered logo, a bold graphic print or its iconic red, white and blue colour-blocking, there’s no mistaking Tommy Hilfiger. Flying the flag for all things retro 90s, scroll our Tommy Hilfiger at CROSSKING edit, featuring wardrobe-ready casualwear – think T-shirts, sweatshirts and joggers, as well as smart shirts, accessories, underwear and swimwear. Shop Tommy Jeans for classic denim pieces, or filter by Tommy Sport for workout gear that’ll get you motivated.',
     category: 'кроссовки',
     sex: 'men',
-    link: 'product/1',
+    link: 'men/sneakers',
   },
   {
     id: '2',
