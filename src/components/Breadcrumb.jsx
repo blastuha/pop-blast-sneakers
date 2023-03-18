@@ -10,13 +10,13 @@ function Breadcrumb({ sneakerDTO }) {
   const crumbs = location.pathname
     .split('/')
     .filter((crumb) => crumb)
-    .map((crumb) => {
+    .map((crumb, i) => {
       currentLink = +`/${crumb}`
       if (!sneakerDTO) {
         return (
           <div
             className='breadcrumb__item'
-            key={crumb}
+            key={i}
           >
             <Link
               to={currentLink}

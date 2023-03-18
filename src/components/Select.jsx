@@ -21,8 +21,13 @@ function Select({ color, sizes }) {
             name='size'
             id='size-select'
           >
-            {sizes.map((size) => (
-              <option value='white'>{size}</option>
+            {sizes.map((size, i) => (
+              <option
+                key={i}
+                value='white'
+              >
+                {size}
+              </option>
             ))}
           </select>
         </div>

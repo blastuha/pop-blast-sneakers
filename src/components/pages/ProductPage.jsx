@@ -32,7 +32,7 @@ function ProductPage() {
               <div className='info-item'>
                 <div className='info-header'>
                   <div className='info-title'>{sneakerDTO.data.title}</div>
-                  <div className='info-price'>{sneakerDTO.data.price}</div>
+                  <div className='info-price'>{sneakerDTO.data.price} руб.</div>
                 </div>
               </div>
               <div className='info-item'>

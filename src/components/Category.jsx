@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Dropdown from './Dropdown'
 
-function Category({ name, menu }) {
+function Category({
+  name,
+  menu,
+  onChangeBrand,
+  onChangeShoesType,
+  onChangeSex,
+}) {
   const [open, setOpen] = useState(false)
 
   const categoryBlock = useRef()
@@ -35,6 +41,10 @@ function Category({ name, menu }) {
         open={open}
         menu={menu}
         name={name}
+        onChangeBrand={onChangeBrand}
+        onChangeShoesType={onChangeShoesType}
+        onChangeOpen={onChangeOpen}
+        onChangeSex={onChangeSex}
       />
     </div>
   )

@@ -42,9 +42,10 @@ function Header() {
           <div className='header__menu-left'>
             {headerMenu
               .filter((item, i) => i < 2)
-              .map((item) => {
+              .map((item, i) => {
                 return (
                   <Link
+                    key={i}
                     to={item.link}
                     className='header__menu-item'
                   >

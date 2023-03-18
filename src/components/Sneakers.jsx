@@ -1,7 +1,7 @@
 import React from 'react'
 import { useOutletContext, Link } from 'react-router-dom'
 
-function Sneaker() {
+function Sneakers() {
   const [sneakers] = useOutletContext()
 
   return sneakers.map((sneaker) => (
@@ -24,10 +24,10 @@ function Sneaker() {
         href='/'
         className='sneaker__price'
       >
-        {sneaker.price}
+        {sneaker.price} руб.
       </a>
     </div>
   ))
 }
 
-export default Sneaker
+export default Sneakers

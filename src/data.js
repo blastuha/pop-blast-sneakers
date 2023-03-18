@@ -7,7 +7,7 @@ const data = [
     brand: 'Tommy Hilfiger',
     color: 'white',
     sizes: ['40', '41', '42'],
-    price: '5538 руб.',
+    price: 5538,
     description:
       'Whether it’s an embroidered logo, a bold graphic print or its iconic red, white and blue colour-blocking, there’s no mistaking Tommy Hilfiger. Flying the flag for all things retro 90s, scroll our Tommy Hilfiger at CROSSKING edit, featuring wardrobe-ready casualwear – think T-shirts, sweatshirts and joggers, as well as smart shirts, accessories, underwear and swimwear. Shop Tommy Jeans for classic denim pieces, or filter by Tommy Sport for workout gear that’ll get you motivated.',
     category: 'Кроссовки',
@@ -22,7 +22,7 @@ const data = [
     brand: 'New Balance',
     color: 'white',
     sizes: ['40', '41', '42'],
-    price: '10250 руб.',
+    price: 10250,
     description:
       'Founded over 100 years ago, New Balance (aka the dad-trainer OG) has been flexing its footwear credentials for as long as we can remember. Shop the New Balance at CROSSKING edit for running trainers with ultra-supportive soles, or earn extra style props with slick lifestyle shoes. Give your wardrobe a certified NB edge with its range of clothing and accessories, too – think T-shirts, hoodies, bags and hats, along with training tops and tights. Five-star aesthetic, we’re coming for you.',
     category: 'Кроссовки',
@@ -36,7 +36,7 @@ const data = [
     brand: 'Salomon',
     color: 'white',
     sizes: ['40', '41', '42'],
-    price: '6990 руб.',
+    price: 6990,
     description:
       'Encouraging us to play and connect with nature since 1947, Salomon is all about embracing the great outdoors. Whether you’re running, hiking or exploring, the brand’s footwear will have you ready for any adventure. Be prepped for unpredictable weather and terrains with lightweight, durable sandals and trail trainers, or smash your personal best with ultra-cushioned running shoes. Come rain, mud, snow or shine, our Salomon at CROSSKING edit has you covered.',
     category: 'Кроссовки',
@@ -50,7 +50,7 @@ const data = [
     brand: 'Tommy Hilfiger',
     color: 'navy',
     sizes: ['40', '41', '42'],
-    price: '8000 руб.',
+    price: 8000,
     description:
       'Whether it’s an embroidered logo, a bold graphic print or its iconic red, white and blue colour-blocking, there’s no mistaking Tommy Hilfiger. Flying the flag for all things retro 90s, scroll our Tommy Hilfiger at CROSSKING edit, featuring wardrobe-ready casualwear – think T-shirts, sweatshirts and joggers, as well as smart shirts, accessories, underwear and swimwear. Shop Tommy Jeans for classic denim pieces, or filter by Tommy Sport for workout gear that’ll get you motivated.',
     category: 'Тапочки',
@@ -64,7 +64,7 @@ const data = [
     brand: 'New Balance',
     color: 'black/blue',
     sizes: ['40', '41', '42'],
-    price: '4690 руб.',
+    price: 4690,
     description:
       'Whether it’s an embroidered logo, a bold graphic print or its iconic red, white and blue colour-blocking, there’s no mistaking Tommy Hilfiger. Flying the flag for all things retro 90s, scroll our Tommy Hilfiger at CROSSKING edit, featuring wardrobe-ready casualwear – think T-shirts, sweatshirts and joggers, as well as smart shirts, accessories, underwear and swimwear. Shop Tommy Jeans for classic denim pieces, or filter by Tommy Sport for workout gear that’ll get you motivated.',
     category: 'Кроссовки',
@@ -78,7 +78,7 @@ const data = [
     brand: 'Asics',
     color: 'white',
     sizes: ['40', '41', '42'],
-    price: '5900 руб.',
+    price: 5900,
     description:
       'Founded over 100 years ago, New Balance (aka the dad-trainer OG) has been flexing its footwear credentials for as long as we can remember. Shop the New Balance at CROSSKING edit for running trainers with ultra-supportive soles, or earn extra style props with slick lifestyle shoes. Give your wardrobe a certified NB edge with its range of clothing and accessories, too – think T-shirts, hoodies, bags and hats, along with training tops and tights. Five-star aesthetic, we’re coming for you.',
     category: 'Кроссовки',
@@ -92,7 +92,7 @@ const data = [
     brand: 'Salomon',
     color: 'beige',
     sizes: ['40', '41', '42'],
-    price: '14423 руб.',
+    price: 14423,
     description:
       'Encouraging us to play and connect with nature since 1947, Salomon is all about embracing the great outdoors. Whether you’re running, hiking or exploring, the brand’s footwear will have you ready for any adventure. Be prepped for unpredictable weather and terrains with lightweight, durable sandals and trail trainers, or smash your personal best with ultra-cushioned running shoes. Come rain, mud, snow or shine, our Salomon at CROSSKING edit has you covered.',
     category: 'Кроссовки',
@@ -106,7 +106,7 @@ const data = [
     brand: 'Salomon',
     color: 'multi',
     sizes: ['40', '41', '42'],
-    price: '13200 руб.',
+    price: 13200,
     description:
       'What do you get when you combine advanced technologies with flex-worthy footwear? Asics, obvs. Designed with top-tier workouts in mind, the brand serves up performance-enhanced styles that’ll support and improve your sessions so you can really get the best out of them. Hop, skip or jump over to our ASICS at CROSSKING edit and scroll for gym-ready styles and running trainers that will take you the distance.',
     category: 'Кроссовки',
@@ -120,7 +120,7 @@ const data = [
     brand: 'UGG',
     color: 'green',
     sizes: ['40', '41', '42'],
-    price: '8000 руб.',
+    price: 8000,
     description:
       'The brand behind Australias original sheepskin boots, UGG combines luxurious comfort with durability and style. From modest beginnings in 1978 among the surf community, UGG boots were quickly adopted for their natural cosiness and laid-back appeal. Made with moisture-wicking sheepskin, the brand’s collection of classic tall and short styles works to keep your feet close to your natural body temperature.',
     category: 'Тапочки',
@@ -134,11 +134,11 @@ const data = [
     brand: 'Nike',
     color: 'pink',
     sizes: ['40', '41', '42'],
-    price: '7620 руб.',
+    price: 7620,
     description:
       'When it comes to innovative sportswear, no brand does it better than Nike. Discover the best-selling trainers in the game in our Nike at CROSSKING edit, from Air Force 1s to super-cushioned VaporMax styles. Browse techy T-shirts, shorts and joggers from Nike Training, Nike Running and Nike Football, as well as sports accessories like arm bands and fitness aids. Nike SB nails casual days with hoodies, sweatshirts and chinos, too.',
     category: 'Кроссовки',
-    sex: 'woМужское',
+    sex: 'Женское',
   },
   {
     id: '11',
@@ -148,7 +148,7 @@ const data = [
     brand: 'Vans',
     color: 'black/yellow',
     sizes: ['40', '41', '42'],
-    price: '3810 руб.',
+    price: 3810,
     description:
       'You can’t think iconic skatewear without thinking Vans, right? Rewriting the boarding blueprint back in 1966 with a deck shoe that was better than the rest, the cult brand has flipped, popped and ollied its way into the footwear and fashion mainstream. Get familiar with durable canvas plimsolls, retro high-tops and signature slip-on trainers in our Vans at CROSSKING edit, or give its T-shirts, tops, jackets and accessories some wear-time, stat.',
     category: 'Кроссовки',
@@ -162,7 +162,7 @@ const data = [
     brand: 'Converse',
     color: 'cream',
     sizes: ['40', '41', '42'],
-    price: '7438 руб.',
+    price: 7438,
     description:
       'From simple beginnings on the basketball court, Converse trainers have reached iconic status. With a spirit of originality and rebellion, classic Chuck Taylor Converse All Star high-tops receive a constant update with fresh colour ways and prints introduced each season; while Converse’s clothing collection of vests, tees and hoodies continues to mirror their relaxed, contemporary-cool vibe.',
     category: 'Кроссовки',
@@ -172,11 +172,11 @@ const data = [
     id: '13',
     imageUrl:
       'https://static.insales-cdn.com/r/V5tPJDyXcvI/rs:fit:950:1187:1/q:100/plain/images/products/1/6718/642480702/120813385_1.jpg@webp',
-    title: 'adidas Originals Earlham trainers in white',
+    title: 'Adidas Originals Earlham trainers in white',
     brand: 'Adidas',
     color: 'white',
     sizes: ['40', '41', '42'],
-    price: '8799 руб.',
+    price: 8799,
     description:
       'adidas Originals needs no introduction. The brand’s famous 3-Stripes can be seen on the track, field and in the latest streetwear trends. Scroll the adidas Originals at CROSSKING edit to get your fix, from fresh trainers from the iconic Superstar, Stan Smith, Gazelle and Continental 80 collections to archive-inspired adidas Originals tracksuits, T-shirts and sweatshirts. And if you’re in need of some fresh kit, then cop yourself some sweat-wicking shorts, vests and compression tights from adidas Performance.',
     category: 'Кроссовки',
@@ -190,7 +190,7 @@ const data = [
     brand: 'Nike ',
     color: 'white',
     sizes: ['40', '41', '42'],
-    price: '5199 руб.',
+    price: 5199,
     description:
       'adidas Originals needs no introduction. The brand’s famous 3-Stripes can be seen on the track, field and in the latest streetwear trends. Scroll the adidas Originals at CROSSKING edit to get your fix, from fresh trainers from the iconic Superstar, Stan Smith, Gazelle and Continental 80 collections to archive-inspired adidas Originals tracksuits, T-shirts and sweatshirts. And if you’re in need of some fresh kit, then cop yourself some sweat-wicking shorts, vests and compression tights from adidas Performance.',
     category: 'Кроссовки',
@@ -204,7 +204,7 @@ const data = [
     brand: 'Nike ',
     color: 'lime',
     sizes: ['40', '41', '42'],
-    price: '8500 руб.',
+    price: 8500,
     description:
       'adidas Originals needs no introduction. The brand’s famous 3-Stripes can be seen on the track, field and in the latest streetwear trends. Scroll the adidas Originals at CROSSKING edit to get your fix, from fresh trainers from the iconic Superstar, Stan Smith, Gazelle and Continental 80 collections to archive-inspired adidas Originals tracksuits, T-shirts and sweatshirts. And if you’re in need of some fresh kit, then cop yourself some sweat-wicking shorts, vests and compression tights from adidas Performance.',
     category: 'Кроссовки',

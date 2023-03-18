@@ -5,8 +5,15 @@ function Cutlist({ headerMenu }) {
       <div className='cutlist-content'>
         {headerMenu
           .filter((item, i) => i >= 2)
-          .map((item) => {
-            return <div className='cutlist-item'>{item.name}</div>
+          .map((item, i) => {
+            return (
+              <div
+                key={i}
+                className='cutlist-item'
+              >
+                {item.name}
+              </div>
+            )
           })}
       </div>
     </div>
