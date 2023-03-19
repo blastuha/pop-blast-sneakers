@@ -8,7 +8,6 @@ import { brands } from './data'
 import { types } from './data'
 import { sexArray } from './data'
 import { Outlet } from 'react-router-dom'
-import SectionHeader from './components/SectionHeader'
 
 const categoryList = [
   { name: 'Бренды', menu: brands },
@@ -16,12 +15,13 @@ const categoryList = [
   { name: 'Пол', menu: sexArray },
 ]
 
+export const appContext = React.createContext('')
+
 function App() {
   const [sneakers, setSneakers] = useState([])
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
-  const [showCategory, setShowCategory] = useState(false)
 
   useEffect(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
@@ -67,25 +67,19 @@ function App() {
     })
   }
 
-  // const onShowCategory = () => {
-  //   setShowCategory(true)
-  // }
-
-  // const onHideCategory = () => {
-  //   setShowCategory(false)
-  // }
-
   return (
     <div className='wrapper'>
-      <Header />
-      <Categories
-        categoryList={categoryList}
-        onChangeBrand={onChangeBrand}
-        onChangeShoesType={onChangeShoesType}
-        onChangeSex={onChangeSex}
-      />
-      <Outlet context={[sneakers]} />
-      <Footer />
+      <appContext.Provider value={{ sneakers, brand, shoesType, sex }}>
+        <Header />
+        <Categories
+          categoryList={categoryList}
+          onChangeBrand={onChangeBrand}
+          onChangeShoesType={onChangeShoesType}
+          onChangeSex={onChangeSex}
+        />
+        <Outlet />
+        <Footer />
+      </appContext.Provider>
     </div>
   )
 }

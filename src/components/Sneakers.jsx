@@ -1,8 +1,9 @@
-import React from 'react'
-import { useOutletContext, Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { appContext } from '../App'
 
 function Sneakers() {
-  const [sneakers] = useOutletContext()
+  const sneakers = useContext(appContext).sneakers
 
   return sneakers.map((sneaker) => (
     <div
