@@ -226,5 +226,8 @@ const brands = [
 
 const types = ['Кроссовки', 'Тапочки']
 
+const sexArray = ['Мужское', 'Женское']
+
 export { brands }
 export { types }
+export { sexArray }

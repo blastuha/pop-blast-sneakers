@@ -1,0 +1,25 @@
+.section-header {
+  width: calc(100vw - 100px);
+  max-width: 1480px;
+  margin: 0 auto;
+  position: relative;
+  margin: 0px auto 30px auto;
+
+  .section-title {
+    font-family: Jura;
+    font-size: 25px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 1.2em;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      border-bottom: 1px solid #bfb074;
+      top: 100%;
+      margin: 10px 0px;
+    }
+  }
+}

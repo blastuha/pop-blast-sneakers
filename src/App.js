@@ -6,12 +6,14 @@ import Footer from './components/Footer'
 import Categories from './components/Categories'
 import { brands } from './data'
 import { types } from './data'
+import { sexArray } from './data'
 import { Outlet } from 'react-router-dom'
+import SectionHeader from './components/SectionHeader'
 
 const categoryList = [
   { name: 'Бренды', menu: brands },
   { name: 'Тип обуви', menu: types },
-  { name: 'Пол', menu: ['Мужское', 'Женское'] },
+  { name: 'Пол', menu: sexArray },
 ]
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
+  const [showCategory, setShowCategory] = useState(false)
 
   useEffect(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
@@ -54,21 +57,23 @@ function App() {
   }
 
   const onChangeSex = (sexData) => {
-    const categoryListNew = categoryList.filter(
-      (category) => category.name === 'Пол'
-    )
-    categoryListNew.forEach((obj) => {
-      if (Array.isArray(obj.menu)) {
-        obj.menu.forEach((sexItem) => {
-          if (sexItem === sexData) {
-            setShoesType('')
-            setBrand('')
-            setSex(sexData)
-          }
-        })
+    sexArray.forEach((sexItem) => {
+      if (sexItem === sexData) {
+        setBrand('')
+        setShoesType('')
+        setSex(sexData)
+        console.log(sex)
       }
     })
   }
+
+  // const onShowCategory = () => {
+  //   setShowCategory(true)
+  // }
+
+  // const onHideCategory = () => {
+  //   setShowCategory(false)
+  // }
 
   return (
     <div className='wrapper'>
