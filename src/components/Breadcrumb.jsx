@@ -1,10 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { appContext } from '../App'
 
 const pageNames = { contacts: 'Контакты', cart: 'Корзина' }
 
 function Breadcrumb({ sneakerDTO }) {
+  const onChangeShoesType = useContext(appContext).onChangeShoesType
+  const onChangeBrand = useContext(appContext).onChangeBrand
+  const onChangeSex = useContext(appContext).onChangeSex
+
   const location = useLocation()
+  console.log(sneakerDTO)
 
   let currentLink = ''
   const crumbs = location.pathname
@@ -28,39 +34,37 @@ function Breadcrumb({ sneakerDTO }) {
         )
       } else {
         if (crumb === sneakerDTO.data.id) {
+          //! items можно промапить через массив, подумать как это сделать
           return (
-            <div style={{ display: 'inline-block' }}>
-              <div
-                className='breadcrumb__item'
-                key={Date.now()}
-              >
+            <div
+              style={{ display: 'inline-block' }}
+              key={i}
+            >
+              <div className='breadcrumb__item'>
                 <Link
-                  to={currentLink}
+                  to='/'
                   className='breadcrumb__item-link'
+                  onClick={() => onChangeSex(sneakerDTO.data.sex)}
                 >
                   {sneakerDTO.data.sex}
                 </Link>
               </div>
-              <div
-                className='breadcrumb__item'
-                key={Date.now()}
-              >
+              <div className='breadcrumb__item'>
                 <Link
-                  to={currentLink}
+                  to='/'
                   className='breadcrumb__item-link'
+                  onClick={() => onChangeShoesType(sneakerDTO.data.category)}
                 >
                   {sneakerDTO.data.category}
                 </Link>
               </div>
-              <div
-                className='breadcrumb__item'
-                key={crumb}
-              >
+              <div className='breadcrumb__item'>
                 <Link
-                  to={currentLink}
+                  to='/'
                   className='breadcrumb__item-link'
+                  onClick={() => onChangeBrand(sneakerDTO.data.brand)}
                 >
-                  {sneakerDTO.data.title}
+                  {sneakerDTO.data.brand}
                 </Link>
               </div>
             </div>

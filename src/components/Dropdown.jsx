@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Dropdown({
   menu,
@@ -19,7 +20,8 @@ function Dropdown({
             key={i}
             className='dropdown__content'
           >
-            <div
+            <Link
+              to='/'
               className='dropdown__content-item'
               onClick={() => {
                 onChangeBrand(item)
@@ -29,7 +31,7 @@ function Dropdown({
               }}
             >
               {item}
-            </div>
+            </Link>
           </div>
         )
       })}

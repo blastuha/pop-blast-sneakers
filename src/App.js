@@ -69,7 +69,17 @@ function App() {
 
   return (
     <div className='wrapper'>
-      <appContext.Provider value={{ sneakers, brand, shoesType, sex }}>
+      <appContext.Provider
+        value={{
+          sneakers,
+          brand,
+          shoesType,
+          sex,
+          onChangeBrand,
+          onChangeShoesType,
+          onChangeSex,
+        }}
+      >
         <Header />
         <Categories
           categoryList={categoryList}

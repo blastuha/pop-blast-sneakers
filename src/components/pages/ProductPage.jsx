@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import Select from '../Select'
 import { AiOutlineHeart } from 'react-icons/ai'
 import Breadcrumb from '../Breadcrumb'
+import { appContext } from '../../App'
 
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
