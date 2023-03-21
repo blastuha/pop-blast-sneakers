@@ -67,6 +67,12 @@ function App() {
     })
   }
 
+  const clearAllFilters = () => {
+    setBrand('')
+    setShoesType('')
+    setSex('')
+  }
+
   return (
     <div className='wrapper'>
       <appContext.Provider
@@ -78,6 +84,7 @@ function App() {
           onChangeBrand,
           onChangeShoesType,
           onChangeSex,
+          clearAllFilters,
         }}
       >
         <Header />

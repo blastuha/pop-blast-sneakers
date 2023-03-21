@@ -10,7 +10,6 @@ function Breadcrumb({ sneakerDTO }) {
   const onChangeSex = useContext(appContext).onChangeSex
 
   const location = useLocation()
-  console.log(sneakerDTO)
 
   let currentLink = ''
   const crumbs = location.pathname

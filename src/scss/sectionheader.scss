@@ -4,13 +4,16 @@
   margin: 0 auto;
   position: relative;
   margin: 0px auto 30px auto;
+  display: flex;
+  align-items: flex-end;
 
   .section-title {
     font-family: Jura;
     font-size: 25px;
     font-weight: 400;
     color: #333333;
-    line-height: 1.2em;
+    line-height: 1.3rem;
+    margin-right: 12px;
 
     &::before {
       content: '';
@@ -20,6 +23,19 @@
       border-bottom: 1px solid #bfb074;
       top: 100%;
       margin: 10px 0px;
+    }
+  }
+
+  .section-delete {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    color: #bfb074;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      scale: (1.1);
+      color: #333333;
     }
   }
 }
