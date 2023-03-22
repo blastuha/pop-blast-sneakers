@@ -22,6 +22,7 @@ function App() {
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
+  const [cartData, setCartData] = useState([])
 
   useEffect(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
@@ -73,6 +74,18 @@ function App() {
     setSex('')
   }
 
+  const addToCart = (sneakerObj) => {
+    const findIndex = cartData.findIndex((obj) => obj.id === sneakerObj.id)
+    if (findIndex >= 0) {
+      cartData[findIndex].quantity = cartData[findIndex].quantity + 1
+      console.log(cartData)
+    } else {
+      const sneakerNew = { ...sneakerObj, quantity: 1 }
+      setCartData([...cartData, sneakerNew])
+      console.log(cartData)
+    }
+  }
+
   return (
     <div className='wrapper'>
       <appContext.Provider
@@ -85,6 +98,7 @@ function App() {
           onChangeShoesType,
           onChangeSex,
           clearAllFilters,
+          addToCart,
         }}
       >
         <Header />
