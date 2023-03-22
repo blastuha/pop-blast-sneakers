@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Breadcrumb from '../Breadcrumb'
-import { AiOutlineDelete } from 'react-icons/ai'
+import CartItem from './CartItem'
+import CartCounter from './CartCounter'
+import { appContext } from '../../App'
 
 function Cart() {
+  const cartData = useContext(appContext).cartData
+
   return (
     <div className='cart-block'>
       <div className='cart__container'>
@@ -12,93 +16,13 @@ function Cart() {
         </div>
         <div className='cart__main'>
           <div className='cart__items'>
-            <div className='cart-item'>
-              <div className='item-image'>
-                <img
-                  src='https://static.insales-cdn.com/r/WvM-a6seMTo/rs:fit:950:1187:1/q:100/plain/images/products/1/3145/643001417/118894836_1.jpg@webp'
-                  alt='good-pic'
-                />
-              </div>
-              <div className='item-header'>
-                <a
-                  className='header-title'
-                  href='/'
-                >
-                  Tommy Hilfiger retro court trainer
-                </a>
-                <div className='header-color'>Цвет: white</div>
-              </div>
-              <div className='item-counter'>
-                <div className='counter'>
-                  <button className='counter-button'>-</button>
-                  <input
-                    type='text'
-                    value='1'
-                    className='counter-input'
-                  />
-                  <button className='counter-button'>+</button>
-                </div>
-              </div>
-              <div className='item-total'>1308 руб.</div>
-              <div className='item-delete'>
-                <div className='delete-icon'>
-                  <AiOutlineDelete />
-                </div>
-              </div>
-            </div>
-            <div className='cart-item'>
-              <div className='item-image'>
-                <img
-                  src='https://static.insales-cdn.com/r/WvM-a6seMTo/rs:fit:950:1187:1/q:100/plain/images/products/1/3145/643001417/118894836_1.jpg@webp'
-                  alt='good-pic'
-                />
-              </div>
-              <div className='item-header'>
-                <a
-                  className='header-title'
-                  href='/'
-                >
-                  Tommy Hilfiger retro court trainer
-                </a>
-                <div className='header-color'>Цвет: white</div>
-              </div>
-              <div className='item-counter'>
-                <div className='counter'>
-                  <button className='counter-button'>-</button>
-                  <input
-                    type='text'
-                    value='1'
-                    className='counter-input'
-                  />
-                  <button className='counter-button'>+</button>
-                </div>
-              </div>
-              <div className='item-total'>1308 руб.</div>
-              <div className='item-delete'>
-                <div className='delete-icon'>
-                  <AiOutlineDelete />
-                </div>
-              </div>
-            </div>
+            {cartData.length === 0 ? (
+              <div className='empty-cart'>Ваша корзина пуста</div>
+            ) : (
+              <CartItem />
+            )}
           </div>
-          <div className='cart__counter'>
-            <div className='counter-total-sticky'>
-              <div className='counter-total-items'>
-                <span className='total-products'>Товары ( 1 )</span>
-                <span className='total-price'>1308 руб.</span>
-              </div>
-              <div className='counter-total-price'>
-                <div className='price-text'>Итого:</div>
-                <div className='full-price'>1308 руб.</div>
-              </div>
-              <button
-                type='submit'
-                className='counter-btn'
-              >
-                Оформить заказ
-              </button>
-            </div>
-          </div>
+          <CartCounter />
         </div>
       </div>
     </div>

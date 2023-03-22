@@ -78,11 +78,9 @@ function App() {
     const findIndex = cartData.findIndex((obj) => obj.id === sneakerObj.id)
     if (findIndex >= 0) {
       cartData[findIndex].quantity = cartData[findIndex].quantity + 1
-      console.log(cartData)
     } else {
       const sneakerNew = { ...sneakerObj, quantity: 1 }
       setCartData([...cartData, sneakerNew])
-      console.log(cartData)
     }
   }
 
@@ -98,7 +96,9 @@ function App() {
           onChangeShoesType,
           onChangeSex,
           clearAllFilters,
+          cartData,
           addToCart,
+          setCartData,
         }}
       >
         <Header />
