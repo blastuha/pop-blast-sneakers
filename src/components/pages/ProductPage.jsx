@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import Select from '../Select'
@@ -7,40 +7,12 @@ import Breadcrumb from '../Breadcrumb'
 import { appContext } from '../../App'
 
 function ProductPage() {
-  const [cartData, setCartData] = useState([])
   const sneakerDTO = useLoaderData() // data transfer object
+  const addToCart = useContext(appContext).addToCart
 
   useEffect(() => {
     window.scroll(0, 0)
   }, [])
-
-  const addToCart = (sneakerObj) => {
-    const findIndex = cartData.findIndex((obj) => obj.id === sneakerObj.id)
-
-    if (findIndex >= 0) {
-      const newCartData = cartData.map((cartItem, index) => {
-        if (findIndex === index) {
-          console.log(cartItem)
-          return { ...cartItem, quantity: cartItem.quantity + 1 }
-        } else {
-          return cartItem
-        }
-      })
-      setCartData(newCartData)
-    } else {
-      const newObj = { ...sneakerObj, quantity: 1 }
-      setCartData([...cartData, newObj])
-      console.log('товара не было в корзине')
-    }
-  }
-
-  console.log(cartData)
-
-  // console.log(findIndex)
-  // cartData[findIndex].quantity = cartData[findIndex].quantity + 1
-  // console.log('товар был в корзине', cartData)
-  // return
-  //-----------
 
   return (
     <div className='product'>
