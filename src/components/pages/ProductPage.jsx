@@ -9,13 +9,20 @@ import { appContext } from '../../App'
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
   const addToCart = useContext(appContext).addToCart
-  const selectSize = useContext(appContext).selectSize
-  const selectColor = useContext(appContext).selectColor
+  const selectedSize = useContext(appContext).selectedSize
+  const setSelectedSize = useContext(appContext).setSelectedSize
+  const selectedColor = useContext(appContext).selectedColor
+  const setSelectedColor = useContext(appContext).setSelectedColor
   const onChangeSize = useContext(appContext).onChangeSize
   const onChangeColor = useContext(appContext).onChangeColor
 
   useEffect(() => {
     window.scroll(0, 0)
+  }, [])
+
+  useEffect(() => {
+    setSelectedSize(sneakerDTO.data.sizes[0])
+    setSelectedColor(sneakerDTO.data.color[0])
   }, [])
 
   return (
@@ -46,8 +53,8 @@ function ProductPage() {
                   color={sneakerDTO.data.color}
                   sizes={sneakerDTO.data.sizes}
                   onChangeSize={onChangeSize}
-                  selectSize={selectSize}
-                  selectColor={selectColor}
+                  selectSize={selectedSize}
+                  selectColor={selectedColor}
                   onChangeColor={onChangeColor}
                 />
               </div>

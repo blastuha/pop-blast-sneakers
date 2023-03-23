@@ -23,8 +23,8 @@ function App() {
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
   const [cartData, setCartData] = useState([])
-  const [selectSize, setSelectSize] = useState(0)
-  const [selectColor, setSeclectColor] = useState('')
+  const [selectedSize, setSelectedSize] = useState()
+  const [selectedColor, setSelectedColor] = useState('')
 
   useEffect(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
@@ -38,6 +38,15 @@ function App() {
       .then((res) => setSneakers(res.data))
       .catch((err) => console.warn(err))
   }, [brand, shoesType, sex])
+
+  let isMounted = false
+  console.log(isMounted)
+  useEffect(() => {
+    const json = JSON.stringify(cartData)
+    localStorage.setItem('cartItems', json)
+    isMounted = true
+    console.log(json, isMounted)
+  }, [cartData])
 
   const onChangeBrand = (brandData) => {
     brands.forEach((brandItem) => {
@@ -87,13 +96,13 @@ function App() {
   }
 
   const onChangeSize = (event) => {
-    setSelectSize(event.target.value)
-    console.log(selectSize)
+    setSelectedSize(event.target.value)
+    console.log(selectedSize)
   }
 
   const onChangeColor = (event) => {
-    setSeclectColor(event.target.value)
-    console.log(selectColor)
+    setSelectedColor(event.target.value)
+    console.log(selectedColor)
   }
 
   return (
@@ -113,8 +122,10 @@ function App() {
           setCartData,
           onChangeSize,
           onChangeColor,
-          selectSize,
-          selectColor,
+          selectedSize,
+          selectedColor,
+          setSelectedSize,
+          setSelectedColor,
         }}
       >
         <Header />

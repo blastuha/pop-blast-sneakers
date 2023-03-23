@@ -6,8 +6,8 @@ import { AiOutlineDelete } from 'react-icons/ai'
 function CartItem() {
   const cartData = useContext(appContext).cartData
   const setCartData = useContext(appContext).setCartData
-  const selectSize = useContext(appContext).selectSize
-  const selectColor = useContext(appContext).selectColor
+  const selectedSize = useContext(appContext).selectedSize
+  const selectedColor = useContext(appContext).selectedColor
 
   const addQuantity = (id) => {
     const newCartData = cartData.map((sneaker) => {
@@ -61,7 +61,7 @@ function CartItem() {
           </Link>
           <div className='header-sizecolor'>
             <span>
-              Цвет: {selectColor} / Размер: {selectSize}
+              Цвет: {selectedColor} / Размер: {selectedSize}
             </span>
           </div>
         </div>
@@ -75,11 +75,14 @@ function CartItem() {
             >
               -
             </button>
-            <input
-              type='text'
-              value={cartItem.quantity}
-              className='counter-input'
-            />
+            <div className='counter-value'>
+              <span
+                type='text'
+                value={cartItem.quantity}
+              >
+                {cartItem.quantity}
+              </span>
+            </div>
             <button
               className='counter-button'
               onClick={() => addQuantity(cartItem.id)}
