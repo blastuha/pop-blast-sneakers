@@ -23,6 +23,8 @@ function App() {
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
   const [cartData, setCartData] = useState([])
+  const [selectSize, setSelectSize] = useState(0)
+  const [selectColor, setSeclectColor] = useState('')
 
   useEffect(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
@@ -84,6 +86,16 @@ function App() {
     }
   }
 
+  const onChangeSize = (event) => {
+    setSelectSize(event.target.value)
+    console.log(selectSize)
+  }
+
+  const onChangeColor = (event) => {
+    setSeclectColor(event.target.value)
+    console.log(selectColor)
+  }
+
   return (
     <div className='wrapper'>
       <appContext.Provider
@@ -99,6 +111,10 @@ function App() {
           cartData,
           addToCart,
           setCartData,
+          onChangeSize,
+          onChangeColor,
+          selectSize,
+          selectColor,
         }}
       >
         <Header />

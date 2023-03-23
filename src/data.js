@@ -5,7 +5,7 @@ const data = [
       'https://static.insales-cdn.com/r/WvM-a6seMTo/rs:fit:950:1187:1/q:100/plain/images/products/1/3145/643001417/118894836_1.jpg@webp',
     title: 'Tommy Hilfiger retro court trainer',
     brand: 'Tommy Hilfiger',
-    color: 'white',
+    color: ['white', 'grey'],
     sizes: ['40', '41', '42'],
     price: 5538,
     description:

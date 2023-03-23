@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import Select from '../Select'
@@ -9,6 +9,10 @@ import { appContext } from '../../App'
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
   const addToCart = useContext(appContext).addToCart
+  const selectSize = useContext(appContext).selectSize
+  const selectColor = useContext(appContext).selectColor
+  const onChangeSize = useContext(appContext).onChangeSize
+  const onChangeColor = useContext(appContext).onChangeColor
 
   useEffect(() => {
     window.scroll(0, 0)
@@ -41,6 +45,10 @@ function ProductPage() {
                 <Select
                   color={sneakerDTO.data.color}
                   sizes={sneakerDTO.data.sizes}
+                  onChangeSize={onChangeSize}
+                  selectSize={selectSize}
+                  selectColor={selectColor}
+                  onChangeColor={onChangeColor}
                 />
               </div>
               <div className='info-buttons'>

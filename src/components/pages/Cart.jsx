@@ -19,7 +19,7 @@ function Cart() {
             {cartData.length === 0 ? (
               <div className='empty-cart'>Ваша корзина пуста</div>
             ) : (
-              <CartItem />
+              <CartItem cartData={cartData} />
             )}
           </div>
           <CartCounter />

@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { appContext } from '../../App'
 import { AiOutlineDelete } from 'react-icons/ai'
 
 function CartItem() {
   const cartData = useContext(appContext).cartData
   const setCartData = useContext(appContext).setCartData
+  const selectSize = useContext(appContext).selectSize
+  const selectColor = useContext(appContext).selectColor
 
   const addQuantity = (id) => {
     const newCartData = cartData.map((sneaker) => {
@@ -50,13 +53,17 @@ function CartItem() {
           />
         </div>
         <div className='item-header'>
-          <a
+          <Link
             className='header-title'
-            href='/'
+            to={`/products/${cartItem.id}`}
           >
             {cartItem.title}
-          </a>
-          <div className='header-color'>Цвет: {cartItem.color}</div>
+          </Link>
+          <div className='header-sizecolor'>
+            <span>
+              Цвет: {selectColor} / Размер: {selectSize}
+            </span>
+          </div>
         </div>
         <div className='item-counter'>
           <div className='counter'>

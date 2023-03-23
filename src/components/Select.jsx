@@ -1,6 +1,13 @@
 import React from 'react'
 
-function Select({ color, sizes }) {
+function Select({
+  color,
+  sizes,
+  onChangeSize,
+  onChangeColor,
+  selectColor,
+  selectSize,
+}) {
   return (
     <div className='selections'>
       {color && (
@@ -9,8 +16,12 @@ function Select({ color, sizes }) {
           <select
             name='color'
             id='color-select'
+            value={selectColor}
+            onChange={(e) => onChangeColor(e)}
           >
-            <option value='white'>{color}</option>
+            {color.map((item, i) => (
+              <option key={i}>{item}</option>
+            ))}
           </select>
         </div>
       )}
@@ -20,14 +31,11 @@ function Select({ color, sizes }) {
           <select
             name='size'
             id='size-select'
+            value={selectSize}
+            onChange={(e) => onChangeSize(e)}
           >
             {sizes.map((size, i) => (
-              <option
-                key={i}
-                value='white'
-              >
-                {size}
-              </option>
+              <option key={i}>{size}</option>
             ))}
           </select>
         </div>
