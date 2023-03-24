@@ -1,5 +1,5 @@
 import './App.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -18,11 +18,16 @@ const categoryList = [
 export const appContext = React.createContext('')
 
 function App() {
+  const getStorageItems = () => {
+    const data = localStorage.getItem('cartItems')
+    return data ? JSON.parse(data) : '123'
+  }
+
   const [sneakers, setSneakers] = useState([])
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
-  const [cartData, setCartData] = useState([])
+  const [cartData, setCartData] = useState(getStorageItems())
   const [selectedSize, setSelectedSize] = useState()
   const [selectedColor, setSelectedColor] = useState('')
 
@@ -39,13 +44,14 @@ function App() {
       .catch((err) => console.warn(err))
   }, [brand, shoesType, sex])
 
-  let isMounted = false
-  console.log(isMounted)
+  let isMounted = useRef(false)
   useEffect(() => {
-    const json = JSON.stringify(cartData)
-    localStorage.setItem('cartItems', json)
-    isMounted = true
-    console.log(json, isMounted)
+    if (isMounted.current) {
+      const json = JSON.stringify(cartData)
+      localStorage.setItem('cartItems', json)
+    }
+    isMounted.current = true
+    console.log(cartData)
   }, [cartData])
 
   const onChangeBrand = (brandData) => {
