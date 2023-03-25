@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import Select from '../Select'
@@ -53,8 +53,8 @@ function ProductPage() {
                   color={sneakerDTO.data.color}
                   sizes={sneakerDTO.data.sizes}
                   onChangeSize={onChangeSize}
-                  selectSize={selectedSize}
-                  selectColor={selectedColor}
+                  selectedSize={selectedSize}
+                  selectedColor={selectedColor}
                   onChangeColor={onChangeColor}
                 />
               </div>

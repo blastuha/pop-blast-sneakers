@@ -20,14 +20,14 @@ export const appContext = React.createContext('')
 function App() {
   const getStorageItems = () => {
     const data = localStorage.getItem('cartItems')
-    return data ? JSON.parse(data) : '123'
+    return data ? JSON.parse(data) : ''
   }
 
   const [sneakers, setSneakers] = useState([])
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
-  const [cartData, setCartData] = useState(getStorageItems())
+  const [cartData, setCartData] = useState([])
   const [selectedSize, setSelectedSize] = useState()
   const [selectedColor, setSelectedColor] = useState('')
 
@@ -51,7 +51,6 @@ function App() {
       localStorage.setItem('cartItems', json)
     }
     isMounted.current = true
-    console.log(cartData)
   }, [cartData])
 
   const onChangeBrand = (brandData) => {
@@ -92,23 +91,17 @@ function App() {
   }
 
   const addToCart = (sneakerObj) => {
-    const findIndex = cartData.findIndex((obj) => obj.id === sneakerObj.id)
-    if (findIndex >= 0) {
-      cartData[findIndex].quantity = cartData[findIndex].quantity + 1
-    } else {
-      const sneakerNew = { ...sneakerObj, quantity: 1 }
-      setCartData([...cartData, sneakerNew])
-    }
+    // if (cartData)
   }
 
   const onChangeSize = (event) => {
+    // console.log(selectedSize)
     setSelectedSize(event.target.value)
-    console.log(selectedSize)
   }
 
   const onChangeColor = (event) => {
+    // console.log(selectedColor)
     setSelectedColor(event.target.value)
-    console.log(selectedColor)
   }
 
   return (
@@ -149,3 +142,40 @@ function App() {
 }
 
 export default App
+
+// const addToCart = (sneakerObj) => {
+//   const findIndex = cartData.findIndex((obj) => obj.id === sneakerObj.id)
+//   const cartItem = cartData[findIndex]
+//   let itemToAdd = {
+//     ...sneakerObj,
+//     size: selectedSize,
+//     color: selectedColor,
+//   }
+//   if (findIndex >= 0) {
+//     if (
+//       cartItem.size !== itemToAdd.size ||
+//       cartItem.color !== itemToAdd.color
+//     ) {
+//       console.log(cartItem.size, itemToAdd.size)
+//       itemToAdd = {
+//         ...itemToAdd,
+//         secondId: Date.now(),
+//         quantity: 1,
+//       }
+//       console.log('другой размер/цвет кроссовка')
+//       setCartData([...cartData, itemToAdd])
+//     } else {
+//       console.log('цвет и размер совпадают', cartItem.size, itemToAdd.size)
+//       cartData[findIndex].quantity = cartData[findIndex].quantity + 1
+//     }
+//   } else {
+//     const sneakerNew = {
+//       ...sneakerObj,
+//       quantity: 1,
+//       size: selectedSize,
+//       color: selectedColor,
+//     }
+//     setCartData([...cartData, sneakerNew])
+//     console.log('кроссовка не было')
+//   }
+// }

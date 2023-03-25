@@ -5,8 +5,8 @@ function Select({
   sizes,
   onChangeSize,
   onChangeColor,
-  selectColor,
-  selectSize,
+  selectedColor,
+  selectedSize,
 }) {
   return (
     <div className='selections'>
@@ -16,7 +16,7 @@ function Select({
           <select
             name='color'
             id='color-select'
-            value={selectColor}
+            value={selectedColor}
             onChange={(e) => onChangeColor(e)}
           >
             {color.map((item, i) => (
@@ -31,7 +31,7 @@ function Select({
           <select
             name='size'
             id='size-select'
-            value={selectSize}
+            value={selectedSize}
             onChange={(e) => onChangeSize(e)}
           >
             {sizes.map((size, i) => (

@@ -6,14 +6,11 @@ import { AiOutlineDelete } from 'react-icons/ai'
 function CartItem() {
   const cartData = useContext(appContext).cartData
   const setCartData = useContext(appContext).setCartData
-  const selectedSize = useContext(appContext).selectedSize
-  const selectedColor = useContext(appContext).selectedColor
 
-  const addQuantity = (id) => {
+  const addQuantity = (id, secondId) => {
     const newCartData = cartData.map((sneaker) => {
-      if (sneaker.id === id) {
-        const newSneaker = { ...sneaker, quantity: sneaker.quantity + 1 }
-        return newSneaker
+      if (sneaker.id === id && secondId === sneaker.secondId) {
+        return { ...sneaker, quantity: sneaker.quantity + 1 }
       } else {
         return sneaker
       }
@@ -21,13 +18,13 @@ function CartItem() {
     setCartData(newCartData)
   }
 
-  const decreaseQuantity = (id) => {
+  const decreaseQuantity = (id, secondId) => {
     const newCartData = cartData.map((sneaker) => {
-      if (sneaker.id === id) {
-        const newSneaker = { ...sneaker, quantity: sneaker.quantity - 1 }
-        if (newSneaker.quantity <= 0) {
+      if (sneaker.id === id && sneaker.secondId === secondId) {
+        if (sneaker.quantity === 1) {
           return sneaker
-        } else return newSneaker
+        }
+        return { ...sneaker, quantity: sneaker.quantity - 1 }
       } else {
         return sneaker
       }
@@ -35,9 +32,22 @@ function CartItem() {
     setCartData(newCartData)
   }
 
-  const handleDelete = (id) => {
-    const cartDataFiltred = cartData.filter((sneaker) => sneaker.id !== id)
-    setCartData(cartDataFiltred)
+  const handleDelete = (sneakerInCart) => {
+    if (sneakerInCart.secondId) {
+      const secondIdFilter = cartData.filter(
+        (sneaker) => sneaker.secondId !== sneakerInCart.secondId
+      )
+      setCartData(secondIdFilter)
+    } else {
+      const idFilter = cartData.filter((sneaker) => {
+        console.log(sneaker.secondId)
+        return (
+          sneaker.secondId !== sneakerInCart.secondId &&
+          sneaker.id !== sneakerInCart.id
+        )
+      })
+      setCartData(idFilter)
+    }
   }
 
   return cartData.map((cartItem, i) => {
@@ -61,8 +71,10 @@ function CartItem() {
           </Link>
           <div className='header-sizecolor'>
             <span>
-              Цвет: {selectedColor} / Размер: {selectedSize}
+              Цвет: {cartItem.color} / Размер: {cartItem.size}
             </span>
+            <div>id: {cartItem.id}</div>
+            <div>secondId: {cartItem.secondId}</div>
           </div>
         </div>
         <div className='item-counter'>
@@ -70,7 +82,7 @@ function CartItem() {
             <button
               className='counter-button'
               onClick={() => {
-                decreaseQuantity(cartItem.id)
+                decreaseQuantity(cartItem.id, cartItem.secondId)
               }}
             >
               -
@@ -85,7 +97,7 @@ function CartItem() {
             </div>
             <button
               className='counter-button'
-              onClick={() => addQuantity(cartItem.id)}
+              onClick={() => addQuantity(cartItem.id, cartItem.secondId)}
             >
               +
             </button>
@@ -94,7 +106,7 @@ function CartItem() {
         <div className='item-total'>{cartItem.price * cartItem.quantity}</div>
         <div
           className='item-delete'
-          onClick={() => handleDelete(cartItem.id)}
+          onClick={() => handleDelete(cartItem)}
         >
           <div className='delete-icon'>
             <AiOutlineDelete />

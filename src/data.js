@@ -20,7 +20,7 @@ const data = [
       'https://static.insales-cdn.com/r/f6TdeHfTVf8/rs:fit:950:1187:1/q:100/plain/images/products/1/3070/642477054/109505334_1.jpg@webp',
     title: 'New Balance 327 trainers in off white',
     brand: 'New Balance',
-    color: 'white',
+    color: ['white', 'grey'],
     sizes: ['40', '41', '42'],
     price: 10250,
     description:
@@ -34,7 +34,7 @@ const data = [
       'https://static.insales-cdn.com/r/785IDKBK0tA/rs:fit:950:1187:1/q:100/plain/images/products/1/347/642998619/107143782_1.jpg@webp',
     title: 'Salomon X-Mission 3 trainers in sand',
     brand: 'Salomon',
-    color: 'white',
+    color: ['white', 'grey'],
     sizes: ['40', '41', '42'],
     price: 6990,
     description:
@@ -48,7 +48,7 @@ const data = [
       'https://static.insales-cdn.com/r/zn2XorcbS68/rs:fit:950:1187:1/q:100/plain/images/products/1/5395/642479379/124216192_1.jpg@webp',
     title: 'Tommy Hilfiger comfort padded slipper in navy',
     brand: 'Tommy Hilfiger',
-    color: 'navy',
+    color: ['navy', 'green'],
     sizes: ['40', '41', '42'],
     price: 8000,
     description:
