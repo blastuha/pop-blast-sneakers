@@ -102,9 +102,9 @@ function App() {
       (sneaker) => itemToAdd.id === sneaker.id
     )
 
-    const sneakerSecondId = cartData.find((sneaker) => sneaker.secondId)
+    const sneakerDouble = cartData.find((sneaker) => sneaker.secondId)
 
-    console.log(sneakerSecondId)
+    console.log(sneakerDouble)
 
     if (
       sneakerInCart &&
@@ -132,15 +132,11 @@ function App() {
       (sneakerInCart && sneakerInCart.size !== itemToAdd.size)
     ) {
       // сделать проверку, если добавляемый кроссовок с такими параметрами уже есть (Id, color, size), то находим его через мап, и изменяем его количество. А если не было, добавить как новый.
-      if (sneakerSecondId && sneakerSecondId.size === itemToAdd.size) {
-        console.log(
-          sneakerSecondId.secondId,
-          itemToAdd.size,
-          sneakerSecondId.size
-        )
+      if (sneakerDouble && sneakerDouble.size === itemToAdd.size) {
+        console.log(sneakerDouble.secondId, itemToAdd.size, sneakerDouble.size)
         const newCartData = cartData.map((sneaker) => {
           if (
-            sneaker.secondId === sneakerSecondId.secondId &&
+            sneaker.secondId === sneakerDouble.secondId &&
             sneaker.size === itemToAdd.size
           ) {
             console.log('id был + secondid был, но такой размер уже есть')
