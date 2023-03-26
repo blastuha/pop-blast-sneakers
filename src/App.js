@@ -91,7 +91,51 @@ function App() {
   }
 
   const addToCart = (sneakerObj) => {
-    // if (cartData)
+    const itemToAdd = {
+      ...sneakerObj,
+      color: selectedColor,
+      size: selectedSize,
+      quantity: 1,
+    }
+    const sneakerInCart = cartData.find(
+      (sneaker) => itemToAdd.id === sneaker.id
+    )
+    if (
+      sneakerInCart &&
+      sneakerInCart.color === itemToAdd.color &&
+      sneakerInCart.size === itemToAdd.size
+    ) {
+      const newCartData = cartData.map((sneaker) => {
+        if (
+          sneaker.id === itemToAdd.id &&
+          sneaker.color === itemToAdd.color &&
+          sneaker.size === itemToAdd.size
+        ) {
+          console.log('sneaker edited', sneakerInCart.color, itemToAdd.color)
+          return {
+            ...sneaker,
+            quantity: sneaker.quantity + 1,
+            color: selectedColor,
+            size: selectedSize,
+          }
+        } else {
+          console.log('sneaker')
+          return sneaker
+        }
+      })
+      setCartData(newCartData)
+      console.log('товар уже был', cartData)
+    } else if (
+      (sneakerInCart && sneakerInCart.color !== itemToAdd.color) ||
+      (sneakerInCart && sneakerInCart.size !== itemToAdd.size)
+    ) {
+      console.log('размер или цвет отличается')
+      const itemToAddNew = { ...itemToAdd, secondId: Date.now() }
+      setCartData([...cartData, itemToAddNew])
+    } else {
+      setCartData([...cartData, itemToAdd])
+      console.log('кроссовка не было')
+    }
   }
 
   const onChangeSize = (event) => {
