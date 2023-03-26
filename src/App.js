@@ -97,20 +97,22 @@ function App() {
       size: selectedSize,
       quantity: 1,
     }
+
     const sneakerInCart = cartData.find(
       (sneaker) => itemToAdd.id === sneaker.id
     )
+
+    const sneakerSecondId = cartData.find(
+      (sneaker) => itemToAdd.id === sneaker.id && itemToAdd && sneaker.secondId
+    )
+
     if (
       sneakerInCart &&
       sneakerInCart.color === itemToAdd.color &&
       sneakerInCart.size === itemToAdd.size
     ) {
       const newCartData = cartData.map((sneaker) => {
-        if (
-          sneaker.id === itemToAdd.id &&
-          sneaker.color === itemToAdd.color &&
-          sneaker.size === itemToAdd.size
-        ) {
+        if (sneaker.id === itemToAdd.id) {
           console.log('sneaker edited', sneakerInCart.color, itemToAdd.color)
           return {
             ...sneaker,
@@ -124,14 +126,31 @@ function App() {
         }
       })
       setCartData(newCartData)
-      console.log('товар уже был', cartData)
+      console.log('id уже был', cartData)
     } else if (
       (sneakerInCart && sneakerInCart.color !== itemToAdd.color) ||
       (sneakerInCart && sneakerInCart.size !== itemToAdd.size)
     ) {
-      console.log('размер или цвет отличается')
-      const itemToAddNew = { ...itemToAdd, secondId: Date.now() }
-      setCartData([...cartData, itemToAddNew])
+      // сделать проверку, если добавляемый кроссовок с такими параметрами уже есть (Id, color, size), то находим его через мап, и изменяем его количество. А если не было, добавить как новый.
+      if (sneakerSecondId) {
+        const newCartData = cartData.map((sneaker) => {
+          if (
+            sneaker.secondId === sneakerSecondId.secondId &&
+            sneaker.size === itemToAdd.size
+          ) {
+            console.log('id был + secondid был, но такой размер уже есть')
+            return { ...sneaker, quantity: sneaker.quantity + 1 }
+          } else {
+            console.log('id был + secondid был, но такого размера нет')
+            return sneaker
+          }
+        })
+        setCartData(newCartData)
+      } else {
+        console.log('id был, но размер или цвет отличается')
+        const itemToAddNew = { ...itemToAdd, secondId: Date.now() }
+        setCartData([...cartData, itemToAddNew])
+      }
     } else {
       setCartData([...cartData, itemToAdd])
       console.log('кроссовка не было')
