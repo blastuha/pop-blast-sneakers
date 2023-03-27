@@ -7,9 +7,9 @@ function CartItem() {
   const cartData = useContext(appContext).cartData
   const setCartData = useContext(appContext).setCartData
 
-  const addQuantity = (id, secondId) => {
-    const newCartData = cartData.map((sneaker) => {
-      if (sneaker.id === id && secondId === sneaker.secondId) {
+  const addQuantity = (id, index) => {
+    const newCartData = cartData.map((sneaker, i) => {
+      if (sneaker.id === id && i === index) {
         return { ...sneaker, quantity: sneaker.quantity + 1 }
       } else {
         return sneaker
@@ -18,9 +18,9 @@ function CartItem() {
     setCartData(newCartData)
   }
 
-  const decreaseQuantity = (id, secondId) => {
-    const newCartData = cartData.map((sneaker) => {
-      if (sneaker.id === id && sneaker.secondId === secondId) {
+  const decreaseQuantity = (id, index) => {
+    const newCartData = cartData.map((sneaker, i) => {
+      if (sneaker.id === id && i === index) {
         if (sneaker.quantity === 1) {
           return sneaker
         }
@@ -32,22 +32,19 @@ function CartItem() {
     setCartData(newCartData)
   }
 
-  const handleDelete = (sneakerInCart) => {
-    if (sneakerInCart.secondId) {
-      const secondIdFilter = cartData.filter(
-        (sneaker) => sneaker.secondId !== sneakerInCart.secondId
-      )
-      setCartData(secondIdFilter)
-    } else {
-      const idFilter = cartData.filter((sneaker) => {
-        console.log(sneaker.secondId)
-        return (
-          sneaker.secondId !== sneakerInCart.secondId &&
-          sneaker.id !== sneakerInCart.id
-        )
-      })
-      setCartData(idFilter)
-    }
+  const handleDelete = (sneaker) => {
+    const cartDataFiltred = cartData.filter((item) => {
+      if (
+        item.id === sneaker.id &&
+        item.size === sneaker.size &&
+        item.color === sneaker.color
+      ) {
+        return null
+      } else {
+        return sneaker
+      }
+    })
+    setCartData(cartDataFiltred)
   }
 
   return cartData.map((cartItem, i) => {
@@ -73,8 +70,6 @@ function CartItem() {
             <span>
               Цвет: {cartItem.color} / Размер: {cartItem.size}
             </span>
-            <div>id: {cartItem.id}</div>
-            <div>secondId: {cartItem.secondId}</div>
           </div>
         </div>
         <div className='item-counter'>
@@ -82,7 +77,7 @@ function CartItem() {
             <button
               className='counter-button'
               onClick={() => {
-                decreaseQuantity(cartItem.id, cartItem.secondId)
+                decreaseQuantity(cartItem.id, i)
               }}
             >
               -
@@ -97,13 +92,15 @@ function CartItem() {
             </div>
             <button
               className='counter-button'
-              onClick={() => addQuantity(cartItem.id, cartItem.secondId)}
+              onClick={() => addQuantity(cartItem.id, i)}
             >
               +
             </button>
           </div>
         </div>
-        <div className='item-total'>{cartItem.price * cartItem.quantity}</div>
+        <div className='item-total'>
+          {cartItem.price * cartItem.quantity} руб.
+        </div>
         <div
           className='item-delete'
           onClick={() => handleDelete(cartItem)}

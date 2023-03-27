@@ -137,7 +137,6 @@ function App() {
 
   const addToCart = (sneaker) => {
     const sneakerIndex = isExistInCart(sneaker.id)
-    console.log(sneakerIndex)
     if (sneakerIndex >= 0) {
       setCartData(changeQuantity(sneakerIndex))
     } else {
