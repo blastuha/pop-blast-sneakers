@@ -27,7 +27,7 @@ function App() {
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
-  const [cartData, setCartData] = useState([])
+  const [cartData, setCartData] = useState(getStorageItems())
   const [selectedSize, setSelectedSize] = useState()
   const [selectedColor, setSelectedColor] = useState('')
 
@@ -90,74 +90,6 @@ function App() {
     setSex('')
   }
 
-  const addToCart = (sneakerObj) => {
-    const itemToAdd = {
-      ...sneakerObj,
-      color: selectedColor,
-      size: selectedSize,
-      quantity: 1,
-    }
-
-    const sneakerInCart = cartData.find(
-      (sneaker) => itemToAdd.id === sneaker.id
-    )
-
-    const sneakerDouble = cartData.find((sneaker) => sneaker.secondId)
-
-    console.log(sneakerDouble)
-
-    if (
-      sneakerInCart &&
-      sneakerInCart.color === itemToAdd.color &&
-      sneakerInCart.size === itemToAdd.size
-    ) {
-      const newCartData = cartData.map((sneaker) => {
-        if (sneaker.id === itemToAdd.id) {
-          console.log('sneaker edited', sneakerInCart.color, itemToAdd.color)
-          return {
-            ...sneaker,
-            quantity: sneaker.quantity + 1,
-            color: selectedColor,
-            size: selectedSize,
-          }
-        } else {
-          console.log('sneaker')
-          return sneaker
-        }
-      })
-      setCartData(newCartData)
-      console.log('id уже был', cartData)
-    } else if (
-      (sneakerInCart && sneakerInCart.color !== itemToAdd.color) ||
-      (sneakerInCart && sneakerInCart.size !== itemToAdd.size)
-    ) {
-      // сделать проверку, если добавляемый кроссовок с такими параметрами уже есть (Id, color, size), то находим его через мап, и изменяем его количество. А если не было, добавить как новый.
-      if (sneakerDouble && sneakerDouble.size === itemToAdd.size) {
-        console.log(sneakerDouble.secondId, itemToAdd.size, sneakerDouble.size)
-        const newCartData = cartData.map((sneaker) => {
-          if (
-            sneaker.secondId === sneakerDouble.secondId &&
-            sneaker.size === itemToAdd.size
-          ) {
-            console.log('id был + secondid был, но такой размер уже есть')
-            return { ...sneaker, quantity: sneaker.quantity + 1 }
-          } else {
-            console.log('id был + secondid был, но такого размера нет')
-            return sneaker
-          }
-        })
-        setCartData(newCartData)
-      } else {
-        console.log('id был, но размер или цвет отличается')
-        const itemToAddNew = { ...itemToAdd, secondId: Date.now() }
-        setCartData([...cartData, itemToAddNew])
-      }
-    } else {
-      setCartData([...cartData, itemToAdd])
-      console.log('кроссовка не было')
-    }
-  }
-
   const onChangeSize = (event) => {
     // console.log(selectedSize)
     setSelectedSize(event.target.value)
@@ -166,6 +98,51 @@ function App() {
   const onChangeColor = (event) => {
     // console.log(selectedColor)
     setSelectedColor(event.target.value)
+  }
+
+  //-- Логика добавления товара в корзину
+  // Если товара не было, то добавляем товар через addItem
+  const addItem = (sneaker) => {
+    const itemToAdd = {
+      ...sneaker,
+      quantity: 1,
+      size: selectedSize,
+      color: selectedColor,
+    }
+    setCartData([...cartData, itemToAdd])
+  }
+
+  //Проверка, есть ли товар в корзине, ищем его индекс
+  const isExistInCart = (id) => {
+    const findIndex = cartData.findIndex(
+      (item) =>
+        item.id === id &&
+        item.color === selectedColor &&
+        item.size === selectedSize
+    )
+    return findIndex
+  }
+
+  // Через индекс находим нужный товар и меняем его количество
+  const changeQuantity = (itemIndex) => {
+    const newCartData = cartData.map((item, i) => {
+      if (itemIndex === i) {
+        return { ...item, quantity: item.quantity + 1 }
+      } else {
+        return item
+      }
+    })
+    return newCartData
+  }
+
+  const addToCart = (sneaker) => {
+    const sneakerIndex = isExistInCart(sneaker.id)
+    console.log(sneakerIndex)
+    if (sneakerIndex >= 0) {
+      setCartData(changeQuantity(sneakerIndex))
+    } else {
+      addItem(sneaker)
+    }
   }
 
   return (
@@ -206,40 +183,3 @@ function App() {
 }
 
 export default App
-
-// const addToCart = (sneakerObj) => {
-//   const findIndex = cartData.findIndex((obj) => obj.id === sneakerObj.id)
-//   const cartItem = cartData[findIndex]
-//   let itemToAdd = {
-//     ...sneakerObj,
-//     size: selectedSize,
-//     color: selectedColor,
-//   }
-//   if (findIndex >= 0) {
-//     if (
-//       cartItem.size !== itemToAdd.size ||
-//       cartItem.color !== itemToAdd.color
-//     ) {
-//       console.log(cartItem.size, itemToAdd.size)
-//       itemToAdd = {
-//         ...itemToAdd,
-//         secondId: Date.now(),
-//         quantity: 1,
-//       }
-//       console.log('другой размер/цвет кроссовка')
-//       setCartData([...cartData, itemToAdd])
-//     } else {
-//       console.log('цвет и размер совпадают', cartItem.size, itemToAdd.size)
-//       cartData[findIndex].quantity = cartData[findIndex].quantity + 1
-//     }
-//   } else {
-//     const sneakerNew = {
-//       ...sneakerObj,
-//       quantity: 1,
-//       size: selectedSize,
-//       color: selectedColor,
-//     }
-//     setCartData([...cartData, sneakerNew])
-//     console.log('кроссовка не было')
-//   }
-// }
