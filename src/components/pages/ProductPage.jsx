@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import { AiOutlineHeart } from 'react-icons/ai'
@@ -8,6 +8,8 @@ import Breadcrumb from '../Breadcrumb'
 import AddItemAlert from '../AddItemAlert'
 
 function ProductPage() {
+  const [alertOpen, setAlertOpen] = useState(false)
+
   const sneakerDTO = useLoaderData() // data transfer object
   const addToCart = useContext(appContext).addToCart
   const selectedSize = useContext(appContext).selectedSize
@@ -26,12 +28,30 @@ function ProductPage() {
     setSelectedColor(sneakerDTO.data.color[0])
   }, [])
 
+  const htmlAddItemAlert = () => {
+    return (
+      <div className={`alert ${alertOpen ? 'active' : ''}`}>
+        <span>✓ Товар добавлен в корзину</span>
+      </div>
+    )
+  }
+
+  const showCartAlert = () => {
+    setAlertOpen(true)
+    setTimeout(() => setAlertOpen(false), 1500)
+  }
+
   return (
     <div className='product'>
       <div className='product__container'>
-        <AddItemAlert />
         <Breadcrumb sneakerDTO={sneakerDTO} />
         <div className='product__main'>
+          <AddItemAlert
+            alertOpen={alertOpen}
+            children={htmlAddItemAlert}
+          >
+            {htmlAddItemAlert()}
+          </AddItemAlert>
           <div className='product__photo'>
             <img
               src={sneakerDTO.data.imageUrl}
@@ -64,7 +84,10 @@ function ProductPage() {
                 <button
                   type='button'
                   className='info-btn cart'
-                  onClick={() => addToCart(sneakerDTO.data)}
+                  onClick={() => {
+                    addToCart(sneakerDTO.data)
+                    showCartAlert()
+                  }}
                 >
                   В корзину
                 </button>
