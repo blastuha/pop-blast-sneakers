@@ -5,10 +5,12 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { appContext } from '../../App'
 import Select from '../Select'
 import Breadcrumb from '../Breadcrumb'
-import AddItemAlert from '../AddItemAlert'
+import AllAlerts from '../AddItemAlert'
+import Alert from '../Alert'
 
 function ProductPage() {
   const [alertOpen, setAlertOpen] = useState(false)
+  const [AllAlertsArr, setAllAlertsArr] = useState([])
 
   const sneakerDTO = useLoaderData() // data transfer object
   const addToCart = useContext(appContext).addToCart
@@ -29,14 +31,14 @@ function ProductPage() {
   }, [])
 
   const htmlAddItemAlert = () => {
-    return (
-      <div className={`alert ${alertOpen ? 'active' : ''}`}>
-        <span>✓ Товар добавлен в корзину</span>
-      </div>
-    )
+    return <Alert alertOpen={alertOpen} />
   }
 
   const showCartAlert = () => {
+    const q = [...AllAlertsArr]
+    q.push(1)
+    setAllAlertsArr(AllAlertsArr.push(q))
+    console.log(AllAlertsArr)
     setAlertOpen(true)
     setTimeout(() => setAlertOpen(false), 1500)
   }
@@ -46,12 +48,12 @@ function ProductPage() {
       <div className='product__container'>
         <Breadcrumb sneakerDTO={sneakerDTO} />
         <div className='product__main'>
-          <AddItemAlert
+          <AllAlerts
             alertOpen={alertOpen}
             children={htmlAddItemAlert}
           >
             {htmlAddItemAlert()}
-          </AddItemAlert>
+          </AllAlerts>
           <div className='product__photo'>
             <img
               src={sneakerDTO.data.imageUrl}

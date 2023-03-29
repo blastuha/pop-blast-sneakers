@@ -1,10 +1,7 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
-function AddItemAlert({ alertOpen, children }) {
-  ;<div className={`alert ${alertOpen ? 'active' : ''}`}>
-    <span>✓ Товар добавлен в корзину</span>
-  </div>
+function AllAlerts({ alertOpen, children }) {
   return <div className='alerts-modal'>{children}</div>
 }
 
-export default AddItemAlert
+export default AllAlerts
