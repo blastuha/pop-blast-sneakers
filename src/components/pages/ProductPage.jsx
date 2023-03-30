@@ -5,12 +5,17 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { appContext } from '../../App'
 import Select from '../Select'
 import Breadcrumb from '../Breadcrumb'
-import AllAlerts from '../AddItemAlert'
-import Alert from '../Alert'
+import AllAlerts from '../AllAlerts'
 
 function ProductPage() {
   const [alertOpen, setAlertOpen] = useState(false)
   const [AllAlertsArr, setAllAlertsArr] = useState([])
+
+  const alert = {
+    id: Date.now(),
+    text: '✓ Товар добавлен в корзину',
+    wasShown: false,
+  }
 
   const sneakerDTO = useLoaderData() // data transfer object
   const addToCart = useContext(appContext).addToCart
@@ -30,17 +35,22 @@ function ProductPage() {
     setSelectedColor(sneakerDTO.data.color[0])
   }, [])
 
-  const htmlAddItemAlert = () => {
-    return <Alert alertOpen={alertOpen} />
+  useEffect(() => {
+    console.log('hi', alert.wasShown)
+  }, [alert.wasShown])
+
+  const changeAlertStatus = (item) => {
+    item.wasShown = true
+    // console.log(item, alertOpen)
   }
 
-  const showCartAlert = () => {
-    const q = [...AllAlertsArr]
-    q.push(1)
-    setAllAlertsArr(AllAlertsArr.push(q))
-    console.log(AllAlertsArr)
+  const showCartAlert = (item) => {
+    setAllAlertsArr([...AllAlertsArr, item])
     setAlertOpen(true)
-    setTimeout(() => setAlertOpen(false), 1500)
+
+    setTimeout(() => changeAlertStatus(item), 2100)
+    setTimeout(() => setAlertOpen(false), 2300)
+    console.log(item, alertOpen)
   }
 
   return (
@@ -48,12 +58,7 @@ function ProductPage() {
       <div className='product__container'>
         <Breadcrumb sneakerDTO={sneakerDTO} />
         <div className='product__main'>
-          <AllAlerts
-            alertOpen={alertOpen}
-            children={htmlAddItemAlert}
-          >
-            {htmlAddItemAlert()}
-          </AllAlerts>
+          <AllAlerts AllAlertsArr={AllAlertsArr} />
           <div className='product__photo'>
             <img
               src={sneakerDTO.data.imageUrl}
@@ -88,7 +93,7 @@ function ProductPage() {
                   className='info-btn cart'
                   onClick={() => {
                     addToCart(sneakerDTO.data)
-                    showCartAlert()
+                    showCartAlert(alert)
                   }}
                 >
                   В корзину

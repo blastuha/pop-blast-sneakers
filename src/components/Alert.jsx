@@ -1,10 +1,12 @@
 import React from 'react'
 
-function Alert({ alertOpen }) {
+function Alert({ alert }) {
   return (
-    <div className={`alert ${alertOpen ? 'active' : ''}`}>
-      <span>✓ Товар добавлен в корзину</span>
-    </div>
+    !alert.wasShown && (
+      <div className={`alert ${!alert.wasShown ? 'active' : ''}`}>
+        <span>{alert.text}</span>
+      </div>
+    )
   )
 }
 

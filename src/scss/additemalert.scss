@@ -1,19 +1,13 @@
 .alerts-modal {
   position: fixed;
   z-index: 9999999;
-  // position: relative;
   top: 100px;
   right: 30px;
   width: 250px;
-  height: 150px;
-  background-color: #33333310;
+  // background-color: #33333310;
 }
 
 .alert {
-  // position: fixed;
-  // top: 100px;
-  // right: 30px;
-  // position: absolute;
   width: 246px;
   height: 32px;
   background-color: #d4edda;
@@ -25,7 +19,7 @@
   box-shadow: 1px 1px 8px #33333330;
   animation-name: alert;
   animation-duration: 1s;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 
   span {
     display: block;
