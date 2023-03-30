@@ -1,15 +1,24 @@
 import React, { useEffect, useContext, useState } from 'react'
 import axios from 'axios'
+
 import { useLoaderData } from 'react-router-dom'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { appContext } from '../../App'
+
 import Select from '../Select'
 import Breadcrumb from '../Breadcrumb'
 import AllAlerts from '../AllAlerts'
 
 function ProductPage() {
-  const [alertOpen, setAlertOpen] = useState(false)
   const [AllAlertsArr, setAllAlertsArr] = useState([])
+  const [AllAlertsArrCopy, setAllAlertsArrCopy] = useState([])
+
+  const copy = [...AllAlertsArr]
+
+  useEffect(() => {
+    setAllAlertsArrCopy([...AllAlertsArr])
+    console.log(AllAlertsArrCopy)
+  }, [AllAlertsArr])
 
   const alert = {
     id: Date.now(),
@@ -35,22 +44,25 @@ function ProductPage() {
     setSelectedColor(sneakerDTO.data.color[0])
   }, [])
 
-  useEffect(() => {
-    console.log('hi', alert.wasShown)
-  }, [alert.wasShown])
-
   const changeAlertStatus = (item) => {
     item.wasShown = true
-    // console.log(item, alertOpen)
+  }
+
+  const deleteShownAlert = () => {
+    copy.forEach((item) => {
+      if (item.wasShown) {
+        copy.splice(item)
+        setAllAlertsArrCopy(copy)
+      }
+    })
   }
 
   const showCartAlert = (item) => {
     setAllAlertsArr([...AllAlertsArr, item])
-    setAlertOpen(true)
 
     setTimeout(() => changeAlertStatus(item), 2100)
-    setTimeout(() => setAlertOpen(false), 2300)
-    console.log(item, alertOpen)
+    setTimeout(() => deleteShownAlert(), 2200)
+    console.log(item)
   }
 
   return (

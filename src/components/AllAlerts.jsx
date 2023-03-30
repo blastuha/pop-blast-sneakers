@@ -9,6 +9,7 @@ function AllAlerts({ AllAlertsArr }) {
           <Alert
             key={i}
             alert={alert}
+            AllAlertsArr={AllAlertsArr}
           />
         )
       })}
