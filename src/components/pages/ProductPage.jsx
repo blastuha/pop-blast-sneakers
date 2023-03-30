@@ -13,11 +13,8 @@ function ProductPage() {
   const [AllAlertsArr, setAllAlertsArr] = useState([])
   const [AllAlertsArrCopy, setAllAlertsArrCopy] = useState([])
 
-  const copy = [...AllAlertsArr]
-
   useEffect(() => {
     setAllAlertsArrCopy([...AllAlertsArr])
-    console.log(AllAlertsArrCopy)
   }, [AllAlertsArr])
 
   const alert = {
@@ -49,6 +46,7 @@ function ProductPage() {
   }
 
   const deleteShownAlert = () => {
+    const copy = [...AllAlertsArr]
     copy.forEach((item) => {
       if (item.wasShown) {
         copy.splice(item)
@@ -61,7 +59,7 @@ function ProductPage() {
     setAllAlertsArr([...AllAlertsArr, item])
 
     setTimeout(() => changeAlertStatus(item), 2100)
-    setTimeout(() => deleteShownAlert(), 2200)
+    setTimeout(() => deleteShownAlert(), 2100)
     console.log(item)
   }
 
