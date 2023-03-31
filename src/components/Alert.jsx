@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function Alert({ alert, AllAlertsArr }) {
+function Alert({ alert }) {
   return (
     !alert.wasShown && (
       <div className={`alert ${!alert.wasShown ? 'active' : ''}`}>

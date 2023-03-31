@@ -10,12 +10,9 @@ import Breadcrumb from '../Breadcrumb'
 import AllAlerts from '../AllAlerts'
 
 function ProductPage() {
-  const [AllAlertsArr, setAllAlertsArr] = useState([])
-  const [AllAlertsArrCopy, setAllAlertsArrCopy] = useState([])
-
-  useEffect(() => {
-    setAllAlertsArrCopy([...AllAlertsArr])
-  }, [AllAlertsArr])
+  const [alertsList, setAlertsList] = useState([])
+  const [alertsListRerender, setAlertsListRerender] = useState([])
+  // создаю состояние клон-alertsListRerender, так как итерируюсь по alertsList и вывожу алерты. Через изменение alertsListRerender заставляю компонент перерисоваться после исчезновения алерта.
 
   const alert = {
     id: Date.now(),
@@ -33,6 +30,10 @@ function ProductPage() {
   const onChangeColor = useContext(appContext).onChangeColor
 
   useEffect(() => {
+    setAlertsListRerender([...alertsList])
+  }, [alertsList])
+
+  useEffect(() => {
     window.scroll(0, 0)
   }, [])
 
@@ -46,21 +47,15 @@ function ProductPage() {
   }
 
   const deleteShownAlert = () => {
-    const copy = [...AllAlertsArr]
-    copy.forEach((item) => {
-      if (item.wasShown) {
-        copy.splice(item)
-        setAllAlertsArrCopy(copy)
-      }
-    })
+    const copy = [...alertsList]
+    const copyFiltred = copy.filter((item) => item.wasShown)
+    setAlertsListRerender(copyFiltred)
   }
 
   const showCartAlert = (item) => {
-    setAllAlertsArr([...AllAlertsArr, item])
-
+    setAlertsList([...alertsList, item])
     setTimeout(() => changeAlertStatus(item), 2100)
     setTimeout(() => deleteShownAlert(), 2100)
-    console.log(item)
   }
 
   return (
@@ -68,7 +63,7 @@ function ProductPage() {
       <div className='product__container'>
         <Breadcrumb sneakerDTO={sneakerDTO} />
         <div className='product__main'>
-          <AllAlerts AllAlertsArr={AllAlertsArr} />
+          <AllAlerts alertsList={alertsList} />
           <div className='product__photo'>
             <img
               src={sneakerDTO.data.imageUrl}
