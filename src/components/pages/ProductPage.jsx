@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext, useState, useCallback } from 'react'
 import axios from 'axios'
 
 import { useLoaderData } from 'react-router-dom'
@@ -11,13 +11,10 @@ import AllAlerts from '../AllAlerts'
 
 function ProductPage() {
   const [alertsList, setAlertsList] = useState([])
-  const [alertsListRerender, setAlertsListRerender] = useState([])
-  // создаю состояние клон-alertsListRerender, так как итерируюсь по alertsList и вывожу алерты. Через изменение alertsListRerender заставляю компонент перерисоваться после исчезновения алерта.
 
   const alert = {
-    id: Date.now(),
+    id: alertsList.length + 1,
     text: '✓ Товар добавлен в корзину',
-    wasShown: false,
   }
 
   const sneakerDTO = useLoaderData() // data transfer object
@@ -30,10 +27,6 @@ function ProductPage() {
   const onChangeColor = useContext(appContext).onChangeColor
 
   useEffect(() => {
-    setAlertsListRerender([...alertsList])
-  }, [alertsList])
-
-  useEffect(() => {
     window.scroll(0, 0)
   }, [])
 
@@ -42,21 +35,29 @@ function ProductPage() {
     setSelectedColor(sneakerDTO.data.color[0])
   }, [])
 
-  const changeAlertStatus = (item) => {
-    item.wasShown = true
-  }
-
-  const deleteShownAlert = () => {
-    const copy = [...alertsList]
-    const copyFiltred = copy.filter((item) => item.wasShown)
-    setAlertsListRerender(copyFiltred)
-  }
+  const deleteShownAlert = useCallback(
+    (id) => {
+      const alertsListFiltred = alertsList.filter((item) => item.id !== id)
+      setAlertsList(alertsListFiltred)
+    },
+    [alertsList]
+  )
 
   const showCartAlert = (item) => {
     setAlertsList([...alertsList, item])
-    setTimeout(() => changeAlertStatus(item), 2100)
-    setTimeout(() => deleteShownAlert(), 2100)
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (alertsList.length) {
+        deleteShownAlert(alertsList[0].id)
+      }
+    }, 1100)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [alertsList, deleteShownAlert])
 
   return (
     <div className='product'>

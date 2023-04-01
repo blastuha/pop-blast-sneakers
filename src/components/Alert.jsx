@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 function Alert({ alert }) {
   return (
-    !alert.wasShown && (
-      <div className={`alert ${!alert.wasShown ? 'active' : ''}`}>
-        <span>{alert.text}</span>
-      </div>
-    )
+    <div className='alert active'>
+      <span>{alert.text}</span>
+    </div>
   )
 }
 
