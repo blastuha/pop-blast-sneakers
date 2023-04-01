@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+
 import { CiSearch } from 'react-icons/ci'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { FaShoppingCart } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+
 import Cutlist from './Cutlist'
 
 const headerMenu = [
@@ -96,7 +98,7 @@ function Header() {
           </div>
           <div className='header__bottom-icons'>
             <Link
-              to='/person'
+              to='/auth'
               className='link'
             >
               <BsFillPersonFill className='link-icon' />

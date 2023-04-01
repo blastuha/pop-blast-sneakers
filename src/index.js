@@ -1,12 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { productLoader } from './components/pages/ProductPage'
+
+import App from './App'
 import Main from './components/Main'
 import Cart from './components/pages/Cart'
 import Contacts from './components/pages/Contacts'
 import ProductPage from './components/pages/ProductPage'
-import { productLoader } from './components/pages/ProductPage'
+import Person from './components/pages/Person'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +38,10 @@ const router = createBrowserRouter([
         element: <ProductPage />,
         loader: productLoader,
         // мы делаем путь: products/:id, но сам запрос делается по ссылке из loadera
+      },
+      {
+        path: '/auth',
+        element: <Person />,
       },
     ],
   },
