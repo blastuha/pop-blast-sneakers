@@ -9,7 +9,7 @@ import Main from './components/Main'
 import Cart from './components/pages/Cart'
 import Contacts from './components/pages/Contacts'
 import ProductPage from './components/pages/ProductPage'
-import Person from './components/pages/Person'
+import Login from './components/pages/Login'
 
 const router = createBrowserRouter([
   {
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/auth',
-        element: <Person />,
+        element: <Login />,
       },
     ],
   },

@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
 
-const Person = () => {
+const Login = () => {
+  const [data, setData] = useState({ email: '', password: '' })
+
+  const handleChange = (e) => {
+    setData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value,
+    }))
+    console.log(data)
+  }
+
   return (
     <div class='person'>
       <div class='person__container'>
@@ -9,13 +20,25 @@ const Person = () => {
         </div>
         <form class='person__auth'>
           <label htmlFor='email'>Email</label>
-          <input type='email' />
+          <input
+            type='email'
+            id='email'
+            name='email'
+            value={data.email}
+            onChange={handleChange}
+          />
           <label htmlFor='password'>Пароль</label>
-          <input type='pasasword' />
+          <input
+            type='password'
+            id='password'
+            name='password'
+            value={data.password}
+            onChange={handleChange}
+          />
           <div class='auth-buttons'>
             <button
               type='submit'
-              class='auth-btn'
+              class='auth-btn enter'
             >
               Войти
             </button>
@@ -40,4 +63,4 @@ const Person = () => {
   )
 }
 
-export default Person
+export default Login

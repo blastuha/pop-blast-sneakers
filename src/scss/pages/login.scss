@@ -2,12 +2,11 @@
   &__container {
     width: calc(100vw - 100px);
     max-width: 1480px;
-    margin: 0 auto 0 auto;
-    // #F5F5F5
+    margin: 50px auto 0 auto;
   }
 
   &__header {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   &__auth {
@@ -18,8 +17,6 @@
     font-family: Jura;
     font-size: 14px;
     color: #333333;
-
-    // outline: 1px solid black;
 
     label {
       margin-bottom: 6px;
@@ -35,6 +32,10 @@
       padding: 10px;
       border: 1px solid #333333;
       margin-bottom: 6px;
+
+      &:focus {
+        outline: 3px solid #d3d3d390;
+      }
     }
   }
 }
@@ -42,9 +43,8 @@
 .person-title {
   font-family: Jura;
   font-size: 22px;
-  font-weight: 500;
   color: #333333;
-  line-height: 1.2em;
+  line-height: 1.18em;
 }
 
 .auth-buttons {
@@ -60,8 +60,13 @@
   color: #ffffff;
   padding: 10px 16px;
   background-color: #333333;
-  margin: 20px 0px 0px 0px;
+  margin: 20px 10px 0px 0px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #535354;
+  }
 }
 
 .auth-link {
@@ -71,15 +76,14 @@
   padding: 0px 0px;
   border: none;
   background-color: #ffffff;
-  margin: 20px 0px 0px 0px;
+  margin: 20px 10px 0px 0px;
   cursor: pointer;
-  overflow: hidden;
 
   &::after {
     content: '';
     display: block;
     position: absolute;
-    bottom: 0rem;
+    bottom: -3px;
     left: 0;
     right: 0;
     color: inherit;
