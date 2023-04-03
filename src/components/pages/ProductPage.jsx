@@ -52,7 +52,7 @@ function ProductPage() {
       if (alertsList.length) {
         deleteShownAlert(alertsList[0].id)
       }
-    }, 1300)
+    }, 1000)
 
     return () => {
       clearInterval(interval)

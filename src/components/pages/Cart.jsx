@@ -6,6 +6,7 @@ import { appContext } from '../../App'
 
 function Cart() {
   const cartData = useContext(appContext).cartData
+  console.log(cartData)
 
   return (
     <div className='cart-block'>

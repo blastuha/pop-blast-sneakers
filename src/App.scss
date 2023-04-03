@@ -11,6 +11,13 @@
   box-sizing: border-box;
 }
 
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
 a {
   text-decoration: none;
 
