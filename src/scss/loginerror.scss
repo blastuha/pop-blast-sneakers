@@ -1,0 +1,36 @@
+.login-error {
+  padding: 10px;
+  margin-bottom: 30px;
+  background-color: #f2dede;
+  font-family: Jura;
+  font-size: 14px;
+  color: #a94442;
+  line-height: 1.21em;
+  animation: fade-in 500ms forwards;
+}
+
+// .login-error[open] {
+//   animation: fade-in 500ms forwards;
+// }
+
+// .login-error[hide] {
+//   animation: fade-out 500ms forwards;
+// }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// @keyframes fade-out {
+//   0% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// }

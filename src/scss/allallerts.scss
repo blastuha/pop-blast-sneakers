@@ -4,7 +4,6 @@
   top: 100px;
   right: 30px;
   width: 250px;
-  // background-color: #33333310;
 }
 
 .alert {
@@ -17,9 +16,9 @@
   z-index: 9999999;
   border-radius: 2px;
   box-shadow: 1px 1px 8px #33333330;
+  margin-bottom: 16px;
   animation-name: alert;
   animation-duration: 1s;
-  margin-bottom: 16px;
 
   span {
     display: block;

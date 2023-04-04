@@ -1,16 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import TextField from '../TextField'
+import LoginError from '../LoginError'
 
 const Login = () => {
   const [data, setData] = useState({ email: '', password: '' })
+  const [errors, setErrors] = useState({})
 
-  const handleChange = (e) => {
+  const handleChange = ({ target }) => {
     setData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
-      [e.target.name]: e.target.value,
+      [target.name]: target.value,
+      [target.name]: target.value,
     }))
-    console.log(data)
   }
+
+  const validate = () => {
+    const errors = {}
+    for (const fieldName in data) {
+      if (data[fieldName].trim() === '') {
+        errors[fieldName] = `${fieldName} обязателен для заполнения`
+      }
+    }
+    setErrors(errors)
+  }
+
+  const handleSumbmit = (e) => {
+    e.preventDefault()
+    validate()
+    if (Object.keys(errors).length !== 0) return
+  }
+
+  useEffect(() => {
+    validate()
+  }, [data])
 
   return (
     <div class='person'>
@@ -18,22 +40,25 @@ const Login = () => {
         <div class='person__header'>
           <div class='person-title'>Вход в кабинет покупателя</div>
         </div>
-        <form class='person__auth'>
-          <label htmlFor='email'>Email</label>
-          <input
-            type='email'
-            id='email'
-            name='email'
+        <form
+          class='person__auth'
+          onSubmit={handleSumbmit}
+        >
+          <LoginError errors={errors} />
+          <TextField
+            label={'Email'}
+            name={'email'}
             value={data.email}
             onChange={handleChange}
+            errors={errors}
           />
-          <label htmlFor='password'>Пароль</label>
-          <input
-            type='password'
-            id='password'
-            name='password'
+          <TextField
+            label={'Пароль'}
+            type={'password'}
+            name={'password'}
             value={data.password}
             onChange={handleChange}
+            errors={errors}
           />
           <div class='auth-buttons'>
             <button
@@ -44,14 +69,14 @@ const Login = () => {
             </button>
             <a
               href='/'
-              type='submit'
+              type='button'
               class='auth-link'
             >
               Восстановить пароль
             </a>
             <a
               href='/'
-              type='submit'
+              type='button'
               class='auth-link'
             >
               Зарегистрироваться
