@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 const LoginError = ({ errors }) => {
   const [showError, setShowError] = useState(false)
 
-  const errorShowing = () => {
+  const errorMessage = () => {
     if (errors.email) {
       return errors.email
     }
@@ -26,11 +27,20 @@ const LoginError = ({ errors }) => {
   }, [errors])
 
   return (
-    showError && (
-      <div class='login-error'>
-        <span>{errorShowing()}</span>
-      </div>
-    )
+    <TransitionGroup>
+      {showError && (
+        <CSSTransition
+          in={showError}
+          unmountOnExit
+          timeout={400}
+          classNames='option'
+        >
+          <div className='login-error'>
+            <span>{errorMessage()}</span>
+          </div>
+        </CSSTransition>
+      )}
+    </TransitionGroup>
   )
 }
 
