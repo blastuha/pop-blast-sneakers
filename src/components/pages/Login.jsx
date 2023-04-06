@@ -1,6 +1,13 @@
+//! Разделить стили Login / AuthForm из файла login
 import React, { useState, useEffect } from 'react'
-import TextField from '../TextField'
-import LoginError from '../LoginError'
+
+import { Outlet, useLocation } from 'react-router-dom'
+
+const authTitles = [
+  { path: '/auth', title: 'Вход в кабинет покупателя' },
+  { path: '/auth/forget', title: 'Восстановление пароля' },
+  { path: '/auth/registration', title: 'Регистрация' },
+]
 
 const Login = () => {
   const [data, setData] = useState({ email: '', password: '' })
@@ -10,8 +17,8 @@ const Login = () => {
     setData((prevState) => ({
       ...prevState,
       [target.name]: target.value,
-      [target.name]: target.value,
     }))
+    console.log(data)
   }
 
   const validate = () => {
@@ -24,7 +31,7 @@ const Login = () => {
     setErrors(errors)
   }
 
-  const handleSumbmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     validate()
     if (Object.keys(errors).length !== 0) return
@@ -34,55 +41,25 @@ const Login = () => {
     validate()
   }, [data])
 
+  let location = useLocation()
+
+  const dynamicTitle = () => {
+    return authTitles.map((obj) => {
+      if (location.pathname === obj.path) {
+        return <span>{obj.title}</span>
+      } else {
+        return ''
+      }
+    })
+  }
+
   return (
     <div class='person'>
       <div class='person__container'>
         <div class='person__header'>
-          <div class='person-title'>Вход в кабинет покупателя</div>
+          <div class='person-title'>{dynamicTitle()}</div>
         </div>
-        <form
-          class='person__auth'
-          onSubmit={handleSumbmit}
-        >
-          <LoginError errors={errors} />
-          <TextField
-            label={'Email'}
-            name={'email'}
-            value={data.email}
-            onChange={handleChange}
-            errors={errors}
-          />
-          <TextField
-            label={'Пароль'}
-            type={'password'}
-            name={'password'}
-            value={data.password}
-            onChange={handleChange}
-            errors={errors}
-          />
-          <div class='auth-buttons'>
-            <button
-              type='submit'
-              class='auth-btn enter'
-            >
-              Войти
-            </button>
-            <a
-              href='/'
-              type='button'
-              class='auth-link'
-            >
-              Восстановить пароль
-            </a>
-            <a
-              href='/'
-              type='button'
-              class='auth-link'
-            >
-              Зарегистрироваться
-            </a>
-          </div>
-        </form>
+        <Outlet context={[data, errors, handleChange, handleSubmit]} />
       </div>
     </div>
   )
