@@ -3,17 +3,14 @@ import React, { useState } from 'react'
 import DynamicForm from './DynamicForm'
 import TextField from './TextField'
 import FormButtons from './FormButtons'
-// import LoginError from './LoginError'
+import LoginError from './LoginError'
 
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const RegistrationForm = () => {
   const [emailDirty, setEmailDirty] = useState(false)
   const [passwordDirty, setPasswordDirty] = useState(false)
-  const [errors, setErrors] = useState({
-    email: 'Email не может быть пустым',
-    password: 'Password не может быть пустым',
-  })
+  const [errors, setErrors] = useState({})
   const [regData, setRegData] = useState({
     fullname: '',
     email: '',
@@ -24,8 +21,17 @@ const RegistrationForm = () => {
   const handleChange = ({ target }) => {
     setRegData((prevState) => ({ ...prevState, [target.name]: target.value }))
     // console.log(regData)
-    if (!emailRe.test(String(target.value).toLowerCase())) {
+
+    // email: 'Email не может быть пустым',
+    // password: 'Password не может быть пустым',
+
+    if (
+      !emailRe.test(String(target.value).toLowerCase()) &&
+      target.value !== ''
+    ) {
       setErrors({ ...errors, email: 'Email некорректен!' })
+    } else if (target.value === '') {
+      setErrors({ ...errors, email: 'Email не может быть пустым' })
     } else {
       setErrors({ ...errors, email: '' })
     }
@@ -40,7 +46,7 @@ const RegistrationForm = () => {
         setPasswordDirty(true)
         break
       default:
-        setEmailDirty(false)
+        break
     }
   }
 
@@ -57,7 +63,7 @@ const RegistrationForm = () => {
         value={regData.fullname}
         onChange={handleChange}
       />
-      {emailDirty && errors.email && <span>{errors.email}</span>}
+
       <TextField
         label={'Email'}
         name={'email'}
@@ -65,7 +71,9 @@ const RegistrationForm = () => {
         onChange={handleChange}
         handleBlur={handleBlur}
       />
-      {passwordDirty && errors.password && <span>{errors.password}</span>}
+      {/* {emailDirty && errors.email && <span>{errors.email}</span>} */}
+      {emailDirty && errors.email && <LoginError errors={errors} />}
+
       <TextField
         label={'Пароль'}
         name={'password'}
@@ -73,6 +81,7 @@ const RegistrationForm = () => {
         onChange={handleChange}
         handleBlur={handleBlur}
       />
+      {passwordDirty && errors.password && <span>{errors.password}</span>}
       <TextField
         label={'Повторите пароль'}
         name={'passwordDouble'}

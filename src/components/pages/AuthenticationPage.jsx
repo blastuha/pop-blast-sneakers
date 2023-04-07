@@ -46,7 +46,7 @@ const AuthenticationPage = () => {
   const dynamicTitle = () => {
     return authTitles.map((obj) => {
       if (location.pathname === obj.path) {
-        return <span>{obj.title}</span>
+        return <span key={obj.title}>{obj.title}</span>
       } else {
         return ''
       }

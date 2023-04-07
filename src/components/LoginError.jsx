@@ -4,6 +4,8 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 const LoginError = ({ errors }) => {
   const [showError, setShowError] = useState(false)
 
+  console.log(errors)
+
   const errorMessage = () => {
     if (errors.email) {
       return errors.email
