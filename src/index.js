@@ -9,10 +9,10 @@ import Main from './components/Main'
 import Cart from './components/pages/Cart'
 import Contacts from './components/pages/Contacts'
 import ProductPage from './components/pages/ProductPage'
-import Login from './components/pages/Login'
-import ForgetPass from './components/pages/ForgetPass'
+import AuthenticationPage from './components/pages/AuthenticationPage'
+import ForgetPassForm from './components/ForgetPassForm'
 import AuthForm from './components/AuthForm'
-import Registration from './components/pages/Registration'
+import RegistrationForm from './components/RegistrationForm'
 
 const router = createBrowserRouter([
   {
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'auth',
-        element: <Login />,
+        element: <AuthenticationPage />,
         children: [
           {
             index: true,
@@ -58,11 +58,11 @@ const router = createBrowserRouter([
           },
           {
             path: 'forget',
-            element: <ForgetPass />,
+            element: <ForgetPassForm />,
           },
           {
             path: 'registration',
-            element: <Registration />,
+            element: <RegistrationForm />,
           },
         ],
       },

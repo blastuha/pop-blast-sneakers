@@ -1,9 +1,12 @@
 import './App.scss'
+
 import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
+
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Categories from './components/Categories'
+
 import { brands } from './data'
 import { types } from './data'
 import { sexArray } from './data'

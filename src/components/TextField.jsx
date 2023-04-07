@@ -1,6 +1,13 @@
 import React from 'react'
 
-const TextField = ({ label, type = 'text', name, value, onChange }) => {
+const TextField = ({
+  label,
+  type = 'text',
+  name,
+  value,
+  onChange,
+  handleBlur,
+}) => {
   return (
     <>
       <label htmlFor={name}>{label}</label>
@@ -10,6 +17,7 @@ const TextField = ({ label, type = 'text', name, value, onChange }) => {
         name={name}
         value={value}
         onChange={onChange}
+        onBlur={handleBlur}
       />
     </>
   )

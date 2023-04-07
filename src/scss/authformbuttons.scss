@@ -1,0 +1,43 @@
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  font-family: Jura;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1em;
+}
+
+.auth-btn {
+  color: #ffffff;
+  padding: 10px 16px;
+  background-color: #333333;
+  margin: 20px 14px 0px 0px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #535354;
+  }
+}
+
+.auth-link {
+  box-sizing: border-box;
+  position: relative;
+  color: #333333;
+  padding: 0px 0px;
+  border: none;
+  background-color: #ffffff;
+  margin: 20px 14px 0px 0px;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    color: inherit;
+    border-bottom: 1px dotted;
+  }
+}

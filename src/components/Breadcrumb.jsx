@@ -13,6 +13,7 @@ function Breadcrumb({ sneakerDTO }) {
 
   let currentLink = ''
   const crumbs = location.pathname
+    //! crumbs - это походу отдельный компонент!!!
     .split('/')
     .filter((crumb) => crumb)
     .map((crumb, i) => {

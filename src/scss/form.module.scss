@@ -1,0 +1,38 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin-bottom: 40px;
+  font-family: Jura;
+  font-size: 14px;
+  color: #333333;
+
+  label {
+    margin-bottom: 6px;
+
+    &::after {
+      content: '*';
+      margin-left: 2px;
+      color: rgb(206, 89, 89);
+    }
+  }
+
+  input {
+    padding: 10px;
+    border: 1px solid #333333;
+    margin-bottom: 6px;
+
+    &:focus {
+      outline: 3px solid #d3d3d390;
+    }
+    &[type='text'] {
+      font-size: inherit;
+      font-family: inherit;
+      color: inherit;
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus {
+      transition: background-color 600000s 0s, color 600000s 0s;
+    }
+  }
+}

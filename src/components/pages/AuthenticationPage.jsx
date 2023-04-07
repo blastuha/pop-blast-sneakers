@@ -9,7 +9,7 @@ const authTitles = [
   { path: '/auth/registration', title: 'Регистрация' },
 ]
 
-const Login = () => {
+const AuthenticationPage = () => {
   const [data, setData] = useState({ email: '', password: '' })
   const [errors, setErrors] = useState({})
 
@@ -18,7 +18,6 @@ const Login = () => {
       ...prevState,
       [target.name]: target.value,
     }))
-    console.log(data)
   }
 
   const validate = () => {
@@ -35,6 +34,7 @@ const Login = () => {
     e.preventDefault()
     validate()
     if (Object.keys(errors).length !== 0) return
+    console.log(data.email, data.password)
   }
 
   useEffect(() => {
@@ -65,4 +65,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default AuthenticationPage

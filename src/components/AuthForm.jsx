@@ -1,18 +1,17 @@
 import React from 'react'
 
-import { Link, useOutletContext } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom'
 
 import TextField from './TextField'
 import LoginError from './LoginError'
+import FormButtons from './FormButtons'
+import DynamicForm from './DynamicForm'
 
 const AuthForm = () => {
   const [data, errors, handleChange, handleSubmit] = useOutletContext()
 
   return (
-    <form
-      class='person__form'
-      onSubmit={handleSubmit}
-    >
+    <DynamicForm handleSubmit={handleSubmit}>
       <LoginError errors={errors} />
       <TextField
         label={'Email'}
@@ -29,29 +28,14 @@ const AuthForm = () => {
         onChange={handleChange}
         errors={errors}
       />
-      <div class='auth-buttons'>
-        <button
-          type='submit'
-          class='auth-btn enter'
-        >
-          Войти
-        </button>
-        <Link
-          to='forget'
-          type='button'
-          class='auth-link'
-        >
-          Восстановить пароль
-        </Link>
-        <Link
-          to='registration'
-          type='button'
-          class='auth-link'
-        >
-          Зарегистрироваться
-        </Link>
-      </div>
-    </form>
+      <FormButtons
+        firstBtnText={'Войти'}
+        secondBtnText={'Восстановить пароль'}
+        secondBtnLink={'forget'}
+        thirdBtnText={'Зарегистрироваться'}
+        thirdBtnLink={'registration'}
+      />
+    </DynamicForm>
   )
 }
 
