@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../scss/form.module.scss'
+import styles from '../scss/modules/form.module.scss'
 
 const DynamicForm = ({ handleSubmit, children }) => {
   return (

@@ -57,7 +57,7 @@ const AuthenticationPage = () => {
     <div class='person'>
       <div class='person__container'>
         <div class='person__header'>
-          <div class='person-title'>{dynamicTitle()}</div>
+          <span class='person-title'>{dynamicTitle()}</span>
         </div>
         <Outlet context={[data, errors, handleChange, handleSubmit]} />
       </div>

@@ -3,91 +3,76 @@ import React, { useState } from 'react'
 import DynamicForm from './DynamicForm'
 import TextField from './TextField'
 import FormButtons from './FormButtons'
-import LoginError from './LoginError'
 
-const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const fullnameReg = `^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)`
+const passwordReg = `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`
 
 const RegistrationForm = () => {
-  const [emailDirty, setEmailDirty] = useState(false)
-  const [passwordDirty, setPasswordDirty] = useState(false)
-  const [errors, setErrors] = useState({})
-  const [regData, setRegData] = useState({
+  const [values, setValues] = useState({
     fullname: '',
     email: '',
     password: '',
-    passwordDouble: '',
+    confirmPassword: '',
   })
 
+  const inputs = [
+    {
+      id: 1,
+      name: 'fullname',
+      error: 'Username shouldnt include any special character!',
+      label: 'Фамилия и Имя',
+      pattern: fullnameReg,
+      required: true,
+    },
+    {
+      id: 2,
+      name: 'email',
+      type: 'email',
+      error: 'It should be a valid email address!',
+      label: 'Email',
+      required: true,
+    },
+    {
+      id: 3,
+      name: 'password',
+      type: 'password',
+      error:
+        'Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!',
+      label: 'Пароль',
+      pattern: passwordReg,
+      required: true,
+    },
+    {
+      id: 4,
+      name: 'confirmPassword',
+      type: 'password',
+      error: 'Passwords dont match!',
+      label: 'Пароль',
+      pattern: values.password,
+      required: true,
+    },
+  ]
+
   const handleChange = ({ target }) => {
-    setRegData((prevState) => ({ ...prevState, [target.name]: target.value }))
-    // console.log(regData)
-
-    // email: 'Email не может быть пустым',
-    // password: 'Password не может быть пустым',
-
-    if (
-      !emailRe.test(String(target.value).toLowerCase()) &&
-      target.value !== ''
-    ) {
-      setErrors({ ...errors, email: 'Email некорректен!' })
-    } else if (target.value === '') {
-      setErrors({ ...errors, email: 'Email не может быть пустым' })
-    } else {
-      setErrors({ ...errors, email: '' })
-    }
-  }
-
-  const handleBlur = (e) => {
-    switch (e.target.name) {
-      case 'email':
-        setEmailDirty(true)
-        break
-      case 'password':
-        setPasswordDirty(true)
-        break
-      default:
-        break
-    }
+    setValues((prevState) => ({ ...prevState, [target.name]: target.value }))
+    // console.log(values)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(regData)
+    console.log(values)
   }
 
   return (
     <DynamicForm handleSubmit={handleSubmit}>
-      <TextField
-        label={'Фамилия и Имя'}
-        name={'fullname'}
-        value={regData.fullname}
-        onChange={handleChange}
-      />
-
-      <TextField
-        label={'Email'}
-        name={'email'}
-        value={regData.email}
-        onChange={handleChange}
-        handleBlur={handleBlur}
-      />
-      {/* {emailDirty && errors.email && <span>{errors.email}</span>} */}
-      {emailDirty && errors.email && <LoginError errors={errors} />}
-
-      <TextField
-        label={'Пароль'}
-        name={'password'}
-        value={regData.password}
-        onChange={handleChange}
-        handleBlur={handleBlur}
-      />
-      {passwordDirty && errors.password && <span>{errors.password}</span>}
-      <TextField
-        label={'Повторите пароль'}
-        name={'passwordDouble'}
-        value={regData.passwordDouble}
-        onChange={handleChange}
-      />
+      {inputs.map((input) => (
+        <TextField
+          key={input.id}
+          {...input}
+          value={values[input.name]}
+          onChange={handleChange}
+        />
+      ))}
       <FormButtons
         firstBtnText={'Зарегистрироваться'}
         secondBtnText={'У меня уже есть аккаунт'}
