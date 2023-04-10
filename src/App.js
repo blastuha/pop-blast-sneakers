@@ -12,10 +12,10 @@ import { types } from './data'
 import { sexArray } from './data'
 import { Outlet } from 'react-router-dom'
 
-const categoryList = [
-  { name: 'Бренды', menu: brands },
-  { name: 'Тип обуви', menu: types },
+export const categoryList = [
   { name: 'Пол', menu: sexArray },
+  { name: 'Тип обуви', menu: types },
+  { name: 'Бренды', menu: brands },
 ]
 
 export const appContext = React.createContext('')
@@ -94,12 +94,10 @@ function App() {
   }
 
   const onChangeSize = (event) => {
-    // console.log(selectedSize)
     setSelectedSize(event.target.value)
   }
 
   const onChangeColor = (event) => {
-    // console.log(selectedColor)
     setSelectedColor(event.target.value)
   }
 

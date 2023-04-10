@@ -55,7 +55,6 @@ const RegistrationForm = () => {
 
   const handleChange = ({ target }) => {
     setValues((prevState) => ({ ...prevState, [target.name]: target.value }))
-    // console.log(values)
   }
 
   const handleSubmit = (e) => {

@@ -1,5 +1,5 @@
 //! Разделить стили Login / AuthForm из файла login
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import { Outlet, useLocation } from 'react-router-dom'
 
@@ -10,37 +10,6 @@ const authTitles = [
 ]
 
 const AuthenticationPage = () => {
-  const [data, setData] = useState({ email: '', password: '' })
-  const [errors, setErrors] = useState({})
-
-  const handleChange = ({ target }) => {
-    setData((prevState) => ({
-      ...prevState,
-      [target.name]: target.value,
-    }))
-  }
-
-  const validate = () => {
-    const errors = {}
-    for (const fieldName in data) {
-      if (data[fieldName].trim() === '') {
-        errors[fieldName] = `${fieldName} обязателен для заполнения`
-      }
-    }
-    setErrors(errors)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    validate()
-    if (Object.keys(errors).length !== 0) return
-    console.log(data.email, data.password)
-  }
-
-  useEffect(() => {
-    validate()
-  }, [data])
-
   let location = useLocation()
 
   const dynamicTitle = () => {
@@ -59,7 +28,7 @@ const AuthenticationPage = () => {
         <div class='person__header'>
           <span class='person-title'>{dynamicTitle()}</span>
         </div>
-        <Outlet context={[data, errors, handleChange, handleSubmit]} />
+        <Outlet />
       </div>
     </div>
   )

@@ -38,7 +38,6 @@
       }
 
       .cart-item {
-        // outline: 1px solid grey;
         display: flex;
         justify-content: space-between;
         gap: 1rem;
@@ -68,7 +67,7 @@
 
           .header-sizecolor {
             font-size: 1rem;
-            // white-space: nowrap;
+            white-space: nowrap;
             color: #333333;
           }
 

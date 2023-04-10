@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
 
-const TextField = ({ label, name, error, onChange, id, ...inputProps }) => {
+const TextField = ({
+  label,
+  name,
+  error,
+  onChange,
+  id,
+  blurHandler,
+  ...inputProps
+}) => {
   const [focused, setFocused] = useState(false)
-
-  console.log(error)
 
   const handleFocus = () => {
     setFocused(true)
@@ -18,7 +24,7 @@ const TextField = ({ label, name, error, onChange, id, ...inputProps }) => {
         onChange={onChange}
         onFocus={() => name === 'confirmPassword' && setFocused(true)}
         focused={focused.toString()}
-        onBlur={handleFocus}
+        onBlur={blurHandler ? blurHandler : handleFocus}
       />
       <span className='input-error'>{error}</span>
     </div>
