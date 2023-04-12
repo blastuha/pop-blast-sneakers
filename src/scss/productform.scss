@@ -1,0 +1,30 @@
+.product__form {
+  width: 100%;
+  margin-left: 40px;
+}
+
+.form {
+  &__items {
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  &__header {
+    line-height: 1.18em;
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    display: block;
+    font-size: 19px;
+    font-weight: 700;
+    color: #5c5c5c;
+    margin-bottom: 50px;
+  }
+}

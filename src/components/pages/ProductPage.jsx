@@ -2,14 +2,16 @@ import React, { useEffect, useContext, useState, useCallback } from 'react'
 import axios from 'axios'
 
 import { useLoaderData } from 'react-router-dom'
-import { AiOutlineHeart } from 'react-icons/ai'
 import { appContext } from '../../App'
 
-import Select from '../Select'
 import Breadcrumb from '../Breadcrumb'
 import AllAlerts from '../AllAlerts'
+import ProductForm from '../ProductForm'
 
 function ProductPage() {
+  const [selectedSize, setSelectedSize] = useState()
+  const [selectedColor, setSelectedColor] = useState('')
+  const [isInCart, setIsInCart] = useState(false)
   const [alertsList, setAlertsList] = useState([])
 
   const alert = {
@@ -18,13 +20,77 @@ function ProductPage() {
   }
 
   const sneakerDTO = useLoaderData() // data transfer object
-  const addToCart = useContext(appContext).addToCart
-  const selectedSize = useContext(appContext).selectedSize
-  const setSelectedSize = useContext(appContext).setSelectedSize
-  const selectedColor = useContext(appContext).selectedColor
-  const setSelectedColor = useContext(appContext).setSelectedColor
-  const onChangeSize = useContext(appContext).onChangeSize
-  const onChangeColor = useContext(appContext).onChangeColor
+  const cartData = useContext(appContext).cartData
+  const setCartData = useContext(appContext).setCartData
+
+  const onChangeSize = (event) => {
+    setSelectedSize(event.target.value)
+  }
+
+  const onChangeColor = (event) => {
+    console.log(selectedColor)
+    setSelectedColor(event.target.value)
+  }
+
+  //*---- Взаимодействие с корзиной
+
+  // Если товара не было, то добавляем товар через addItem
+  const addItem = (sneaker) => {
+    const itemToAdd = {
+      ...sneaker,
+      quantity: 1,
+      size: selectedSize,
+      color: selectedColor,
+    }
+    setCartData([...cartData, itemToAdd])
+  }
+
+  //Проверка, есть ли товар в корзине, ищем его индекс
+  const isExistInCart = (id) => {
+    const findIndex = cartData.findIndex(
+      (item) =>
+        item.id === id &&
+        item.color === selectedColor &&
+        item.size === selectedSize
+    )
+    return findIndex
+  }
+
+  // Через индекс находим нужный товар и меняем его количество
+  const changeQuantity = (itemIndex) => {
+    const newCartData = cartData.map((item, i) => {
+      if (itemIndex === i) {
+        return { ...item, quantity: item.quantity + 1 }
+      } else {
+        return item
+      }
+    })
+    return newCartData
+  }
+
+  const addToCart = (sneaker) => {
+    const sneakerIndex = isExistInCart(sneaker.id)
+    if (sneakerIndex >= 0) {
+      setCartData(changeQuantity(sneakerIndex))
+    } else {
+      addItem(sneaker)
+    }
+  }
+
+  //---- Конец взаимодействия с корзиной
+
+  //* utility
+  const isItemInCartChecker = (id) => {
+    if (isExistInCart(id) >= 0) {
+      setIsInCart(true)
+    } else {
+      setIsInCart(false)
+    }
+  }
+
+  useEffect(() => {
+    isItemInCartChecker(sneakerDTO.data.id)
+  }, [isExistInCart])
 
   useEffect(() => {
     window.scroll(0, 0)
@@ -60,74 +126,39 @@ function ProductPage() {
   }, [alertsList, deleteShownAlert])
 
   return (
-    <div className='product'>
-      <div className='product__container'>
+    <div class='product'>
+      <div class='product__container'>
         <Breadcrumb sneakerDTO={sneakerDTO} />
-        <div className='product__main'>
+        <div class='product__main'>
           <AllAlerts alertsList={alertsList} />
-          <div className='product__photo'>
+          <div class='product__photo'>
             <img
               src={sneakerDTO.data.imageUrl}
               alt='sneaker'
             />
           </div>
-          <form
-            action='/'
-            method='post'
-            className='product__info'
-          >
-            <div className='info__items'>
-              <div className='info-item'>
-                <div className='info-header'>
-                  <div className='info-title'>{sneakerDTO.data.title}</div>
-                  <div className='info-price'>{sneakerDTO.data.price} руб.</div>
-                </div>
-              </div>
-              <div className='info-item'>
-                <Select
-                  color={sneakerDTO.data.color}
-                  sizes={sneakerDTO.data.sizes}
-                  onChangeSize={onChangeSize}
-                  selectedSize={selectedSize}
-                  selectedColor={selectedColor}
-                  onChangeColor={onChangeColor}
-                />
-              </div>
-              <div className='info-buttons'>
-                <button
-                  type='button'
-                  className='info-btn cart'
-                  onClick={() => {
-                    addToCart(sneakerDTO.data)
-                    showCartAlert(alert)
-                  }}
-                >
-                  В корзину
-                </button>
-                <button
-                  type='button'
-                  className='info-btn'
-                >
-                  <AiOutlineHeart className='heart' />
-                </button>
-              </div>
-            </div>
-          </form>
+          <ProductForm
+            sneakerDTO={sneakerDTO}
+            showCartAlert={showCartAlert}
+            alert={alert}
+            isInCart={isInCart}
+            addToCart={addToCart}
+            onChangeSize={onChangeSize}
+            onChangeColor={onChangeColor}
+            selectedSize={selectedSize}
+            selectedColor={selectedColor}
+          />
         </div>
-        <div className='product__description'>
-          <div className='description-item'>
-            <div className='description-title'>Описание</div>
-            <div className='description-text'>
-              {sneakerDTO.data.description}
-            </div>
-          </div>
-        </div>
+        <article class='product__description'>
+          <h3 class='description__title'>Описание</h3>
+          <p class='description__text'>{sneakerDTO.data.description}</p>
+        </article>
       </div>
     </div>
   )
 }
 
-const productLoader = async ({ request, params }) => {
+const productLoader = async ({ params }) => {
   return axios
     .get(`https://63fcd20c859df29986c57847.mockapi.io/sneakerpal/${params.id}`)
     .catch((res) => console.warn(res))

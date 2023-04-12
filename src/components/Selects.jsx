@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Select({
+function Selects({
   color,
   sizes,
   onChangeSize,
@@ -9,7 +9,7 @@ function Select({
   selectedSize,
 }) {
   return (
-    <div className='selections'>
+    <div className='selects'>
       {color && (
         <div className='select-item'>
           <label>Цвет</label>
@@ -44,4 +44,4 @@ function Select({
   )
 }
 
-export default Select
+export default Selects

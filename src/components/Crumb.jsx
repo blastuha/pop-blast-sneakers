@@ -13,7 +13,7 @@ const Crumb = ({ pageName, categoryChanger, category }) => {
         className='breadcrumb__item-link'
         onClick={() => categoryChanger(category)}
       >
-        {category}
+        {category ? category : 'Главная'}
       </Link>
     </div>
   )

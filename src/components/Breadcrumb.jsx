@@ -1,20 +1,12 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
-
 import Crumbs from './Crumbs'
+import Crumb from './Crumb'
 
 function Breadcrumb({ sneakerDTO }) {
   return (
     <div className={`breadcrumb ${sneakerDTO && 'low-margin'}`}>
-      <div className='breadcrumb__item'>
-        <Link
-          to='/'
-          className='breadcrumb__item-link'
-        >
-          <span>Главная</span>
-        </Link>
-      </div>
+      <Crumb />
       <Crumbs sneakerDTO={sneakerDTO} />
     </div>
   )

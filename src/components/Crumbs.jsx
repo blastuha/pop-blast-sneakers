@@ -1,4 +1,3 @@
-//! разделить цсс breadcrumb  и crumbs
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -13,7 +12,6 @@ const Crumbs = ({ sneakerDTO }) => {
   const onChangeSex = useContext(appContext).onChangeSex
 
   const location = useLocation()
-  console.log(location.pathname)
 
   return location.pathname
     .split('/')
