@@ -22,14 +22,17 @@ const ProductFormButtons = ({
           <span>В корзину</span>
         </button>
       ) : (
-        <button
-          type='button'
+        <div
           class='form-btn add-to-cart'
           isInCart={isInCart.toString()}
           onClick={() => {}}
         >
-          <span>Товар в корзине</span>
-        </button>
+          <button className='plus-btn'>+</button>
+          <div className='item-incart'>
+            <a href='/'>Товар в корзине</a>
+          </div>
+          <button className='minus-btn'>-</button>
+        </div>
       )}
 
       <button
