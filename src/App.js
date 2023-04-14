@@ -31,8 +31,6 @@ function App() {
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
   const [cartData, setCartData] = useState(getStorageItems())
-  // const [selectedSize, setSelectedSize] = useState()
-  // const [selectedColor, setSelectedColor] = useState('')
 
   useEffect(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
@@ -94,58 +92,6 @@ function App() {
     setSex('')
   }
 
-  // const onChangeSize = (event) => {
-  //   setSelectedSize(event.target.value)
-  // }
-
-  // const onChangeColor = (event) => {
-  //   setSelectedColor(event.target.value)
-  // }
-
-  // //-- Логика добавления товара в корзину
-  // // Если товара не было, то добавляем товар через addItem
-  // const addItem = (sneaker) => {
-  //   const itemToAdd = {
-  //     ...sneaker,
-  //     quantity: 1,
-  //     size: selectedSize,
-  //     color: selectedColor,
-  //   }
-  //   setCartData([...cartData, itemToAdd])
-  // }
-
-  // //Проверка, есть ли товар в корзине, ищем его индекс
-  // const isExistInCart = (id) => {
-  //   const findIndex = cartData.findIndex(
-  //     (item) =>
-  //       item.id === id &&
-  //       item.color === selectedColor &&
-  //       item.size === selectedSize
-  //   )
-  //   return findIndex
-  // }
-
-  // // Через индекс находим нужный товар и меняем его количество
-  // const changeQuantity = (itemIndex) => {
-  //   const newCartData = cartData.map((item, i) => {
-  //     if (itemIndex === i) {
-  //       return { ...item, quantity: item.quantity + 1 }
-  //     } else {
-  //       return item
-  //     }
-  //   })
-  //   return newCartData
-  // }
-
-  // const addToCart = (sneaker) => {
-  //   const sneakerIndex = isExistInCart(sneaker.id)
-  //   if (sneakerIndex >= 0) {
-  //     setCartData(changeQuantity(sneakerIndex))
-  //   } else {
-  //     addItem(sneaker)
-  //   }
-  // }
-
   return (
     <div className='wrapper'>
       <appContext.Provider
@@ -159,14 +105,7 @@ function App() {
           onChangeSex,
           clearAllFilters,
           cartData,
-          // addToCart,
           setCartData,
-          // onChangeSize,
-          // onChangeColor,
-          // selectedSize,
-          // selectedColor,
-          // setSelectedSize,
-          // setSelectedColor,
         }}
       >
         <Header />

@@ -1,13 +1,22 @@
 import React from 'react'
+
+import { useLoaderData } from 'react-router-dom'
+
 import { AiOutlineHeart } from 'react-icons/ai'
 
 const ProductFormButtons = ({
-  sneakerDTO,
   alert,
   showCartAlert,
   isInCart,
   addToCart,
+  onCountButtons,
+  whatItemQuantity,
+  deleteItem,
 }) => {
+  const sneakerDTO = useLoaderData()
+  const sneakerId = sneakerDTO.data.id
+  const sneakerQuantity = whatItemQuantity(sneakerId)
+
   return (
     <div class='form__buttons'>
       {!isInCart ? (
@@ -22,17 +31,30 @@ const ProductFormButtons = ({
           <span>В корзину</span>
         </button>
       ) : (
-        <div
+        <button
+          type='button'
           class='form-btn add-to-cart'
-          isInCart={isInCart.toString()}
-          onClick={() => {}}
+          isincart={isInCart.toString()}
         >
-          <button className='plus-btn'>+</button>
+          <button
+            className='minus-btn'
+            onClick={(e) => {
+              onCountButtons(e, sneakerId)
+              deleteItem(sneakerId)
+            }}
+          >
+            -
+          </button>
           <div className='item-incart'>
-            <a href='/'>Товар в корзине</a>
+            <a href='/'>В корзине {sneakerQuantity} шт.</a>
           </div>
-          <button className='minus-btn'>-</button>
-        </div>
+          <button
+            className='plus-btn'
+            onClick={(e) => onCountButtons(e, sneakerId)}
+          >
+            +
+          </button>
+        </button>
       )}
 
       <button

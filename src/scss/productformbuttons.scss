@@ -13,7 +13,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42em;
-  transition: all 0.4s ease;
+  transition: background 0.4s ease;
   background: #404040;
   color: #ffffff;
 
@@ -22,7 +22,7 @@
   }
 }
 
-.form-btn[isInCart='true'] {
+.form-btn[isincart='true'] {
   display: flex;
   justify-content: space-between;
   border: 1px solid #333333;
@@ -32,7 +32,7 @@
 
 .plus-btn {
   background: #ffffff;
-  border-right: 1px solid #333333;
+  border-left: 1px solid #333333;
   width: 38px;
   height: 38px;
   cursor: pointer;
@@ -48,7 +48,7 @@
 
 .minus-btn {
   background: #ffffff;
-  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;
   width: 38px;
   height: 38px;
   cursor: pointer;
@@ -68,7 +68,12 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  background: #ffffff;
   transition: background 0.4s ease;
+
+  a:visited {
+    color: inherit;
+  }
 
   &:hover {
     background: #ededed;
@@ -81,7 +86,7 @@
   padding: 0 14px 0 14px;
 }
 
-.add-to-cart[isInCart='true'] {
+.add-to-cart[isincart='true'] {
   padding: 0;
 }
 

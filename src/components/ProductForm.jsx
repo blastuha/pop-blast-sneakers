@@ -1,10 +1,11 @@
 import React from 'react'
 
+import { useLoaderData } from 'react-router-dom'
+
 import Selects from './Selects'
 import ProductFormButtons from './ProductFormButtons'
 
 const ProductForm = ({
-  sneakerDTO,
   showCartAlert,
   alert,
   isInCart,
@@ -13,12 +14,22 @@ const ProductForm = ({
   onChangeColor,
   selectedColor,
   selectedSize,
+  onCountButtons,
+  whatItemQuantity,
+  deleteItem,
 }) => {
+  const sneakerDTO = useLoaderData()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <form
       action='/'
       method='post'
       class='product__form'
+      onSubmit={handleSubmit}
     >
       <div class='form__items'>
         <div class='form__header'>
@@ -35,10 +46,12 @@ const ProductForm = ({
         />
         <ProductFormButtons
           showCartAlert={showCartAlert}
-          sneakerDTO={sneakerDTO}
           alert={alert}
           isInCart={isInCart}
           addToCart={addToCart}
+          onCountButtons={onCountButtons}
+          whatItemQuantity={whatItemQuantity}
+          deleteItem={deleteItem}
         />
       </div>
     </form>

@@ -14,21 +14,29 @@ function ProductPage() {
   const [isInCart, setIsInCart] = useState(false)
   const [alertsList, setAlertsList] = useState([])
 
+  const sneakerDTO = useLoaderData() // data transfer object
+  const cartData = useContext(appContext).cartData
+  const setCartData = useContext(appContext).setCartData
+
   const alert = {
     id: alertsList.length + 1,
     text: '✓ Товар добавлен в корзину',
   }
 
-  const sneakerDTO = useLoaderData() // data transfer object
-  const cartData = useContext(appContext).cartData
-  const setCartData = useContext(appContext).setCartData
+  useEffect(() => {
+    setSelectedSize(sneakerDTO.data.sizes[0])
+    setSelectedColor(sneakerDTO.data.color[0])
+  }, [])
+
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
 
   const onChangeSize = (event) => {
     setSelectedSize(event.target.value)
   }
 
   const onChangeColor = (event) => {
-    console.log(selectedColor)
     setSelectedColor(event.target.value)
   }
 
@@ -57,15 +65,26 @@ function ProductPage() {
   }
 
   // Через индекс находим нужный товар и меняем его количество
-  const changeQuantity = (itemIndex) => {
-    const newCartData = cartData.map((item, i) => {
-      if (itemIndex === i) {
-        return { ...item, quantity: item.quantity + 1 }
-      } else {
-        return item
-      }
-    })
-    return newCartData
+  const changeQuantity = (event, itemIndex) => {
+    if (event.target.innerText === '+') {
+      const newCartData = cartData.map((item, i) => {
+        if (itemIndex === i) {
+          return { ...item, quantity: item.quantity + 1 }
+        } else {
+          return item
+        }
+      })
+      return newCartData
+    } else {
+      const newCartData = cartData.map((item, i) => {
+        if (itemIndex === i && item.quantity > 1) {
+          return { ...item, quantity: item.quantity - 1 }
+        } else {
+          return item
+        }
+      })
+      return newCartData
+    }
   }
 
   const addToCart = (sneaker) => {
@@ -77,29 +96,27 @@ function ProductPage() {
     }
   }
 
-  //---- Конец взаимодействия с корзиной
-
-  //* utility
-  const isItemInCartChecker = (id) => {
-    if (isExistInCart(id) >= 0) {
-      setIsInCart(true)
+  const deleteItem = (id) => {
+    if (whatItemQuantity(id) === 1) {
+      const newCartData = [...cartData].filter((item) => item.id !== id)
+      setCartData(newCartData)
     } else {
-      setIsInCart(false)
+      return
     }
   }
 
-  useEffect(() => {
-    isItemInCartChecker(sneakerDTO.data.id)
-  }, [isExistInCart])
+  const onCountButtons = (event, sneakerId) => {
+    const sneakerIndex = isExistInCart(sneakerId)
+    if (sneakerIndex >= 0) {
+      setCartData(changeQuantity(event, sneakerIndex))
+    } else {
+      return
+    }
+  }
 
-  useEffect(() => {
-    window.scroll(0, 0)
-  }, [])
+  //---- Конец взаимодействия с корзиной
 
-  useEffect(() => {
-    setSelectedSize(sneakerDTO.data.sizes[0])
-    setSelectedColor(sneakerDTO.data.color[0])
-  }, [])
+  //*---- Отображение алертов
 
   const deleteShownAlert = useCallback(
     (id) => {
@@ -125,6 +142,28 @@ function ProductPage() {
     }
   }, [alertsList, deleteShownAlert])
 
+  //---- Конец отображения алертов
+
+  //? utility
+  const isItemInCartChecker = (id) => {
+    if (isExistInCart(id) >= 0) {
+      setIsInCart(true)
+    } else {
+      setIsInCart(false)
+    }
+  }
+
+  useEffect(() => {
+    isItemInCartChecker(sneakerDTO.data.id)
+  }, [isExistInCart])
+
+  const whatItemQuantity = (id) => {
+    const sneakerIndex = isExistInCart(id)
+    if (sneakerIndex >= 0) {
+      return cartData[sneakerIndex].quantity
+    }
+  }
+
   return (
     <div class='product'>
       <div class='product__container'>
@@ -138,7 +177,6 @@ function ProductPage() {
             />
           </div>
           <ProductForm
-            sneakerDTO={sneakerDTO}
             showCartAlert={showCartAlert}
             alert={alert}
             isInCart={isInCart}
@@ -147,6 +185,10 @@ function ProductPage() {
             onChangeColor={onChangeColor}
             selectedSize={selectedSize}
             selectedColor={selectedColor}
+            changeQuantity={changeQuantity}
+            onCountButtons={onCountButtons}
+            whatItemQuantity={whatItemQuantity}
+            deleteItem={deleteItem}
           />
         </div>
         <article class='product__description'>
