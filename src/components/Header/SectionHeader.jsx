@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { TfiClose } from 'react-icons/tfi'
-import { appContext } from '../App'
+import { appContext } from '../../App'
 
 function SectionHeader() {
   const brand = useContext(appContext).brand

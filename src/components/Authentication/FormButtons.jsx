@@ -9,17 +9,17 @@ const FormButtons = ({
   thirdBtnLink,
 }) => {
   return (
-    <div class='auth-buttons'>
+    <div className='auth-buttons'>
       <button
         type='submit'
-        class='auth-btn enter'
+        className='auth-btn enter'
       >
         {firstBtnText}
       </button>
       <Link
         to={secondBtnLink}
         type='button'
-        class='auth-link'
+        className='auth-link'
       >
         {secondBtnText}
       </Link>
@@ -27,7 +27,7 @@ const FormButtons = ({
         <Link
           to={thirdBtnLink}
           type='button'
-          class='auth-link'
+          className='auth-link'
         >
           {thirdBtnText}
         </Link>

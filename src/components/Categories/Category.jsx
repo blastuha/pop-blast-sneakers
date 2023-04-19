@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Dropdown from './Dropdown'
+import Dropdown from '../Header/Dropdown'
 
 function Category({
   name,

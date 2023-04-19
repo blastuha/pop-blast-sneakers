@@ -2,11 +2,11 @@ import React, { useEffect, useContext, useState, useCallback } from 'react'
 import axios from 'axios'
 
 import { useLoaderData } from 'react-router-dom'
-import { appContext } from '../../App'
+import { appContext } from '../App'
 
-import Breadcrumb from '../Breadcrumb'
-import AllAlerts from '../AllAlerts'
-import ProductForm from '../ProductForm'
+import Breadcrumb from '../components/Breadcrump/Breadcrumb'
+import AllAlerts from '../components/Alerts/AllAlerts'
+import ProductForm from '../components/Product/ProductForm'
 
 function ProductPage() {
   const [selectedSize, setSelectedSize] = useState()
@@ -29,7 +29,7 @@ function ProductPage() {
   }, [])
 
   useEffect(() => {
-    window.scroll(0, 0)
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [])
 
   const onChangeSize = (event) => {
@@ -165,12 +165,12 @@ function ProductPage() {
   }
 
   return (
-    <div class='product'>
-      <div class='product__container'>
+    <div className='product'>
+      <div className='product__container'>
         <Breadcrumb sneakerDTO={sneakerDTO} />
-        <div class='product__main'>
+        <div className='product__main'>
           <AllAlerts alertsList={alertsList} />
-          <div class='product__photo'>
+          <div className='product__photo'>
             <img
               src={sneakerDTO.data.imageUrl}
               alt='sneaker'
@@ -191,9 +191,9 @@ function ProductPage() {
             deleteItem={deleteItem}
           />
         </div>
-        <article class='product__description'>
-          <h3 class='description__title'>Описание</h3>
-          <p class='description__text'>{sneakerDTO.data.description}</p>
+        <article className='product__description'>
+          <h3 className='description__title'>Описание</h3>
+          <p className='description__text'>{sneakerDTO.data.description}</p>
         </article>
       </div>
     </div>

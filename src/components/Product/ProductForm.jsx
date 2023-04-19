@@ -28,13 +28,13 @@ const ProductForm = ({
     <form
       action='/'
       method='post'
-      class='product__form'
+      className='product__form'
       onSubmit={handleSubmit}
     >
-      <div class='form__items'>
-        <div class='form__header'>
-          <h3 class='form__title'>{sneakerDTO.data.title}</h3>
-          <b class='form__price'>{sneakerDTO.data.price} руб.</b>
+      <div className='form__items'>
+        <div className='form__header'>
+          <h3 className='form__title'>{sneakerDTO.data.title}</h3>
+          <b className='form__price'>{sneakerDTO.data.price} руб.</b>
         </div>
         <Selects
           color={sneakerDTO.data.color}

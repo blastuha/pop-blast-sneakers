@@ -1,6 +1,6 @@
 import React from 'react'
-import Sneakers from './Sneakers'
-import SectionHeader from './SectionHeader'
+import Sneakers from '../components/Sneakers'
+import SectionHeader from '../components/Header/SectionHeader'
 
 function Main() {
   return (

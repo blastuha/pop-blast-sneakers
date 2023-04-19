@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import Breadcrumb from '../Breadcrumb'
-import CartItem from './CartItem'
-import CartCounter from './CartCounter'
-import { appContext } from '../../App'
+import Breadcrumb from '../components/Breadcrump/Breadcrumb'
+import CartItem from '../components/Cart/CartItem'
+import CartCounter from '../components/Cart/CartCounter'
+import { appContext } from '../App'
 
 function Cart() {
   const cartData = useContext(appContext).cartData

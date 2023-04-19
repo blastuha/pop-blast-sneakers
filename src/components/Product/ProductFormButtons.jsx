@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, Link } from 'react-router-dom'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 
@@ -31,7 +31,7 @@ const ProductFormButtons = ({
           <span>В корзину</span>
         </button>
       ) : (
-        <button
+        <div
           type='button'
           class='form-btn add-to-cart'
           isincart={isInCart.toString()}
@@ -46,7 +46,7 @@ const ProductFormButtons = ({
             -
           </button>
           <div className='item-incart'>
-            <a href='/'>В корзине {sneakerQuantity} шт.</a>
+            <Link to='/cart'>В корзине {sneakerQuantity} шт.</Link>
           </div>
           <button
             className='plus-btn'
@@ -54,7 +54,7 @@ const ProductFormButtons = ({
           >
             +
           </button>
-        </button>
+        </div>
       )}
 
       <button

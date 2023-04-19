@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import TextField from './TextField'
+import TextField from '../TextField'
 import FormButtons from './FormButtons'
 import DynamicForm from './DynamicForm'
 

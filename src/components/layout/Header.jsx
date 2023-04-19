@@ -6,7 +6,7 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { FaShoppingCart } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
 
-import Cutlist from './Cutlist'
+import Cutlist from '../Header/Cutlist'
 
 const headerMenu = [
   { name: 'Главная', link: '/' },

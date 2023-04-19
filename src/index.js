@@ -2,17 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { productLoader } from './components/pages/ProductPage'
+import { productLoader } from './pages/ProductPage'
 
 import App from './App'
-import Main from './components/Main'
-import Cart from './components/pages/Cart'
-import Contacts from './components/pages/Contacts'
-import ProductPage from './components/pages/ProductPage'
-import AuthenticationPage from './components/pages/AuthenticationPage'
-import ForgetPassForm from './components/ForgetPassForm'
-import AuthForm from './components/AuthForm'
-import RegistrationForm from './components/RegistrationForm'
+import Main from './pages/Main'
+import Cart from './pages/Cart'
+import Contacts from './pages/Contacts'
+import ProductPage from './pages/ProductPage'
+import AuthenticationPage from './pages/AuthenticationPage'
+import ForgetPassForm from './components/Authentication/ForgetPassForm'
+import AuthForm from './components/Authentication/AuthForm'
+import RegistrationForm from './components/Authentication/RegistrationForm'
 
 const router = createBrowserRouter([
   {

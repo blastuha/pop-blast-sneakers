@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import DynamicForm from './DynamicForm'
-import TextField from './TextField'
+import TextField from '../TextField'
 import FormButtons from './FormButtons'
 
 const fullnameReg = `^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)`

@@ -3,9 +3,9 @@ import './App.scss'
 import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Categories from './components/Categories'
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
+import Categories from './components/Categories/Categories'
 
 import { brands } from './data'
 import { types } from './data'

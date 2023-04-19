@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { appContext } from '../App'
+import { appContext } from '../../App'
 import Crumb from './Crumb'
 
 const pageNames = { contacts: 'Контакты', cart: 'Корзина' }
