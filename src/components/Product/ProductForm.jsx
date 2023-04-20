@@ -10,10 +10,6 @@ const ProductForm = ({
   alert,
   isInCart,
   addToCart,
-  onChangeSize,
-  onChangeColor,
-  selectedColor,
-  selectedSize,
   onCountButtons,
   whatItemQuantity,
   deleteItem,
@@ -36,14 +32,7 @@ const ProductForm = ({
           <h3 className='form__title'>{sneakerDTO.data.title}</h3>
           <b className='form__price'>{sneakerDTO.data.price} руб.</b>
         </div>
-        <Selects
-          color={sneakerDTO.data.color}
-          sizes={sneakerDTO.data.sizes}
-          onChangeSize={onChangeSize}
-          selectedSize={selectedSize}
-          selectedColor={selectedColor}
-          onChangeColor={onChangeColor}
-        />
+        <Selects />
         <ProductFormButtons
           showCartAlert={showCartAlert}
           alert={alert}

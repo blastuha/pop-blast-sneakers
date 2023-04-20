@@ -4,17 +4,21 @@ import axios from 'axios'
 import { useLoaderData } from 'react-router-dom'
 import { appContext } from '../App'
 
+import { useSelector } from 'react-redux'
+
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AllAlerts from '../components/Alerts/AllAlerts'
 import ProductForm from '../components/Product/ProductForm'
 
 function ProductPage() {
-  const [selectedSize, setSelectedSize] = useState()
-  const [selectedColor, setSelectedColor] = useState('')
+  const sneakerDTO = useLoaderData() // data transfer object
+
+  const selectedSize = useSelector((state) => state.product.selectedSize)
+  const selectedColor = useSelector((state) => state.product.selectedColor)
+
   const [isInCart, setIsInCart] = useState(false)
   const [alertsList, setAlertsList] = useState([])
 
-  const sneakerDTO = useLoaderData() // data transfer object
   const cartData = useContext(appContext).cartData
   const setCartData = useContext(appContext).setCartData
 
@@ -24,21 +28,8 @@ function ProductPage() {
   }
 
   useEffect(() => {
-    setSelectedSize(sneakerDTO.data.sizes[0])
-    setSelectedColor(sneakerDTO.data.color[0])
-  }, [])
-
-  useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [])
-
-  const onChangeSize = (event) => {
-    setSelectedSize(event.target.value)
-  }
-
-  const onChangeColor = (event) => {
-    setSelectedColor(event.target.value)
-  }
 
   //*---- Взаимодействие с корзиной
 
@@ -181,10 +172,6 @@ function ProductPage() {
             alert={alert}
             isInCart={isInCart}
             addToCart={addToCart}
-            onChangeSize={onChangeSize}
-            onChangeColor={onChangeColor}
-            selectedSize={selectedSize}
-            selectedColor={selectedColor}
             changeQuantity={changeQuantity}
             onCountButtons={onCountButtons}
             whatItemQuantity={whatItemQuantity}

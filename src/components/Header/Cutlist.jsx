@@ -4,7 +4,7 @@ function Cutlist({ headerMenu }) {
     <div className='cutlist'>
       <div className='cutlist-content'>
         {headerMenu
-          .filter((item, i) => i >= 2)
+          .filter((_, i) => i >= 2)
           .map((item, i) => {
             return (
               <div

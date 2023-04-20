@@ -1,16 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-function Selects({
-  color,
-  sizes,
-  onChangeSize,
-  onChangeColor,
-  selectedColor,
-  selectedSize,
-}) {
+import { useLoaderData } from 'react-router-dom'
+
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  setSelectedSize,
+  setSelectedColor,
+} from '../../redux/slices/productSlice'
+
+function Selects() {
+  const selectedSize = useSelector((state) => state.product.selectedSize)
+  const selectedColor = useSelector((state) => state.product.selectedColor)
+  const dispatch = useDispatch()
+
+  const sneakerDTO = useLoaderData().data
+  const colors = useLoaderData().data.color
+  const sizes = useLoaderData().data.sizes
+
+  const onChangeSize = (event) => {
+    dispatch(setSelectedSize(event.target.value))
+  }
+
+  const onChangeColor = (event) => {
+    dispatch(setSelectedColor(event.target.value))
+  }
+
+  useEffect(() => {
+    dispatch(setSelectedSize(sneakerDTO.sizes[0]))
+    dispatch(setSelectedColor(sneakerDTO.color[0]))
+  }, [])
+
   return (
     <div className='selects'>
-      {color && (
+      {colors && (
         <div className='select-item'>
           <label>Цвет</label>
           <select
@@ -19,7 +41,7 @@ function Selects({
             value={selectedColor}
             onChange={(e) => onChangeColor(e)}
           >
-            {color.map((item, i) => (
+            {colors.map((item, i) => (
               <option key={i}>{item}</option>
             ))}
           </select>
