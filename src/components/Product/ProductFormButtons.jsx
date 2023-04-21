@@ -2,20 +2,26 @@ import React from 'react'
 
 import { useLoaderData, Link } from 'react-router-dom'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { showCartAlert } from '../../redux/slices/alertsSlice'
+
 import { AiOutlineHeart } from 'react-icons/ai'
 
 const ProductFormButtons = ({
   alert,
-  showCartAlert,
-  isInCart,
   addToCart,
   onCountButtons,
-  whatItemQuantity,
+  itemQuantity,
   deleteItem,
 }) => {
   const sneakerDTO = useLoaderData()
   const sneakerId = sneakerDTO.data.id
-  const sneakerQuantity = whatItemQuantity(sneakerId)
+  const sneakerQuantity = itemQuantity(sneakerId)
+
+  const isInCart = useSelector((state) => state.product.isInCart)
+  const dispatch = useDispatch()
+
+  const createCartAlert = (item) => dispatch(showCartAlert(item))
 
   return (
     <div class='form__buttons'>
@@ -25,7 +31,7 @@ const ProductFormButtons = ({
           class='form-btn add-to-cart'
           onClick={() => {
             addToCart(sneakerDTO.data)
-            showCartAlert(alert)
+            createCartAlert(alert)
           }}
         >
           <span>В корзину</span>

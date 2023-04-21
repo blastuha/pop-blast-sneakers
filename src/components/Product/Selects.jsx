@@ -9,9 +9,9 @@ import {
 } from '../../redux/slices/productSlice'
 
 function Selects() {
+  const dispatch = useDispatch()
   const selectedSize = useSelector((state) => state.product.selectedSize)
   const selectedColor = useSelector((state) => state.product.selectedColor)
-  const dispatch = useDispatch()
 
   const sneakerDTO = useLoaderData().data
   const colors = useLoaderData().data.color

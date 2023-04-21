@@ -6,12 +6,10 @@ import Selects from './Selects'
 import ProductFormButtons from './ProductFormButtons'
 
 const ProductForm = ({
-  showCartAlert,
   alert,
-  isInCart,
   addToCart,
   onCountButtons,
-  whatItemQuantity,
+  itemQuantity,
   deleteItem,
 }) => {
   const sneakerDTO = useLoaderData()
@@ -34,12 +32,10 @@ const ProductForm = ({
         </div>
         <Selects />
         <ProductFormButtons
-          showCartAlert={showCartAlert}
           alert={alert}
-          isInCart={isInCart}
           addToCart={addToCart}
           onCountButtons={onCountButtons}
-          whatItemQuantity={whatItemQuantity}
+          itemQuantity={itemQuantity}
           deleteItem={deleteItem}
         />
       </div>

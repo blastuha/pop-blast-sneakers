@@ -1,10 +1,12 @@
-import React, { useEffect, useContext, useState, useCallback } from 'react'
+import React, { useEffect, useContext, useCallback } from 'react'
 import axios from 'axios'
 
 import { useLoaderData } from 'react-router-dom'
 import { appContext } from '../App'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { setIsInCart } from '../redux/slices/productSlice'
+import { setAlertsList } from '../redux/slices/alertsSlice'
 
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AllAlerts from '../components/Alerts/AllAlerts'
@@ -13,11 +15,10 @@ import ProductForm from '../components/Product/ProductForm'
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
 
+  const dispatch = useDispatch()
   const selectedSize = useSelector((state) => state.product.selectedSize)
   const selectedColor = useSelector((state) => state.product.selectedColor)
-
-  const [isInCart, setIsInCart] = useState(false)
-  const [alertsList, setAlertsList] = useState([])
+  const alertsList = useSelector((state) => state.alerts.alertsList)
 
   const cartData = useContext(appContext).cartData
   const setCartData = useContext(appContext).setCartData
@@ -32,7 +33,6 @@ function ProductPage() {
   }, [])
 
   //*---- Взаимодействие с корзиной
-
   // Если товара не было, то добавляем товар через addItem
   const addItem = (sneaker) => {
     const itemToAdd = {
@@ -88,7 +88,7 @@ function ProductPage() {
   }
 
   const deleteItem = (id) => {
-    if (whatItemQuantity(id) === 1) {
+    if (itemQuantity(id) === 1) {
       const newCartData = [...cartData].filter((item) => item.id !== id)
       setCartData(newCartData)
     } else {
@@ -107,20 +107,16 @@ function ProductPage() {
 
   //---- Конец взаимодействия с корзиной
 
-  //*---- Отображение алертов
-
+  //*---- Логика алертов
   const deleteShownAlert = useCallback(
     (id) => {
       const alertsListFiltred = alertsList.filter((item) => item.id !== id)
-      setAlertsList(alertsListFiltred)
+      dispatch(setAlertsList(alertsListFiltred))
     },
     [alertsList]
   )
 
-  const showCartAlert = (item) => {
-    setAlertsList([...alertsList, item])
-  }
-
+  //? можно вынести
   useEffect(() => {
     const interval = setInterval(() => {
       if (alertsList.length) {
@@ -133,22 +129,17 @@ function ProductPage() {
     }
   }, [alertsList, deleteShownAlert])
 
-  //---- Конец отображения алертов
-
-  //? utility
-  const isItemInCartChecker = (id) => {
-    if (isExistInCart(id) >= 0) {
-      setIsInCart(true)
-    } else {
-      setIsInCart(false)
-    }
-  }
+  //---- Конец логики алертов
 
   useEffect(() => {
-    isItemInCartChecker(sneakerDTO.data.id)
+    if (isExistInCart(sneakerDTO.data.id) >= 0) {
+      dispatch(setIsInCart(true))
+    } else {
+      dispatch(setIsInCart(false))
+    }
   }, [isExistInCart])
 
-  const whatItemQuantity = (id) => {
+  const itemQuantity = (id) => {
     const sneakerIndex = isExistInCart(id)
     if (sneakerIndex >= 0) {
       return cartData[sneakerIndex].quantity
@@ -168,13 +159,11 @@ function ProductPage() {
             />
           </div>
           <ProductForm
-            showCartAlert={showCartAlert}
             alert={alert}
-            isInCart={isInCart}
             addToCart={addToCart}
             changeQuantity={changeQuantity}
             onCountButtons={onCountButtons}
-            whatItemQuantity={whatItemQuantity}
+            itemQuantity={itemQuantity}
             deleteItem={deleteItem}
           />
         </div>
@@ -187,6 +176,7 @@ function ProductPage() {
   )
 }
 
+//* можно вынести
 const productLoader = async ({ params }) => {
   return axios
     .get(`https://63fcd20c859df29986c57847.mockapi.io/sneakerpal/${params.id}`)

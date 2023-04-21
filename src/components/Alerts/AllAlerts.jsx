@@ -1,7 +1,11 @@
 import React from 'react'
 import Alert from './Alert'
 
-function AllAlerts({ alertsList }) {
+import { useSelector } from 'react-redux'
+
+function AllAlerts() {
+  const alertsList = useSelector((state) => state.alerts.alertsList)
+
   return (
     <div className='alerts-modal'>
       {alertsList.map((alert, i) => {
