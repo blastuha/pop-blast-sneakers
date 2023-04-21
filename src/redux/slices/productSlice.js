@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { selectedSize: '', selectedColor: '' }
+const initialState = { selectedSize: '', selectedColor: '', isInCart: false }
 
 export const productSlice = createSlice({
   name: 'product',
@@ -12,9 +12,13 @@ export const productSlice = createSlice({
     setSelectedColor: (state, action) => {
       state.selectedColor = action.payload
     },
+    setIsInCart: (state, action) => {
+      state.isInCart = action.payload
+    },
   },
 })
 
-export const { setSelectedSize, setSelectedColor } = productSlice.actions
+export const { setSelectedSize, setSelectedColor, setIsInCart } =
+  productSlice.actions
 
 export default productSlice.reducer
