@@ -3,10 +3,10 @@ import { appContext } from '../../App'
 
 function CartCounter() {
   const cartData = useContext(appContext).cartData
-  let itemPrice = 0
 
   const totalPrice = cartData.reduce((acc, curr) => {
-    acc = 0
+    let itemPrice = 0
+
     if (curr.quantity > 1) {
       itemPrice += curr.price * curr.quantity
     } else {

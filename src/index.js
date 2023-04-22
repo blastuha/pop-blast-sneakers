@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { productLoader } from './pages/ProductPage'
+import { fetchProduct } from './pages/ProductPage'
 
 import { store } from './redux/store/store'
 import { Provider } from 'react-redux'
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: 'products/:id',
         element: <ProductPage />,
-        loader: productLoader,
+        loader: fetchProduct,
         // мы делаем путь: products/:id, но сам запрос делается по ссылке из loadera
       },
       {

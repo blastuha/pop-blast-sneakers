@@ -7,25 +7,20 @@
 }
 
 .alert {
-  width: 246px;
-  height: 32px;
+  font-family: Jura;
+  line-height: 1.5rem;
+  color: #333333;
+  width: max-content;
+  max-width: 400px;
+  text-align: center;
+  padding: 4px 16px;
   background-color: #d4edda;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 9999999;
   border-radius: 2px;
   box-shadow: 1px 1px 8px #33333330;
   margin-bottom: 16px;
   animation-name: alert;
   animation-duration: 1s;
-
-  span {
-    display: block;
-    font-family: Jura;
-    line-height: 1.5rem;
-    color: #333333;
-  }
 }
 
 @keyframes alert {

@@ -11,6 +11,7 @@ import { setAlertsList } from '../redux/slices/alertsSlice'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AllAlerts from '../components/Alerts/AllAlerts'
 import ProductForm from '../components/Product/ProductForm'
+import { scrollToTop } from '../helpers'
 
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
@@ -29,7 +30,7 @@ function ProductPage() {
   }
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    scrollToTop()
   }, [])
 
   //*---- Взаимодействие с корзиной
@@ -176,12 +177,12 @@ function ProductPage() {
   )
 }
 
-//* можно вынести
-const productLoader = async ({ params }) => {
+//* можно вынести - helper - выносит в папку helper
+const fetchProduct = async ({ params }) => {
   return axios
     .get(`https://63fcd20c859df29986c57847.mockapi.io/sneakerpal/${params.id}`)
     .catch((res) => console.warn(res))
 }
 
 export default ProductPage
-export { productLoader }
+export { fetchProduct }

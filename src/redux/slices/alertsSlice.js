@@ -12,9 +12,6 @@ export const alertsSlice = createSlice({
     showCartAlert: (state, action) => {
       state.alertsList.push(action.payload)
     },
-    isItemInCartChecker: (state, action) => {
-      state.
-    }
   },
 })
 
