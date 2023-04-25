@@ -1,11 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import { appContext } from '../App'
+import { scrollToTop } from '../helpers'
+
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import CartItem from '../components/Cart/CartItem'
 import CartCounter from '../components/Cart/CartCounter'
-import { appContext } from '../App'
 
 function Cart() {
   const cartData = useContext(appContext).cartData
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   return (
     <div className='cart-block'>

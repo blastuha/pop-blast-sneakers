@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useCallback } from 'react'
-import axios from 'axios'
 
 import { useLoaderData } from 'react-router-dom'
 import { appContext } from '../App'
@@ -8,10 +7,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setIsInCart } from '../redux/slices/productSlice'
 import { setAlertsList } from '../redux/slices/alertsSlice'
 
+import { scrollToTop } from '../helpers'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AllAlerts from '../components/Alerts/AllAlerts'
 import ProductForm from '../components/Product/ProductForm'
-import { scrollToTop } from '../helpers'
 
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
@@ -177,12 +176,4 @@ function ProductPage() {
   )
 }
 
-//* можно вынести - helper - выносит в папку helper
-const fetchProduct = async ({ params }) => {
-  return axios
-    .get(`https://63fcd20c859df29986c57847.mockapi.io/sneakerpal/${params.id}`)
-    .catch((res) => console.warn(res))
-}
-
 export default ProductPage
-export { fetchProduct }

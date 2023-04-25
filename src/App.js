@@ -3,6 +3,7 @@ import './App.scss'
 import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 
+import getStorageItems from './localStorage/cartLocal'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Categories from './components/Categories/Categories'
@@ -21,11 +22,6 @@ export const categoryList = [
 export const appContext = React.createContext('')
 
 function App() {
-  const getStorageItems = () => {
-    const data = localStorage.getItem('cartItems')
-    return data ? JSON.parse(data) : ''
-  }
-
   const [sneakers, setSneakers] = useState([])
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
@@ -44,6 +40,8 @@ function App() {
       .then((res) => setSneakers(res.data))
       .catch((err) => console.warn(err))
   }, [brand, shoesType, sex])
+
+  console.log(sneakers)
 
   let isMounted = useRef(false)
 
