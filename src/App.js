@@ -28,20 +28,24 @@ function App() {
   const [sex, setSex] = useState('')
   const [cartData, setCartData] = useState(getStorageItems())
 
-  useEffect(() => {
+  const fetchSneakers = async () => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
     const shoesTypeFilter = `${shoesType ? `&filter=${shoesType}` : ''}`
     const sexFilter = `${sex ? `&filter=${sex}` : ''}`
 
-    axios
-      .get(
+    try {
+      const res = await axios.get(
         `https://63fcd20c859df29986c57847.mockapi.io/sneakerpal?${brandFilter}${shoesTypeFilter}${sexFilter}`
       )
-      .then((res) => setSneakers(res.data))
-      .catch((err) => console.warn(err))
-  }, [brand, shoesType, sex])
+      setSneakers(res.data ?? [])
+    } catch (error) {
+      console.error('Sneaker fetching error', error)
+    }
+  }
 
-  console.log(sneakers)
+  useEffect(() => {
+    fetchSneakers()
+  }, [brand, shoesType, sex])
 
   let isMounted = useRef(false)
 
