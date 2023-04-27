@@ -1,12 +1,14 @@
 import './App.scss'
 
-import React, { useEffect, useState, useRef } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 
 import getStorageItems from './localStorage/cartLocal'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Categories from './components/Categories/Categories'
+
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchSneakers } from './redux/slices/sneakersSlice'
 
 import { brands } from './data'
 import { types } from './data'
@@ -22,30 +24,25 @@ export const categoryList = [
 export const appContext = React.createContext('')
 
 function App() {
-  const [sneakers, setSneakers] = useState([])
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
   const [cartData, setCartData] = useState(getStorageItems())
 
-  const fetchSneakers = async () => {
+  const dispatch = useDispatch()
+  const sneakers = useSelector((state) => state.sneakers.sneakers)
+
+  const getSneakers = useCallback(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
     const shoesTypeFilter = `${shoesType ? `&filter=${shoesType}` : ''}`
     const sexFilter = `${sex ? `&filter=${sex}` : ''}`
 
-    try {
-      const res = await axios.get(
-        `https://63fcd20c859df29986c57847.mockapi.io/sneakerpal?${brandFilter}${shoesTypeFilter}${sexFilter}`
-      )
-      setSneakers(res.data ?? [])
-    } catch (error) {
-      console.error('Sneaker fetching error', error)
-    }
-  }
+    dispatch(fetchSneakers({ brandFilter, shoesTypeFilter, sexFilter }))
+  }, [brand, shoesType, sex, dispatch])
 
   useEffect(() => {
-    fetchSneakers()
-  }, [brand, shoesType, sex])
+    getSneakers()
+  }, [brand, shoesType, sex, getSneakers])
 
   let isMounted = useRef(false)
 
