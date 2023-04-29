@@ -1,11 +1,11 @@
-import React, { useEffect, useContext, useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 
 import { useLoaderData } from 'react-router-dom'
-import { appContext } from '../App'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setIsInCart } from '../redux/slices/productSlice'
 import { setAlertsList } from '../redux/slices/alertsSlice'
+import { setCartData } from '../redux/slices/cartSlice'
 
 import { scrollToTop } from '../helpers'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
@@ -19,9 +19,7 @@ function ProductPage() {
   const selectedSize = useSelector((state) => state.product.selectedSize)
   const selectedColor = useSelector((state) => state.product.selectedColor)
   const alertsList = useSelector((state) => state.alerts.alertsList)
-
-  const cartData = useContext(appContext).cartData
-  const setCartData = useContext(appContext).setCartData
+  const cartData = useSelector((state) => state.cartData.cartData)
 
   const alert = {
     id: alertsList.length + 1,
@@ -41,7 +39,7 @@ function ProductPage() {
       size: selectedSize,
       color: selectedColor,
     }
-    setCartData([...cartData, itemToAdd])
+    dispatch(setCartData([...cartData, itemToAdd]))
   }
 
   //Проверка, есть ли товар в корзине, ищем его индекс
@@ -81,7 +79,7 @@ function ProductPage() {
   const addToCart = (sneaker) => {
     const sneakerIndex = isExistInCart(sneaker.id)
     if (sneakerIndex >= 0) {
-      setCartData(changeQuantity(sneakerIndex))
+      dispatch(setCartData(changeQuantity(sneakerIndex)))
     } else {
       addItem(sneaker)
     }
@@ -90,7 +88,7 @@ function ProductPage() {
   const deleteItem = (id) => {
     if (itemQuantity(id) === 1) {
       const newCartData = [...cartData].filter((item) => item.id !== id)
-      setCartData(newCartData)
+      dispatch(setCartData(newCartData))
     } else {
       return
     }
@@ -99,7 +97,7 @@ function ProductPage() {
   const onCountButtons = (event, sneakerId) => {
     const sneakerIndex = isExistInCart(sneakerId)
     if (sneakerIndex >= 0) {
-      setCartData(changeQuantity(event, sneakerIndex))
+      dispatch(setCartData(changeQuantity(event, sneakerIndex)))
     } else {
       return
     }
@@ -116,7 +114,6 @@ function ProductPage() {
     [alertsList]
   )
 
-  //? можно вынести
   useEffect(() => {
     const interval = setInterval(() => {
       if (alertsList.length) {

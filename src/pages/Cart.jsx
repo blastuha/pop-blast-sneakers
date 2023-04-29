@@ -1,14 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
-import { appContext } from '../App'
 import { scrollToTop } from '../helpers'
+
+import { useSelector } from 'react-redux'
 
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import CartItem from '../components/Cart/CartItem'
 import CartCounter from '../components/Cart/CartCounter'
 
 function Cart() {
-  const cartData = useContext(appContext).cartData
+  const cartData = useSelector((state) => state.cartData.cartData)
 
   useEffect(() => {
     scrollToTop()

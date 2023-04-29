@@ -2,7 +2,6 @@ import './App.scss'
 
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 
-import getStorageItems from './localStorage/cartLocal'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Categories from './components/Categories/Categories'
@@ -27,10 +26,11 @@ function App() {
   const [brand, setBrand] = useState('')
   const [shoesType, setShoesType] = useState('')
   const [sex, setSex] = useState('')
-  const [cartData, setCartData] = useState(getStorageItems())
 
   const dispatch = useDispatch()
   const sneakers = useSelector((state) => state.sneakers.sneakers)
+  const cartData = useSelector((state) => state.cartData.cartData)
+  console.log(cartData)
 
   const getSneakers = useCallback(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
@@ -47,9 +47,6 @@ function App() {
   let isMounted = useRef(false)
 
   useEffect(() => {
-    if (cartData === undefined || cartData === '' || cartData === null) {
-      dispatch(setCartData([]))
-    }
     if (isMounted.current) {
       const json = JSON.stringify(cartData)
       localStorage.setItem('cartItems', json)
@@ -83,7 +80,6 @@ function App() {
         setBrand('')
         setShoesType('')
         setSex(sexData)
-        console.log(sex)
       }
     })
   }
@@ -106,8 +102,8 @@ function App() {
           onChangeShoesType,
           onChangeSex,
           clearAllFilters,
-          cartData,
-          setCartData,
+          // cartData,
+          // setCartData,
         }}
       >
         <Header />

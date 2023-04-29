@@ -28,7 +28,7 @@ function Selects() {
   useEffect(() => {
     dispatch(setSelectedSize(sneakerDTO.sizes[0]))
     dispatch(setSelectedColor(sneakerDTO.color[0]))
-  }, [])
+  }, [dispatch, sneakerDTO.sizes, sneakerDTO.color])
 
   return (
     <div className='selects'>

@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
-import { appContext } from '../../App'
+import React from 'react'
+
+import { useSelector } from 'react-redux'
 
 function CartCounter() {
-  const cartData = useContext(appContext).cartData
+  const cartData = useSelector((state) => state.cartData.cartData)
 
   const totalPrice = cartData.reduce((acc, curr) => {
     let itemPrice = 0

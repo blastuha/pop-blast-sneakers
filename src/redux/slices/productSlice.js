@@ -15,6 +15,9 @@ export const productSlice = createSlice({
     setIsInCart: (state, action) => {
       state.isInCart = action.payload
     },
+    // addItem: (state, action) => {
+
+    // }
   },
 })
 

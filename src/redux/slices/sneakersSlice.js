@@ -3,7 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchSneakers = createAsyncThunk(
   'sneakers/fetchSneakersStatus',
-  async ({ brandFilter, shoesTypeFilter, sexFilter }) => {
+  async (params) => {
+    const { brandFilter, shoesTypeFilter, sexFilter } = params
     const response = await axios.get(
       `https://63fcd20c859df29986c57847.mockapi.io/sneakerpal?${brandFilter}${shoesTypeFilter}${sexFilter}`
     )
@@ -40,5 +41,6 @@ export const sneakersSlice = createSlice({
 })
 
 export const { setSneakers } = sneakersSlice.actions
+// export const {actions, reducer} = sneakerSlice
 
 export default sneakersSlice.reducer
