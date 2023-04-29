@@ -47,12 +47,15 @@ function App() {
   let isMounted = useRef(false)
 
   useEffect(() => {
+    if (cartData === undefined || cartData === '' || cartData === null) {
+      dispatch(setCartData([]))
+    }
     if (isMounted.current) {
       const json = JSON.stringify(cartData)
       localStorage.setItem('cartItems', json)
     }
     isMounted.current = true
-  }, [cartData])
+  }, [cartData, dispatch])
 
   const onChangeBrand = (brandData) => {
     brands.forEach((brandItem) => {
