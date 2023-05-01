@@ -3,56 +3,53 @@ import React, { useEffect, useCallback } from 'react'
 import { useLoaderData } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setIsInCart } from '../redux/slices/productSlice'
 import { setAlertsList } from '../redux/slices/alertsSlice'
-import { setCartData } from '../redux/slices/cartSlice'
+import {
+  setIsInCart,
+  setCartData,
+  setSneakerQuantity,
+  addItem,
+  deleteItem,
+  changeQuantity2,
+} from '../redux/slices/productSlice'
 
 import { scrollToTop } from '../helpers'
+import { alertObj } from '../data'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AllAlerts from '../components/Alerts/AllAlerts'
 import ProductForm from '../components/Product/ProductForm'
+
+import useFindIndexInCart from '../hooks/useFindIndexInCart'
 
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
 
   const dispatch = useDispatch()
-  const selectedSize = useSelector((state) => state.product.selectedSize)
-  const selectedColor = useSelector((state) => state.product.selectedColor)
   const alertsList = useSelector((state) => state.alerts.alertsList)
-  const cartData = useSelector((state) => state.cartData.cartData)
+  const cartData = useSelector((state) => state.product.cartData)
 
-  const alert = {
-    id: alertsList.length + 1,
-    text: '✓ Товар добавлен в корзину',
-  }
+  const alert = alertObj(alertsList)
+  const { findIndexInCart } = useFindIndexInCart(cartData)
+  const quantityOfSneaker =
+    cartData[findIndexInCart(sneakerDTO.data.id)]?.quantity
+
+  useEffect(() => {
+    dispatch(setSneakerQuantity(quantityOfSneaker))
+  }, [quantityOfSneaker, dispatch])
+
+  useEffect(() => {
+    if (findIndexInCart(sneakerDTO.data.id) >= 0) {
+      dispatch(setIsInCart(true))
+    } else {
+      dispatch(setIsInCart(false))
+    }
+  }, [findIndexInCart, dispatch, sneakerDTO])
 
   useEffect(() => {
     scrollToTop()
   }, [])
 
   //*---- Взаимодействие с корзиной
-  // Если товара не было, то добавляем товар через addItem
-  const addItem = (sneaker) => {
-    const itemToAdd = {
-      ...sneaker,
-      quantity: 1,
-      size: selectedSize,
-      color: selectedColor,
-    }
-    dispatch(setCartData([...cartData, itemToAdd]))
-  }
-
-  //Проверка, есть ли товар в корзине, ищем его индекс
-  const isExistInCart = (id) => {
-    const findIndex = cartData.findIndex(
-      (item) =>
-        item.id === id &&
-        item.color === selectedColor &&
-        item.size === selectedSize
-    )
-    return findIndex
-  }
-
   // Через индекс находим нужный товар и меняем его количество
   const changeQuantity = (event, itemIndex) => {
     if (event.target.innerText === '+') {
@@ -77,25 +74,16 @@ function ProductPage() {
   }
 
   const addToCart = (sneaker) => {
-    const sneakerIndex = isExistInCart(sneaker.id)
+    const sneakerIndex = findIndexInCart(sneaker.id)
     if (sneakerIndex >= 0) {
       dispatch(setCartData(changeQuantity(sneakerIndex)))
     } else {
-      addItem(sneaker)
-    }
-  }
-
-  const deleteItem = (id) => {
-    if (itemQuantity(id) === 1) {
-      const newCartData = [...cartData].filter((item) => item.id !== id)
-      dispatch(setCartData(newCartData))
-    } else {
-      return
+      dispatch(addItem(sneaker))
     }
   }
 
   const onCountButtons = (event, sneakerId) => {
-    const sneakerIndex = isExistInCart(sneakerId)
+    const sneakerIndex = findIndexInCart(sneakerId)
     if (sneakerIndex >= 0) {
       dispatch(setCartData(changeQuantity(event, sneakerIndex)))
     } else {
@@ -111,7 +99,7 @@ function ProductPage() {
       const alertsListFiltred = alertsList.filter((item) => item.id !== id)
       dispatch(setAlertsList(alertsListFiltred))
     },
-    [alertsList]
+    [alertsList, dispatch]
   )
 
   useEffect(() => {
@@ -128,21 +116,6 @@ function ProductPage() {
 
   //---- Конец логики алертов
 
-  useEffect(() => {
-    if (isExistInCart(sneakerDTO.data.id) >= 0) {
-      dispatch(setIsInCart(true))
-    } else {
-      dispatch(setIsInCart(false))
-    }
-  }, [isExistInCart])
-
-  const itemQuantity = (id) => {
-    const sneakerIndex = isExistInCart(id)
-    if (sneakerIndex >= 0) {
-      return cartData[sneakerIndex].quantity
-    }
-  }
-
   return (
     <div className='product'>
       <div className='product__container'>
@@ -158,11 +131,16 @@ function ProductPage() {
           <ProductForm
             alert={alert}
             addToCart={addToCart}
-            changeQuantity={changeQuantity}
             onCountButtons={onCountButtons}
-            itemQuantity={itemQuantity}
             deleteItem={deleteItem}
           />
+          <button
+            onClick={(e) =>
+              dispatch(changeQuantity2(e.target.innerText, 'hello'))
+            }
+          >
+            +
+          </button>
         </div>
         <article className='product__description'>
           <h3 className='description__title'>Описание</h3>

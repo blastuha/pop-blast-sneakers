@@ -1,12 +1,8 @@
 import React from 'react'
 import Category from './Category'
+import { categoryList } from '../../data'
 
-function Categories({
-  categoryList,
-  onChangeBrand,
-  onChangeShoesType,
-  onChangeSex,
-}) {
+function Categories({ onChangeBrand, onChangeShoesType, onChangeSex }) {
   return (
     <div className='categories'>
       <div className='categories__container'>

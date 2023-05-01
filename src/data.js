@@ -228,6 +228,21 @@ const types = ['Кроссовки', 'Тапочки']
 
 const sexArray = ['Мужское', 'Женское']
 
+const categoryList = [
+  { name: 'Пол', menu: sexArray },
+  { name: 'Тип обуви', menu: types },
+  { name: 'Бренды', menu: brands },
+]
+
+const alertObj = (alertsArr) => {
+  return {
+    id: alertsArr.length + 1,
+    text: '✓ Товар добавлен в корзину',
+  }
+}
+
 export { brands }
 export { types }
 export { sexArray }
+export { alertObj }
+export { categoryList }

@@ -9,7 +9,7 @@ import CartItem from '../components/Cart/CartItem'
 import CartCounter from '../components/Cart/CartCounter'
 
 function Cart() {
-  const cartData = useSelector((state) => state.cartData.cartData)
+  const cartData = useSelector((state) => state.product.cartData)
 
   useEffect(() => {
     scrollToTop()

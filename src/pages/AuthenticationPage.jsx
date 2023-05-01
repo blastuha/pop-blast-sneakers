@@ -23,10 +23,10 @@ const AuthenticationPage = () => {
   }
 
   return (
-    <div class='person'>
-      <div class='person__container'>
-        <div class='person__header'>
-          <span class='person-title'>{dynamicTitle()}</span>
+    <div className='person'>
+      <div className='person__container'>
+        <div className='person__header'>
+          <span className='person-title'>{dynamicTitle()}</span>
         </div>
         <Outlet />
       </div>

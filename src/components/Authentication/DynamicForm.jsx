@@ -4,7 +4,7 @@ import styles from '../../scss/modules/dynamicform.module.scss'
 const DynamicForm = ({ handleSubmit, children }) => {
   return (
     <form
-      class={styles.root}
+      className={styles.root}
       onSubmit={handleSubmit}
     >
       {children}

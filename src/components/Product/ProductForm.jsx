@@ -5,13 +5,7 @@ import { useLoaderData } from 'react-router-dom'
 import Selects from './Selects'
 import ProductFormButtons from './ProductFormButtons'
 
-const ProductForm = ({
-  alert,
-  addToCart,
-  onCountButtons,
-  itemQuantity,
-  deleteItem,
-}) => {
+const ProductForm = ({ alert, addToCart, onCountButtons }) => {
   const sneakerDTO = useLoaderData()
 
   const handleSubmit = (e) => {
@@ -35,8 +29,6 @@ const ProductForm = ({
           alert={alert}
           addToCart={addToCart}
           onCountButtons={onCountButtons}
-          itemQuantity={itemQuantity}
-          deleteItem={deleteItem}
         />
       </div>
     </form>

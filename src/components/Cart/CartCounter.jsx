@@ -3,7 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 function CartCounter() {
-  const cartData = useSelector((state) => state.cartData.cartData)
+  const cartData = useSelector((state) => state.product.cartData)
 
   const totalPrice = cartData.reduce((acc, curr) => {
     let itemPrice = 0

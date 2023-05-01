@@ -3,32 +3,27 @@ import React from 'react'
 import { useLoaderData, Link } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
+import { deleteItem } from '../../redux/slices/productSlice'
 import { showCartAlert } from '../../redux/slices/alertsSlice'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 
-const ProductFormButtons = ({
-  alert,
-  addToCart,
-  onCountButtons,
-  itemQuantity,
-  deleteItem,
-}) => {
+const ProductFormButtons = ({ alert, addToCart, onCountButtons }) => {
   const sneakerDTO = useLoaderData()
   const sneakerId = sneakerDTO.data.id
-  const sneakerQuantity = itemQuantity(sneakerId)
 
   const isInCart = useSelector((state) => state.product.isInCart)
+  const sneakerQuantity = useSelector((state) => state.product.sneakerQuantity)
   const dispatch = useDispatch()
 
   const createCartAlert = (item) => dispatch(showCartAlert(item))
 
   return (
-    <div class='form__buttons'>
+    <div className='form__buttons'>
       {!isInCart ? (
         <button
           type='button'
-          class='form-btn add-to-cart'
+          className='form-btn add-to-cart'
           onClick={() => {
             addToCart(sneakerDTO.data)
             createCartAlert(alert)
@@ -39,14 +34,14 @@ const ProductFormButtons = ({
       ) : (
         <div
           type='button'
-          class='form-btn add-to-cart'
+          className='form-btn add-to-cart'
           isincart={isInCart.toString()}
         >
           <button
             className='minus-btn'
             onClick={(e) => {
               onCountButtons(e, sneakerId)
-              deleteItem(sneakerId)
+              dispatch(deleteItem(sneakerId))
             }}
           >
             -
@@ -65,9 +60,9 @@ const ProductFormButtons = ({
 
       <button
         type='button'
-        class='form-btn'
+        className='form-btn'
       >
-        <AiOutlineHeart class='heart' />
+        <AiOutlineHeart className='heart' />
       </button>
     </div>
   )

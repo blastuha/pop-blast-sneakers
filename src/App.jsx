@@ -12,13 +12,8 @@ import { fetchSneakers } from './redux/slices/sneakersSlice'
 import { brands } from './data'
 import { types } from './data'
 import { sexArray } from './data'
-import { Outlet } from 'react-router-dom'
 
-export const categoryList = [
-  { name: 'Пол', menu: sexArray },
-  { name: 'Тип обуви', menu: types },
-  { name: 'Бренды', menu: brands },
-]
+import { Outlet } from 'react-router-dom'
 
 export const appContext = React.createContext('')
 
@@ -29,8 +24,7 @@ function App() {
 
   const dispatch = useDispatch()
   const sneakers = useSelector((state) => state.sneakers.sneakers)
-  const cartData = useSelector((state) => state.cartData.cartData)
-  console.log(cartData)
+  const cartData = useSelector((state) => state.product.cartData)
 
   const getSneakers = useCallback(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
@@ -102,13 +96,10 @@ function App() {
           onChangeShoesType,
           onChangeSex,
           clearAllFilters,
-          // cartData,
-          // setCartData,
         }}
       >
         <Header />
         <Categories
-          categoryList={categoryList}
           onChangeBrand={onChangeBrand}
           onChangeShoesType={onChangeShoesType}
           onChangeSex={onChangeSex}
