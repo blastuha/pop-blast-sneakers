@@ -135,11 +135,18 @@ function ProductPage() {
             deleteItem={deleteItem}
           />
           <button
-            onClick={(e) =>
-              dispatch(changeQuantity2(e.target.innerText, 'hello'))
+            onClick={(event) =>
+              dispatch(changeQuantity2({ event: event, index: 0 }))
             }
           >
             +
+          </button>
+          <button
+            onClick={(event) =>
+              dispatch(changeQuantity2({ event: event, index: 0 }))
+            }
+          >
+            -
           </button>
         </div>
         <article className='product__description'>

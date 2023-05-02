@@ -49,21 +49,22 @@ export const productSlice = createSlice({
       }
     },
     changeQuantity2: (state, action) => {
-      console.log('action.payload', action)
-      state.counter++
-      console.log('counter', state.counter)
-      //? получается требующийся индекс нужно снова записать в стейт?
-
-      // if (action.payload.event.target.innerText === '+') {
-      //   const newCartData = state.cartData.map((item, i) => {
-      //     if (action.payload.itemIndex === i) {
-      //       return { ...item, quantity: item.quantity + 1 }
-      //     } else {
-      //       return item
-      //     }
-      //   })
-      //   state.cartData = newCartData
-      // }
+      if (action.payload.event.target.innerText === '+') {
+        const sneakerToChange = state.cartData.find(
+          (_, i) => i === action.payload.index
+        )
+        if (sneakerToChange) {
+          sneakerToChange.quantity = sneakerToChange.quantity + 1
+        }
+      } else {
+        state.cartData.map((sneaker, i) => {
+          if (i === action.payload.index && sneaker.quantity > 1) {
+            return sneaker.quantity--
+          } else {
+            return sneaker
+          }
+        })
+      }
     },
   },
 })
