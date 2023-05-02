@@ -7,7 +7,7 @@ const initialState = {
   isInCart: false,
   cartData: getStorageItems() || [],
   sneakerQuantity: null,
-  counter: 0,
+  sneakerIndex: null,
 }
 
 export const productSlice = createSlice({
@@ -23,15 +23,16 @@ export const productSlice = createSlice({
     },
     // в корзине ли товар с конкретным цветом и размером?
     setIsInCart: (state, action) => {
+      console.log('action.payload', action.payload)
       state.isInCart = action.payload
-    },
-    setCartData: (state, action) => {
-      state.cartData = action.payload
     },
     setSneakerQuantity: (state, action) => {
       state.sneakerQuantity = action.payload
     },
     // взаимодействие с корзиной
+    setCartData: (state, action) => {
+      state.cartData = action.payload
+    },
     addItem: (state, action) => {
       const itemToAdd = {
         ...action.payload,
@@ -48,23 +49,30 @@ export const productSlice = createSlice({
         )
       }
     },
-    changeQuantity2: (state, action) => {
-      if (action.payload.event.target.innerText === '+') {
-        const sneakerToChange = state.cartData.find(
-          (_, i) => i === action.payload.index
-        )
-        if (sneakerToChange) {
-          sneakerToChange.quantity = sneakerToChange.quantity + 1
-        }
-      } else {
-        state.cartData.map((sneaker, i) => {
-          if (i === action.payload.index && sneaker.quantity > 1) {
-            return sneaker.quantity--
-          } else {
-            return sneaker
-          }
-        })
+    getSneakerIndex: (state, action) => {
+      state.sneakerIndex = state.cartData.findIndex(
+        (item) =>
+          item.id === action.payload &&
+          item.color === state.selectedColor &&
+          item.size === state.selectedSize
+      )
+    },
+    increaseQunatity: (state, action) => {
+      const sneakerToChange = state.cartData.find(
+        (_, i) => i === action.payload
+      )
+      if (sneakerToChange) {
+        sneakerToChange.quantity = sneakerToChange.quantity + 1
       }
+    },
+    decreaseQunaitty: (state, action) => {
+      state.cartData.map((sneaker, i) => {
+        if (i === action.payload && sneaker.quantity > 1) {
+          return sneaker.quantity--
+        } else {
+          return sneaker
+        }
+      })
     },
   },
 })
@@ -77,7 +85,9 @@ export const {
   setSneakerQuantity,
   addItem,
   deleteItem,
-  changeQuantity2,
+  getSneakerIndex,
+  increaseQunatity,
+  decreaseQunaitty,
 } = productSlice.actions
 
 export default productSlice.reducer

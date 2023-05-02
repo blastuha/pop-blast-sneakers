@@ -10,7 +10,9 @@ import {
   setSneakerQuantity,
   addItem,
   deleteItem,
-  changeQuantity2,
+  increaseQunatity,
+  decreaseQunaitty,
+  getSneakerIndex,
 } from '../redux/slices/productSlice'
 
 import { scrollToTop } from '../helpers'
@@ -19,31 +21,29 @@ import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AllAlerts from '../components/Alerts/AllAlerts'
 import ProductForm from '../components/Product/ProductForm'
 
-import useFindIndexInCart from '../hooks/useFindIndexInCart'
-
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
 
   const dispatch = useDispatch()
   const alertsList = useSelector((state) => state.alerts.alertsList)
   const cartData = useSelector((state) => state.product.cartData)
+  const sneakerIndex = useSelector((state) => state.product.sneakerIndex)
 
   const alert = alertObj(alertsList)
-  const { findIndexInCart } = useFindIndexInCart(cartData)
-  const quantityOfSneaker =
-    cartData[findIndexInCart(sneakerDTO.data.id)]?.quantity
+  const quantityOfSneaker = cartData[sneakerIndex]?.quantity
 
   useEffect(() => {
     dispatch(setSneakerQuantity(quantityOfSneaker))
   }, [quantityOfSneaker, dispatch])
 
   useEffect(() => {
-    if (findIndexInCart(sneakerDTO.data.id) >= 0) {
+    dispatch(getSneakerIndex(sneakerDTO.data.id))
+    if (sneakerIndex >= 0) {
       dispatch(setIsInCart(true))
     } else {
       dispatch(setIsInCart(false))
     }
-  }, [findIndexInCart, dispatch, sneakerDTO])
+  }, [dispatch, sneakerDTO, sneakerIndex])
 
   useEffect(() => {
     scrollToTop()
@@ -74,7 +74,8 @@ function ProductPage() {
   }
 
   const addToCart = (sneaker) => {
-    const sneakerIndex = findIndexInCart(sneaker.id)
+    // const sneakerIndex = findIndexInCart(sneaker.id)
+    console.log(sneakerIndex, 'addToCart')
     if (sneakerIndex >= 0) {
       dispatch(setCartData(changeQuantity(sneakerIndex)))
     } else {
@@ -83,7 +84,7 @@ function ProductPage() {
   }
 
   const onCountButtons = (event, sneakerId) => {
-    const sneakerIndex = findIndexInCart(sneakerId)
+    // const sneakerIndex = findIndexInCart(sneakerId)
     if (sneakerIndex >= 0) {
       dispatch(setCartData(changeQuantity(event, sneakerIndex)))
     } else {
@@ -134,20 +135,8 @@ function ProductPage() {
             onCountButtons={onCountButtons}
             deleteItem={deleteItem}
           />
-          <button
-            onClick={(event) =>
-              dispatch(changeQuantity2({ event: event, index: 0 }))
-            }
-          >
-            +
-          </button>
-          <button
-            onClick={(event) =>
-              dispatch(changeQuantity2({ event: event, index: 0 }))
-            }
-          >
-            -
-          </button>
+          <button onClick={() => dispatch(increaseQunatity(0))}>+</button>
+          <button onClick={() => dispatch(decreaseQunaitty(0))}>-</button>
         </div>
         <article className='product__description'>
           <h3 className='description__title'>Описание</h3>

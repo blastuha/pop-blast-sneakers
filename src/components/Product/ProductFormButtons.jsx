@@ -3,7 +3,11 @@ import React from 'react'
 import { useLoaderData, Link } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteItem } from '../../redux/slices/productSlice'
+import {
+  deleteItem,
+  increaseQunatity,
+  decreaseQunaitty,
+} from '../../redux/slices/productSlice'
 import { showCartAlert } from '../../redux/slices/alertsSlice'
 
 import { AiOutlineHeart } from 'react-icons/ai'
@@ -13,6 +17,7 @@ const ProductFormButtons = ({ alert, addToCart, onCountButtons }) => {
   const sneakerId = sneakerDTO.data.id
 
   const isInCart = useSelector((state) => state.product.isInCart)
+  console.log(isInCart)
   const sneakerQuantity = useSelector((state) => state.product.sneakerQuantity)
   const dispatch = useDispatch()
 
@@ -39,8 +44,8 @@ const ProductFormButtons = ({ alert, addToCart, onCountButtons }) => {
         >
           <button
             className='minus-btn'
-            onClick={(e) => {
-              onCountButtons(e, sneakerId)
+            onClick={() => {
+              dispatch(decreaseQunaitty(sneakerId))
               dispatch(deleteItem(sneakerId))
             }}
           >
