@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 
 //Проверка, есть ли товар в корзине с конкретным цветом и размером, ищем его индекс
 const useFindIndexInCart = (cartData) => {
-  const selectedSize = useSelector((state) => state.product.selectedSize)
-  const selectedColor = useSelector((state) => state.product.selectedColor)
+  const selectedSize = useSelector((state) => state.cart.selectedSize)
+  const selectedColor = useSelector((state) => state.cart.selectedColor)
 
   const findIndexInCart = useCallback(
     (id) => {

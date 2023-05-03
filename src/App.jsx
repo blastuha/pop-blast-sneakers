@@ -24,7 +24,7 @@ function App() {
 
   const dispatch = useDispatch()
   const sneakers = useSelector((state) => state.sneakers.sneakers)
-  const cartData = useSelector((state) => state.product.cartData)
+  const cartData = useSelector((state) => state.cart.cartData)
 
   const getSneakers = useCallback(() => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`

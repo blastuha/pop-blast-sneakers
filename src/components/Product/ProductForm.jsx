@@ -28,7 +28,6 @@ const ProductForm = ({ alert, addToCart, onCountButtons }) => {
         <ProductFormButtons
           alert={alert}
           addToCart={addToCart}
-          onCountButtons={onCountButtons}
         />
       </div>
     </form>

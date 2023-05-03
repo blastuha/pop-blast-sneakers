@@ -3,15 +3,12 @@ import React, { useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
-import {
-  setSelectedSize,
-  setSelectedColor,
-} from '../../redux/slices/productSlice'
+import { setSelectedSize, setSelectedColor } from '../../redux/slices/cartSlice'
 
 function Selects() {
   const dispatch = useDispatch()
-  const selectedSize = useSelector((state) => state.product.selectedSize)
-  const selectedColor = useSelector((state) => state.product.selectedColor)
+  const selectedSize = useSelector((state) => state.cart.selectedSize)
+  const selectedColor = useSelector((state) => state.cart.selectedColor)
 
   const sneakerDTO = useLoaderData().data
   const colors = useLoaderData().data.color

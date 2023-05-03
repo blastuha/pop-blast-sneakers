@@ -4,21 +4,22 @@ import { useLoaderData, Link } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
 import {
+  addItemToCart,
   deleteItem,
   increaseQunatity,
   decreaseQunaitty,
-} from '../../redux/slices/productSlice'
+} from '../../redux/slices/cartSlice'
 import { showCartAlert } from '../../redux/slices/alertsSlice'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 
-const ProductFormButtons = ({ alert, addToCart, onCountButtons }) => {
+const ProductFormButtons = ({ alert }) => {
   const sneakerDTO = useLoaderData()
   const sneakerId = sneakerDTO.data.id
 
-  const isInCart = useSelector((state) => state.product.isInCart)
-  console.log(isInCart)
-  const sneakerQuantity = useSelector((state) => state.product.sneakerQuantity)
+  const isInCart = useSelector((state) => state.cart.isInCart)
+  const sneakerQuantity = useSelector((state) => state.cart.sneakerQuantity)
+  const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
   const dispatch = useDispatch()
 
   const createCartAlert = (item) => dispatch(showCartAlert(item))
@@ -30,7 +31,7 @@ const ProductFormButtons = ({ alert, addToCart, onCountButtons }) => {
           type='button'
           className='form-btn add-to-cart'
           onClick={() => {
-            addToCart(sneakerDTO.data)
+            dispatch(addItemToCart(sneakerDTO.data))
             createCartAlert(alert)
           }}
         >
@@ -45,7 +46,7 @@ const ProductFormButtons = ({ alert, addToCart, onCountButtons }) => {
           <button
             className='minus-btn'
             onClick={() => {
-              dispatch(decreaseQunaitty(sneakerId))
+              dispatch(decreaseQunaitty(sneakerIndex))
               dispatch(deleteItem(sneakerId))
             }}
           >
@@ -56,7 +57,7 @@ const ProductFormButtons = ({ alert, addToCart, onCountButtons }) => {
           </div>
           <button
             className='plus-btn'
-            onClick={(e) => onCountButtons(e, sneakerId)}
+            onClick={() => dispatch(increaseQunatity(sneakerIndex))}
           >
             +
           </button>

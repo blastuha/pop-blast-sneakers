@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { AiOutlineDelete } from 'react-icons/ai'
 
-import { setCartData } from '../../redux/slices/productSlice'
+import { setCartData } from '../../redux/slices/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 function CartItem() {
-  const cartData = useSelector((state) => state.product.cartData)
+  const cartData = useSelector((state) => state.cart.cartData)
   const dispatch = useDispatch()
 
   const addQuantity = (id, index) => {

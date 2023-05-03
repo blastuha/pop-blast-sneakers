@@ -10,8 +10,8 @@ const initialState = {
   sneakerIndex: null,
 }
 
-export const productSlice = createSlice({
-  name: 'product',
+export const cartSlice = createSlice({
+  name: 'cart',
   initialState,
   reducers: {
     // установка размера / цвета
@@ -23,17 +23,22 @@ export const productSlice = createSlice({
     },
     // в корзине ли товар с конкретным цветом и размером?
     setIsInCart: (state, action) => {
-      console.log('action.payload', action.payload)
       state.isInCart = action.payload
     },
-    setSneakerQuantity: (state, action) => {
-      state.sneakerQuantity = action.payload
+    // индекс кроссовка
+    getSneakerIndex: (state, action) => {
+      state.sneakerIndex = state.cartData.findIndex(
+        (item) =>
+          item.id === action.payload &&
+          item.color === state.selectedColor &&
+          item.size === state.selectedSize
+      )
     },
     // взаимодействие с корзиной
     setCartData: (state, action) => {
       state.cartData = action.payload
     },
-    addItem: (state, action) => {
+    addItemToCart: (state, action) => {
       const itemToAdd = {
         ...action.payload,
         quantity: 1,
@@ -49,15 +54,12 @@ export const productSlice = createSlice({
         )
       }
     },
-    getSneakerIndex: (state, action) => {
-      state.sneakerIndex = state.cartData.findIndex(
-        (item) =>
-          item.id === action.payload &&
-          item.color === state.selectedColor &&
-          item.size === state.selectedSize
-      )
+    // взаимодействие с количеством товара
+    setSneakerQuantity: (state, action) => {
+      state.sneakerQuantity = action.payload
     },
     increaseQunatity: (state, action) => {
+      console.log(action.payload)
       const sneakerToChange = state.cartData.find(
         (_, i) => i === action.payload
       )
@@ -83,11 +85,12 @@ export const {
   setIsInCart,
   setCartData,
   setSneakerQuantity,
-  addItem,
+  addItemToCart,
   deleteItem,
   getSneakerIndex,
   increaseQunatity,
   decreaseQunaitty,
-} = productSlice.actions
+  addToCart2,
+} = cartSlice.actions
 
-export default productSlice.reducer
+export default cartSlice.reducer
