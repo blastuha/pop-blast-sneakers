@@ -26,7 +26,7 @@ export const cartSlice = createSlice({
       state.isInCart = action.payload
     },
     // индекс кроссовка
-    getSneakerIndex: (state, action) => {
+    setSneakerIndex: (state, action) => {
       state.sneakerIndex = state.cartData.findIndex(
         (item) =>
           item.id === action.payload &&
@@ -87,10 +87,12 @@ export const {
   setSneakerQuantity,
   addItemToCart,
   deleteItem,
-  getSneakerIndex,
+  setSneakerIndex,
   increaseQunatity,
   decreaseQunaitty,
   addToCart2,
 } = cartSlice.actions
+
+// export const { actions } = cartSlice
 
 export default cartSlice.reducer
