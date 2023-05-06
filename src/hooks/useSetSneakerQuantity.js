@@ -1,18 +1,18 @@
-// import { useEffect } from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { setSneakerQuantity } from '../redux/slices/cartSlice'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setSneakerQuantity } from '../redux/slices/cartSlice'
 
-// const useSetSneakerQuantity = () => {
-//   const cartData = useSelector((state) => state.cart.cartData)
-//   const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
-//   const quantityOfSneaker = cartData[sneakerIndex]?.quantity
-//   const dispatch = useDispatch()
+const useSetSneakerQuantity = () => {
+  const cartData = useSelector((state) => state.cart.cartData)
+  const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
+  const quantityOfSneaker = cartData[sneakerIndex]?.quantity
+  const dispatch = useDispatch()
 
-//   useEffect(() => {
-//     dispatch(setSneakerQuantity(quantityOfSneaker))
-//   }, [quantityOfSneaker, dispatch])
+  useEffect(() => {
+    dispatch(setSneakerQuantity(quantityOfSneaker))
+  }, [quantityOfSneaker, dispatch])
 
-//   return { cartData, sneakerIndex }
-// }
+  return quantityOfSneaker
+}
 
-// export default useSetSneakerQuantity
+export default useSetSneakerQuantity

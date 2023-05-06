@@ -6,10 +6,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { deleteShownAlert } from '../redux/slices/alertsSlice'
 import {
   setIsInCart,
-  // setSneakerQuantity,
   setSneakerIndex,
+  setSneakerQuantity,
 } from '../redux/slices/cartSlice'
-import useSetSneakerQuantity from '../hooks/useSetSneakerQuantity'
 
 import { scrollToTop } from '../helpers'
 import { alertObj } from '../data'
@@ -21,19 +20,18 @@ function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
 
   const dispatch = useDispatch()
+  const cartData = useSelector((state) => state.cart.cartData)
   const alertsList = useSelector((state) => state.alerts.alertsList)
-  // const cartData = useSelector((state) => state.cart.cartData)
-  // const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
+  const alert = alertObj(alertsList)
   const selectedSize = useSelector((state) => state.cart.selectedSize)
   const selectedColor = useSelector((state) => state.cart.selectedColor)
+  const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
 
-  const alert = alertObj(alertsList)
-  const { cartData, sneakerIndex, quantityOfSneaker } = useSetSneakerQuantity()
-  // const quantityOfSneaker = cartData[sneakerIndex]?.quantity
+  const quantityOfSneaker = cartData[sneakerIndex]?.quantity
 
-  // useEffect(() => {
-  //   dispatch(setSneakerQuantity(quantityOfSneaker))
-  // }, [quantityOfSneaker, dispatch])
+  useEffect(() => {
+    dispatch(setSneakerQuantity(quantityOfSneaker))
+  }, [quantityOfSneaker, dispatch])
 
   useEffect(() => {
     dispatch(setSneakerIndex(sneakerDTO.data.id))
@@ -46,9 +44,9 @@ function ProductPage() {
     dispatch,
     sneakerDTO,
     sneakerIndex,
-    cartData,
     selectedSize,
     selectedColor,
+    cartData,
   ])
 
   useEffect(() => {
