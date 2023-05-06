@@ -2,16 +2,7 @@ import React, { useEffect } from 'react'
 
 import { useLoaderData } from 'react-router-dom'
 
-import { useSelector, useDispatch } from 'react-redux'
-import { deleteShownAlert } from '../redux/slices/alertsSlice'
-import {
-  setIsInCart,
-  setSneakerIndex,
-  setSneakerQuantity,
-} from '../redux/slices/cartSlice'
-
 import { scrollToTop } from '../helpers'
-import { alertObj } from '../data'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AllAlerts from '../components/Alerts/AllAlerts'
 import ProductForm from '../components/Product/ProductForm'
@@ -19,58 +10,16 @@ import ProductForm from '../components/Product/ProductForm'
 function ProductPage() {
   const sneakerDTO = useLoaderData() // data transfer object
 
-  const dispatch = useDispatch()
-  const cartData = useSelector((state) => state.cart.cartData)
-  const alertsList = useSelector((state) => state.alerts.alertsList)
-  const alert = alertObj(alertsList)
-  const selectedSize = useSelector((state) => state.cart.selectedSize)
-  const selectedColor = useSelector((state) => state.cart.selectedColor)
-  const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
-
-  const quantityOfSneaker = cartData[sneakerIndex]?.quantity
-
-  useEffect(() => {
-    dispatch(setSneakerQuantity(quantityOfSneaker))
-  }, [quantityOfSneaker, dispatch])
-
-  useEffect(() => {
-    dispatch(setSneakerIndex(sneakerDTO.data.id))
-    if (sneakerIndex >= 0) {
-      dispatch(setIsInCart(true))
-    } else {
-      dispatch(setIsInCart(false))
-    }
-  }, [
-    dispatch,
-    sneakerDTO,
-    sneakerIndex,
-    selectedSize,
-    selectedColor,
-    cartData,
-  ])
-
   useEffect(() => {
     scrollToTop()
   }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (alertsList.length) {
-        dispatch(deleteShownAlert(alertsList[0].id))
-      }
-    }, 1000)
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, [alertsList, dispatch])
 
   return (
     <div className='product'>
       <div className='product__container'>
         <Breadcrumb sneakerDTO={sneakerDTO} />
         <div className='product__main'>
-          <AllAlerts alertsList={alertsList} />
+          <AllAlerts />
           <div className='product__photo'>
             <img
               src={sneakerDTO.data.imageUrl}

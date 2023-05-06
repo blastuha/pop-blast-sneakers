@@ -6,8 +6,8 @@ const initialState = {
   selectedColor: '',
   isInCart: false,
   cartData: getStorageItems() || [],
-  sneakerQuantity: null,
   sneakerIndex: null,
+  sneakerQuantity: null,
 }
 
 export const cartSlice = createSlice({
@@ -48,16 +48,14 @@ export const cartSlice = createSlice({
       state.cartData.push(itemToAdd)
     },
     deleteItem: (state, action) => {
-      if (state.sneakerQuantity === 1) {
+      console.log('state.sneakerQuantity', state.sneakerQuantity)
+      if (action.payload.sneakerQuantity === 1) {
         state.cartData = state.cartData.filter(
-          (item) => item.id !== action.payload
+          (item) => item.id !== action.payload.sneakerId
         )
       }
     },
     // взаимодействие с количеством товара
-    setSneakerQuantity: (state, action) => {
-      state.sneakerQuantity = action.payload
-    },
     increaseQunatity: (state, action) => {
       console.log(action.payload)
       const sneakerToChange = state.cartData.find(
@@ -84,7 +82,6 @@ export const {
   setSelectedColor,
   setIsInCart,
   setCartData,
-  setSneakerQuantity,
   addItemToCart,
   deleteItem,
   setSneakerIndex,

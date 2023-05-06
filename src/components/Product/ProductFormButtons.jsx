@@ -9,20 +9,24 @@ import {
   increaseQunatity,
   decreaseQunaitty,
 } from '../../redux/slices/cartSlice'
-import { showCartAlert } from '../../redux/slices/alertsSlice'
+import { addCartAlert } from '../../redux/slices/alertsSlice'
+import useIsSneakerInCart from '../../hooks/useIsSneakerInCart'
+import useShowAlerts from '../../hooks/useShowAlerts'
+import { alertObj } from '../../data'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 
-const ProductFormButtons = ({ alert }) => {
-  const sneakerDTO = useLoaderData()
-  const sneakerId = sneakerDTO.data.id
+const ProductFormButtons = () => {
+  const isInCart = useIsSneakerInCart()
+  const sneakerData = useLoaderData().data
+  const sneakerId = sneakerData.id
+  const alertsList = useShowAlerts()
+  const alert = alertObj(alertsList)
 
-  const isInCart = useSelector((state) => state.cart.isInCart)
-  const sneakerQuantity = useSelector((state) => state.cart.sneakerQuantity)
+  const cartData = useSelector((state) => state.cart.cartData)
   const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
+  const sneakerQuantity = cartData[sneakerIndex]?.quantity
   const dispatch = useDispatch()
-
-  const createCartAlert = (item) => dispatch(showCartAlert(item))
 
   return (
     <div className='form__buttons'>
@@ -31,8 +35,8 @@ const ProductFormButtons = ({ alert }) => {
           type='button'
           className='form-btn add-to-cart'
           onClick={() => {
-            dispatch(addItemToCart(sneakerDTO.data))
-            createCartAlert(alert)
+            dispatch(addItemToCart(sneakerData))
+            dispatch(addCartAlert(alert))
           }}
         >
           <span>В корзину</span>
@@ -47,7 +51,7 @@ const ProductFormButtons = ({ alert }) => {
             className='minus-btn'
             onClick={() => {
               dispatch(decreaseQunaitty(sneakerIndex))
-              dispatch(deleteItem(sneakerId))
+              dispatch(deleteItem({ sneakerQuantity, sneakerId }))
             }}
           >
             -
