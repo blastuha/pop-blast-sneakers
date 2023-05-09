@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-function Dropdown({
-  menu,
-  open,
+import {
   onChangeBrand,
-  onChangeOpen,
   onChangeShoesType,
   onChangeSex,
-}) {
+} from '../../redux/slices/categoriesSlice'
+import { useDispatch } from 'react-redux'
+
+function Dropdown({ menu, open, onChangeOpen }) {
+  const dispatch = useDispatch()
   return (
     <div
       className='dropdown'
@@ -24,10 +24,10 @@ function Dropdown({
               to='/'
               className='dropdown__content-item'
               onClick={() => {
-                onChangeBrand(item)
                 onChangeOpen()
-                onChangeShoesType(item)
-                onChangeSex(item)
+                dispatch(onChangeBrand(item))
+                dispatch(onChangeShoesType(item))
+                dispatch(onChangeSex(item))
               }}
             >
               {item}

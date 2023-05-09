@@ -17,8 +17,8 @@ import { alertObj } from '../../data'
 import { AiOutlineHeart } from 'react-icons/ai'
 
 const ProductFormButtons = () => {
-  const isInCart = useIsSneakerInCart()
   const sneakerData = useLoaderData().data
+  const isInCart = useIsSneakerInCart(sneakerData.id)
   const sneakerId = sneakerData.id
   const alertsList = useShowAlerts()
   const alert = alertObj(alertsList)

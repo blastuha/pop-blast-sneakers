@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { TfiClose } from 'react-icons/tfi'
-import { appContext } from '../../App'
+import { clearAllFilters } from '../../redux/slices/categoriesSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 function SectionHeader() {
-  const brand = useContext(appContext).brand
-  const shoesType = useContext(appContext).shoesType
-  const sex = useContext(appContext).sex
-  const clearAllFilters = useContext(appContext).clearAllFilters
+  const shoesType = useSelector((state) => state.categories.shoesType)
+  const sex = useSelector((state) => state.categories.sex)
+  const brand = useSelector((state) => state.categories.brand)
+  const dispatch = useDispatch()
 
   const textShowing = () => {
     if (brand) return brand
@@ -19,7 +20,7 @@ function SectionHeader() {
       <span className='section-title'>{textShowing()}</span>
       <TfiClose
         className='section-delete'
-        onClick={clearAllFilters}
+        onClick={() => dispatch(clearAllFilters())}
       />
     </div>
   ) : (

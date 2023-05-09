@@ -6,10 +6,6 @@ export const alertsSlice = createSlice({
   name: 'alertsList',
   initialState,
   reducers: {
-    // не юзается
-    // setAlertsList: (state, action) => {
-    //   state.alertsList = action.payload
-    // },
     addCartAlert: (state, action) => {
       state.alertsList.push(action.payload)
     },
@@ -21,7 +17,6 @@ export const alertsSlice = createSlice({
   },
 })
 
-export const { setAlertsList, addCartAlert, deleteShownAlert } =
-  alertsSlice.actions
+export const { addCartAlert, deleteShownAlert } = alertsSlice.actions
 
 export default alertsSlice.reducer

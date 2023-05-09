@@ -1,16 +1,18 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { appContext } from '../../App'
 import Crumb from './Crumb'
+import {
+  onChangeBrand,
+  onChangeShoesType,
+  onChangeSex,
+} from '../../redux/slices/categoriesSlice'
+import { useDispatch } from 'react-redux'
 
 const pageNames = { contacts: 'Контакты', cart: 'Корзина' }
 
 const Crumbs = ({ sneakerDTO }) => {
-  const onChangeShoesType = useContext(appContext).onChangeShoesType
-  const onChangeBrand = useContext(appContext).onChangeBrand
-  const onChangeSex = useContext(appContext).onChangeSex
-
+  const dispatch = useDispatch()
   const location = useLocation()
 
   return location.pathname
@@ -32,15 +34,15 @@ const Crumbs = ({ sneakerDTO }) => {
               key={i}
             >
               <Crumb
-                categoryChanger={onChangeSex}
+                categoryChanger={dispatch(onChangeSex)}
                 category={sneakerDTO.data.sex}
               />
               <Crumb
-                categoryChanger={onChangeShoesType}
+                categoryChanger={dispatch(onChangeShoesType)}
                 category={sneakerDTO.data.category}
               />
               <Crumb
-                categoryChanger={onChangeBrand}
+                categoryChanger={dispatch(onChangeBrand)}
                 category={sneakerDTO.data.brand}
               />
             </div>

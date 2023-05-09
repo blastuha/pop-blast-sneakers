@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { scrollToTop } from '../helpers'
+import { scrollToTop } from '../utils'
 
 import { useSelector } from 'react-redux'
 

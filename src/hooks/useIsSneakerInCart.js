@@ -1,10 +1,8 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setSneakerIndex, setIsInCart } from '../redux/slices/cartSlice'
-import { useLoaderData } from 'react-router-dom'
 
-const useIsSneakerInCart = () => {
-  const sneakerDTO = useLoaderData()
+const useIsSneakerInCart = (sneakerId) => {
   const dispatch = useDispatch()
   const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
   const selectedSize = useSelector((state) => state.cart.selectedSize)
@@ -13,20 +11,13 @@ const useIsSneakerInCart = () => {
   const isInCart = useSelector((state) => state.cart.isInCart)
 
   useEffect(() => {
-    dispatch(setSneakerIndex(sneakerDTO.data.id))
+    dispatch(setSneakerIndex(sneakerId))
     if (sneakerIndex >= 0) {
       dispatch(setIsInCart(true))
     } else {
       dispatch(setIsInCart(false))
     }
-  }, [
-    dispatch,
-    sneakerDTO,
-    sneakerIndex,
-    selectedSize,
-    selectedColor,
-    cartData,
-  ])
+  }, [dispatch, sneakerIndex, selectedSize, selectedColor, cartData, sneakerId])
 
   return isInCart
 }

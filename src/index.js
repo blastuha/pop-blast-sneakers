@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { fetchProduct } from './helpers'
+import { fetchProduct } from './services/fetchProduct'
 
 import { store } from './redux/store/store'
 import { Provider } from 'react-redux'

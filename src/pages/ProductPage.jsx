@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { useLoaderData } from 'react-router-dom'
 
-import { scrollToTop } from '../helpers'
+import { scrollToTop } from '../utils'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AllAlerts from '../components/Alerts/AllAlerts'
 import ProductForm from '../components/Product/ProductForm'

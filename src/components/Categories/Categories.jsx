@@ -2,7 +2,7 @@ import React from 'react'
 import Category from './Category'
 import { categoryList } from '../../data'
 
-function Categories({ onChangeBrand, onChangeShoesType, onChangeSex }) {
+function Categories() {
   return (
     <div className='categories'>
       <div className='categories__container'>
@@ -12,9 +12,6 @@ function Categories({ onChangeBrand, onChangeShoesType, onChangeSex }) {
               key={i}
               name={category.name}
               menu={category.menu}
-              onChangeBrand={onChangeBrand}
-              onChangeShoesType={onChangeShoesType}
-              onChangeSex={onChangeSex}
             />
           )
         })}

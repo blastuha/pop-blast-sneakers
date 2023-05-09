@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { appContext } from '../App'
+import { useSelector } from 'react-redux'
 
 function Sneakers() {
-  const sneakers = useContext(appContext).sneakers
+  const sneakers = useSelector((state) => state.sneakers.sneakers)
 
   return sneakers.map((sneaker) => (
     <div
