@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import getStorageItems from '../../localStorage/cartLocal'
+import getStorageItems from '../../../utils/getStorageItems'
 
 const initialState = {
   selectedSize: '',

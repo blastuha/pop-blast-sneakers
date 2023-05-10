@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { AiOutlineDelete } from 'react-icons/ai'
 
-import { setCartData } from '../../redux/slices/cartSlice'
+import { setCartData } from '../../redux/slices/cart/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 function CartItem() {

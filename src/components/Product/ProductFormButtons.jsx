@@ -8,7 +8,7 @@ import {
   deleteItem,
   increaseQunatity,
   decreaseQunaitty,
-} from '../../redux/slices/cartSlice'
+} from '../../redux/slices/cart/cartSlice'
 import { addCartAlert } from '../../redux/slices/alertsSlice'
 import useIsSneakerInCart from '../../hooks/useIsSneakerInCart'
 import useShowAlerts from '../../hooks/useShowAlerts'

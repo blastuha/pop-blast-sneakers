@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 
-import { scrollToTop } from '../utils'
-
 import { useSelector } from 'react-redux'
 
+import { scrollToTop } from '../utils'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import CartItem from '../components/Cart/CartItem'
 import CartCounter from '../components/Cart/CartCounter'

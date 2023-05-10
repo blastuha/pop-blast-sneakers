@@ -1,6 +1,7 @@
 import './App.scss'
 
 import React, { useEffect, useRef, useCallback } from 'react'
+import { Outlet } from 'react-router-dom'
 
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
@@ -9,8 +10,6 @@ import Categories from './components/Categories/Categories'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchSneakers } from './redux/slices/sneakersSlice'
 
-import { Outlet } from 'react-router-dom'
-
 function App() {
   const cartData = useSelector((state) => state.cart.cartData)
   const shoesType = useSelector((state) => state.categories.shoesType)
@@ -18,7 +17,7 @@ function App() {
   const brand = useSelector((state) => state.categories.brand)
   const dispatch = useDispatch()
 
-  const getSneakers = useCallback(() => {
+  const getSneakers = useCallback(async () => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
     const shoesTypeFilter = `${shoesType ? `&filter=${shoesType}` : ''}`
     const sexFilter = `${sex ? `&filter=${sex}` : ''}`
