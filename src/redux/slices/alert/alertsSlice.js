@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = { alertsList: [] }
 
 export const alertsSlice = createSlice({
-  name: 'alertsList',
+  name: 'alerts',
   initialState,
   reducers: {
     addCartAlert: (state, action) => {

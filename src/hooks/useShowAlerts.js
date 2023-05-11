@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteShownAlert } from '../redux/slices/alertsSlice'
+import { deleteShownAlert } from '../redux/slices/alert/alertsSlice'
+import { alertsStates } from '../redux/slices/alert/selectors'
 
 const useShowAlerts = () => {
   const dispatch = useDispatch()
-  const alertsList = useSelector((state) => state.alerts.alertsList)
+  const { alertsList } = useSelector(alertsStates)
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -9,24 +9,23 @@ import {
   increaseQunatity,
   decreaseQunaitty,
 } from '../../redux/slices/cart/cartSlice'
-import { addCartAlert } from '../../redux/slices/alertsSlice'
+import { addCartAlert } from '../../redux/slices/alert/alertsSlice'
 import useIsSneakerInCart from '../../hooks/useIsSneakerInCart'
 import useShowAlerts from '../../hooks/useShowAlerts'
 import { alertObj } from '../../data'
+import { allCartStates } from '../../redux/slices/cart/selectors'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 
 const ProductFormButtons = () => {
   const sneakerData = useLoaderData().data
   const isInCart = useIsSneakerInCart(sneakerData.id)
-  const sneakerId = sneakerData.id
   const alertsList = useShowAlerts()
   const alert = alertObj(alertsList)
-
-  const cartData = useSelector((state) => state.cart.cartData)
-  const sneakerIndex = useSelector((state) => state.cart.sneakerIndex)
-  const sneakerQuantity = cartData[sneakerIndex]?.quantity
+  const sneakerId = sneakerData.id
   const dispatch = useDispatch()
+  const { cartData, sneakerIndex } = useSelector(allCartStates)
+  const sneakerQuantity = cartData[sneakerIndex]?.quantity
 
   return (
     <div className='form__buttons'>
