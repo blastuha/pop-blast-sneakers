@@ -2,18 +2,13 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 import Crumb from './Crumb'
-import {
-  onChangeBrand,
-  onChangeShoesType,
-  onChangeSex,
-} from '../../redux/slices/categoriesSlice'
-import { useDispatch } from 'react-redux'
+import useActions from '../../hooks/useActions'
 
 const pageNames = { contacts: 'Контакты', cart: 'Корзина' }
 
 const Crumbs = ({ sneakerDTO }) => {
-  const dispatch = useDispatch()
   const location = useLocation()
+  const { onChangeSex, onChangeShoesType, onChangeBrand } = useActions()
 
   return location.pathname
     .split('/')
@@ -34,15 +29,15 @@ const Crumbs = ({ sneakerDTO }) => {
               key={i}
             >
               <Crumb
-                categoryChanger={dispatch(onChangeSex)}
+                categoryChanger={onChangeSex}
                 category={sneakerDTO.data.sex}
               />
               <Crumb
-                categoryChanger={dispatch(onChangeShoesType)}
+                categoryChanger={onChangeShoesType}
                 category={sneakerDTO.data.category}
               />
               <Crumb
-                categoryChanger={dispatch(onChangeBrand)}
+                categoryChanger={onChangeBrand}
                 category={sneakerDTO.data.brand}
               />
             </div>

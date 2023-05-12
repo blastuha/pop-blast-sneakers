@@ -1,14 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {
-  onChangeBrand,
-  onChangeShoesType,
-  onChangeSex,
-} from '../../redux/slices/categoriesSlice'
-import { useDispatch } from 'react-redux'
+import useActions from '../../hooks/useActions'
 
 function Dropdown({ menu, open, onChangeOpen }) {
-  const dispatch = useDispatch()
+  const { onChangeBrand, onChangeShoesType, onChangeSex } = useActions()
   return (
     <div
       className='dropdown'
@@ -25,9 +20,9 @@ function Dropdown({ menu, open, onChangeOpen }) {
               className='dropdown__content-item'
               onClick={() => {
                 onChangeOpen()
-                dispatch(onChangeBrand(item))
-                dispatch(onChangeShoesType(item))
-                dispatch(onChangeSex(item))
+                onChangeBrand(item)
+                onChangeShoesType(item)
+                onChangeSex(item)
               }}
             >
               {item}

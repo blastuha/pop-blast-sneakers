@@ -7,23 +7,22 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Categories from './components/Categories/Categories'
 
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchSneakers } from './redux/slices/sneakersSlice'
+import { useSelector } from 'react-redux'
+import { categories } from './redux/slices/categories/selectors'
+import { cart } from './redux/slices/cart/selectors'
+import useActions from './hooks/useActions'
 
 function App() {
-  const cartData = useSelector((state) => state.cart.cartData)
-  const shoesType = useSelector((state) => state.categories.shoesType)
-  const sex = useSelector((state) => state.categories.sex)
-  const brand = useSelector((state) => state.categories.brand)
-  const dispatch = useDispatch()
+  const { fetchSneakers } = useActions()
+  const { shoesType, sex, brand, cartData } = useSelector(categories, cart)
 
   const getSneakers = useCallback(async () => {
     const brandFilter = `${brand ? `&title=${brand}` : ''}`
     const shoesTypeFilter = `${shoesType ? `&filter=${shoesType}` : ''}`
     const sexFilter = `${sex ? `&filter=${sex}` : ''}`
 
-    dispatch(fetchSneakers({ brandFilter, shoesTypeFilter, sexFilter }))
-  }, [brand, shoesType, sex, dispatch])
+    fetchSneakers({ brandFilter, shoesTypeFilter, sexFilter })
+  }, [brand, shoesType, sex, fetchSneakers])
 
   useEffect(() => {
     getSneakers()
@@ -37,7 +36,7 @@ function App() {
       localStorage.setItem('cartItems', json)
     }
     isMounted.current = true
-  }, [cartData, dispatch])
+  }, [cartData])
 
   return (
     <div className='wrapper'>

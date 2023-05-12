@@ -1,22 +1,29 @@
 import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setSneakerIndex } from '../redux/slices/cart/cartSlice'
-import { allCartStates } from '../redux/slices/cart/selectors'
+import { useSelector } from 'react-redux'
+import { cart } from '../redux/slices/cart/selectors'
+import useActions from './useActions'
 
 const useIsSneakerInCart = (sneakerId) => {
   const [isInCart, setIsInCart] = useState(false)
-  const dispatch = useDispatch()
   const { selectedColor, selectedSize, cartData, sneakerIndex } =
-    useSelector(allCartStates)
+    useSelector(cart)
+  const { setSneakerIndex } = useActions()
 
   useEffect(() => {
-    dispatch(setSneakerIndex(sneakerId))
+    setSneakerIndex(sneakerId)
     if (sneakerIndex >= 0) {
       setIsInCart(true)
     } else {
       setIsInCart(false)
     }
-  }, [dispatch, sneakerIndex, cartData, sneakerId, selectedColor, selectedSize])
+  }, [
+    sneakerIndex,
+    cartData,
+    sneakerId,
+    selectedColor,
+    selectedSize,
+    setSneakerIndex,
+  ])
 
   return isInCart
 }

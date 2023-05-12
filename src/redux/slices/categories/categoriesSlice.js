@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { brands } from '../../data'
-import { types } from '../../data'
-import { sexArray } from '../../data'
+import { brands, types, sexArray } from '../../../data'
 
 const initialState = { brand: '', shoesType: '', sex: '' }
 

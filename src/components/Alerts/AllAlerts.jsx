@@ -1,10 +1,10 @@
 import React from 'react'
 import Alert from './Alert'
 
-import useShowAlerts from '../../hooks/useShowAlerts'
+import useRemoveShownAlerts from '../../hooks/useRemoveShownAlerts'
 
 function AllAlerts() {
-  const alertsList = useShowAlerts()
+  const alertsList = useRemoveShownAlerts()
 
   return (
     <div className='alerts-modal'>

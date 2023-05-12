@@ -5,7 +5,7 @@ const initialState = {
   selectedSize: '',
   selectedColor: '',
   isInCart: false,
-  cartData: getStorageItems() || [],
+  cartData: [],
   sneakerIndex: null,
   sneakerQuantity: null,
 }
@@ -48,7 +48,6 @@ export const cartSlice = createSlice({
       state.cartData.push(itemToAdd)
     },
     deleteItem: (state, action) => {
-      console.log('state.sneakerQuantity', state.sneakerQuantity)
       if (action.payload.sneakerQuantity === 1) {
         state.cartData = state.cartData.filter(
           (item) => item.id !== action.payload.sneakerId
@@ -57,7 +56,6 @@ export const cartSlice = createSlice({
     },
     // взаимодействие с количеством товара
     increaseQunatity: (state, action) => {
-      console.log(action.payload)
       const sneakerToChange = state.cartData.find(
         (_, i) => i === action.payload
       )
@@ -89,7 +87,5 @@ export const {
   decreaseQunaitty,
   addToCart2,
 } = cartSlice.actions
-
-// export const { actions } = cartSlice
 
 export default cartSlice.reducer

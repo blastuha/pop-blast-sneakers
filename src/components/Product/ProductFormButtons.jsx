@@ -2,29 +2,29 @@ import React from 'react'
 
 import { useLoaderData, Link } from 'react-router-dom'
 
-import { useSelector, useDispatch } from 'react-redux'
-import {
-  addItemToCart,
-  deleteItem,
-  increaseQunatity,
-  decreaseQunaitty,
-} from '../../redux/slices/cart/cartSlice'
-import { addCartAlert } from '../../redux/slices/alert/alertsSlice'
+import { useSelector } from 'react-redux'
+import { cart } from '../../redux/slices/cart/selectors'
 import useIsSneakerInCart from '../../hooks/useIsSneakerInCart'
-import useShowAlerts from '../../hooks/useShowAlerts'
+import useRemoveShownAlerts from '../../hooks/useRemoveShownAlerts'
+import useActions from '../../hooks/useActions'
 import { alertObj } from '../../data'
-import { allCartStates } from '../../redux/slices/cart/selectors'
 
 import { AiOutlineHeart } from 'react-icons/ai'
 
 const ProductFormButtons = () => {
   const sneakerData = useLoaderData().data
   const isInCart = useIsSneakerInCart(sneakerData.id)
-  const alertsList = useShowAlerts()
+  const alertsList = useRemoveShownAlerts()
   const alert = alertObj(alertsList)
   const sneakerId = sneakerData.id
-  const dispatch = useDispatch()
-  const { cartData, sneakerIndex } = useSelector(allCartStates)
+  const {
+    addCartAlert,
+    addItemToCart,
+    decreaseQunaitty,
+    deleteItem,
+    increaseQunatity,
+  } = useActions()
+  const { cartData, sneakerIndex } = useSelector(cart)
   const sneakerQuantity = cartData[sneakerIndex]?.quantity
 
   return (
@@ -34,8 +34,8 @@ const ProductFormButtons = () => {
           type='button'
           className='form-btn add-to-cart'
           onClick={() => {
-            dispatch(addItemToCart(sneakerData))
-            dispatch(addCartAlert(alert))
+            addItemToCart(sneakerData)
+            addCartAlert(alert)
           }}
         >
           <span>В корзину</span>
@@ -49,8 +49,8 @@ const ProductFormButtons = () => {
           <button
             className='minus-btn'
             onClick={() => {
-              dispatch(decreaseQunaitty(sneakerIndex))
-              dispatch(deleteItem({ sneakerQuantity, sneakerId }))
+              decreaseQunaitty(sneakerIndex)
+              deleteItem({ sneakerQuantity, sneakerId })
             }}
           >
             -
@@ -60,7 +60,7 @@ const ProductFormButtons = () => {
           </div>
           <button
             className='plus-btn'
-            onClick={() => dispatch(increaseQunatity(sneakerIndex))}
+            onClick={() => increaseQunatity(sneakerIndex)}
           >
             +
           </button>
