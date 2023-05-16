@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 
 function Sneakers() {
   const sneakers = useSelector((state) => state.sneakers.sneakers)
+  console.log(sneakers)
 
   return sneakers.map((sneaker) => (
     <div

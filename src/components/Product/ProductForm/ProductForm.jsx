@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useLoaderData } from 'react-router-dom'
 
-import Selects from './Selects'
+import Selects from './Selects/Selects'
 import ProductFormButtons from './ProductFormButtons'
 
 const ProductForm = () => {

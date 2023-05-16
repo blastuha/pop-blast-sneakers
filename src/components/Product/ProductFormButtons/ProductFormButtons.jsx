@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './productFormButtons.module.scss'
 import { useLoaderData, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { cart } from '../../redux/slices/cart/selectors'
@@ -26,11 +27,11 @@ const ProductFormButtons = () => {
   const sneakerQuantity = cartData[sneakerIndex]?.quantity
 
   return (
-    <div className='form__buttons'>
+    <div className={styles.form__buttons}>
       {!isInCart ? (
         <button
           type='button'
-          className='form-btn add-to-cart'
+          className={`${styles.form__btn} ${styles.addToCart}`}
           onClick={() => {
             addItemToCart(sneakerData)
             addCartAlert(alert)
@@ -41,11 +42,11 @@ const ProductFormButtons = () => {
       ) : (
         <div
           type='button'
-          className='form-btn add-to-cart'
+          className={`${styles.form__btn} ${styles.addToCart}`}
           isincart={isInCart.toString()}
         >
           <button
-            className='minus-btn'
+            className={styles.minus__btn}
             onClick={() => {
               decreaseQunaitty(sneakerIndex)
               deleteItem({ sneakerQuantity, sneakerId })
@@ -53,11 +54,11 @@ const ProductFormButtons = () => {
           >
             -
           </button>
-          <div className='item-incart'>
+          <div className={styles.itemInCart}>
             <Link to='/cart'>В корзине {sneakerQuantity} шт.</Link>
           </div>
           <button
-            className='plus-btn'
+              className={styles.plus__btn}
             onClick={() => increaseQunatity(sneakerIndex)}
           >
             +
@@ -67,9 +68,9 @@ const ProductFormButtons = () => {
 
       <button
         type='button'
-        className='form-btn'
+        className={styles.form__btn}
       >
-        <AiOutlineHeart className='heart' />
+        <AiOutlineHeart className={styles.heart} />
       </button>
     </div>
   )
