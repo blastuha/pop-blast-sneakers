@@ -4,8 +4,8 @@ import { useLoaderData } from 'react-router-dom'
 
 import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
-import AllAlerts from '../components/Alerts/AllAlerts'
-import ProductForm from '../components/Product/ProductForm'
+import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
+import ProductForm from '../components/Product/ProductForm/ProductForm'
 
 function ProductPage() {
   const sneakerData = useLoaderData().data // data transfer object
@@ -19,7 +19,7 @@ function ProductPage() {
       <div className='product__container'>
         <Breadcrumb sneakerData={sneakerData} />
         <div className='product__main'>
-          <AllAlerts />
+          <AlertsModal />
           <div className='product__photo'>
             <img
               src={sneakerData.imageUrl}

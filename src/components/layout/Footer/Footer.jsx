@@ -1,45 +1,40 @@
 import React from 'react'
+import styles from './footer.module.scss'
 import {SlSocialInstagram} from 'react-icons/sl'
 import {SlSocialGithub} from 'react-icons/sl'
 
 function Footer() {
     return (
-        <div className='footer'>
-            <div className='footer__container'>
-                <h1 className='footer__logo'>POP BLAST SNEAKERS</h1>
-                <div className='footer__column'>
-                    <ul className='footer__column-links'>
+        <div className={styles.footer}>
+            <div className={styles.footer__container}>
+                <h1 className={styles.footer__logo}>POP BLAST SNEAKERS</h1>
+                <div className={styles.footer__column}>
+                    <ul>
                         <a
                             href='/'
-                            className='footer__column-links__link'
                         >
                             Доставка и оплата
                         </a>
                         <a
                             href='/'
-                            className='footer__column-links__link'
                         >
                             Возврат и обмен
                         </a>
                         <a
                             href='/'
-                            className='footer__column-links__link'
                         >
                             О магазине
                         </a>
                     </ul>
-                    <div className='footer__column-contacts'>
-                        <h4 className='footer__column-contacts__cont'>Контакты:</h4>
-                        <span className='footer__column-contacts__item'>
-              Номер: +7-921-777-77-77
-            </span>
-                        <span className='footer__column-contacts__item'>
-              shevnin.boris2@yandex.ru
-            </span>
-                        <div className='footer__column-contacts__item'>
-                            <SlSocialInstagram className='footer__column-contacts__item-icon'/>
-                            <SlSocialGithub className='footer__column-contacts__item-icon'/>
-                        </div>
+                    <div className={styles.footer__contacts}>
+                        <h4>Контакты:</h4>
+                        <span>
+              Номер: +7-921-777-77-77</span>
+                        <span>
+              shevnin.boris2@yandex.ru</span>
+                        <SlSocialInstagram className={styles.footer__contacts__icon}/>
+                        <SlSocialGithub className={styles.footer__contacts__icon}/>
+
                     </div>
                 </div>
             </div>

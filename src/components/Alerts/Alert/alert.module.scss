@@ -1,4 +1,4 @@
-.root {
+.alert {
   font-family: Jura;
   line-height: 1.5rem;
   color: #333333;
@@ -15,7 +15,7 @@
   animation-duration: 1s;
 }
 
-@keyframes root {
+@keyframes alert {
   0% {
     transform: translateY(-10px);
   }

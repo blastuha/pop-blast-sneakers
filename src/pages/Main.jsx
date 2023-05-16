@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { scrollToTop } from '../utils/scroll-to-top'
-import Sneakers from '../components/Sneakers'
+import Sneakers from '../components/Sneakers/Sneakers'
 import SectionHeader from '../components/Header/SectionHeader'
 
 function Main() {

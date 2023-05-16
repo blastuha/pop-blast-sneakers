@@ -2,12 +2,12 @@ import React from 'react'
 import styles from './productFormButtons.module.scss'
 import { useLoaderData, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { cart } from '../../redux/slices/cart/selectors'
+import { cart } from '../../../redux/slices/cart/selectors'
 
-import useIsSneakerInCart from '../../hooks/useIsSneakerInCart'
-import useRemoveShownAlerts from '../../hooks/useRemoveShownAlerts'
-import useActions from '../../hooks/useActions'
-import { alertObj } from '../../data'
+import useIsSneakerInCart from '../../../hooks/useIsSneakerInCart'
+import useRemoveShownAlerts from '../../../hooks/useRemoveShownAlerts'
+import useActions from '../../../hooks/useActions'
+import { alertObj } from '../../../data'
 import { AiOutlineHeart } from 'react-icons/ai'
 
 const ProductFormButtons = () => {

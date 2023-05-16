@@ -1,4 +1,4 @@
-.text-field {
+.textField {
   display: flex;
   flex-direction: column;
   font-family: Jura;
@@ -40,13 +40,13 @@
       border: 1px solid rgb(209, 0, 0);
     }
 
-    &:invalid[focused='true'] ~ .input-error {
+    &:invalid[focused='true'] ~ .inputError {
       display: block;
     }
   }
 }
 
-.input-error {
+.inputError {
   color: rgb(209, 0, 0);
   display: none;
 }

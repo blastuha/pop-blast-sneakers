@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
+import styles from './selects.module.scss'
 
 import { useLoaderData } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
-import { cart } from '../../redux/slices/cart/selectors'
-import useActions from '../../hooks/useActions'
+import { cart } from '../../../redux/slices/cart/selectors'
+import useActions from '../../../hooks/useActions'
 
 function Selects() {
   const { selectedColor, selectedSize } = useSelector(cart)
@@ -20,9 +21,9 @@ function Selects() {
   }, [sneakerDTO.sizes, sneakerDTO.color, setSelectedSize, setSelectedColor])
 
   return (
-    <div className='selects'>
+    <div className={styles.selects}>
       {colors && (
-        <div className='select-item'>
+        <div className={styles.selectItem}>
           <label>Цвет</label>
           <select
             name='color'
@@ -37,7 +38,7 @@ function Selects() {
         </div>
       )}
       {sizes && (
-        <div className='select-item'>
+          <div className={styles.selectItem}>
           <label>Размер</label>
           <select
             name='size'

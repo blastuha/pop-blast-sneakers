@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import styles from './textfield.module.scss'
 const TextField = ({
   label,
   name,
@@ -16,7 +16,7 @@ const TextField = ({
   }
 
   return (
-    <div className='text-field'>
+    <div className={styles.textField}>
       <label htmlFor={name}>{label}</label>
       <input
         name={name}
@@ -26,7 +26,7 @@ const TextField = ({
         focused={focused.toString()}
         onBlur={blurHandler ? blurHandler : handleFocus}
       />
-      <span className='input-error'>{error}</span>
+      <span className={styles.inputError}>{error}</span>
     </div>
   )
 }

@@ -2,8 +2,8 @@ import React from 'react'
 
 import { useLoaderData } from 'react-router-dom'
 
-import Selects from './Selects/Selects'
-import ProductFormButtons from './ProductFormButtons'
+import Selects from '../Selects/Selects'
+import ProductFormButtons from '../ProductFormButtons/ProductFormButtons'
 
 const ProductForm = () => {
   const sneakerData = useLoaderData().data

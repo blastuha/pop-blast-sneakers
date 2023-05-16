@@ -247,4 +247,12 @@ const authTitles = [
   { path: '/auth/registration', title: 'Регистрация' },
 ]
 
-export { brands, types, sexArray, alertObj, categoryList, authTitles }
+const headerMenu = [
+  { name: 'Главная', link: '/' },
+  { name: 'Контакты', link: '/contacts' },
+  { name: 'Доставка и оплата', link: '/delivery' },
+  { name: 'Возврат и обмен', link: '/return' },
+  { name: 'О нас', link: '/about' },
+]
+
+export { brands, types, sexArray, alertObj, categoryList, authTitles, headerMenu }

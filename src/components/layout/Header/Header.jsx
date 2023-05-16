@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import styles from './header.module.scss'
 import { Link } from 'react-router-dom'
 
 import { CiSearch } from 'react-icons/ci'
@@ -6,19 +7,11 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { FaShoppingCart } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
 
-import Cutlist from '../Header/Cutlist'
-
-const headerMenu = [
-  { name: 'Главная', link: '/' },
-  { name: 'Контакты', link: '/contacts' },
-  { name: 'Доставка и оплата', link: '/delivery' },
-  { name: 'Возврат и обмен', link: '/return' },
-  { name: 'О нас', link: '/about' },
-]
+import Cutlist from '../../Header/Cutlist'
+import {headerMenu} from "../../../data";
 
 function Header() {
   const [cutlistOpen, setCutlistOpen] = useState(false)
-
   const cutlistRef = useRef()
 
   useEffect(() => {
@@ -38,10 +31,10 @@ function Header() {
   }
 
   return (
-    <div className='header'>
-      <div className='header__container'>
-        <div className='header__menu'>
-          <div className='header__menu-left'>
+    <div className={styles.header}>
+      <div className={styles.header__container}>
+        <div className={styles.header__menu}>
+          <div className={styles.header__menu__left}>
             {headerMenu
               .filter((item, i) => i < 2)
               .map((item, i) => {
@@ -49,65 +42,64 @@ function Header() {
                   <Link
                     key={i}
                     to={item.link}
-                    className='header__menu-item'
+                    className={styles.header__menu__item}
                   >
-                    <div className='header__menu-item-text'>{item.name}</div>
+                    <div className={styles.header__menu__item__text}>{item.name}</div>
                   </Link>
                 )
               })}
-            <div className='header__menu-item'>
+            <div className={styles.header__menu__item}>
               <div
-                className='header__menu-item-text'
+                className={styles.header__menu__item__text}
                 ref={cutlistRef}
               >
                 <BsThreeDots
-                  className='icon'
+                  className={styles.icon}
                   onClick={handleOpen}
                 />
               </div>
               {cutlistOpen && <Cutlist headerMenu={headerMenu} />}
             </div>
           </div>
-          <div className='header__menu-right'>
-            <div className='header__menu-item'>
-              <div className='header__menu-item-text--delivery'>
+          <div className={styles.header__menu__right}>
+            <div className={styles.header__menu__item}>
+              <div className={`${styles.header__menu__item__textDelivery} ${styles.delivery}`}>
                 Доставка с 8:00 до 23:00
               </div>
             </div>
-            <div className='header__menu-item'>
+            <div className={styles.header__menu__item}>
               <a
                 href='mailto:shop@crossking.ru'
-                className='header__menu-item-text'
+                className={styles.header__menu__item__text}
               >
                 shevnin.boris2@yandex.ru
               </a>
             </div>
           </div>
         </div>
-        <div className='header__bottom'>
-          <div className='header__bottom-logo'>
-            <h1 className='header__bottom-logo-text'>POP BLAST SNEAKERS</h1>
+        <div className={styles.header__bottom}>
+          <div className={styles.header__bottom__logo}>
+            <h1>POP BLAST SNEAKERS</h1>
           </div>
-          <div className='header__bottom-search'>
+          <div className={styles.header__bottom__searchBlock}>
             <input
               type='text'
-              className='header__bottom-search-input'
               placeholder='Поиск'
             />
-            <CiSearch className='header__bottom-search-icon' />
+            <CiSearch />
           </div>
-          <div className='header__bottom-icons'>
+          <div className={styles.header__bottom__icons}>
             <Link
               to='/auth'
-              className='link'
+              className={styles.link}
             >
-              <BsFillPersonFill className='link-icon' />
+              <BsFillPersonFill className={styles.link__icon} />
             </Link>
             <Link
               to='cart'
-              className='link'
+              className={styles.link}
             >
-              <FaShoppingCart className='link-icon' />
+              <FaShoppingCart className={styles.link__icon} />
             </Link>
           </div>
         </div>

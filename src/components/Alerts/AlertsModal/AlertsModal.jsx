@@ -1,13 +1,14 @@
 import React from 'react'
-import Alert from './Alert'
+import Alert from '../Alert/Alert'
 
-import useRemoveShownAlerts from '../../hooks/useRemoveShownAlerts'
+import useRemoveShownAlerts from '../../../hooks/useRemoveShownAlerts'
+import styles from './alertsModal.module.scss'
 
-function AllAlerts() {
+function AlertsModal() {
   const alertsList = useRemoveShownAlerts()
 
   return (
-    <div className='alerts-modal'>
+    <div className={styles.alertsModal}>
       {alertsList.map((alert, i) => {
         return (
           <Alert
@@ -20,4 +21,4 @@ function AllAlerts() {
   )
 }
 
-export default AllAlerts
+export default AlertsModal
