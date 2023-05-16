@@ -6,7 +6,7 @@ import useActions from '../../hooks/useActions'
 
 const pageNames = { contacts: 'Контакты', cart: 'Корзина' }
 
-const Crumbs = ({ sneakerDTO }) => {
+const Crumbs = ({ sneakerData }) => {
   const location = useLocation()
   const { onChangeSex, onChangeShoesType, onChangeBrand } = useActions()
 
@@ -14,7 +14,7 @@ const Crumbs = ({ sneakerDTO }) => {
     .split('/')
     .filter((crumb) => crumb)
     .map((crumb, i) => {
-      if (!sneakerDTO) {
+      if (!sneakerData) {
         return (
           <Crumb
             key={i}
@@ -22,7 +22,7 @@ const Crumbs = ({ sneakerDTO }) => {
           />
         )
       } else {
-        if (crumb === sneakerDTO.data.id) {
+        if (crumb === sneakerData.id) {
           return (
             <div
               style={{ display: 'inline-block' }}
@@ -30,15 +30,15 @@ const Crumbs = ({ sneakerDTO }) => {
             >
               <Crumb
                 categoryChanger={onChangeSex}
-                category={sneakerDTO.data.sex}
+                category={sneakerData.sex}
               />
               <Crumb
                 categoryChanger={onChangeShoesType}
-                category={sneakerDTO.data.category}
+                category={sneakerData.category}
               />
               <Crumb
                 categoryChanger={onChangeBrand}
-                category={sneakerDTO.data.brand}
+                category={sneakerData.brand}
               />
             </div>
           )

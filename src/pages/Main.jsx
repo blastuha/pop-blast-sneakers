@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { scrollToTop } from '../utils'
+import { scrollToTop } from '../utils/scroll-to-top'
 import Sneakers from '../components/Sneakers'
 import SectionHeader from '../components/Header/SectionHeader'
 

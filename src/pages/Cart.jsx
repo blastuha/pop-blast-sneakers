@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
 
-import { scrollToTop } from '../utils'
+import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import CartItem from '../components/Cart/CartItem'
 import CartCounter from '../components/Cart/CartCounter'

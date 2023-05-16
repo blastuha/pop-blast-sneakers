@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 import TextField from '../TextField'
 import LoginError from './LoginError'
@@ -18,7 +18,8 @@ const AuthForm = () => {
     }))
   }
 
-  const validate = () => {
+  //можно вынести
+  const validate = useCallback(() => {
     const errors = {}
     for (const fieldName in data) {
       if (data[fieldName].trim() === '') {
@@ -26,7 +27,7 @@ const AuthForm = () => {
       }
     }
     setErrors(errors)
-  }
+  }, [data])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -50,7 +51,7 @@ const AuthForm = () => {
 
   useEffect(() => {
     validate()
-  }, [data])
+  }, [data, validate])
 
   return (
     <DynamicForm handleSubmit={handleSubmit}>

@@ -5,8 +5,8 @@ import { useLoaderData } from 'react-router-dom'
 import Selects from './Selects'
 import ProductFormButtons from './ProductFormButtons'
 
-const ProductForm = ({ alert, addToCart, onCountButtons }) => {
-  const sneakerDTO = useLoaderData()
+const ProductForm = () => {
+  const sneakerData = useLoaderData().data
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,14 +21,11 @@ const ProductForm = ({ alert, addToCart, onCountButtons }) => {
     >
       <div className='form__items'>
         <div className='form__header'>
-          <h3 className='form__title'>{sneakerDTO.data.title}</h3>
-          <b className='form__price'>{sneakerDTO.data.price} руб.</b>
+          <h3 className='form__title'>{sneakerData.title}</h3>
+          <b className='form__price'>{sneakerData.price} руб.</b>
         </div>
         <Selects />
-        <ProductFormButtons
-          alert={alert}
-          addToCart={addToCart}
-        />
+        <ProductFormButtons />
       </div>
     </form>
   )

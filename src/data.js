@@ -241,8 +241,10 @@ const alertObj = (alertsArr) => {
   }
 }
 
-export { brands }
-export { types }
-export { sexArray }
-export { alertObj }
-export { categoryList }
+const authTitles = [
+  { path: '/auth', title: 'Вход в кабинет покупателя' },
+  { path: '/auth/forget', title: 'Восстановление пароля' },
+  { path: '/auth/registration', title: 'Регистрация' },
+]
+
+export { brands, types, sexArray, alertObj, categoryList, authTitles }

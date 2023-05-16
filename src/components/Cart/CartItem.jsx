@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { AiOutlineDelete } from 'react-icons/ai'
 
-import { setCartData } from '../../redux/slices/cart/cartSlice'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import useActions from '../../hooks/useActions'
 
 function CartItem() {
+  const { setCartData } = useActions()
   const cartData = useSelector((state) => state.cart.cartData)
-  const dispatch = useDispatch()
 
   const addQuantity = (id, index) => {
     const newCartData = cartData.map((sneaker, i) => {
@@ -17,7 +17,7 @@ function CartItem() {
         return sneaker
       }
     })
-    dispatch(setCartData(newCartData))
+    setCartData(newCartData)
   }
 
   const decreaseQuantity = (id, index) => {
@@ -31,7 +31,7 @@ function CartItem() {
         return sneaker
       }
     })
-    dispatch(setCartData(newCartData))
+    setCartData(newCartData)
   }
 
   const handleDelete = (sneaker) => {
@@ -46,7 +46,7 @@ function CartItem() {
         return sneaker
       }
     })
-    dispatch(setCartData(cartDataFiltred))
+    setCartData(cartDataFiltred)
   }
 
   return cartData.map((cartItem, i) => {

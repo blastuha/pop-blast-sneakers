@@ -3,11 +3,11 @@ import React from 'react'
 import Crumbs from './Crumbs'
 import Crumb from './Crumb'
 
-function Breadcrumb({ sneakerDTO }) {
+function Breadcrumb({ sneakerData }) {
   return (
-    <div className={`breadcrumb ${sneakerDTO && 'low-margin'}`}>
+    <div className={`breadcrumb ${sneakerData && 'low-margin'}`}>
       <Crumb />
-      <Crumbs sneakerDTO={sneakerDTO} />
+      <Crumbs sneakerData={sneakerData} />
     </div>
   )
 }

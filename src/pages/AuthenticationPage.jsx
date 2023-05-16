@@ -2,12 +2,7 @@
 import React from 'react'
 
 import { Outlet, useLocation } from 'react-router-dom'
-
-const authTitles = [
-  { path: '/auth', title: 'Вход в кабинет покупателя' },
-  { path: '/auth/forget', title: 'Восстановление пароля' },
-  { path: '/auth/registration', title: 'Регистрация' },
-]
+import { authTitles } from '../data'
 
 const AuthenticationPage = () => {
   let location = useLocation()

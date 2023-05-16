@@ -5,7 +5,7 @@ const initialState = {
   selectedSize: '',
   selectedColor: '',
   isInCart: false,
-  cartData: [],
+  cartData: getStorageItems() || [],
   sneakerIndex: null,
   sneakerQuantity: null,
 }
