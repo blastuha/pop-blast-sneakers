@@ -3,9 +3,7 @@ import React, { useState } from 'react'
 import DynamicForm from './DynamicForm'
 import TextField from '../TextFeld/TextField'
 import FormButtons from './FormButtons'
-
-const fullnameReg = `^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)`
-const passwordReg = `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`
+import { fullnameReg, passwordReg } from '../../data'
 
 const RegistrationForm = () => {
   const [values, setValues] = useState({

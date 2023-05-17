@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styles from './header.module.scss'
 import { Link } from 'react-router-dom'
 
@@ -8,27 +8,13 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
 
 import Cutlist from '../../Header/Cutlist'
-import {headerMenu} from "../../../data";
+import { headerMenu } from '../../../data'
+import useInputValue from '../../../hooks/useInputValue'
+import useClickOutside from '../../../hooks/useClickOutside'
 
 function Header() {
-  const [cutlistOpen, setCutlistOpen] = useState(false)
-  const cutlistRef = useRef()
-
-  useEffect(() => {
-    if (!cutlistOpen) {
-      return
-    }
-
-    window.addEventListener('click', (event) => {
-      if (!cutlistRef.current.contains(event.target)) {
-        setCutlistOpen(false)
-      }
-    })
-  }, [cutlistOpen])
-
-  const handleOpen = () => {
-    setCutlistOpen(!cutlistOpen)
-  }
+  const { open, itemRef, handleOpen } = useClickOutside(false)
+  const { inputRef } = useInputValue()
 
   return (
     <div className={styles.header}>
@@ -36,7 +22,7 @@ function Header() {
         <div className={styles.header__menu}>
           <div className={styles.header__menu__left}>
             {headerMenu
-              .filter((item, i) => i < 2)
+              .filter((_, i) => i < 2)
               .map((item, i) => {
                 return (
                   <Link
@@ -44,26 +30,28 @@ function Header() {
                     to={item.link}
                     className={styles.header__menu__item}
                   >
-                    <div className={styles.header__menu__item__text}>{item.name}</div>
+                    <div className={styles.header__menu__item__text}>
+                      {item.name}
+                    </div>
                   </Link>
                 )
               })}
             <div className={styles.header__menu__item}>
               <div
                 className={styles.header__menu__item__text}
-                ref={cutlistRef}
+                ref={itemRef}
               >
                 <BsThreeDots
                   className={styles.icon}
                   onClick={handleOpen}
                 />
               </div>
-              {cutlistOpen && <Cutlist headerMenu={headerMenu} />}
+              {open && <Cutlist headerMenu={headerMenu} />}
             </div>
           </div>
           <div className={styles.header__menu__right}>
             <div className={styles.header__menu__item}>
-              <div className={`${styles.header__menu__item__textDelivery} ${styles.delivery}`}>
+              <div className={styles.header__menu__item__textDelivery}>
                 Доставка с 8:00 до 23:00
               </div>
             </div>
@@ -85,6 +73,7 @@ function Header() {
             <input
               type='text'
               placeholder='Поиск'
+              ref={inputRef}
             />
             <CiSearch />
           </div>

@@ -8,7 +8,6 @@ export const fetchSneakers = createAsyncThunk(
     const { data } = await axios.get(
       `https://63fcd20c859df29986c57847.mockapi.io/sneakerpal?${brandFilter}${shoesTypeFilter}${sexFilter}`
     )
-    console.log(data)
     return data
   }
 )

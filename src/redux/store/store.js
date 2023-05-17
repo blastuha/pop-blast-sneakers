@@ -3,6 +3,7 @@ import cartSlice from '../slices/cart/cartSlice'
 import alertsSlice from '../slices/alert/alertsSlice'
 import sneakersSlice from '../slices/sneakers/sneakersSlice'
 import categoriesSlice from '../slices/categories/categoriesSlice'
+import inputSlice from '../slices/input/inputSlice'
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     alerts: alertsSlice,
     sneakers: sneakersSlice,
     categories: categoriesSlice,
+    inputValue: inputSlice,
   },
 })

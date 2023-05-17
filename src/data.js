@@ -255,4 +255,17 @@ const headerMenu = [
   { name: 'О нас', link: '/about' },
 ]
 
-export { brands, types, sexArray, alertObj, categoryList, authTitles, headerMenu }
+const fullnameReg = `^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)`
+const passwordReg = `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`
+
+export {
+  brands,
+  types,
+  sexArray,
+  alertObj,
+  categoryList,
+  authTitles,
+  headerMenu,
+  fullnameReg,
+  passwordReg,
+}

@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import TextField from '../TextFeld/TextField'
 import LoginError from './LoginError'
 import FormButtons from './FormButtons'
 import DynamicForm from './DynamicForm'
 
+import useValidate from '../../hooks/useValidate'
+
 const AuthForm = () => {
   const [data, setData] = useState({ email: '', password: '' })
-  const [errors, setErrors] = useState({})
   const [emailFocused, setEmailFocused] = useState(false)
   const [passFocused, setPassFocused] = useState(false)
+  const { errors, validate } = useValidate(data)
 
   const handleChange = ({ target }) => {
     setData((prevState) => ({
@@ -17,17 +19,6 @@ const AuthForm = () => {
       [target.name]: target.value,
     }))
   }
-
-  //можно вынести
-  const validate = useCallback(() => {
-    const errors = {}
-    for (const fieldName in data) {
-      if (data[fieldName].trim() === '') {
-        errors[fieldName] = `${fieldName} обязателен для заполнения`
-      }
-    }
-    setErrors(errors)
-  }, [data])
 
   const handleSubmit = (e) => {
     e.preventDefault()
