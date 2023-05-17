@@ -115,6 +115,12 @@
         border-radius: 5px;
         font-size: 16px;
         outline: none;
+
+        &[type='text'] {
+          font-size: inherit;
+          font-family: Jura;
+          color: inherit;
+        }
       }
 
       svg {
