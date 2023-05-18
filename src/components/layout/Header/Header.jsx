@@ -6,6 +6,7 @@ import { CiSearch } from 'react-icons/ci'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { FaShoppingCart } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
+import { RxHamburgerMenu } from 'react-icons/rx'
 
 import Cutlist from '../../Header/Cutlist'
 import { headerMenu } from '../../../data'
@@ -69,6 +70,7 @@ function Header() {
           <div className={styles.header__bottom__logo}>
             <h1>POP BLAST SNEAKERS</h1>
           </div>
+          <RxHamburgerMenu className={styles.burger} />
           <div className={styles.header__bottom__searchBlock}>
             <input
               type='text'

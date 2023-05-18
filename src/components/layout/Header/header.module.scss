@@ -11,7 +11,7 @@
   }
 
   .header__container {
-    // outline: 1px solid black;
+    outline: 1px solid black;
     max-width: 1480px;
     width: calc(100vw - 100px);
     margin: 0px auto;
@@ -41,6 +41,9 @@
         width: 18px;
         height: 18px;
       }
+      @media (max-width: 767px) {
+        display: none;
+      }
     }
 
     &__right {
@@ -51,6 +54,10 @@
         &:nth-child(2) {
           margin-right: 0px;
         }
+      }
+
+      @media (max-width: 767px) {
+        display: none;
       }
     }
 
@@ -83,12 +90,15 @@
 
     &__logo {
       width: 110px;
+
+      @media (max-width: 767px) {
+        font-size: 30px;
+        width: fit-content;
+      }
     }
 
     h1 {
-      font-family: Jura, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-        'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+      font-family: Jura;
       font-size: 20px;
       font-weight: 700;
       color: #333333;
@@ -99,6 +109,10 @@
       &:hover {
         color: rgb(143, 145, 209);
       }
+
+      @media (max-width: 767px) {
+        font-size: 24px;
+      }
     }
 
     &__searchBlock {
@@ -106,6 +120,10 @@
       width: 40%;
       align-items: center;
       position: relative;
+
+      @media (max-width: 767px) {
+        display: none;
+      }
 
       input {
         position: relative;
@@ -145,7 +163,10 @@
   color: #1b1b1b;
   display: flex;
   align-items: flex-end;
-  //outline: 1px solid crimson;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 
 .link {
@@ -172,5 +193,14 @@
 .header__menu__item__textDelivery {
   &:hover {
     color: inherit;
+  }
+}
+
+.burger {
+  width: 24px;
+  height: auto;
+
+  @media (min-width: 768px) {
+    display: none;
   }
 }
