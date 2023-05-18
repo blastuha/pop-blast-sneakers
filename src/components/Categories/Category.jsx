@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import styles from './category.module.scss'
 import Dropdown from '../Header/Dropdown'
 
 function Category({ name, menu }) {
@@ -19,16 +20,14 @@ function Category({ name, menu }) {
 
   return (
     <div
-      className='category'
+      className={styles.category}
       ref={categoryBlock}
     >
-      <div className='category__item'>
-        <div
-          className='category__item-text'
-          onClick={onChangeOpen}
-        >
-          {name}
-        </div>
+      <div
+        className={styles.category__item}
+        onClick={onChangeOpen}
+      >
+        {name}
       </div>
       <Dropdown
         open={open}

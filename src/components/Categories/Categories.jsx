@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from './categories.module.scss'
 import Category from './Category'
 import { categoryList } from '../../data'
 
 function Categories() {
   return (
-    <div className='categories'>
-      <div className='categories__container'>
+    <div className={styles.categories}>
+      <div className={styles.categories__container}>
         {categoryList.map((category, i) => {
           return (
             <Category

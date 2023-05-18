@@ -67,10 +67,11 @@ function Header() {
           </div>
         </div>
         <div className={styles.header__bottom}>
+          <RxHamburgerMenu className={styles.burger} />
           <div className={styles.header__bottom__logo}>
             <h1>POP BLAST SNEAKERS</h1>
           </div>
-          <RxHamburgerMenu className={styles.burger} />
+          <FaShoppingCart className={styles.cart__mobile} />
           <div className={styles.header__bottom__searchBlock}>
             <input
               type='text'

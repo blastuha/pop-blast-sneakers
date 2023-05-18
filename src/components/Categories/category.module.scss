@@ -1,0 +1,27 @@
+.category {
+  display: inline-block;
+  margin-right: 20px;
+  // background-color: #b4b4b4;
+  padding: 8px 0px 8px 0px;
+  position: relative;
+
+  .category__item {
+    font-family: Jura, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 1.5em;
+    cursor: pointer;
+    transition: color 0.2s ease-in;
+
+    &:hover {
+      color: rgb(143, 145, 209);
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}

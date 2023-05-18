@@ -196,8 +196,9 @@
   }
 }
 
-.burger {
-  width: 24px;
+.burger,
+.cart__mobile {
+  width: 22px;
   height: auto;
 
   @media (min-width: 768px) {
