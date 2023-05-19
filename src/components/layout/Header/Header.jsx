@@ -13,7 +13,7 @@ import { headerMenu } from '../../../data'
 import useInputValue from '../../../hooks/useInputValue'
 import useClickOutside from '../../../hooks/useClickOutside'
 
-function Header() {
+function Header({ onChangeOpen }) {
   const { open, itemRef, handleOpen } = useClickOutside(false)
   const { inputRef } = useInputValue()
 
@@ -67,7 +67,10 @@ function Header() {
           </div>
         </div>
         <div className={styles.header__bottom}>
-          <RxHamburgerMenu className={styles.burger} />
+          <RxHamburgerMenu
+            className={styles.burger}
+            onClick={onChangeOpen}
+          />
           <div className={styles.header__bottom__logo}>
             <h1>POP BLAST SNEAKERS</h1>
           </div>

@@ -1,9 +1,10 @@
 import './App.scss'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Header from './components/layout/Header/Header'
+import MobileMenu from './components/MobileMenu/MobileMenu'
 import Footer from './components/layout/Footer/Footer'
 import Categories from './components/Categories/Categories'
 import getSneakersWithCategory from './utils/getSneakersWithCategory'
@@ -18,6 +19,16 @@ function App() {
   const { shoesType, sex, brand } = useSelector(categories)
   const { cartData } = useSelector(cart)
   let isMounted = useRef(false)
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const bodyStyle = document.querySelector('body').style
+    if (open) {
+      bodyStyle.overflow = 'hidden'
+    } else {
+      bodyStyle.overflow = 'scroll'
+    }
+  }, [open])
 
   useEffect(() => {
     getSneakersWithCategory(brand, shoesType, sex, fetchSneakers)
@@ -31,12 +42,22 @@ function App() {
     isMounted.current = true
   }, [cartData])
 
+  const onChangeOpen = () => {
+    setOpen(!open)
+  }
+
   return (
     <div className='wrapper'>
-      <Header />
-      <Categories />
-      <Outlet />
-      <Footer />
+      <MobileMenu
+        onChangeOpen={onChangeOpen}
+        open={open}
+      />
+      <>
+        <Header onChangeOpen={onChangeOpen} />
+        <Categories />
+        <Outlet />
+        <Footer />
+      </>
     </div>
   )
 }

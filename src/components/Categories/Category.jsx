@@ -8,6 +8,7 @@ function Category({ name, menu }) {
 
   useEffect(() => {
     window.addEventListener('click', (event) => {
+      if (!categoryBlock.current) return
       if (!categoryBlock.current.contains(event.target)) {
         setOpen(false)
       }

@@ -38,8 +38,11 @@ img {
 
 .wrapper {
   margin: 0 auto;
-  border: 2px solid black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.noscroll {
+  overflow: hidden;
 }
