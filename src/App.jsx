@@ -15,11 +15,11 @@ import { categories } from './redux/slices/categories/selectors'
 import { cart } from './redux/slices/cart/selectors'
 
 function App() {
+  const [open, setOpen] = useState(false)
   const { fetchSneakers } = useActions()
   const { shoesType, sex, brand } = useSelector(categories)
   const { cartData } = useSelector(cart)
   let isMounted = useRef(false)
-  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const bodyStyle = document.querySelector('body').style
