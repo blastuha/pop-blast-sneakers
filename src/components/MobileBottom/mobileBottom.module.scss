@@ -1,0 +1,29 @@
+.nav {
+  max-width: 1480px;
+  width: calc(100vw - 100px);
+  margin: 0px auto;
+  position: fixed;
+  z-index: 99999999;
+  left: 0;
+  bottom: 0;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333333;
+
+  span {
+    font-size: 12px;
+  }
+
+  svg {
+    font-size: 20px;
+  }
+}

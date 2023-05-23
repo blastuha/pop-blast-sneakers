@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useLoaderData } from 'react-router-dom'
 
@@ -6,9 +6,15 @@ import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
 import ProductForm from '../components/Product/ProductForm/ProductForm'
+import MobileBottom from '../components/MobileBottom/MobileBottom'
 
 function ProductPage() {
-  const sneakerData = useLoaderData().data // data transfer object
+  const sneakerData = useLoaderData().data
+  const [width, setWidth] = useState(window.innerWidth)
+
+  window.onresize = function (event) {
+    setWidth(event.srcElement.innerWidth)
+  }
 
   useEffect(() => {
     scrollToTop()
@@ -17,7 +23,7 @@ function ProductPage() {
   return (
     <div className='product'>
       <div className='product__container'>
-        <Breadcrumb sneakerData={sneakerData} />
+        {width > 767 ? <Breadcrumb sneakerData={sneakerData} /> : ''}
         <div className='product__main'>
           <AlertsModal />
           <div className='product__photo'>
@@ -32,6 +38,7 @@ function ProductPage() {
           <h3 className='description__title'>Описание</h3>
           <p className='description__text'>{sneakerData.description}</p>
         </article>
+        {width < 767 ? <MobileBottom /> : ''}
       </div>
     </div>
   )
