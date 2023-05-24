@@ -1,23 +1,40 @@
 .nav {
-  max-width: 1480px;
-  width: calc(100vw - 100px);
-  margin: 0px auto;
+  display: flex;
+  width: 100%;
   position: fixed;
   z-index: 99999999;
   left: 0;
   bottom: 0;
   height: 40px;
   background-color: rgb(255, 255, 255);
+}
+
+.nav__container {
   display: flex;
   justify-content: space-between;
+  width: calc(100vw - 100px);
+  margin: 0 auto;
+
+  @media (max-width: 520px) {
+    width: calc(100vw - 30px);
+  }
+
+  @media (max-width: 440px) {
+    width: calc(100vw - 15px);
+  }
+
+  @media (max-width: 370px) {
+    width: calc(100vw - 6px);
+  }
 }
 
 .nav__item {
+  font-family: Jura;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   color: #333333;
+  background-color: transparent;
 
   span {
     font-size: 12px;
@@ -25,5 +42,13 @@
 
   svg {
     font-size: 20px;
+  }
+
+  a {
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

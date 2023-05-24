@@ -34,16 +34,27 @@
   height: 60px;
   background-color: #f7f7f7;
 
-  div {
-    display: flex;
-    padding: 0 20px 0 20px;
+  a {
+    margin-right: 12px;
+    color: #333333;
 
-    svg {
-      width: 26px;
-      height: auto;
-      margin-right: 12px;
-      align-self: center;
+    &:last-child {
+      margin-right: 0px;
     }
+  }
+
+  svg {
+    width: 24px;
+    height: auto;
+  }
+
+  .section__controls {
+    display: flex;
+    padding: 20px;
+  }
+
+  .section__search {
+    padding: 20px;
   }
 }
 

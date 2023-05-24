@@ -6,7 +6,6 @@ import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
 import ProductForm from '../components/Product/ProductForm/ProductForm'
-import MobileBottom from '../components/MobileBottom/MobileBottom'
 
 function ProductPage() {
   const sneakerData = useLoaderData().data
@@ -38,7 +37,6 @@ function ProductPage() {
           <h3 className='description__title'>Описание</h3>
           <p className='description__text'>{sneakerData.description}</p>
         </article>
-        {width < 767 ? <MobileBottom /> : ''}
       </div>
     </div>
   )
