@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './cartItem.scss'
 import { Link } from 'react-router-dom'
 import { AiOutlineDelete } from 'react-icons/ai'
 
@@ -69,9 +70,17 @@ function CartItem() {
             {cartItem.title}
           </Link>
           <div className='header-sizecolor'>
-            <span>
+            <span className='lol'>
               Цвет: {cartItem.color} / Размер: {cartItem.size}
             </span>
+          </div>
+        </div>
+        <div
+          className='item-delete'
+          onClick={() => handleDelete(cartItem)}
+        >
+          <div className='delete-icon'>
+            <AiOutlineDelete />
           </div>
         </div>
         <div className='item-counter'>
@@ -102,14 +111,6 @@ function CartItem() {
         </div>
         <div className='item-total'>
           {cartItem.price * cartItem.quantity} руб.
-        </div>
-        <div
-          className='item-delete'
-          onClick={() => handleDelete(cartItem)}
-        >
-          <div className='delete-icon'>
-            <AiOutlineDelete />
-          </div>
         </div>
       </div>
     )
