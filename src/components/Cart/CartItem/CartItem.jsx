@@ -1,10 +1,12 @@
 import React from 'react'
 import styles from './cartItem.scss'
+
 import { Link } from 'react-router-dom'
+import ItemCounter from '../ItemCounter/ItemCounter'
 import { AiOutlineDelete } from 'react-icons/ai'
 
 import { useSelector } from 'react-redux'
-import useActions from '../../hooks/useActions'
+import useActions from '../../../hooks/useActions'
 
 function CartItem() {
   const { setCartData } = useActions()
@@ -83,35 +85,16 @@ function CartItem() {
             <AiOutlineDelete />
           </div>
         </div>
-        <div className='item-counter'>
-          <div className='counter'>
-            <button
-              className='counter-button'
-              onClick={() => {
-                decreaseQuantity(cartItem.id, i)
-              }}
-            >
-              -
-            </button>
-            <div className='counter-value'>
-              <span
-                type='text'
-                value={cartItem.quantity}
-              >
-                {cartItem.quantity}
-              </span>
-            </div>
-            <button
-              className='counter-button'
-              onClick={() => addQuantity(cartItem.id, i)}
-            >
-              +
-            </button>
-          </div>
-        </div>
+        {/* <ItemCounter
+          decreaseQuantity={decreaseQuantity}
+          addQuantity={addQuantity}
+          id={cartItem.id}
+          index={i}
+          quantity={cartItem.quantity}
+        />
         <div className='item-total'>
           {cartItem.price * cartItem.quantity} руб.
-        </div>
+        </div> */}
       </div>
     )
   })

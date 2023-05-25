@@ -1,6 +1,5 @@
 .header {
   max-width: 100%;
-  margin-bottom: 14px;
 
   a {
     color: inherit;
@@ -15,6 +14,10 @@
     max-width: 1480px;
     width: calc(100vw - 100px);
     margin: 0px auto;
+
+    @media (max-width: 767px) {
+      padding: 18px 0 18px 0;
+    }
 
     @media (max-width: 575px) {
       width: calc(100vw - 50px);
@@ -49,9 +52,6 @@
         width: 18px;
         height: 18px;
       }
-      @media (max-width: 767px) {
-        display: none;
-      }
     }
 
     &__right {
@@ -62,10 +62,6 @@
         &:nth-child(2) {
           margin-right: 0px;
         }
-      }
-
-      @media (max-width: 767px) {
-        display: none;
       }
     }
 
@@ -90,11 +86,16 @@
         }
       }
     }
+
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
 
   .header__bottom {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 20px;
 
     &__logo {
       width: 110px;

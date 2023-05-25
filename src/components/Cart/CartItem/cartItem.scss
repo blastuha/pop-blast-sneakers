@@ -1,0 +1,88 @@
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+
+  .item-image {
+    img {
+      max-width: 120px;
+
+      @media (max-width: 575px) {
+        max-width: 100px;
+      }
+
+      @media (max-width: 370px) {
+        max-width: 82px;
+      }
+    }
+  }
+
+  .item-header {
+    font-family: Jura;
+    line-height: 1.5rem;
+    white-space: pre-wrap;
+
+    .header-title {
+      display: block;
+      font-size: 1.2rem;
+      color: #333333;
+      margin-bottom: 10px;
+
+      @media (max-width: 767px) {
+        font-size: 1rem;
+      }
+
+      @media (max-width: 575px) {
+        font-size: 0.8rem;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .header-color {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  .item-total {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    font-weight: bold;
+    font-family: Jura;
+    color: #333333;
+    white-space: nowrap;
+
+    @media (max-width: 620px) {
+      white-space: normal;
+      font-size: 1rem;
+    }
+  }
+
+  .item-delete {
+    font-size: 20px;
+    font-style: normal;
+    color: #999999;
+    line-height: 1em;
+    cursor: pointer;
+
+    .delete-icon {
+      padding: 6px;
+    }
+  }
+}
+
+.header-sizecolor {
+  font-size: 1rem;
+  color: #333333;
+
+  @media (max-width: 757px) {
+    font-size: 0.8rem;
+  }
+}

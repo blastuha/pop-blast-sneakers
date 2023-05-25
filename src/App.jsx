@@ -77,7 +77,7 @@ function App() {
         <Header onChangeOpen={onChangeOpen} />
         <Categories />
         <Outlet />
-        <Footer />
+        {width > 767 && <Footer />}
         {width < 767 ? (
           <MobileBottom
             openSearchWindow={openSearchWindow}

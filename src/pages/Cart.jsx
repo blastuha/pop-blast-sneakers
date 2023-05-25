@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
-import CartItem from '../components/Cart/CartItem'
+import CartItem from '../components/Cart/CartItem/CartItem'
 import CartCounter from '../components/Cart/CartCounter'
 
 function Cart() {
@@ -15,8 +15,9 @@ function Cart() {
   }, [])
 
   return (
-    <div className='cart-block'>
+    <div className='cart'>
       <div className='cart__container'>
+        {/* {width > 767 ? <Breadcrumb sneakerData={sneakerData} /> : ''} */}
         <Breadcrumb />
         <div className='cart__header'>
           <div className='cart-title'>Корзина</div>
