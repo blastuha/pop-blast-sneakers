@@ -85,7 +85,7 @@ function CartItem() {
             <AiOutlineDelete />
           </div>
         </div>
-        {/* <ItemCounter
+        <ItemCounter
           decreaseQuantity={decreaseQuantity}
           addQuantity={addQuantity}
           id={cartItem.id}
@@ -94,7 +94,7 @@ function CartItem() {
         />
         <div className='item-total'>
           {cartItem.price * cartItem.quantity} руб.
-        </div> */}
+        </div>
       </div>
     )
   })
