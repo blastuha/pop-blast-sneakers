@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './mobileMenu.module.scss'
 import { headerMenu } from '../../data'
+import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
 
 import { VscClose } from 'react-icons/vsc'
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -52,6 +53,7 @@ const MobileMenu = ({ onChangeOpen, open }) => {
           })}
         </ul>
       </div>
+      <MobileMenuFoooter />
     </div>
   )
 }

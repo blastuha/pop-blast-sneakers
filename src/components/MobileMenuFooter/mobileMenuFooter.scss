@@ -1,0 +1,42 @@
+.mobile {
+  &__footer {
+    margin-top: 60px;
+    padding: 0 20px 0 20px;
+  }
+}
+
+.footer {
+  &__contacts {
+    h3 {
+      color: #333333;
+      color: inherit;
+      line-height: 1.5em;
+      letter-spacing: 0em;
+    }
+  }
+}
+
+.contacts {
+  &__text {
+    font-size: 18px;
+    color: inherit;
+    line-height: 1.5em;
+    letter-spacing: 0em;
+  }
+
+  &__icons {
+    font-size: 30px;
+    line-height: 1.5em;
+    cursor: pointer;
+
+    svg {
+      margin: 10px 10px 0px 0px;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        color: rgb(143, 145, 209);
+        scale: (110%);
+      }
+    }
+  }
+}
