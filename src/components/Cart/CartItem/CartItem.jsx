@@ -7,10 +7,13 @@ import { AiOutlineDelete } from 'react-icons/ai'
 
 import { useSelector } from 'react-redux'
 import useActions from '../../../hooks/useActions'
+import useWidth from '../../../hooks/useWidth'
 
 function CartItem() {
   const { setCartData } = useActions()
   const cartData = useSelector((state) => state.cart.cartData)
+  const width = useWidth()
+  console.log(width)
 
   const addQuantity = (id, index) => {
     const newCartData = cartData.map((sneaker, i) => {
@@ -70,13 +73,49 @@ function CartItem() {
             to={`/products/${cartItem.id}`}
           >
             {cartItem.title}
+            {width <= 575 && (
+              <span>
+                {' '}
+                ({cartItem.color} / {cartItem.size})
+              </span>
+            )}
           </Link>
-          <div className='header-sizecolor'>
-            <span className='lol'>
-              Цвет: {cartItem.color} / Размер: {cartItem.size}
-            </span>
-          </div>
+          {width > 575 && (
+            <div className='header-sizecolor'>
+              <span>
+                Цвет: {cartItem.color} / Размер: {cartItem.size}
+              </span>
+            </div>
+          )}
+          {width <= 575 && (
+            <div className='item-total'>
+              {cartItem.price * cartItem.quantity} руб.
+            </div>
+          )}
+          {width < 576 && (
+            <ItemCounter
+              decreaseQuantity={decreaseQuantity}
+              addQuantity={addQuantity}
+              id={cartItem.id}
+              index={i}
+              quantity={cartItem.quantity}
+            />
+          )}
         </div>
+        {width > 575 && (
+          <ItemCounter
+            decreaseQuantity={decreaseQuantity}
+            addQuantity={addQuantity}
+            id={cartItem.id}
+            index={i}
+            quantity={cartItem.quantity}
+          />
+        )}
+        {width > 575 && (
+          <div className='item-total'>
+            {cartItem.price * cartItem.quantity} руб.
+          </div>
+        )}
         <div
           className='item-delete'
           onClick={() => handleDelete(cartItem)}
@@ -84,16 +123,6 @@ function CartItem() {
           <div className='delete-icon'>
             <AiOutlineDelete />
           </div>
-        </div>
-        <ItemCounter
-          decreaseQuantity={decreaseQuantity}
-          addQuantity={addQuantity}
-          id={cartItem.id}
-          index={i}
-          quantity={cartItem.quantity}
-        />
-        <div className='item-total'>
-          {cartItem.price * cartItem.quantity} руб.
         </div>
       </div>
     )

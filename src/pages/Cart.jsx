@@ -6,9 +6,11 @@ import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import CartItem from '../components/Cart/CartItem/CartItem'
 import CartCounter from '../components/Cart/CartCounter'
+import useWidth from '../hooks/useWidth'
 
 function Cart() {
   const cartData = useSelector((state) => state.cart.cartData)
+  const width = useWidth()
 
   useEffect(() => {
     scrollToTop()
@@ -17,8 +19,7 @@ function Cart() {
   return (
     <div className='cart'>
       <div className='cart__container'>
-        {/* {width > 767 ? <Breadcrumb sneakerData={sneakerData} /> : ''} */}
-        <Breadcrumb />
+        {width > 767 && <Breadcrumb />}
         <div className='cart__header'>
           <div className='cart-title'>Корзина</div>
         </div>

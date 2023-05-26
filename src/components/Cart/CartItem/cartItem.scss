@@ -13,11 +13,11 @@
       max-width: 120px;
 
       @media (max-width: 575px) {
-        max-width: 100px;
+        max-width: 110px;
       }
 
       @media (max-width: 370px) {
-        max-width: 82px;
+        max-width: 88px;
       }
     }
   }
@@ -38,7 +38,13 @@
       }
 
       @media (max-width: 575px) {
-        font-size: 0.8rem;
+        font-size: 0.96rem;
+        margin-bottom: 0px;
+        width: calc(100% - 10px);
+      }
+
+      @media (max-width: 370px) {
+        font-size: 0.88rem;
       }
 
       a {
@@ -62,6 +68,15 @@
     @media (max-width: 620px) {
       white-space: normal;
       font-size: 1rem;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 370px) {
+      font-size: 0.88rem;
     }
   }
 

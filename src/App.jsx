@@ -15,20 +15,18 @@ import useActions from './hooks/useActions'
 import { useSelector } from 'react-redux'
 import { categories } from './redux/slices/categories/selectors'
 import { cart } from './redux/slices/cart/selectors'
+import useWidth from './hooks/useWidth'
 
 function App() {
   const [open, setOpen] = useState(false)
-  const [width, setWidth] = useState(window.innerWidth)
   const [searchWindow, setSearchWindow] = useState(false)
 
   const { fetchSneakers } = useActions()
   const { shoesType, sex, brand } = useSelector(categories)
   const { cartData } = useSelector(cart)
-  let isMounted = useRef(false)
+  const width = useWidth()
 
-  window.onresize = function (event) {
-    setWidth(event.srcElement.innerWidth)
-  }
+  let isMounted = useRef(false)
 
   useEffect(() => {
     const bodyStyle = document.querySelector('body').style
@@ -73,20 +71,16 @@ function App() {
         onChangeOpen={onChangeOpen}
         open={open}
       />
-      <>
-        <Header onChangeOpen={onChangeOpen} />
-        <Categories />
-        <Outlet />
-        {width > 767 && <Footer />}
-        {width < 767 ? (
-          <MobileBottom
-            openSearchWindow={openSearchWindow}
-            closeSearchWindow={closeSearchWindow}
-          />
-        ) : (
-          ''
-        )}
-      </>
+      <Header onChangeOpen={onChangeOpen} />
+      <Categories />
+      <Outlet />
+      {width > 767 && <Footer />}
+      {width < 767 && (
+        <MobileBottom
+          openSearchWindow={openSearchWindow}
+          closeSearchWindow={closeSearchWindow}
+        />
+      )}
     </div>
   )
 }

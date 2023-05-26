@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { useLoaderData } from 'react-router-dom'
 
@@ -6,14 +6,11 @@ import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
 import ProductForm from '../components/Product/ProductForm/ProductForm'
+import useWidth from '../hooks/useWidth'
 
 function ProductPage() {
   const sneakerData = useLoaderData().data
-  const [width, setWidth] = useState(window.innerWidth)
-
-  window.onresize = function (event) {
-    setWidth(event.srcElement.innerWidth)
-  }
+  const width = useWidth()
 
   useEffect(() => {
     scrollToTop()

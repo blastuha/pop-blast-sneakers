@@ -40,9 +40,10 @@ const MobileBottom = ({ openSearchWindow, closeSearchWindow }) => {
   return (
     <nav className={styles.nav}>
       <div className={styles.nav__container}>
-        {nav__bottom.map((item) => {
+        {nav__bottom.map((item, i) => {
           return (
             <button
+              key={i}
               className={styles.nav__item}
               onClick={
                 item.searchOpen === 'open'
