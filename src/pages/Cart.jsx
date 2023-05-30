@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import CartItem from '../components/Cart/CartItem/CartItem'
-import CartCounter from '../components/Cart/CartCounter'
+import CartCounter from '../components/Cart/CartCounter/CartCounter'
 import useWidth from '../hooks/useWidth'
 
 function Cart() {

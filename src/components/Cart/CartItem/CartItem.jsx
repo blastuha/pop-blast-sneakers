@@ -1,19 +1,19 @@
 import React from 'react'
-import styles from './cartItem.scss'
+import styles from './cartItem.module.scss'
 
 import { Link } from 'react-router-dom'
 import ItemCounter from '../ItemCounter/ItemCounter'
 import { AiOutlineDelete } from 'react-icons/ai'
 
 import { useSelector } from 'react-redux'
+import {cart} from "../../../redux/slices/cart/selectors";
 import useActions from '../../../hooks/useActions'
 import useWidth from '../../../hooks/useWidth'
 
 function CartItem() {
   const { setCartData } = useActions()
-  const cartData = useSelector((state) => state.cart.cartData)
+  const {cartData} = useSelector(cart)
   const width = useWidth()
-  console.log(width)
 
   const addQuantity = (id, index) => {
     const newCartData = cartData.map((sneaker, i) => {
@@ -58,18 +58,18 @@ function CartItem() {
   return cartData.map((cartItem, i) => {
     return (
       <div
-        className='cart-item'
+        className={styles.cartItem}
         key={i}
       >
-        <div className='item-image'>
+        <div className={styles.image}>
           <img
             src={cartItem.imageUrl}
             alt='good-pic'
           />
         </div>
-        <div className='item-header'>
+        <div className={styles.header}>
           <Link
-            className='header-title'
+            className={styles.title}
             to={`/products/${cartItem.id}`}
           >
             {cartItem.title}
@@ -81,14 +81,14 @@ function CartItem() {
             )}
           </Link>
           {width > 575 && (
-            <div className='header-sizecolor'>
+            <div className={styles.sizeColor}>
               <span>
                 Цвет: {cartItem.color} / Размер: {cartItem.size}
               </span>
             </div>
           )}
           {width <= 575 && (
-            <div className='item-total'>
+            <div className={styles.total}>
               {cartItem.price * cartItem.quantity} руб.
             </div>
           )}
@@ -112,17 +112,15 @@ function CartItem() {
           />
         )}
         {width > 575 && (
-          <div className='item-total'>
+          <div className={styles.total}>
             {cartItem.price * cartItem.quantity} руб.
           </div>
         )}
         <div
-          className='item-delete'
+          className={styles.delete}
           onClick={() => handleDelete(cartItem)}
         >
-          <div className='delete-icon'>
-            <AiOutlineDelete />
-          </div>
+          <AiOutlineDelete />
         </div>
       </div>
     )

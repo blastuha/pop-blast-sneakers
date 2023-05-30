@@ -1,4 +1,4 @@
-.cart-item {
+.cartItem {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -8,7 +8,7 @@
     margin-bottom: 0px;
   }
 
-  .item-image {
+  .image {
     img {
       max-width: 120px;
 
@@ -22,12 +22,12 @@
     }
   }
 
-  .item-header {
+  .header {
     font-family: Jura;
     line-height: 1.5rem;
     white-space: pre-wrap;
 
-    .header-title {
+    .title {
       display: block;
       font-size: 1.2rem;
       color: #333333;
@@ -57,7 +57,7 @@
     }
   }
 
-  .item-total {
+  .total {
     font-size: 1.1rem;
     line-height: 2rem;
     font-weight: bold;
@@ -80,20 +80,17 @@
     }
   }
 
-  .item-delete {
+  .delete {
     font-size: 20px;
     font-style: normal;
     color: #999999;
     line-height: 1em;
     cursor: pointer;
-
-    .delete-icon {
-      padding: 6px;
-    }
+    padding: 6px;
   }
 }
 
-.header-sizecolor {
+.sizeColor {
   font-size: 1rem;
   color: #333333;
 

@@ -1,0 +1,86 @@
+.cart__counter {
+  width: 30%;
+  border-radius: 0px 0px 6px 6px;
+
+  @media (max-width: 880px) {
+    width: 100%;
+  }
+
+  .counter-total-sticky {
+    position: sticky;
+    top: 1.5rem;
+    height: fit-content;
+    background-color: #f7f7f7;
+    padding: 1rem;
+
+    .counter-total-items {
+      width: 100%;
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      font-family: Jura;
+      font-size: 1.1rem;
+      color: #333333;
+      line-height: 1.5em;
+      white-space: nowrap;
+      margin-bottom: 40px;
+
+      .total-products {
+        margin-bottom: 16px;
+      }
+
+      .total-price {
+        justify-self: flex-end;
+      }
+    }
+
+    .counter-total-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+
+      .price-text {
+        font-family: Jura;
+        font-size: 1.1rem;
+        color: #333333;
+        line-height: 1.5em;
+        margin-right: 6px;
+      }
+
+      .full-price {
+        font-family: Jura;
+        font-size: 2rem;
+        font-weight: 400;
+        color: #333333;
+        line-height: 1.5em;
+        white-space: nowrap;
+      }
+    }
+
+    .counter-btn {
+      white-space: nowrap;
+      width: calc(100% + 2rem);
+      max-width: calc(100% + 2rem);
+      margin-left: -1rem;
+      margin-bottom: -1rem;
+      padding: 16px 16px;
+      font-family: Jura;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: normal;
+      background: #404040;
+      color: #f7f7f7;
+      line-height: 1em;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      transition: background 0.4s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: #535353;
+      }
+    }
+  }
+}

@@ -9,9 +9,11 @@ import { BsThreeDots } from 'react-icons/bs'
 import { RxHamburgerMenu } from 'react-icons/rx'
 
 import Cutlist from '../../Header/Cutlist'
+import SearchInput from "../../SearchInput/SearchInput";
 import { headerMenu } from '../../../data'
 import useInputValue from '../../../hooks/useInputValue'
 import useClickOutside from '../../../hooks/useClickOutside'
+
 
 function Header({ onChangeOpen }) {
   const { open, itemRef, handleOpen } = useClickOutside(false)
@@ -75,14 +77,7 @@ function Header({ onChangeOpen }) {
             <h1>POP BLAST SNEAKERS</h1>
           </div>
           <FaShoppingCart className={styles.cart__mobile} />
-          <div className={styles.header__bottom__searchBlock}>
-            <input
-              type='text'
-              placeholder='Поиск'
-              ref={inputRef}
-            />
-            <CiSearch />
-          </div>
+          <SearchInput ref={inputRef}/>
           <div className={styles.header__bottom__icons}>
             <Link
               to='/auth'

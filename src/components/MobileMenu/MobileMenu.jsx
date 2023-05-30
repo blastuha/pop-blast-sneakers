@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './mobileMenu.module.scss'
 import { headerMenu } from '../../data'
 import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
+import SearchInput from '../SearchInput/SearchInput'
+import useInputValue from '../../hooks/useInputValue'
 
 import { VscClose } from 'react-icons/vsc'
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -17,6 +19,8 @@ const iconsLinksBurger = [
 ]
 
 const MobileMenu = ({ onChangeOpen, open }) => {
+  const [openSearch, setOpenSearch] = useState(true)
+  const { inputRef } = useInputValue()
   const menuStyles = open ? `${styles.menu} ${styles.active}` : `${styles.menu}`
 
   return (
@@ -25,21 +29,35 @@ const MobileMenu = ({ onChangeOpen, open }) => {
         <VscClose onClick={onChangeOpen} />
       </div>
       <div className={styles.icons__section}>
-        <nav className={styles.section__controls}>
-          {iconsLinksBurger.map((item, i) => {
-            return (
-              <Link
-                key={i}
-                to={item.link}
-              >
-                {item.icon}
-              </Link>
-            )
-          })}
-        </nav>
-        <div className={styles.section__search}>
-          <CiSearch />
-        </div>
+        {openSearch ? (
+          <>
+            <SearchInput
+              attr='true'
+              ref={inputRef}
+            />
+            <div className={styles.searchClosing}>
+              <VscClose onClick={onChangeOpen} />
+            </div>
+          </>
+        ) : (
+          <>
+            <nav className={styles.section__controls}>
+              {iconsLinksBurger.map((item, i) => {
+                return (
+                  <Link
+                    key={i}
+                    to={item.link}
+                  >
+                    {item.icon}
+                  </Link>
+                )
+              })}
+            </nav>
+            <div className={styles.section__search}>
+              <CiSearch />
+            </div>
+          </>
+        )}
       </div>
       <div className={styles.menu__content}>
         <div className={styles.menu__header}>Меню</div>
