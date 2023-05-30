@@ -2,18 +2,16 @@ import React from 'react'
 import styles from './header.module.scss'
 import { Link } from 'react-router-dom'
 
-import { CiSearch } from 'react-icons/ci'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { FaShoppingCart } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
 import { RxHamburgerMenu } from 'react-icons/rx'
 
 import Cutlist from '../../Header/Cutlist'
-import SearchInput from "../../SearchInput/SearchInput";
+import SearchInput from '../../SearchInput/SearchInput'
 import { headerMenu } from '../../../data'
 import useInputValue from '../../../hooks/useInputValue'
 import useClickOutside from '../../../hooks/useClickOutside'
-
 
 function Header({ onChangeOpen }) {
   const { open, itemRef, handleOpen } = useClickOutside(false)
@@ -77,7 +75,7 @@ function Header({ onChangeOpen }) {
             <h1>POP BLAST SNEAKERS</h1>
           </div>
           <FaShoppingCart className={styles.cart__mobile} />
-          <SearchInput ref={inputRef}/>
+          <SearchInput ref={inputRef} />
           <div className={styles.header__bottom__icons}>
             <Link
               to='/auth'

@@ -19,9 +19,13 @@ const iconsLinksBurger = [
 ]
 
 const MobileMenu = ({ onChangeOpen, open }) => {
-  const [openSearch, setOpenSearch] = useState(true)
+  const [openSearch, setOpenSearch] = useState(false)
   const { inputRef } = useInputValue()
   const menuStyles = open ? `${styles.menu} ${styles.active}` : `${styles.menu}`
+
+  const onChangeSearch = () => {
+    setOpenSearch(!openSearch)
+  }
 
   return (
     <div className={menuStyles}>
@@ -36,7 +40,7 @@ const MobileMenu = ({ onChangeOpen, open }) => {
               ref={inputRef}
             />
             <div className={styles.searchClosing}>
-              <VscClose onClick={onChangeOpen} />
+              <VscClose onClick={onChangeSearch} />
             </div>
           </>
         ) : (
@@ -54,7 +58,7 @@ const MobileMenu = ({ onChangeOpen, open }) => {
               })}
             </nav>
             <div className={styles.section__search}>
-              <CiSearch />
+              <CiSearch onClick={onChangeSearch} />
             </div>
           </>
         )}
