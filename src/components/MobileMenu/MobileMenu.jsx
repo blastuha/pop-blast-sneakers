@@ -3,7 +3,6 @@ import styles from './mobileMenu.module.scss'
 import { headerMenu } from '../../data'
 import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
 import SearchInput from '../SearchInput/SearchInput'
-import useInputValue from '../../hooks/useInputValue'
 
 import { VscClose } from 'react-icons/vsc'
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -11,6 +10,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { AiFillHeart } from 'react-icons/ai'
 import { CiSearch } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
+import SearchResult from '../SearchResult/SearchResult'
 
 const iconsLinksBurger = [
   { icon: <BsFillPersonFill />, link: '/auth' },
@@ -20,7 +20,7 @@ const iconsLinksBurger = [
 
 const MobileMenu = ({ onChangeOpen, open }) => {
   const [openSearch, setOpenSearch] = useState(false)
-  const { inputRef } = useInputValue()
+
   const menuStyles = open ? `${styles.menu} ${styles.active}` : `${styles.menu}`
 
   const onChangeSearch = () => {
@@ -35,10 +35,7 @@ const MobileMenu = ({ onChangeOpen, open }) => {
       <div className={styles.icons__section}>
         {openSearch ? (
           <>
-            <SearchInput
-              attr='true'
-              ref={inputRef}
-            />
+            <SearchInput attr='true' />
             <div className={styles.searchClosing}>
               <VscClose onClick={onChangeSearch} />
             </div>
@@ -62,6 +59,7 @@ const MobileMenu = ({ onChangeOpen, open }) => {
             </div>
           </>
         )}
+        <SearchResult />
       </div>
       <div className={styles.menu__content}>
         <div className={styles.menu__header}>Меню</div>

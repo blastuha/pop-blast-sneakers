@@ -1,16 +1,12 @@
 import React from 'react'
 import styles from './searchInput.module.scss'
-import { useSelector } from 'react-redux'
-import { sneakers } from '../../redux/slices/sneakers/selectors'
-import { inputValue } from '../../redux/slices/input/selectors'
 import useWidth from '../../hooks/useWidth'
+import useInputValue from '../../hooks/useInputValue'
 import { CiSearch } from 'react-icons/ci'
+import SearchResult from '../SearchResult/SearchResult'
 
-const SearchInput = React.forwardRef(({ attr }, ref) => {
-  // const sneakersList = useSelector(sneakers)
-  // console.log(sneakersList)
-  const searchValue = useSelector(inputValue)
-  console.log(searchValue)
+const SearchInput = ({ attr }) => {
+  const { inputRef } = useInputValue()
   const width = useWidth()
 
   return (
@@ -22,14 +18,14 @@ const SearchInput = React.forwardRef(({ attr }, ref) => {
         <input
           type='text'
           placeholder='Поиск'
-          ref={ref}
-          autoFocus
+          ref={inputRef}
         />
-        {/* {width <= 767 && <div className={styles.result}></div>} */}
+        {/* {width <= 767 && <SearchResult />} */}
+        {/* <SearchResult /> */}
       </div>
       <CiSearch />
     </div>
   )
-})
+}
 
 export default SearchInput

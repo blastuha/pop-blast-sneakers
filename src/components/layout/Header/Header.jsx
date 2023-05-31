@@ -10,12 +10,10 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import Cutlist from '../../Header/Cutlist'
 import SearchInput from '../../SearchInput/SearchInput'
 import { headerMenu } from '../../../data'
-import useInputValue from '../../../hooks/useInputValue'
 import useClickOutside from '../../../hooks/useClickOutside'
 
 function Header({ onChangeOpen }) {
   const { open, itemRef, handleOpen } = useClickOutside(false)
-  const { inputRef } = useInputValue()
 
   return (
     <div className={styles.header}>
@@ -75,7 +73,7 @@ function Header({ onChangeOpen }) {
             <h1>POP BLAST SNEAKERS</h1>
           </div>
           <FaShoppingCart className={styles.cart__mobile} />
-          <SearchInput ref={inputRef} />
+          <SearchInput />
           <div className={styles.header__bottom__icons}>
             <Link
               to='/auth'

@@ -1,17 +1,11 @@
 import React from 'react'
 import styles from './sneakers.module.scss'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { sneakers } from '../../redux/slices/sneakers/selectors'
-import { inputValue } from '../../redux/slices/input/selectors'
 
-function Sneakers() {
-  const sneakersList = useSelector(sneakers)
-  const searchValue = useSelector(inputValue)
-
+function Sneakers({ sneakersList, value }) {
   return sneakersList
     .filter((sneaker) =>
-      sneaker.title.toLowerCase().includes(searchValue.toLowerCase().trim())
+      sneaker.title.toLowerCase().includes(value.toLowerCase().trim())
     )
     .map((sneaker) => (
       <div
