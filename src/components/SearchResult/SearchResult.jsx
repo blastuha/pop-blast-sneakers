@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from './searchResult.module.scss'
 import { useSelector } from 'react-redux'
 import { sneakers } from '../../redux/slices/sneakers/selectors'
 import useInputValue from '../../hooks/useInputValue'
 
-const SearchResult = () => {
+const SearchResult = ({ handleMobileMenu }) => {
   const sneakersList = useSelector(sneakers)
   const { value } = useInputValue()
   const sneakersFiltered = sneakersList.filter((sneaker) =>
@@ -17,7 +18,15 @@ const SearchResult = () => {
         if (value === '') {
           return null
         }
-        return <span key={i}>{sneaker.title}</span>
+        return (
+          <Link
+            onClick={handleMobileMenu}
+            to={`products/${sneaker.id}`}
+            className={styles.result__link}
+          >
+            <span key={i}>{sneaker.title}</span>
+          </Link>
+        )
       })}
     </div>
   )

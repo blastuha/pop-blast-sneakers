@@ -11,16 +11,16 @@ import Footer from './components/layout/Footer/Footer'
 import Categories from './components/Categories/Categories'
 import getSneakersWithCategory from './utils/getSneakersWithCategory'
 import useActions from './hooks/useActions'
+import useWidth from './hooks/useWidth'
 
 import { useSelector } from 'react-redux'
 import { categories } from './redux/slices/categories/selectors'
 import { cart } from './redux/slices/cart/selectors'
-import useWidth from './hooks/useWidth'
+import { mobileMenu } from './redux/slices/mobileMenu/selectors'
 
 function App() {
-  const [open, setOpen] = useState(false)
   const [searchWindow, setSearchWindow] = useState(false)
-
+  const { mobileMenuOpen } = useSelector(mobileMenu)
   const { fetchSneakers } = useActions()
   const { shoesType, sex, brand } = useSelector(categories)
   const { cartData } = useSelector(cart)
@@ -30,12 +30,12 @@ function App() {
 
   useEffect(() => {
     const bodyStyle = document.querySelector('body').style
-    if (open || searchWindow) {
+    if (mobileMenuOpen || searchWindow) {
       bodyStyle.overflow = 'hidden'
     } else {
       bodyStyle.overflow = 'scroll'
     }
-  }, [open, searchWindow])
+  }, [mobileMenuOpen, searchWindow])
 
   useEffect(() => {
     getSneakersWithCategory(brand, shoesType, sex, fetchSneakers)
@@ -48,10 +48,6 @@ function App() {
     }
     isMounted.current = true
   }, [cartData])
-
-  const onChangeOpen = () => {
-    setOpen(!open)
-  }
 
   const openSearchWindow = () => {
     setSearchWindow(true)
@@ -67,11 +63,8 @@ function App() {
         closeSearchWindow={closeSearchWindow}
         searchWindow={searchWindow}
       />
-      <MobileMenu
-        onChangeOpen={onChangeOpen}
-        open={open}
-      />
-      <Header onChangeOpen={onChangeOpen} />
+      <MobileMenu mobileMenuOpen={mobileMenuOpen} />
+      <Header />
       <Categories />
       <Outlet />
       {width > 767 && <Footer />}

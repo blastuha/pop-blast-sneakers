@@ -11,9 +11,11 @@ import Cutlist from '../../Header/Cutlist'
 import SearchInput from '../../SearchInput/SearchInput'
 import { headerMenu } from '../../../data'
 import useClickOutside from '../../../hooks/useClickOutside'
+import useActions from '../../../hooks/useActions'
 
-function Header({ onChangeOpen }) {
+function Header() {
   const { open, itemRef, handleOpen } = useClickOutside(false)
+  const { handleMobileMenu } = useActions()
 
   return (
     <div className={styles.header}>
@@ -67,7 +69,7 @@ function Header({ onChangeOpen }) {
         <div className={styles.header__bottom}>
           <RxHamburgerMenu
             className={styles.burger}
-            onClick={onChangeOpen}
+            onClick={handleMobileMenu}
           />
           <div className={styles.header__bottom__logo}>
             <h1>POP BLAST SNEAKERS</h1>

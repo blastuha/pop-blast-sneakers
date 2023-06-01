@@ -2,6 +2,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+
+  a:visited,
+  a:link {
+    color: inherit;
+  }
 }
 
 .form__btn {

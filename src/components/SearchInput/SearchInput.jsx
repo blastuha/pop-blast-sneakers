@@ -5,7 +5,7 @@ import useInputValue from '../../hooks/useInputValue'
 import { CiSearch } from 'react-icons/ci'
 import SearchResult from '../SearchResult/SearchResult'
 
-const SearchInput = ({ attr }) => {
+const SearchInput = ({ attr, handleMobileMenu }) => {
   const { inputRef } = useInputValue()
   const width = useWidth()
 
@@ -20,8 +20,7 @@ const SearchInput = ({ attr }) => {
           placeholder='Поиск'
           ref={inputRef}
         />
-        {/* {width <= 767 && <SearchResult />} */}
-        {/* <SearchResult /> */}
+        {width <= 767 && <SearchResult handleMobileMenu={handleMobileMenu} />}
       </div>
       <CiSearch />
     </div>
