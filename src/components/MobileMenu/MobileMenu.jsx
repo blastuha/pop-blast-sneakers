@@ -42,10 +42,7 @@ const MobileMenu = ({ mobileMenuOpen }) => {
       <div className={styles.icons__section}>
         {openSearch ? (
           <>
-            <SearchInput
-              attr='true'
-              handleMobileMenu={handleMobileMenu}
-            />
+            <SearchInput attr='true' />
             <div className={styles.searchClosing}>
               <VscClose onClick={onChangeSearch} />
             </div>

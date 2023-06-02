@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { mobileMenuOpen: false }
+const initialState = { mobileMenuOpen: false, searchWindowOpen: false }
 
 export const mobileMenuSlice = createSlice({
   name: 'mobileMenu',
@@ -11,11 +11,14 @@ export const mobileMenuSlice = createSlice({
     },
     handleMobileMenu: (state, action) => {
       state.mobileMenuOpen = !state.mobileMenuOpen
-      console.log(action.payload)
+    },
+    setSearchWindowOpen: (state, action) => {
+      state.searchWindowOpen = action.payload
     },
   },
 })
 
-export const { setMobileOpen, handleMobileMenu } = mobileMenuSlice.actions
+export const { setMobileOpen, handleMobileMenu, setSearchWindowOpen } =
+  mobileMenuSlice.actions
 
 export default mobileMenuSlice.reducer

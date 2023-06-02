@@ -1,42 +1,12 @@
 import React from 'react'
 import styles from './mobileBottom.module.scss'
 import { Link } from 'react-router-dom'
+import useActions from '../../hooks/useActions'
+import { nav__bottom } from '../../data'
 
-import { FaShoppingCart } from 'react-icons/fa'
-import { AiFillHome } from 'react-icons/ai'
-import { FaSearch } from 'react-icons/fa'
-import { MdFavorite } from 'react-icons/md'
-import { BsFillPersonFill } from 'react-icons/bs'
+const MobileBottom = () => {
+  const { setSearchWindowOpen } = useActions()
 
-const nav__bottom = [
-  { text: 'Главная', icon: <AiFillHome />, link: '/', searchOpen: 'close' },
-  {
-    text: 'Поиск',
-    icon: <FaSearch />,
-    link: '',
-    searchOpen: 'open',
-  },
-  {
-    text: 'Корзина',
-    icon: <FaShoppingCart />,
-    link: '/cart',
-    searchOpen: 'close',
-  },
-  {
-    text: 'Избранное',
-    icon: <MdFavorite />,
-    link: '/favourites',
-    searchOpen: 'close',
-  },
-  {
-    text: 'Профиль',
-    icon: <BsFillPersonFill />,
-    link: '/auth',
-    searchOpen: 'close',
-  },
-]
-
-const MobileBottom = ({ openSearchWindow, closeSearchWindow }) => {
   return (
     <nav className={styles.nav}>
       <div className={styles.nav__container}>
@@ -47,8 +17,8 @@ const MobileBottom = ({ openSearchWindow, closeSearchWindow }) => {
               className={styles.nav__item}
               onClick={
                 item.searchOpen === 'open'
-                  ? openSearchWindow
-                  : closeSearchWindow
+                  ? () => setSearchWindowOpen(true)
+                  : () => setSearchWindowOpen(false)
               }
             >
               <Link to={item.link}>

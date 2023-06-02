@@ -23,3 +23,13 @@
     }
   }
 }
+
+.result[attr='second'] {
+  position: absolute;
+  background-color: rgb(236, 209, 209);
+  top: 62px;
+  z-index: 9999;
+  overflow: scroll;
+  max-height: 100vw;
+  height: 100vw;
+}

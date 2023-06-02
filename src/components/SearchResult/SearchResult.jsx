@@ -4,8 +4,10 @@ import styles from './searchResult.module.scss'
 import { useSelector } from 'react-redux'
 import { sneakers } from '../../redux/slices/sneakers/selectors'
 import useInputValue from '../../hooks/useInputValue'
+import useActions from '../../hooks/useActions'
 
-const SearchResult = ({ handleMobileMenu }) => {
+const SearchResult = ({ bottomSearch }) => {
+  const { handleMobileMenu } = useActions()
   const sneakersList = useSelector(sneakers)
   const { value } = useInputValue()
   const sneakersFiltered = sneakersList.filter((sneaker) =>
@@ -13,13 +15,14 @@ const SearchResult = ({ handleMobileMenu }) => {
   )
 
   return (
-    <div className={styles.result}>
+    <div className={`${styles.result} ${bottomSearch && bottomSearch}`}>
       {sneakersFiltered.map((sneaker, i) => {
         if (value === '') {
           return null
         }
         return (
           <Link
+            key={i}
             onClick={handleMobileMenu}
             to={`products/${sneaker.id}`}
             className={styles.result__link}

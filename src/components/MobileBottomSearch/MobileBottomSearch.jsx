@@ -1,25 +1,30 @@
 import React from 'react'
 import styles from './mobileBottomSearch.module.scss'
+import useActions from '../../hooks/useActions'
+import useInputValue from '../../hooks/useInputValue'
 import { VscClose } from 'react-icons/vsc'
+import SearchResult from '../SearchResult/SearchResult'
 
-const MobileBottomSearch = ({ searchWindow, closeSearchWindow }) => {
-  const searchStyles = searchWindow
+const MobileBottomSearch = ({ searchWindowOpen }) => {
+  const { inputRef, value } = useInputValue()
+  console.log(inputRef)
+  console.log(value)
+  const { setSearchWindowOpen } = useActions()
+  const searchStyles = searchWindowOpen
     ? `${styles.search} ${styles.active}`
     : `${styles.search}`
+
   return (
     <div className={searchStyles}>
-      <form
-        action='/search'
-        method='get'
-        className={styles.search__input}
-      >
+      <div className={styles.search__input}>
         <input
           type='text'
           placeholder='Поиск'
+          ref={inputRef}
         ></input>
-        <VscClose onClick={closeSearchWindow} />
-      </form>
-      <div className='search__result'></div>
+        <VscClose onClick={() => setSearchWindowOpen(false)} />
+      </div>
+      <SearchResult />
     </div>
   )
 }

@@ -1,3 +1,9 @@
+import { FaShoppingCart } from 'react-icons/fa'
+import { AiFillHome } from 'react-icons/ai'
+import { FaSearch } from 'react-icons/fa'
+import { MdFavorite } from 'react-icons/md'
+import { BsFillPersonFill } from 'react-icons/bs'
+
 const data = [
   {
     id: '1',
@@ -258,6 +264,34 @@ const headerMenu = [
 const fullnameReg = `^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)`
 const passwordReg = `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`
 
+const nav__bottom = [
+  { text: 'Главная', icon: <AiFillHome />, link: '/', searchOpen: 'close' },
+  {
+    text: 'Поиск',
+    icon: <FaSearch />,
+    link: '',
+    searchOpen: 'open',
+  },
+  {
+    text: 'Корзина',
+    icon: <FaShoppingCart />,
+    link: '/cart',
+    searchOpen: 'close',
+  },
+  {
+    text: 'Избранное',
+    icon: <MdFavorite />,
+    link: '/favourites',
+    searchOpen: 'close',
+  },
+  {
+    text: 'Профиль',
+    icon: <BsFillPersonFill />,
+    link: '/auth',
+    searchOpen: 'close',
+  },
+]
+
 export {
   brands,
   types,
@@ -268,4 +302,5 @@ export {
   headerMenu,
   fullnameReg,
   passwordReg,
+  nav__bottom,
 }

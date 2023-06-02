@@ -31,12 +31,14 @@ const useInputValue = () => {
 
   useEffect(() => {
     const inputCurrent = inputRef.current
-
     if (inputCurrent) {
+      if (width <= 767) {
+        inputCurrent.focus()
+      }
       inputCurrent.addEventListener('keyup', onChange)
     }
     return () => inputCurrent?.removeEventListener('keyup', onChange)
-  }, [onChange])
+  }, [onChange, width])
 
   return { value, inputRef, clearInput }
 }

@@ -15,4 +15,8 @@ export const store = configureStore({
     inputValue: inputSlice,
     mobileMenu: mobileMenuSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })
