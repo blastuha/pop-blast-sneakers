@@ -5,17 +5,31 @@ import { useSelector } from 'react-redux'
 import { sneakers } from '../../redux/slices/sneakers/selectors'
 import useInputValue from '../../hooks/useInputValue'
 import useActions from '../../hooks/useActions'
+import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
 
-const SearchResult = ({ bottomSearch }) => {
+const SearchResult = ({ bottomsearch, setSearchWindowOpen }) => {
   const { handleMobileMenu } = useActions()
   const sneakersList = useSelector(sneakers)
+  const { searchWindowOpen } = useSelector(mobileMenu)
   const { value } = useInputValue()
   const sneakersFiltered = sneakersList.filter((sneaker) =>
     sneaker.title.toLowerCase().includes(value.toLowerCase().trim())
   )
 
+  const mobileMenuClosing = () => {
+    if (searchWindowOpen) {
+      setSearchWindowOpen(false)
+      return
+    } else {
+      handleMobileMenu()
+    }
+  }
+
   return (
-    <div className={`${styles.result} ${bottomSearch && bottomSearch}`}>
+    <div
+      className={`${styles.result}`}
+      bottomsearch={bottomsearch}
+    >
       {sneakersFiltered.map((sneaker, i) => {
         if (value === '') {
           return null
@@ -23,7 +37,7 @@ const SearchResult = ({ bottomSearch }) => {
         return (
           <Link
             key={i}
-            onClick={handleMobileMenu}
+            onClick={mobileMenuClosing}
             to={`products/${sneaker.id}`}
             className={styles.result__link}
           >

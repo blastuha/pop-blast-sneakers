@@ -20,7 +20,7 @@ const SearchInput = ({ attr }) => {
           placeholder='Поиск'
           ref={inputRef}
         />
-        {width <= 767 && <SearchResult styled='bottomSearch' />}
+        {width <= 767 && <SearchResult />}
       </div>
       <CiSearch />
     </div>

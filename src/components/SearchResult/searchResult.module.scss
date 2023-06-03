@@ -24,12 +24,21 @@
   }
 }
 
-.result[attr='second'] {
+.result[bottomsearch='true'] {
   position: absolute;
-  background-color: rgb(236, 209, 209);
+  background-color: rgb(255, 255, 255);
   top: 62px;
   z-index: 9999;
   overflow: scroll;
-  max-height: 100vw;
-  height: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+
+  .result__link {
+    font-family: Jura;
+    color: inherit;
+    &:link,
+    &:visited {
+      color: #333333;
+    }
+  }
 }

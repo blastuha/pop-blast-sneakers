@@ -6,9 +6,7 @@ import { VscClose } from 'react-icons/vsc'
 import SearchResult from '../SearchResult/SearchResult'
 
 const MobileBottomSearch = ({ searchWindowOpen }) => {
-  const { inputRef, value } = useInputValue()
-  console.log(inputRef)
-  console.log(value)
+  const { inputRef } = useInputValue()
   const { setSearchWindowOpen } = useActions()
   const searchStyles = searchWindowOpen
     ? `${styles.search} ${styles.active}`
@@ -24,7 +22,10 @@ const MobileBottomSearch = ({ searchWindowOpen }) => {
         ></input>
         <VscClose onClick={() => setSearchWindowOpen(false)} />
       </div>
-      <SearchResult />
+      <SearchResult
+        bottomsearch='true'
+        setSearchWindowOpen={setSearchWindowOpen}
+      />
     </div>
   )
 }
