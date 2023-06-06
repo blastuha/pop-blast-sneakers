@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styles from './searchResult.module.scss'
+
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { sneakers } from '../../redux/slices/sneakers/selectors'
+import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
 import useInputValue from '../../hooks/useInputValue'
 import useActions from '../../hooks/useActions'
-import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
 
 const SearchResult = ({ bottomsearch, setSearchWindowOpen }) => {
   const { handleMobileMenu } = useActions()

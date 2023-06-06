@@ -1,13 +1,18 @@
 import React from 'react'
 import styles from './mobileBottomSearch.module.scss'
+
 import useActions from '../../hooks/useActions'
+// import useAutoFocus from '../../hooks/useAutoFocus'
 import useInputValue from '../../hooks/useInputValue'
-import { VscClose } from 'react-icons/vsc'
+
 import SearchResult from '../SearchResult/SearchResult'
+import { VscClose } from 'react-icons/vsc'
 
 const MobileBottomSearch = ({ searchWindowOpen }) => {
-  const { inputRef } = useInputValue()
   const { setSearchWindowOpen } = useActions()
+  const { inputRef } = useInputValue()
+  // const searchRef = useAutoFocus()
+
   const searchStyles = searchWindowOpen
     ? `${styles.search} ${styles.active}`
     : `${styles.search}`

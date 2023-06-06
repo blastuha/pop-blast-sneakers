@@ -1,15 +1,17 @@
-import { useEffect, useRef, useMemo, useCallback } from 'react'
+import { useEffect, useMemo, useCallback, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { inputValue } from '../redux/slices/input/selectors'
 import useActions from './useActions'
 import useWidth from './useWidth'
 import debounce from 'lodash.debounce'
 
-const useInputValue = () => {
+const useInputValue2 = () => {
+  const inputRef = useRef(null)
   const { setInputValue } = useActions()
   const value = useSelector(inputValue)
-  const inputRef = useRef(null)
   const width = useWidth()
+
+  console.log(inputRef)
 
   const onChange = useMemo(
     () =>
@@ -40,4 +42,4 @@ const useInputValue = () => {
   return { value, inputRef, clearInput }
 }
 
-export default useInputValue
+export default useInputValue2
