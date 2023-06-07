@@ -7,12 +7,12 @@ import { scrollToTop } from '../utils/scroll-to-top'
 import Sneakers from '../components/Sneakers/Sneakers'
 import SectionHeader from '../components/Header/SectionHeader'
 import NothingFound from '../components/NothingFound/NothingFound'
-import useInputValue from '../hooks/useInputValue'
+import useInputValue2 from '../hooks/useInputValue2'
 
 function Main() {
   useEffect(() => scrollToTop(), [])
   const sneakersList = useSelector(sneakers)
-  const { value } = useInputValue()
+  const { value } = useInputValue2()
   const sneakersFiltered = sneakersList.filter((sneaker) =>
     sneaker.title.toLowerCase().includes(value.toLowerCase().trim())
   )

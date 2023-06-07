@@ -19,15 +19,15 @@ const useInputValue = () => {
     [setInputValue]
   )
 
-  const clearInput = useCallback(() => {
-    if (width <= 767) {
-      setInputValue('')
-    }
-  }, [setInputValue, width])
+  // const clearInput = useCallback(() => {
+  //   if (width <= 767) {
+  //     setInputValue('')
+  //   }
+  // }, [setInputValue, width])
 
-  useEffect(() => {
-    clearInput()
-  }, [width, clearInput])
+  // useEffect(() => {
+  //   clearInput()
+  // }, [width, clearInput])
 
   useEffect(() => {
     const inputCurrent = inputRef.current
@@ -37,7 +37,7 @@ const useInputValue = () => {
     return () => inputCurrent?.removeEventListener('keyup', onChange)
   }, [onChange, width, inputRef])
 
-  return { value, inputRef, clearInput }
+  return { value, inputRef }
 }
 
 export default useInputValue

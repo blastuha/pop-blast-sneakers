@@ -1,28 +1,23 @@
-import React, { useRef, useCallback } from 'react'
+import React from 'react'
 import styles from './searchInput.module.scss'
 
 import { CiSearch } from 'react-icons/ci'
 import SearchResult from '../SearchResult/SearchResult'
 
 import useWidth from '../../hooks/useWidth'
-import useInputValue2 from '../../hooks/useInputValue'
+import useInputValue2 from '../../hooks/useInputValue2'
 import useAutoFocus from '../../hooks/useAutoFocus'
+import useCombinedRefs from '../../hooks/useCombinedRefs'
 
 const SearchInput = ({ attr }) => {
   //* происходит 2 ререндера при вводе текста - как это убрать?
 
+  const { value, onChange } = useInputValue2()
   const focusRef = useAutoFocus()
-  const { inputRef } = useInputValue2()
-  console.log(inputRef)
   const width = useWidth()
+  const isFocusRequared = width < 767 ? focusRef : null
 
-  const cbRef = useCallback(
-    (el) => {
-      inputRef.current = el
-      focusRef.current = el
-    },
-    [inputRef, focusRef]
-  )
+  console.log(value)
 
   return (
     <div
@@ -33,9 +28,11 @@ const SearchInput = ({ attr }) => {
         <input
           type='text'
           placeholder='Поиск'
-          ref={cbRef}
+          value={value}
+          onChange={onChange}
+          ref={isFocusRequared}
         />
-        {width <= 767 && <SearchResult />}
+        {width <= 767 && <SearchResult value={value} />}
       </div>
       <CiSearch />
     </div>

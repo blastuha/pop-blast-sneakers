@@ -22,7 +22,7 @@ const iconsLinksBurger = [
 
 const MobileMenu = ({ mobileMenuOpen }) => {
   const [openSearch, setOpenSearch] = useState(false)
-  const { clearInput } = useInputValue()
+  // const { clearInput } = useInputValue()
   const { handleMobileMenu } = useActions()
 
   const menuStyles = mobileMenuOpen
@@ -31,7 +31,7 @@ const MobileMenu = ({ mobileMenuOpen }) => {
 
   const onChangeSearch = () => {
     setOpenSearch(!openSearch)
-    clearInput()
+    // clearInput()
   }
 
   return (

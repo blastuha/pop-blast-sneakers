@@ -5,14 +5,12 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { sneakers } from '../../redux/slices/sneakers/selectors'
 import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
-import useInputValue from '../../hooks/useInputValue'
 import useActions from '../../hooks/useActions'
 
-const SearchResult = ({ bottomsearch, setSearchWindowOpen }) => {
+const SearchResult = ({ bottomsearch, setSearchWindowOpen, value }) => {
   const { handleMobileMenu } = useActions()
   const sneakersList = useSelector(sneakers)
   const { searchWindowOpen } = useSelector(mobileMenu)
-  const { value } = useInputValue()
   const sneakersFiltered = sneakersList.filter((sneaker) =>
     sneaker.title.toLowerCase().includes(value.toLowerCase().trim())
   )
