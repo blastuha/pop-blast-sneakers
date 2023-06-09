@@ -12,7 +12,7 @@ import useCombinedRefs from '../../hooks/useCombinedRefs'
 const SearchInput = ({ attr }) => {
   //* происходит 2 ререндера при вводе текста - как это убрать?
 
-  const { value, onChange } = useInputValue2()
+  const { value, onChange, globalInputValue } = useInputValue2()
   const focusRef = useAutoFocus()
   const width = useWidth()
   const isFocusRequared = width < 767 ? focusRef : null
@@ -32,7 +32,7 @@ const SearchInput = ({ attr }) => {
           onChange={onChange}
           ref={isFocusRequared}
         />
-        {width <= 767 && <SearchResult value={value} />}
+        {width <= 767 && <SearchResult value={globalInputValue} />}
       </div>
       <CiSearch />
     </div>

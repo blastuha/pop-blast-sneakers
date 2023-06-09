@@ -12,7 +12,7 @@ export const store = configureStore({
     alerts: alertsSlice,
     sneakers: sneakersSlice,
     categories: categoriesSlice,
-    inputValue: inputSlice,
+    globalInputValue: inputSlice,
     mobileMenu: mobileMenuSlice,
   },
   middleware: (getDefaultMiddleware) =>

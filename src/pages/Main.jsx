@@ -12,9 +12,9 @@ import useInputValue2 from '../hooks/useInputValue2'
 function Main() {
   useEffect(() => scrollToTop(), [])
   const sneakersList = useSelector(sneakers)
-  const { value } = useInputValue2()
+  const { globalInputValue } = useInputValue2()
   const sneakersFiltered = sneakersList.filter((sneaker) =>
-    sneaker.title.toLowerCase().includes(value.toLowerCase().trim())
+    sneaker.title.toLowerCase().includes(globalInputValue.toLowerCase().trim())
   )
 
   return (
@@ -25,7 +25,7 @@ function Main() {
         <div className='main__sneakers'>
           <Sneakers
             sneakersList={sneakersList}
-            value={value}
+            value={globalInputValue}
           />
         </div>
       </div>

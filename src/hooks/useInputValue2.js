@@ -1,27 +1,31 @@
-import { useState, useMemo } from 'react'
-import debounce from 'lodash.debounce'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { inputValue } from '../redux/slices/input/selectors'
+import { globalValue } from '../redux/slices/input/selectors'
 import useActions from './useActions'
+import useDebounce from './useDebounce'
 
 const useInputValue2 = () => {
-  // const [value, setValue] = useState('')
-  const { setInputValue } = useActions()
-  const value = useSelector(inputValue)
+  const [value, setValue] = useState('')
+  const globalInputValue = useSelector(globalValue)
+  const { setGlobalInputValue } = useActions()
+  const updateGlobalInputValue = useDebounce((value) => {
+    setGlobalInputValue(value)
+  }, 200)
 
-  // const onChange = useMemo(
+  // const updateGlobalInputValue = useMemo(
   //   () =>
-  //     debounce((e) => {
-  //       setValue(e.target.value)
-  //     }, 150),
-  //   [setValue]
+  //     debounce((value) => {
+  //       setGlobalInputValue(value)
+  //     }, 1000),
+  //   [setGlobalInputValue]
   // )
 
   const onChange = (e) => {
-    setInputValue(e.target.value)
+    setValue(e.target.value)
+    updateGlobalInputValue(e.target.value)
   }
 
-  return { value, onChange }
+  return { value, onChange, globalInputValue }
 }
 
 export default useInputValue2

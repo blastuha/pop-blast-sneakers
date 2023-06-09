@@ -1,17 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { inputValue: '' }
+const initialState = { globalInputValue: '' }
 
 export const inputSlice = createSlice({
-  name: 'inputValue',
+  name: 'globalInputValue',
   initialState,
   reducers: {
-    setInputValue: (state, action) => {
-      state.inputValue = action.payload
+    setGlobalInputValue: (state, action) => {
+      state.globalInputValue = action.payload
     },
   },
 })
 
-export const { setInputValue } = inputSlice.actions
+export const { setGlobalInputValue } = inputSlice.actions
 
 export default inputSlice.reducer

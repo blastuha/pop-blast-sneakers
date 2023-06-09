@@ -1,1 +1,1 @@
-export const inputValue = (state) => state.inputValue.inputValue
+export const globalValue = (state) => state.globalInputValue.globalInputValue

@@ -1,13 +1,13 @@
 import { useEffect, useRef, useMemo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
-import { inputValue } from '../redux/slices/input/selectors'
+// import { inputValue } from '../redux/slices/input/selectors'
 import useActions from './useActions'
 import useWidth from './useWidth'
 import debounce from 'lodash.debounce'
 
 const useInputValue = () => {
   const { setInputValue } = useActions()
-  const value = useSelector(inputValue)
+  // const value = useSelector(inputValue)
   const inputRef = useRef(null)
   const width = useWidth()
 
@@ -19,16 +19,6 @@ const useInputValue = () => {
     [setInputValue]
   )
 
-  // const clearInput = useCallback(() => {
-  //   if (width <= 767) {
-  //     setInputValue('')
-  //   }
-  // }, [setInputValue, width])
-
-  // useEffect(() => {
-  //   clearInput()
-  // }, [width, clearInput])
-
   useEffect(() => {
     const inputCurrent = inputRef.current
     if (inputCurrent) {
@@ -37,7 +27,7 @@ const useInputValue = () => {
     return () => inputCurrent?.removeEventListener('keyup', onChange)
   }, [onChange, width, inputRef])
 
-  return { value, inputRef }
+  // return { value, inputRef }
 }
 
 export default useInputValue
