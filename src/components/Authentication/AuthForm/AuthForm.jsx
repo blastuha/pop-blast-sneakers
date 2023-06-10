@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import TextField from '../TextFeld/TextField'
 import LoginError from './LoginError'
-import FormButtons from './FormButtons'
+import FormButtons from './FormButtons/FormButtons'
 import DynamicForm from './DynamicForm'
 
 import useValidate from '../../hooks/useValidate'
