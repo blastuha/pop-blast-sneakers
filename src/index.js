@@ -13,9 +13,9 @@ import Cart from './pages/Cart'
 import Contacts from './pages/Contacts'
 import ProductPage from './pages/ProductPage'
 import AuthenticationPage from './pages/AuthenticationPage'
-import ForgetPassForm from './components/Authentication/ForgetPassForm'
-import AuthForm from './components/Authentication/AuthForm'
-import RegistrationForm from './components/Authentication/RegistrationForm'
+import ForgetPassForm from './components/Authentication/ForgetPassForm/ForgetPassForm'
+import AuthForm from './components/Authentication/AuthForm/AuthForm'
+import RegistrationForm from './components/Authentication/RegistrationForm/RegistrationForm'
 
 const router = createBrowserRouter([
   {

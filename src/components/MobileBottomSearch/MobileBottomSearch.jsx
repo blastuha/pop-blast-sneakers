@@ -3,18 +3,15 @@ import styles from './mobileBottomSearch.module.scss'
 
 import useActions from '../../hooks/useActions'
 import useAutoFocus from '../../hooks/useAutoFocus'
-import useInputValue2 from '../../hooks/useInputValue2'
-import useCombinedRefs from '../../hooks/useCombinedRefs'
+import useInputValue from '../../hooks/useInputValue'
 
 import SearchResult from '../SearchResult/SearchResult'
-import SearchInput from '../SearchInput/SearchInput'
 import { VscClose } from 'react-icons/vsc'
 
 const MobileBottomSearch = ({ searchWindowOpen }) => {
   const { setSearchWindowOpen } = useActions()
-  const { inputRef, value } = useInputValue2()
-  const focusRef = useAutoFocus()
-  const cbRef = useCombinedRefs(inputRef, focusRef)
+  const { value, onChange, globalInputValue } = useInputValue()
+  const inputRef = useAutoFocus()
 
   const searchStyles = searchWindowOpen
     ? `${styles.search} ${styles.active}`
@@ -26,15 +23,16 @@ const MobileBottomSearch = ({ searchWindowOpen }) => {
         <input
           type='text'
           placeholder='Поиск'
-          ref={cbRef}
-          // autoFocus
+          ref={inputRef}
+          value={value}
+          onChange={onChange}
         ></input>
         <VscClose onClick={() => setSearchWindowOpen(false)} />
       </div>
       <SearchResult
         bottomsearch='true'
         setSearchWindowOpen={setSearchWindowOpen}
-        value={value}
+        value={globalInputValue}
       />
     </div>
   )

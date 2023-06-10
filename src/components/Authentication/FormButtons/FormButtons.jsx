@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './formButtons.module.scss'
 import { Link } from 'react-router-dom'
 
 const FormButtons = ({
@@ -9,17 +10,16 @@ const FormButtons = ({
   thirdBtnLink,
 }) => {
   return (
-    <div className='auth-buttons'>
+    <div className={styles.auth__buttons}>
       <button
         type='submit'
-        className='auth-btn enter'
-      >
+        className={styles.btn}      >
         {firstBtnText}
       </button>
       <Link
         to={secondBtnLink}
         type='button'
-        className='auth-link'
+        className={styles.link}
       >
         {secondBtnText}
       </Link>
@@ -27,7 +27,7 @@ const FormButtons = ({
         <Link
           to={thirdBtnLink}
           type='button'
-          className='auth-link'
+          className={styles.link}
         >
           {thirdBtnText}
         </Link>

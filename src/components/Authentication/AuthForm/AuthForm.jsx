@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
-import TextField from '../TextFeld/TextField'
-import LoginError from './LoginError'
-import FormButtons from './FormButtons/FormButtons'
-import DynamicForm from './DynamicForm'
+import TextField from '../../TextFeld/TextField'
+import LoginError from '../LoginError/LoginError'
+import FormButtons from '../FormButtons/FormButtons'
+import DynamicForm from '../DynamicForm/DynamicForm'
 
-import useValidate from '../../hooks/useValidate'
+import useValidate from '../../../hooks/useValidate'
 
 const AuthForm = () => {
   const [data, setData] = useState({ email: '', password: '' })

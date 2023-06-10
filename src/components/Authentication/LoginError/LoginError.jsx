@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import styles from './loginError.module.scss'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 const LoginError = ({ errors }) => {
@@ -33,9 +34,8 @@ const LoginError = ({ errors }) => {
           in={showError}
           unmountOnExit
           timeout={400}
-          classNames='option'
         >
-          <div className='login-error'>
+          <div className={styles.loginError}>
             <span>{errorMessage()}</span>
           </div>
         </CSSTransition>

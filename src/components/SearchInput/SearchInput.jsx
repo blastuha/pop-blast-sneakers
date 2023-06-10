@@ -5,19 +5,14 @@ import { CiSearch } from 'react-icons/ci'
 import SearchResult from '../SearchResult/SearchResult'
 
 import useWidth from '../../hooks/useWidth'
-import useInputValue2 from '../../hooks/useInputValue2'
+import useInputValue from '../../hooks/useInputValue'
 import useAutoFocus from '../../hooks/useAutoFocus'
-import useCombinedRefs from '../../hooks/useCombinedRefs'
 
 const SearchInput = ({ attr }) => {
-  //* происходит 2 ререндера при вводе текста - как это убрать?
-
-  const { value, onChange, globalInputValue } = useInputValue2()
-  const focusRef = useAutoFocus()
+  const { value, onChange, globalInputValue } = useInputValue()
+  const inputRef = useAutoFocus()
   const width = useWidth()
-  const isFocusRequared = width < 767 ? focusRef : null
-
-  console.log(value)
+  const isFocusRequared = width < 767 ? inputRef : null
 
   return (
     <div

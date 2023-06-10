@@ -4,7 +4,6 @@ import styles from './mobileMenu.module.scss'
 import { headerMenu } from '../../data'
 import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
 import SearchInput from '../SearchInput/SearchInput'
-import useInputValue from '../../hooks/useInputValue'
 
 import { VscClose } from 'react-icons/vsc'
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -22,7 +21,6 @@ const iconsLinksBurger = [
 
 const MobileMenu = ({ mobileMenuOpen }) => {
   const [openSearch, setOpenSearch] = useState(false)
-  // const { clearInput } = useInputValue()
   const { handleMobileMenu } = useActions()
 
   const menuStyles = mobileMenuOpen
@@ -31,7 +29,6 @@ const MobileMenu = ({ mobileMenuOpen }) => {
 
   const onChangeSearch = () => {
     setOpenSearch(!openSearch)
-    // clearInput()
   }
 
   return (

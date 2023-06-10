@@ -1,33 +1,23 @@
-import { useEffect, useRef, useMemo, useCallback } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
-// import { inputValue } from '../redux/slices/input/selectors'
+import { globalValue } from '../redux/slices/input/selectors'
 import useActions from './useActions'
-import useWidth from './useWidth'
-import debounce from 'lodash.debounce'
+import useDebounce from './useDebounce'
 
 const useInputValue = () => {
-  const { setInputValue } = useActions()
-  // const value = useSelector(inputValue)
-  const inputRef = useRef(null)
-  const width = useWidth()
+  const [value, setValue] = useState('')
+  const globalInputValue = useSelector(globalValue)
+  const { setGlobalInputValue } = useActions()
+  const updateGlobalInputValue = useDebounce((value) => {
+    setGlobalInputValue(value)
+  }, 250)
 
-  const onChange = useMemo(
-    () =>
-      debounce((e) => {
-        setInputValue(e.target.value)
-      }, 150),
-    [setInputValue]
-  )
+  const onChange = (e) => {
+    setValue(e.target.value)
+    updateGlobalInputValue(value)
+  }
 
-  useEffect(() => {
-    const inputCurrent = inputRef.current
-    if (inputCurrent) {
-      inputCurrent.addEventListener('keyup', onChange)
-    }
-    return () => inputCurrent?.removeEventListener('keyup', onChange)
-  }, [onChange, width, inputRef])
-
-  // return { value, inputRef }
+  return { value, onChange, globalInputValue }
 }
 
 export default useInputValue

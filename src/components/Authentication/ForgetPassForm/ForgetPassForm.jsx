@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import TextField from '../TextFeld/TextField'
-import FormButtons from './FormButtons/FormButtons'
-import DynamicForm from './DynamicForm/DynamicForm'
+import TextField from '../../TextFeld/TextField'
+import FormButtons from '../FormButtons/FormButtons'
+import DynamicForm from '../DynamicForm/DynamicForm'
 
 const ForgetPassForm = () => {
   const [email, setEmail] = useState('')

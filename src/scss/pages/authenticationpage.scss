@@ -1,4 +1,9 @@
 .person {
+  @media (max-width: 767px) {
+    display: flex;
+    height: calc(100vh - 120px);
+  }
+
   &__container {
     width: calc(100vw - 100px);
     max-width: 1480px;

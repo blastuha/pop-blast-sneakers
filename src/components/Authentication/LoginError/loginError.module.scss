@@ -1,0 +1,28 @@
+.loginError {
+  padding: 10px;
+  margin-bottom: 30px;
+  background-color: #f2dede;
+  font-family: Jura, sans-serif;
+  font-size: 14px;
+  color: #a94442;
+  line-height: 1.21em;
+  // animation: fade-in 500ms forwards;
+}
+
+.optionEnter {
+  opacity: 0;
+}
+
+.optionEnter.active {
+  opacity: 1;
+  transition: opacity 0.4s linear;
+}
+
+.optionExit {
+  opacity: 1;
+}
+
+.optionExit.active {
+  opacity: 0;
+  transition: opacity 0.4s linear;
+}

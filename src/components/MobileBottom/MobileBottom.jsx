@@ -7,6 +7,12 @@ import { nav__bottom } from '../../data'
 const MobileBottom = () => {
   const { setSearchWindowOpen } = useActions()
 
+  const handleSearchWindow = (item) => {
+    return item === 'open'
+      ? () => setSearchWindowOpen(true)
+      : () => setSearchWindowOpen(false)
+  }
+
   return (
     <nav className={styles.nav}>
       <div className={styles.nav__container}>
@@ -15,11 +21,7 @@ const MobileBottom = () => {
             <button
               key={i}
               className={styles.nav__item}
-              onClick={
-                item.searchOpen === 'open'
-                  ? () => setSearchWindowOpen(true)
-                  : () => setSearchWindowOpen(false)
-              }
+              onClick={handleSearchWindow(item.searchOpen)}
             >
               <Link to={item.link}>
                 {item.icon}

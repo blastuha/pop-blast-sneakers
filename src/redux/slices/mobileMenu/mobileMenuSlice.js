@@ -9,7 +9,7 @@ export const mobileMenuSlice = createSlice({
     setMobileOpen: (state, action) => {
       state.mobileMenuOpen = action.payload
     },
-    handleMobileMenu: (state, action) => {
+    handleMobileMenu: (state) => {
       state.mobileMenuOpen = !state.mobileMenuOpen
     },
     setSearchWindowOpen: (state, action) => {

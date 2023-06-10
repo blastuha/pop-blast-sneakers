@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import DynamicForm from './DynamicForm/DynamicForm'
-import TextField from '../TextFeld/TextField'
-import FormButtons from './FormButtons/FormButtons'
-import { fullnameReg, passwordReg } from '../../data'
+import DynamicForm from '../DynamicForm/DynamicForm'
+import TextField from '../../TextFeld/TextField'
+import FormButtons from '../FormButtons/FormButtons'
+import { fullnameReg, passwordReg } from '../../../data'
 
 const RegistrationForm = () => {
   const [values, setValues] = useState({
