@@ -26,7 +26,7 @@ function Main() {
           <Sneakers
             sneakersList={sneakersList}
             value={globalInputValue}
-            favourites='false'
+            isfavouristes='false'
           />
         </div>
       </div>

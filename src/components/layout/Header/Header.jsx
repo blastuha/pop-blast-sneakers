@@ -6,6 +6,7 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { FaShoppingCart } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import { AiFillHeart } from 'react-icons/ai'
 
 import Cutlist from '../../Header/Cutlist'
 import SearchInput from '../../SearchInput/SearchInput'
@@ -82,6 +83,12 @@ function Header() {
               className={styles.link}
             >
               <BsFillPersonFill className={styles.link__icon} />
+            </Link>
+            <Link
+              to='favourites'
+              className={styles.link}
+            >
+              <AiFillHeart className={styles.link__icon} />
             </Link>
             <Link
               to='cart'

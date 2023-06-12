@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import getStorageItems from '../../../utils/getStorageItems'
 
 const initialState = {
-  favourites: [],
+  favourites: getStorageItems('favouritesData') || [],
 }
 
 export const favouritesSlice = createSlice({
@@ -13,20 +13,18 @@ export const favouritesSlice = createSlice({
       state.selectedSize = action.payload
     },
     addToFavourites: (state, action) => {
-      const itemToAdd = {
-        ...action.payload,
-        quantity: 1,
-        size: state.selectedSize,
-        color: state.selectedColor,
+      if (state.favourites.find((sneaker) => sneaker === action.payload)) {
+        console.log('есть')
+        return
+      } else {
+        state.favourites.push(action.payload)
+        console.log('нету')
       }
-      state.favourites.push(itemToAdd)
     },
     deleteFromFavourites: (state, action) => {
-      if (action.payload.sneakerQuantity === 1) {
-        state.favourites = state.favourites.filter(
-          (item) => item.id !== action.payload.sneakerId
-        )
-      }
+      state.favourites = state.favourites.filter(
+        (item) => item.id !== action.payload.id
+      )
     },
   },
 })

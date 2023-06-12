@@ -2,9 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { AiFillHeart } from 'react-icons/ai'
 import { AiOutlineHeart } from 'react-icons/ai'
+
+import useActions from '../../hooks/useActions'
+
 import styles from './sneakers.module.scss'
 
-function Sneakers({ sneakersList, value, isFavouristes }) {
+function Sneakers({ sneakersList, value, isfavouristes }) {
+  const { addToFavourites, deleteFromFavourites } = useActions()
+
   return sneakersList
     .filter((sneaker) =>
       sneaker.title.toLowerCase().includes(value.toLowerCase().trim())
@@ -18,13 +23,17 @@ function Sneakers({ sneakersList, value, isFavouristes }) {
           src={sneaker.imageUrl}
           alt='sneaker'
         />
-        {isFavouristes === 'true' ? (
+        {isfavouristes === 'true' ? (
           <AiFillHeart
             className={styles.favourites}
-            isFavouristes={isFavouristes}
+            isfavouristes={isfavouristes}
+            onClick={() => deleteFromFavourites(sneaker)}
           />
         ) : (
-          <AiOutlineHeart className={styles.favourites} />
+          <AiOutlineHeart
+            className={styles.favourites}
+            onClick={() => addToFavourites(sneaker)}
+          />
         )}
         <Link
           to={'/products/' + sneaker.id}

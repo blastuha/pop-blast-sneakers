@@ -1,5 +1,5 @@
-const getStorageItems = () => {
-  const data = localStorage.getItem('cartItems')
+const getStorageItems = (key) => {
+  const data = localStorage.getItem(`${key}`)
   return data ? JSON.parse(data) : ''
 }
 

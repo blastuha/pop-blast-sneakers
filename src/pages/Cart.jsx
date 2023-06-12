@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
+import { cart } from '../redux/slices/cart/selectors'
 
-import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import CartItem from '../components/Cart/CartItem/CartItem'
 import CartCounter from '../components/Cart/CartCounter/CartCounter'
 import useWidth from '../hooks/useWidth'
+import { scrollToTop } from '../utils/scroll-to-top'
 
 function Cart() {
-  const cartData = useSelector((state) => state.cart.cartData)
+  const { cartData } = useSelector(cart)
   const width = useWidth()
 
   useEffect(() => {
