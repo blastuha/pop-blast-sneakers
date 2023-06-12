@@ -1,11 +1,14 @@
 import React from 'react'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
+import useWidth from '../hooks/useWidth'
 
 function Contacts() {
+  const width = useWidth()
+
   return (
     <div className='contacts-page'>
       <div className='contacts-page__container'>
-        <Breadcrumb />
+        {width > 767 && <Breadcrumb />}
         <div className='contacts-page__contacts'>
           <h1>Контакты и адреса</h1>
           <p>

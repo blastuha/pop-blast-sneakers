@@ -21,7 +21,7 @@ function Cart() {
       <div className='cart__container'>
         {width > 767 && <Breadcrumb />}
         <div className='cart__header'>
-          <div className='cart-title'>Корзина</div>
+          <h3 className='cart-title'>Корзина</h3>
         </div>
         <div className='cart__main'>
           <div className='cart__items'>

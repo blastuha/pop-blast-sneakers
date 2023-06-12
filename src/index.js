@@ -16,6 +16,7 @@ import AuthenticationPage from './pages/AuthenticationPage'
 import ForgetPassForm from './components/Authentication/ForgetPassForm/ForgetPassForm'
 import AuthForm from './components/Authentication/AuthForm/AuthForm'
 import RegistrationForm from './components/Authentication/RegistrationForm/RegistrationForm'
+import Favourites from './pages/Favourites/Favourites'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             element: <h1>Hello</h1>,
           },
         ],
+      },
+      {
+        path: 'favourites',
+        element: <Favourites />,
       },
       {
         path: '*',

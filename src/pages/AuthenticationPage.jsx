@@ -1,4 +1,3 @@
-//! Разделить стили Login / AuthForm из файла login
 import React from 'react'
 
 import { Outlet, useLocation } from 'react-router-dom'

@@ -1,6 +1,4 @@
-import './App.scss'
-
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Header from './components/layout/Header/Header'
@@ -10,6 +8,7 @@ import MobileBottomSearch from './components/MobileBottomSearch/MobileBottomSear
 import Footer from './components/layout/Footer/Footer'
 import Categories from './components/Categories/Categories'
 import getSneakersWithCategory from './utils/getSneakersWithCategory'
+
 import useActions from './hooks/useActions'
 import useWidth from './hooks/useWidth'
 
@@ -18,12 +17,16 @@ import { categories } from './redux/slices/categories/selectors'
 import { cart } from './redux/slices/cart/selectors'
 import { mobileMenu } from './redux/slices/mobileMenu/selectors'
 
+import './App.scss'
+
 function App() {
   const { mobileMenuOpen, searchWindowOpen } = useSelector(mobileMenu)
   const { fetchSneakers } = useActions()
   const { shoesType, sex, brand } = useSelector(categories)
   const { cartData } = useSelector(cart)
   const width = useWidth()
+
+  const [favourites, setFavourites] = useState([])
 
   let isMounted = useRef(false)
 

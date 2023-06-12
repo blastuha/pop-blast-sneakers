@@ -1,8 +1,21 @@
 .sneaker {
+  position: relative;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   max-width: 280px;
+
+  &::before {
+    content: '';
+    border-radius: 50%;
+    background: #ffffff;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    opacity: 0.6;
+    right: 6px;
+    top: 6px;
+  }
 
   @media (max-width: 436px) {
     max-width: 400px;
@@ -28,5 +41,21 @@
     font-weight: 500;
     color: #333333;
     line-height: 1.25em;
+  }
+}
+
+.favourites {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  font-size: 20px;
+  color: #292929;
+  cursor: pointer;
+  transition: all 0.3s linear;
+
+  &:hover {
+    color: rgb(143, 145, 209);
+    scale: 1.1;
   }
 }

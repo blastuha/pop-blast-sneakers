@@ -26,6 +26,7 @@ function Main() {
           <Sneakers
             sneakersList={sneakersList}
             value={globalInputValue}
+            favourites='false'
           />
         </div>
       </div>
