@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import getStorageItems from '../../../utils/getStorageItems'
 
 const initialState = {
   selectedSize: '',
   selectedColor: '',
   isInCart: false,
-  cartData: getStorageItems('cartItems') || [],
+  cartData: [],
   sneakerIndex: null,
   sneakerQuantity: null,
 }
@@ -21,10 +20,12 @@ export const cartSlice = createSlice({
     setSelectedColor: (state, action) => {
       state.selectedColor = action.payload
     },
+
     // в корзине ли товар с конкретным цветом и размером?
     setIsInCart: (state, action) => {
       state.isInCart = action.payload
     },
+
     // индекс кроссовка
     setSneakerIndex: (state, action) => {
       state.sneakerIndex = state.cartData.findIndex(
@@ -34,6 +35,7 @@ export const cartSlice = createSlice({
           item.size === state.selectedSize
       )
     },
+
     // взаимодействие с корзиной
     setCartData: (state, action) => {
       state.cartData = action.payload
@@ -54,6 +56,7 @@ export const cartSlice = createSlice({
         )
       }
     },
+
     // взаимодействие с количеством товара
     increaseQunatity: (state, action) => {
       const sneakerToChange = state.cartData.find(

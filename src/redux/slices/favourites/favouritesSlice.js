@@ -1,20 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
-import getStorageItems from '../../../utils/getStorageItems'
 
 const initialState = {
-  favourites: getStorageItems('favouritesData') || [],
+  favourites: [],
 }
 
 export const favouritesSlice = createSlice({
   name: 'favourites',
   initialState,
   reducers: {
-    setFavourites: (state, action) => {
-      state.selectedSize = action.payload
-    },
     addToFavourites: (state, action) => {
-      if (state.favourites.find((sneaker) => sneaker === action.payload)) {
-        console.log('есть')
+      const isSneakerInFavourite = state.favourites.find(
+        (sneaker) => sneaker.id === action.payload.id
+      )
+      if (isSneakerInFavourite) {
         return
       } else {
         state.favourites.push(action.payload)

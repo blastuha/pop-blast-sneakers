@@ -10,6 +10,7 @@ import styles from './favourites.scss'
 
 const Favourites = () => {
   const favourites = useSelector(favouritesData)
+  console.log(favourites)
   const width = useWidth()
 
   return (

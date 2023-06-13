@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './header.module.scss'
 import { Link } from 'react-router-dom'
 
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -11,12 +10,15 @@ import { AiFillHeart } from 'react-icons/ai'
 import Cutlist from '../../Header/Cutlist'
 import SearchInput from '../../SearchInput/SearchInput'
 import { headerMenu } from '../../../data'
+
 import useClickOutside from '../../../hooks/useClickOutside'
 import useActions from '../../../hooks/useActions'
 
+import styles from './header.module.scss'
+
 function Header() {
   const { open, itemRef, handleOpen } = useClickOutside(false)
-  const { handleMobileMenu } = useActions()
+  const { handleMobileMenu, setMobileMenuSearchOpen } = useActions()
 
   return (
     <div className={styles.header}>
@@ -70,7 +72,10 @@ function Header() {
         <div className={styles.header__bottom}>
           <RxHamburgerMenu
             className={styles.burger}
-            onClick={handleMobileMenu}
+            onClick={() => {
+              handleMobileMenu()
+              setMobileMenuSearchOpen(true)
+            }}
           />
           <div className={styles.header__bottom__logo}>
             <h1>POP BLAST SNEAKERS</h1>

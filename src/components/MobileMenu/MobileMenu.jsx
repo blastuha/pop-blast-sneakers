@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import styles from './mobileMenu.module.scss'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { headerMenu } from '../../data'
+import { useSelector } from 'react-redux'
+import { mobileMenuSearch } from '../../redux/slices/mobileMenu/selectors'
+
 import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
 import SearchInput from '../SearchInput/SearchInput'
 
@@ -10,8 +12,11 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { FaShoppingCart } from 'react-icons/fa'
 import { AiFillHeart } from 'react-icons/ai'
 import { CiSearch } from 'react-icons/ci'
-import { Link } from 'react-router-dom'
+
 import useActions from '../../hooks/useActions'
+import { headerMenu } from '../../data'
+
+import styles from './mobileMenu.module.scss'
 
 const iconsLinksBurger = [
   { icon: <BsFillPersonFill />, link: '/auth' },
@@ -20,24 +25,30 @@ const iconsLinksBurger = [
 ]
 
 const MobileMenu = ({ mobileMenuOpen }) => {
-  const [openSearch, setOpenSearch] = useState(false)
-  const { handleMobileMenu } = useActions()
+  const { handleMobileMenu, setMobileMenuSearchOpen } = useActions()
+
+  const mobileMenuSearchOpen = useSelector(mobileMenuSearch)
 
   const menuStyles = mobileMenuOpen
     ? `${styles.menu} ${styles.active}`
     : `${styles.menu}`
 
   const onChangeSearch = () => {
-    setOpenSearch(!openSearch)
+    setMobileMenuSearchOpen(!mobileMenuSearchOpen)
   }
 
   return (
     <div className={menuStyles}>
       <div className={styles.close__section}>
-        <VscClose onClick={handleMobileMenu} />
+        <VscClose
+          onClick={() => {
+            handleMobileMenu()
+            onChangeSearch()
+          }}
+        />
       </div>
       <div className={styles.icons__section}>
-        {openSearch ? (
+        {mobileMenuSearchOpen ? (
           <>
             <SearchInput attr='true' />
             <div className={styles.searchClosing}>

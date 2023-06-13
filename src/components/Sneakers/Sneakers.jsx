@@ -9,6 +9,7 @@ import styles from './sneakers.module.scss'
 
 function Sneakers({ sneakersList, value, isfavouristes }) {
   const { addToFavourites, deleteFromFavourites } = useActions()
+  console.log(sneakersList)
 
   return sneakersList
     .filter((sneaker) =>

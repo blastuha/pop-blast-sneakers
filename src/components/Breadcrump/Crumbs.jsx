@@ -3,8 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 import Crumb from './Crumb'
 import useActions from '../../hooks/useActions'
-
-const pageNames = { contacts: 'Контакты', cart: 'Корзина' }
+import { pageNames } from '../../data'
 
 const Crumbs = ({ sneakerData }) => {
   const location = useLocation()

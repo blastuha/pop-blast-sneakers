@@ -292,6 +292,12 @@ const nav__bottom = [
   },
 ]
 
+const pageNames = {
+  contacts: 'Контакты',
+  cart: 'Корзина',
+  favourites: 'Избранное',
+}
+
 export {
   brands,
   types,
@@ -303,4 +309,5 @@ export {
   fullnameReg,
   passwordReg,
   nav__bottom,
+  pageNames,
 }
