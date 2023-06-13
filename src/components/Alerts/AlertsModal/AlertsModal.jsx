@@ -1,11 +1,11 @@
 import React from 'react'
 import Alert from '../Alert/Alert'
 
-import useRemoveShownAlerts from '../../../hooks/useRemoveShownAlerts'
+import useAlerts from '../../../hooks/useAlerts'
 import styles from './alertsModal.module.scss'
 
 function AlertsModal() {
-  const alertsList = useRemoveShownAlerts()
+  const alertsList = useAlerts()
 
   return (
     <div className={styles.alertsModal}>

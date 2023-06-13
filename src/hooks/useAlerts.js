@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { alerts } from '../redux/slices/alert/selectors'
 import useActions from './useActions'
 
-const useRemoveShownAlerts = () => {
+const useAlerts = () => {
   const { deleteShownAlert } = useActions()
   const { alertsList } = useSelector(alerts)
 
@@ -22,4 +22,4 @@ const useRemoveShownAlerts = () => {
   return alertsList
 }
 
-export default useRemoveShownAlerts
+export default useAlerts

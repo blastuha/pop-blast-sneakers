@@ -5,16 +5,17 @@ import { useSelector } from 'react-redux'
 import { cart } from '../../../redux/slices/cart/selectors'
 
 import useIsSneakerInCart from '../../../hooks/useIsSneakerInCart'
-import useRemoveShownAlerts from '../../../hooks/useRemoveShownAlerts'
+import useAlerts from '../../../hooks/useAlerts'
 import useActions from '../../../hooks/useActions'
 import { alertObj } from '../../../data'
 import { AiOutlineHeart } from 'react-icons/ai'
 
 const ProductFormButtons = () => {
+  const { cartData, sneakerIndex } = useSelector(cart)
   const sneakerData = useLoaderData().data
   const isInCart = useIsSneakerInCart(sneakerData.id)
-  const alertsList = useRemoveShownAlerts()
-  const alert = alertObj(alertsList)
+  const alertsList = useAlerts()
+  const alert = alertObj(alertsList, '✓ Товар добавлен в корзину')
   const sneakerId = sneakerData.id
   const {
     addCartAlert,
@@ -23,7 +24,6 @@ const ProductFormButtons = () => {
     deleteItem,
     increaseQunatity,
   } = useActions()
-  const { cartData, sneakerIndex } = useSelector(cart)
   const sneakerQuantity = cartData[sneakerIndex]?.quantity
 
   return (
@@ -58,7 +58,7 @@ const ProductFormButtons = () => {
             <Link to='/cart'>В корзине {sneakerQuantity} шт.</Link>
           </div>
           <button
-              className={styles.plus__btn}
+            className={styles.plus__btn}
             onClick={() => increaseQunatity(sneakerIndex)}
           >
             +

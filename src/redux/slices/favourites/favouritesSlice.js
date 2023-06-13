@@ -12,13 +12,14 @@ export const favouritesSlice = createSlice({
       const isSneakerInFavourite = state.favourites.find(
         (sneaker) => sneaker.id === action.payload.id
       )
+
       if (isSneakerInFavourite) {
         return
       } else {
         state.favourites.push(action.payload)
-        console.log('нету')
       }
     },
+
     deleteFromFavourites: (state, action) => {
       state.favourites = state.favourites.filter(
         (item) => item.id !== action.payload.id

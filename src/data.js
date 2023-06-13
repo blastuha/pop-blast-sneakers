@@ -240,10 +240,10 @@ const categoryList = [
   { name: 'Бренды', menu: brands },
 ]
 
-const alertObj = (alertsArr) => {
+const alertObj = (alertsArr, text) => {
   return {
     id: alertsArr.length + 1,
-    text: '✓ Товар добавлен в корзину',
+    text: text,
   }
 }
 

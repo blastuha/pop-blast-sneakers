@@ -7,12 +7,14 @@ import { scrollToTop } from '../utils/scroll-to-top'
 import Sneakers from '../components/Sneakers/Sneakers'
 import SectionHeader from '../components/Header/SectionHeader'
 import NothingFound from '../components/NothingFound/NothingFound'
+import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
 import useInputValue from '../hooks/useInputValue'
 
 function Main() {
   useEffect(() => scrollToTop(), [])
   const sneakersList = useSelector(sneakers)
   const { globalInputValue } = useInputValue()
+
   const sneakersFiltered = sneakersList.filter((sneaker) =>
     sneaker.title.toLowerCase().includes(globalInputValue.toLowerCase().trim())
   )
@@ -23,6 +25,7 @@ function Main() {
         <SectionHeader />
         {sneakersFiltered.length === 0 && <NothingFound />}
         <div className='main__sneakers'>
+          <AlertsModal />
           <Sneakers
             sneakersList={sneakersList}
             value={globalInputValue}

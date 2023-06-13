@@ -5,11 +5,24 @@ import { AiOutlineHeart } from 'react-icons/ai'
 
 import useActions from '../../hooks/useActions'
 
+import { favouritesData } from '../../redux/slices/favourites/selectors'
+import { useSelector } from 'react-redux'
+
 import styles from './sneakers.module.scss'
 
-function Sneakers({ sneakersList, value, isfavouristes }) {
-  const { addToFavourites, deleteFromFavourites } = useActions()
-  console.log(sneakersList)
+import useAlerts from '../../hooks/useAlerts'
+import { alertObj } from '../../data'
+
+function Sneakers({ sneakersList, value, isfavourites }) {
+  const favourites = useSelector(favouritesData)
+  const { addToFavourites, deleteFromFavourites, addCartAlert } = useActions()
+
+  const alertsList = useAlerts()
+  const alert = alertObj(alertsList, '✓ Товар добавлен в корзину')
+
+  const isSneakerInFavourite = (id) => {
+    return favourites.find((item) => item.id === id)
+  }
 
   return sneakersList
     .filter((sneaker) =>
@@ -24,16 +37,19 @@ function Sneakers({ sneakersList, value, isfavouristes }) {
           src={sneaker.imageUrl}
           alt='sneaker'
         />
-        {isfavouristes === 'true' ? (
+        {isfavourites === 'true' || isSneakerInFavourite(sneaker.id) ? (
           <AiFillHeart
             className={styles.favourites}
-            isfavouristes={isfavouristes}
+            isfavourites={isfavourites}
             onClick={() => deleteFromFavourites(sneaker)}
           />
         ) : (
           <AiOutlineHeart
             className={styles.favourites}
-            onClick={() => addToFavourites(sneaker)}
+            onClick={() => {
+              addToFavourites(sneaker)
+              addCartAlert(alert)
+            }}
           />
         )}
         <Link

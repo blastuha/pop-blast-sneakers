@@ -21,7 +21,7 @@ const Favourites = () => {
         <Sneakers
           sneakersList={favourites}
           value=''
-          isfavouristes='true'
+          isfavourites='true'
         />
       </div>
     </div>

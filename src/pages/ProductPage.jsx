@@ -28,7 +28,7 @@ function ProductPage() {
               alt='sneaker'
             />
           </div>
-          <ProductForm alert={alert} />
+          <ProductForm />
         </div>
         <article className='product__description'>
           <h3 className='description__title'>Описание</h3>
