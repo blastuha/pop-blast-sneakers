@@ -2,6 +2,12 @@
   position: fixed;
   z-index: 9999999;
   top: 100px;
-  right: 30px;
+  right: 50px;
   width: 250px;
+}
+
+.mobile {
+  width: 100%;
+  top: 0;
+  right: 0;
 }

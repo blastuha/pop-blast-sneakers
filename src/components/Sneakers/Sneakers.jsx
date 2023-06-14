@@ -15,10 +15,10 @@ import { alertObj } from '../../data'
 
 function Sneakers({ sneakersList, value, isfavourites }) {
   const favourites = useSelector(favouritesData)
-  const { addToFavourites, deleteFromFavourites, addCartAlert } = useActions()
+  const { addToFavourites, deleteFromFavourites, addAlert } = useActions()
 
   const alertsList = useAlerts()
-  const alert = alertObj(alertsList, '✓ Товар добавлен в корзину')
+  const alert = alertObj(alertsList, '✓ Товар добавлен в избранное')
 
   const isSneakerInFavourite = (id) => {
     return favourites.find((item) => item.id === id)
@@ -48,7 +48,7 @@ function Sneakers({ sneakersList, value, isfavourites }) {
             className={styles.favourites}
             onClick={() => {
               addToFavourites(sneaker)
-              addCartAlert(alert)
+              addAlert(alert)
             }}
           />
         )}

@@ -6,18 +6,17 @@ import useWidth from '../../hooks/useWidth'
 import { favouritesData } from '../../redux/slices/favourites/selectors'
 import { useSelector } from 'react-redux'
 
-import styles from './favourites.scss'
+import styles from './favourites.module.scss'
 
 const Favourites = () => {
   const favourites = useSelector(favouritesData)
-  console.log(favourites)
   const width = useWidth()
 
   return (
-    <div className='favourites'>
+    <div className={styles.favourites}>
       {width > 767 && <Breadcrumb />}
-      <h3 className='favourites__header'>Избранное</h3>
-      <div className='favourites__main'>
+      <h3 className={styles.favourites__header}>Избранное</h3>
+      <div className={styles.favourites__main}>
         <Sneakers
           sneakersList={favourites}
           value=''

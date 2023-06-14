@@ -18,7 +18,7 @@ const ProductFormButtons = () => {
   const alert = alertObj(alertsList, '✓ Товар добавлен в корзину')
   const sneakerId = sneakerData.id
   const {
-    addCartAlert,
+    addAlert,
     addItemToCart,
     decreaseQunaitty,
     deleteItem,
@@ -34,7 +34,7 @@ const ProductFormButtons = () => {
           className={`${styles.form__btn} ${styles.addToCart}`}
           onClick={() => {
             addItemToCart(sneakerData)
-            addCartAlert(alert)
+            addAlert(alert)
           }}
         >
           <span>В корзину</span>
