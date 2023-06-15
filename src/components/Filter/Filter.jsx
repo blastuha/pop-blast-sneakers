@@ -5,10 +5,10 @@ import { IoFilterSharp } from 'react-icons/io5'
 
 import styles from './mobileFilter.scss'
 
-const MobileFilter = () => {
+const MobileFilter = ({ setFilterWindowOpen }) => {
   return (
     <div className='filters'>
-      <button>
+      <button onClick={() => setFilterWindowOpen(true)}>
         <LuSettings2 />
         <span>Фильтры</span>
       </button>
