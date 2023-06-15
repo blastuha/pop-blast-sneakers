@@ -6,11 +6,6 @@ const initialState = { sneakers: [], status: '' }
 export const sneakersSlice = createSlice({
   name: 'sneakers',
   initialState,
-  reducers: {
-    // setSneakers: (state, action) => {
-    //   state.sneakers = action.payload
-    // },
-  },
   extraReducers: {
     [fetchSneakers.pending]: (state) => {
       state.sneakers = []
@@ -27,7 +22,5 @@ export const sneakersSlice = createSlice({
     },
   },
 })
-
-// export const { setSneakers } = sneakersSlice.actions
 
 export default sneakersSlice.reducer

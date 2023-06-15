@@ -216,6 +216,20 @@ const data = [
     category: 'Кроссовки',
     sex: 'Женское',
   },
+  {
+    id: '16',
+    imageUrl:
+      'https://static.insales-cdn.com/r/V5tPJDyXcvI/rs:fit:950:1187:1/q:100/plain/images/products/1/6718/642480702/120813385_1.jpg@webp',
+    title: 'Adidas for men',
+    brand: 'Adidas',
+    color: 'black',
+    sizes: ['40', '41', '42'],
+    price: 8799,
+    description:
+      'adidas Originals needs no introduction. The brand’s famous 3-Stripes can be seen on the track, field and in the latest streetwear trends. Scroll the adidas Originals at CROSSKING edit to get your fix, from fresh trainers from the iconic Superstar, Stan Smith, Gazelle and Continental 80 collections to archive-inspired adidas Originals tracksuits, T-shirts and sweatshirts. And if you’re in need of some fresh kit, then cop yourself some sweat-wicking shorts, vests and compression tights from adidas Performance.',
+    category: 'Кроссовки',
+    sex: 'Мужское',
+  },
 ]
 
 const brands = [

@@ -28,8 +28,8 @@ export const categoriesSlice = createSlice({
     onChangeSex: (state, action) => {
       sexArray.forEach((sexItem) => {
         if (action.payload === sexItem) {
-          state.shoesType = ''
           state.sex = action.payload
+          state.shoesType = ''
           state.brand = ''
         }
       })

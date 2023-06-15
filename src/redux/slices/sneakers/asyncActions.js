@@ -6,8 +6,9 @@ export const fetchSneakers = createAsyncThunk(
   async (params) => {
     const { brandFilter, shoesTypeFilter, sexFilter } = params
     const { data } = await axios.get(
-      `https://63fcd20c859df29986c57847.mockapi.io/sneakerpal?${brandFilter}${shoesTypeFilter}${sexFilter}`
+      `https://648ae01017f1536d65e9e1f9.mockapi.io/sneakers/?${brandFilter}${shoesTypeFilter}${sexFilter}`
     )
+
     return data
   }
 )

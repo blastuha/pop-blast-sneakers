@@ -34,6 +34,7 @@ function App() {
   }, [mobileMenuOpen, searchWindowOpen])
 
   useEffect(() => {
+    console.log(brand, shoesType, sex)
     getSneakersWithCategory(brand, shoesType, sex, fetchSneakers)
   }, [brand, shoesType, sex, fetchSneakers])
 
