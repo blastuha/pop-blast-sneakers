@@ -3,9 +3,9 @@ import React from 'react'
 import { LuSettings2 } from 'react-icons/lu'
 import { IoFilterSharp } from 'react-icons/io5'
 
-import styles from './mobileFilter.scss'
+import styles from './Filter.scss'
 
-const MobileFilter = ({ setFilterWindowOpen }) => {
+const Filter = ({ setFilterWindowOpen }) => {
   return (
     <div className='filters'>
       <button onClick={() => setFilterWindowOpen(true)}>
@@ -21,4 +21,4 @@ const MobileFilter = ({ setFilterWindowOpen }) => {
   )
 }
 
-export default MobileFilter
+export default Filter
