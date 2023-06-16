@@ -1,19 +1,14 @@
 import React, { useState } from 'react'
 
-const FilterCheckbox = ({ item }) => {
+const FilterCheckbox = ({ item, name }) => {
   const [isChecked, setIsChecked] = useState(false)
-
-  function handleCheckboxChange() {
-    setIsChecked(!isChecked)
-  }
 
   return (
     <div>
       <label>
         <input
-          type='checkbox'
-          checked={isChecked}
-          onChange={handleCheckboxChange}
+          type='radio'
+          name={name}
         />
         {item}
       </label>
