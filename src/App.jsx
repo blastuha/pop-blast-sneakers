@@ -21,7 +21,7 @@ import './App.scss'
 function App() {
   const { mobileMenuOpen, searchWindowOpen } = useSelector(mobileMenu)
   const { fetchSneakers } = useActions()
-  const { shoesType, sex, brand } = useSelector(categories)
+  const { shoesType, sex, brand, filtredValue } = useSelector(categories)
   const width = useWidth()
 
   useEffect(() => {
@@ -33,10 +33,14 @@ function App() {
     }
   }, [mobileMenuOpen, searchWindowOpen])
 
+  // useEffect(() => {
+  //   console.log(brand, shoesType, sex)
+  //   getSneakersWithCategory(brand, shoesType, sex, fetchSneakers)
+  // }, [brand, shoesType, sex, fetchSneakers])
+
   useEffect(() => {
-    console.log(brand, shoesType, sex)
-    getSneakersWithCategory(brand, shoesType, sex, fetchSneakers)
-  }, [brand, shoesType, sex, fetchSneakers])
+    getSneakersWithCategory(filtredValue, fetchSneakers)
+  }, [filtredValue, fetchSneakers])
 
   return (
     <div className='wrapper'>

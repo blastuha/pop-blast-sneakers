@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './categories.module.scss'
 import Category from './Category'
 import { categoryList } from '../../data'
+import styles from './categories.module.scss'
 
 function Categories() {
   return (

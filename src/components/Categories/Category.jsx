@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import styles from './category.module.scss'
 import Dropdown from '../Header/Dropdown'
+import styles from './category.module.scss'
 
 function Category({ name, menu }) {
   const [open, setOpen] = useState(false)

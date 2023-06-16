@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import FilterSelect from '../FilterSelect/FilterSelect'
 import { VscClose } from 'react-icons/vsc'

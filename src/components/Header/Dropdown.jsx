@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import useActions from '../../hooks/useActions'
 
 function Dropdown({ menu, open, onChangeOpen }) {
-  const { onChangeBrand, onChangeShoesType, onChangeSex } = useActions()
+  const { setFiltredValue } = useActions()
   return (
     <div
       className='dropdown'
@@ -20,9 +20,7 @@ function Dropdown({ menu, open, onChangeOpen }) {
               className='dropdown__content-item'
               onClick={() => {
                 onChangeOpen()
-                onChangeBrand(item)
-                onChangeShoesType(item)
-                onChangeSex(item)
+                setFiltredValue(item)
               }}
             >
               {item}

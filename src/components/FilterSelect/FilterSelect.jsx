@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
+import FilterRadioGroup from '../FilterRadioGroup/FilterRadioGroup'
 
 import { BiDownArrow } from 'react-icons/bi'
 import { BiUpArrow } from 'react-icons/bi'
@@ -9,6 +9,10 @@ import styles from './filterSelect.scss'
 
 const FilterSelect = ({ name, menu, i }) => {
   const [open, setOpen] = useState(false)
+
+  const handleOpen = () => {
+    setOpen(!open)
+  }
 
   return (
     <>
@@ -19,22 +23,12 @@ const FilterSelect = ({ name, menu, i }) => {
       >
         {name}
         {open ? (
-          <BiUpArrow onClick={() => setOpen(false)} />
+          <BiUpArrow onClick={handleOpen} />
         ) : (
-          <BiDownArrow onClick={() => setOpen(true)} />
+          <BiDownArrow onClick={handleOpen} />
         )}
       </div>
-      <div className='filter__checkboxes'>
-        {open &&
-          menu.map((item, i) => {
-            return (
-              <FilterCheckbox
-                item={item}
-                key={i}
-              />
-            )
-          })}
-      </div>
+      {open && <FilterRadioGroup menu={menu} />}
     </>
   )
 }

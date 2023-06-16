@@ -5,21 +5,15 @@ import useActions from '../../hooks/useActions'
 import { TfiClose } from 'react-icons/tfi'
 
 function SectionHeader() {
-  const { shoesType, sex, brand } = useSelector(categories)
+  const { filtredValue } = useSelector(categories)
   const { clearAllFilters } = useActions()
 
-  const textShowing = () => {
-    if (brand) return brand
-    if (shoesType) return shoesType
-    if (sex) return sex
-  }
-
-  return brand || shoesType || sex ? (
+  return filtredValue ? (
     <div className='section-header'>
-      <span className='section-title'>{textShowing()}</span>
+      <span className='section-title'>{filtredValue}</span>
       <TfiClose
         className='section-delete'
-        onClick={() => clearAllFilters()}
+        onClick={clearAllFilters}
       />
     </div>
   ) : (

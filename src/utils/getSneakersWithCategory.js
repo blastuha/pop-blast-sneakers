@@ -1,14 +1,7 @@
-const getSneakersWithCategory = async (
-  brand,
-  shoesType,
-  sex,
-  fetchSneakers
-) => {
-  const brandFilter = `${brand ? `&title=${brand}` : ''}`
-  const shoesTypeFilter = `${shoesType ? `&search=${shoesType}` : ''}`
-  const sexFilter = `${sex ? `&filter=${sex}` : ''}`
+const getSneakersWithCategory = async (filtredValue, fetchSneakers) => {
+  const filter = `${filtredValue ? `&filter=${filtredValue}` : ''}`
 
-  fetchSneakers({ brandFilter, shoesTypeFilter, sexFilter })
+  fetchSneakers({ filter })
 }
 
 export default getSneakersWithCategory
