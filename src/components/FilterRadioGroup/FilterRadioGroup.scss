@@ -1,8 +1,8 @@
 .filter__radiogroup {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
   transition: all 0.5s ease-in;
+  overflow-y: auto;
 
   label {
     cursor: pointer;
@@ -47,94 +47,28 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-// .fade-in {
-//   animation: fadeIn 0.5s ease-in;
-// }
+//* React Transition Group
 
-// .fade-out {
-//   animation: fadeOut 0.5s ease-out;
-// }
-
-// @keyframes fadeIn {
-//   from {
-//     opacity: 0;
-//   }
-//   to {
-//     opacity: 1;
-//   }
-// }
-
-// @keyframes fadeOut {
-//   from {
-//     opacity: 1;
-//   }
-//   to {
-//     opacity: 0;
-//   }
-// }
-
-//************************
-
-.expand {
-  animation: expand 0.2s ease-in;
+.radios-enter {
+  opacity: 0;
+  max-height: 0;
 }
 
-.collapse {
-  animation: collapse 0.2s ease-out;
+.radios-enter-active {
+  opacity: 1;
+  max-height: 260px;
+  transition: opacity 2s, max-height 0.5s;
+  overflow: hidden;
 }
 
-@keyframes expand {
-  from {
-    height: 0;
-    opacity: 0;
-  }
-  to {
-    height: 80px;
-    overflow: hidden;
-    opacity: 1;
-  }
+.radios-exit {
+  opacity: 1;
+  max-height: 260px;
+  overflow: hidden;
 }
 
-@keyframes collapse {
-  from {
-    height: 80px;
-    overflow: hidden;
-    opacity: 1;
-  }
-  to {
-    height: 0;
-    opacity: 0;
-  }
+.radios-exit-active {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 2s, max-height 0.5s;
 }
-
-//*******************
-
-// .expand {
-//   height: auto;
-//   opacity: 1;
-//   max-height: 0;
-//   overflow: hidden;
-//   transition-delay: 0s;
-//   transition-duration: 1s;
-//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-// }
-
-// .expand.active {
-//   max-height: 1000px;
-//   transition-delay: 0.5s;
-// }
-
-// .collapse {
-//   height: auto;
-//   opacity: 1;
-//   max-height: 1000px;
-//   overflow: hidden;
-//   transition-delay: 0.5s;
-//   transition-duration: 1s;
-//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-// }
-
-// .collapse.active {
-//   max-height: 0;
-//   opacity: 0;
-// }

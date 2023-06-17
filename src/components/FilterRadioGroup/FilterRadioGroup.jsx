@@ -11,7 +11,7 @@ const FilterRadioGroup = ({ menu, open }) => {
   }
 
   return (
-    <div className={`filter__radiogroup ${open ? 'expand' : 'collapse'}`}>
+    <div className={`filter__radiogroup`}>
       {menu.map((item, i) => {
         return (
           <div

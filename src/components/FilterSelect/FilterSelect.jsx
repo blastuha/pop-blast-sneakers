@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 
 import FilterRadioGroup from '../FilterRadioGroup/FilterRadioGroup'
 
@@ -27,12 +28,17 @@ const FilterSelect = ({ name, menu, i }) => {
           <BiDownArrow onClick={handleOpen} />
         )}
       </div>
-      {open && (
+      <CSSTransition
+        in={open}
+        timeout={300}
+        classNames='radios'
+        unmountOnExit
+      >
         <FilterRadioGroup
           menu={menu}
           open={open}
         />
-      )}
+      </CSSTransition>
     </div>
   )
 }

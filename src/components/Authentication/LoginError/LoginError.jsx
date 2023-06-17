@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import styles from './loginError.module.scss'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import styles from './loginError.module.scss'
 
 const LoginError = ({ errors }) => {
   const [showError, setShowError] = useState(false)
