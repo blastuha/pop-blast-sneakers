@@ -3,9 +3,13 @@ import React from 'react'
 import { LuSettings2 } from 'react-icons/lu'
 import { IoFilterSharp } from 'react-icons/io5'
 
-import styles from './Filter.scss'
+import useActions from '../../hooks/useActions'
 
-const Filter = ({ setFilterWindowOpen }) => {
+import styles from './filterPanel.scss'
+
+const FilterPanel = () => {
+  const { setFilterWindowOpen } = useActions()
+
   return (
     <div className='filters'>
       <button onClick={() => setFilterWindowOpen(true)}>
@@ -21,4 +25,4 @@ const Filter = ({ setFilterWindowOpen }) => {
   )
 }
 
-export default Filter
+export default FilterPanel

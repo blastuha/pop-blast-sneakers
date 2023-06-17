@@ -3,18 +3,17 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { sneakers } from '../redux/slices/sneakers/selectors'
 
-import { scrollToTop } from '../utils/scroll-to-top'
 import Sneakers from '../components/Sneakers/Sneakers'
 import SectionHeader from '../components/Header/SectionHeader'
 import NothingFound from '../components/NothingFound/NothingFound'
 import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
-import useInputValue from '../hooks/useInputValue'
-import Filter from '../components/Filter/Filter'
+import FilterPanel from '../components/FilterPanel/FilterPanel'
 import FilterWindow from '../components/FilterWindow/FilterWindow'
 
+import useInputValue from '../hooks/useInputValue'
+import { scrollToTop } from '../utils/scroll-to-top'
+
 function Main() {
-  const [filterWindowOpen, setFilterWindowOpen] = useState(false)
-  useEffect(() => scrollToTop(), [])
   const sneakersList = useSelector(sneakers)
   const { globalInputValue } = useInputValue()
 
@@ -22,15 +21,14 @@ function Main() {
     sneaker.title.toLowerCase().includes(globalInputValue.toLowerCase().trim())
   )
 
+  useEffect(() => scrollToTop(), [])
+
   return (
     <div className='main'>
       <div className='main__container'>
-        <FilterWindow
-          filterWindowOpen={filterWindowOpen}
-          setFilterWindowOpen={setFilterWindowOpen}
-        />
+        <FilterWindow />
         <SectionHeader />
-        <Filter setFilterWindowOpen={setFilterWindowOpen} />
+        <FilterPanel />
         {sneakersFiltered.length === 0 && <NothingFound />}
         <div className='main__sneakers'>
           <AlertsModal />

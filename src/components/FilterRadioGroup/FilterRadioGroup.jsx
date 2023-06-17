@@ -1,28 +1,32 @@
 import React, { useState } from 'react'
+import useActions from '../../hooks/useActions'
 import styles from './FilterRadioGroup.scss'
 
-const FilterRadioGroup = ({ menu }) => {
-  const [selectedValue, setSelectedValue] = useState('')
-
-  console.log('selectedValue', selectedValue)
+const FilterRadioGroup = ({ menu, open }) => {
+  const { setFiltredValue } = useActions()
 
   const onChange = (e) => {
     const value = e.target.value
-    setSelectedValue(value)
+    setFiltredValue(value)
   }
 
   return (
-    <div className='filter__checkboxes'>
+    <div className={`filter__radiogroup ${open ? 'expand' : 'collapse'}`}>
       {menu.map((item, i) => {
         return (
-          <div key={i}>
+          <div
+            className='radioBtn'
+            key={i}
+          >
             <label>
               <input
                 type='radio'
                 name='radio-group'
                 value={item}
                 onChange={onChange}
+                className='realRadio'
               />
+              <span className='customRadio'></span>
               {item}
             </label>
           </div>

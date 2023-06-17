@@ -16,11 +16,7 @@ export const categoriesSlice = createSlice({
   },
 })
 
-export const {
-  onChangeBrand,
-  onChangeShoesType,
-  onChangeSex,
-  clearAllFilters,
-} = categoriesSlice.actions
+export const { setFiltredValue, clearAllFilters, setFilterWindowOpen } =
+  categoriesSlice.actions
 
 export default categoriesSlice.reducer

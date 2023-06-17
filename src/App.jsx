@@ -19,24 +19,21 @@ import { mobileMenu } from './redux/slices/mobileMenu/selectors'
 import './App.scss'
 
 function App() {
-  const { mobileMenuOpen, searchWindowOpen } = useSelector(mobileMenu)
+  const { mobileMenuOpen, searchWindowOpen, filterWindowOpen } =
+    useSelector(mobileMenu)
   const { fetchSneakers } = useActions()
-  const { shoesType, sex, brand, filtredValue } = useSelector(categories)
+  const { filtredValue } = useSelector(categories)
   const width = useWidth()
 
+  // убирает скролл, если открыты окна бургер мобильного меню, мобильного поиска, мобильные фильтры
   useEffect(() => {
     const bodyStyle = document.querySelector('body').style
-    if (mobileMenuOpen || searchWindowOpen) {
+    if (mobileMenuOpen || searchWindowOpen || filterWindowOpen) {
       bodyStyle.overflow = 'hidden'
     } else {
       bodyStyle.overflow = 'scroll'
     }
-  }, [mobileMenuOpen, searchWindowOpen])
-
-  // useEffect(() => {
-  //   console.log(brand, shoesType, sex)
-  //   getSneakersWithCategory(brand, shoesType, sex, fetchSneakers)
-  // }, [brand, shoesType, sex, fetchSneakers])
+  }, [mobileMenuOpen, searchWindowOpen, filterWindowOpen])
 
   useEffect(() => {
     getSneakersWithCategory(filtredValue, fetchSneakers)

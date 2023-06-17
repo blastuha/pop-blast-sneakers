@@ -1,8 +1,140 @@
-.filter__checkboxes {
+.filter__radiogroup {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  transition: all 0.5s ease-in;
 
-  span {
-    margin-bottom: 14px;
+  label {
+    cursor: pointer;
   }
 }
+
+.radioBtn {
+  margin-bottom: 10px;
+}
+
+.realRadio {
+  display: none;
+}
+
+.customRadio {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: #ffffff;
+  margin-right: 6px;
+  border: 1px solid #333333;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgb(143, 145, 209);
+    transition: 0.26s ease-in;
+  }
+}
+
+.realRadio:checked + .customRadio::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+// .fade-in {
+//   animation: fadeIn 0.5s ease-in;
+// }
+
+// .fade-out {
+//   animation: fadeOut 0.5s ease-out;
+// }
+
+// @keyframes fadeIn {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes fadeOut {
+//   from {
+//     opacity: 1;
+//   }
+//   to {
+//     opacity: 0;
+//   }
+// }
+
+//************************
+
+.expand {
+  animation: expand 0.2s ease-in;
+}
+
+.collapse {
+  animation: collapse 0.2s ease-out;
+}
+
+@keyframes expand {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 80px;
+    overflow: hidden;
+    opacity: 1;
+  }
+}
+
+@keyframes collapse {
+  from {
+    height: 80px;
+    overflow: hidden;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+//*******************
+
+// .expand {
+//   height: auto;
+//   opacity: 1;
+//   max-height: 0;
+//   overflow: hidden;
+//   transition-delay: 0s;
+//   transition-duration: 1s;
+//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+// }
+
+// .expand.active {
+//   max-height: 1000px;
+//   transition-delay: 0.5s;
+// }
+
+// .collapse {
+//   height: auto;
+//   opacity: 1;
+//   max-height: 1000px;
+//   overflow: hidden;
+//   transition-delay: 0.5s;
+//   transition-duration: 1s;
+//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+// }
+
+// .collapse.active {
+//   max-height: 0;
+//   opacity: 0;
+// }

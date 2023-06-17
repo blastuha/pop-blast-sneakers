@@ -15,11 +15,10 @@ const FilterSelect = ({ name, menu, i }) => {
   }
 
   return (
-    <>
+    <div className='filter__item'>
       <div
         key={i}
-        className='filter__item'
-        attr={`${open}`}
+        className='filter__name'
       >
         {name}
         {open ? (
@@ -28,8 +27,13 @@ const FilterSelect = ({ name, menu, i }) => {
           <BiDownArrow onClick={handleOpen} />
         )}
       </div>
-      {open && <FilterRadioGroup menu={menu} />}
-    </>
+      {open && (
+        <FilterRadioGroup
+          menu={menu}
+          open={open}
+        />
+      )}
+    </div>
   )
 }
 
