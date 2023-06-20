@@ -74,7 +74,7 @@ function Header() {
             className={styles.burger}
             onClick={() => {
               handleMobileMenu()
-              setMobileMenuSearchOpen(true)
+              // setMobileMenuSearchOpen(true)
             }}
           />
           <div className={styles.header__bottom__logo}>

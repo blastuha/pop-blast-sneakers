@@ -8,34 +8,24 @@ import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
 import SearchInput from '../SearchInput/SearchInput'
 
 import { VscClose } from 'react-icons/vsc'
-import { BsFillPersonFill } from 'react-icons/bs'
-import { FaShoppingCart } from 'react-icons/fa'
-import { AiFillHeart } from 'react-icons/ai'
 import { CiSearch } from 'react-icons/ci'
 
 import useActions from '../../hooks/useActions'
 import { headerMenu } from '../../data'
+import { burgerMenuLinks } from '../../data'
 
 import styles from './mobileMenu.module.scss'
 
-const iconsLinksBurger = [
-  { icon: <BsFillPersonFill />, link: '/auth' },
-  { icon: <AiFillHeart />, link: '/favourites' },
-  { icon: <FaShoppingCart />, link: '/cart' },
-]
-
 const MobileMenu = ({ mobileMenuOpen }) => {
-  const { handleMobileMenu, setMobileMenuSearchOpen } = useActions()
+  const { handleMobileMenu, setMobileMenuSearchOpen, setGlobalInputValue } =
+    useActions()
 
   const mobileMenuSearchOpen = useSelector(mobileMenuSearch)
+  console.log('mobileMenuSearchOpen', mobileMenuSearchOpen)
 
   const menuStyles = mobileMenuOpen
     ? `${styles.menu} ${styles.active}`
     : `${styles.menu}`
-
-  const onChangeSearch = () => {
-    setMobileMenuSearchOpen(!mobileMenuSearchOpen)
-  }
 
   return (
     <div className={menuStyles}>
@@ -43,7 +33,8 @@ const MobileMenu = ({ mobileMenuOpen }) => {
         <VscClose
           onClick={() => {
             handleMobileMenu()
-            onChangeSearch()
+            setMobileMenuSearchOpen(false)
+            setGlobalInputValue('')
           }}
         />
       </div>
@@ -52,13 +43,18 @@ const MobileMenu = ({ mobileMenuOpen }) => {
           <>
             <SearchInput attr='true' />
             <div className={styles.searchClosing}>
-              <VscClose onClick={onChangeSearch} />
+              <VscClose
+                onClick={() => {
+                  setMobileMenuSearchOpen(false)
+                  setGlobalInputValue('')
+                }}
+              />
             </div>
           </>
         ) : (
           <>
             <nav className={styles.section__controls}>
-              {iconsLinksBurger.map((item, i) => {
+              {burgerMenuLinks.map((item, i) => {
                 return (
                   <Link
                     key={i}
@@ -70,7 +66,12 @@ const MobileMenu = ({ mobileMenuOpen }) => {
               })}
             </nav>
             <div className={styles.section__search}>
-              <CiSearch onClick={onChangeSearch} />
+              <CiSearch
+                onClick={() => {
+                  setMobileMenuSearchOpen(true)
+                  setGlobalInputValue('')
+                }}
+              />
             </div>
           </>
         )}

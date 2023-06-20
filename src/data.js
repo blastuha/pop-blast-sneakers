@@ -3,6 +3,7 @@ import { AiFillHome } from 'react-icons/ai'
 import { FaSearch } from 'react-icons/fa'
 import { MdFavorite } from 'react-icons/md'
 import { BsFillPersonFill } from 'react-icons/bs'
+import { AiFillHeart } from 'react-icons/ai'
 
 const data = [
   {
@@ -320,6 +321,12 @@ const sortOptions = [
   { name: 'По названию Z-A', query: 'title&order=desc' },
 ]
 
+const burgerMenuLinks = [
+  { icon: <BsFillPersonFill />, link: '/auth' },
+  { icon: <AiFillHeart />, link: '/favourites' },
+  { icon: <FaShoppingCart />, link: '/cart' },
+]
+
 export {
   brands,
   types,
@@ -333,4 +340,5 @@ export {
   nav__bottom,
   pageNames,
   sortOptions,
+  burgerMenuLinks,
 }
