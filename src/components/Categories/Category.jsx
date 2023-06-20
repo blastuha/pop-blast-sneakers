@@ -1,32 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import Dropdown from '../Header/Dropdown'
+import useClickOutside from '../../hooks/useClickOutside'
 import styles from './category.module.scss'
 
 function Category({ name, menu }) {
-  const [open, setOpen] = useState(false)
-  const categoryBlock = useRef()
-
-  useEffect(() => {
-    window.addEventListener('click', (event) => {
-      if (!categoryBlock.current) return
-      if (!categoryBlock.current.contains(event.target)) {
-        setOpen(false)
-      }
-    })
-  }, [open])
-
-  const onChangeOpen = () => {
-    setOpen(!open)
-  }
+  const { open, itemRef, handleOpen } = useClickOutside()
 
   return (
     <div
       className={styles.category}
-      ref={categoryBlock}
+      ref={itemRef}
     >
       <div
         className={styles.category__item}
-        onClick={onChangeOpen}
+        onClick={handleOpen}
       >
         {name}
       </div>
@@ -34,7 +21,7 @@ function Category({ name, menu }) {
         open={open}
         menu={menu}
         name={name}
-        onChangeOpen={onChangeOpen}
+        onChangeOpen={handleOpen}
       />
     </div>
   )

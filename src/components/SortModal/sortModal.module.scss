@@ -1,0 +1,35 @@
+.sortModal {
+  position: absolute;
+  border: 1px solid #ededed;
+  box-shadow: 0px 4px 12px rgb(0 0 0 / 10%);
+  top: 40px;
+  right: -10px;
+  min-width: 150px;
+  max-width: 300px;
+  z-index: 100;
+}
+
+.sortModal__item {
+  background-color: #ffffff;
+  padding: 8px 14px;
+}
+
+.sortModal__btn {
+  font-family: Jura, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.5em;
+
+  cursor: pointer;
+  transition: color 0.2s ease-in;
+
+  &:hover {
+    color: rgb(143, 145, 209);
+  }
+}
+
+.active {
+  background-color: #ededed;
+}

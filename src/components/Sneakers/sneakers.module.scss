@@ -13,8 +13,8 @@
     height: 32px;
     position: absolute;
     opacity: 0.6;
-    right: 6px;
-    top: 6px;
+    right: 8px;
+    top: 8px;
   }
 
   @media (max-width: 436px) {
@@ -44,12 +44,12 @@
   }
 }
 
-.favourites {
+.heartIcon {
   position: absolute;
   z-index: 2;
   top: 12px;
   right: 12px;
-  font-size: 20px;
+  font-size: 24px;
   color: #292929;
   cursor: pointer;
   transition: all 0.3s linear;

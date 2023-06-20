@@ -9,7 +9,7 @@ import useActions from '../../hooks/useActions'
 import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
 import { categoryList } from '../../data'
 
-import styles from './filterWindow.scss'
+import styles from './filterWindow.module.scss'
 
 const FilterWindow = () => {
   const { filterWindowOpen } = useSelector(mobileMenu)
@@ -17,9 +17,9 @@ const FilterWindow = () => {
 
   return (
     filterWindowOpen && (
-      <div className='filter__window'>
-        <div className='filter__container'>
-          <div className='filter__header'>
+      <div className={styles.filter__window}>
+        <div className={styles.filter__container}>
+          <div className={styles.filter__header}>
             <h3>Фильтры</h3>
             <VscClose onClick={() => setFilterWindowOpen(false)} />
           </div>

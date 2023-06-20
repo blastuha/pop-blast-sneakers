@@ -6,7 +6,7 @@ import FilterRadioGroup from '../FilterRadioGroup/FilterRadioGroup'
 import { BiDownArrow } from 'react-icons/bi'
 import { BiUpArrow } from 'react-icons/bi'
 
-import styles from './filterSelect.scss'
+import styles from './filterSelect.module.scss'
 
 const FilterSelect = ({ name, menu, i }) => {
   const [open, setOpen] = useState(false)
@@ -16,10 +16,10 @@ const FilterSelect = ({ name, menu, i }) => {
   }
 
   return (
-    <div className='filter__item'>
+    <div className={styles.filter__item}>
       <div
         key={i}
-        className='filter__name'
+        className={styles.filter__name}
       >
         {name}
         {open ? (
@@ -34,10 +34,7 @@ const FilterSelect = ({ name, menu, i }) => {
         classNames='radios'
         unmountOnExit
       >
-        <FilterRadioGroup
-          menu={menu}
-          open={open}
-        />
+        <FilterRadioGroup menu={menu} />
       </CSSTransition>
     </div>
   )

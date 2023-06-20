@@ -1,26 +1,19 @@
 import React from 'react'
 
-import { LuSettings2 } from 'react-icons/lu'
-import { IoFilterSharp } from 'react-icons/io5'
+import FilterButton from '../UI/FilterButton/FilterButton'
+import SortButton from '../UI/SortButton/SortButton'
 
 import useActions from '../../hooks/useActions'
 
-import styles from './filterPanel.scss'
+import styles from './filterPanel.module.scss'
 
 const FilterPanel = () => {
   const { setFilterWindowOpen } = useActions()
 
   return (
-    <div className='filters'>
-      <button onClick={() => setFilterWindowOpen(true)}>
-        <LuSettings2 />
-        <span>Фильтры</span>
-      </button>
-
-      <button>
-        <IoFilterSharp />
-        <span>Сортировка</span>
-      </button>
+    <div className={styles.filters}>
+      <FilterButton setFilterWindowOpen={setFilterWindowOpen} />
+      <SortButton />
     </div>
   )
 }

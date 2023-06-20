@@ -312,6 +312,14 @@ const pageNames = {
   favourites: 'Избранное',
 }
 
+const sortOptions = [
+  { name: 'По умолчанию', query: '' },
+  { name: 'По возрастанию цены', query: 'price&order=desc' },
+  { name: 'По убыванию цены', query: 'price&order=asc' },
+  { name: 'По названию A-Z', query: 'title&order=asc' },
+  { name: 'По названию Z-A', query: 'title&order=desc' },
+]
+
 export {
   brands,
   types,
@@ -324,4 +332,5 @@ export {
   passwordReg,
   nav__bottom,
   pageNames,
+  sortOptions,
 }

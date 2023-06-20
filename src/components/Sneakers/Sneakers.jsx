@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { AiFillHeart } from 'react-icons/ai'
-import { AiOutlineHeart } from 'react-icons/ai'
-
-import useActions from '../../hooks/useActions'
 
 import { favouritesData } from '../../redux/slices/favourites/selectors'
 import { useSelector } from 'react-redux'
 
-import styles from './sneakers.module.scss'
+import { AiFillHeart } from 'react-icons/ai'
+import { AiOutlineHeart } from 'react-icons/ai'
 
 import useAlerts from '../../hooks/useAlerts'
+import useActions from '../../hooks/useActions'
 import { alertObj } from '../../data'
+
+import styles from './sneakers.module.scss'
 
 function Sneakers({ sneakersList, value, isfavourites }) {
   const favourites = useSelector(favouritesData)
@@ -39,13 +39,13 @@ function Sneakers({ sneakersList, value, isfavourites }) {
         />
         {isfavourites === 'true' || isSneakerInFavourite(sneaker.id) ? (
           <AiFillHeart
-            className={styles.favourites}
+            className={styles.heartIcon}
             isfavourites={isfavourites}
             onClick={() => deleteFromFavourites(sneaker)}
           />
         ) : (
           <AiOutlineHeart
-            className={styles.favourites}
+            className={styles.heartIcon}
             onClick={() => {
               addToFavourites(sneaker)
               addAlert(alert)

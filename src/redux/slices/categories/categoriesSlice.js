@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { filtredValue: '' }
+const initialState = { filtredValue: '', sortValue: '' }
 
 export const categoriesSlice = createSlice({
   name: 'categories',
@@ -12,6 +12,9 @@ export const categoriesSlice = createSlice({
     },
     clearAllFilters: (state) => {
       state.filtredValue = ''
+    },
+    setSortValue: (state, action) => {
+      state.sortValue = action.payload
     },
   },
 })

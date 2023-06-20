@@ -22,7 +22,7 @@ function App() {
   const { mobileMenuOpen, searchWindowOpen, filterWindowOpen } =
     useSelector(mobileMenu)
   const { fetchSneakers } = useActions()
-  const { filtredValue } = useSelector(categories)
+  const { filtredValue, sortValue } = useSelector(categories)
   const width = useWidth()
 
   // убирает скролл, если открыты окна бургер мобильного меню, мобильного поиска, мобильные фильтры
@@ -36,8 +36,8 @@ function App() {
   }, [mobileMenuOpen, searchWindowOpen, filterWindowOpen])
 
   useEffect(() => {
-    getSneakersWithCategory(filtredValue, fetchSneakers)
-  }, [filtredValue, fetchSneakers])
+    getSneakersWithCategory(filtredValue, fetchSneakers, sortValue)
+  }, [filtredValue, fetchSneakers, sortValue])
 
   return (
     <div className='wrapper'>
