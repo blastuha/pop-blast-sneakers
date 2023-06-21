@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import useActions from '../../hooks/useActions'
+
+import SortItem from '../SortItem/SortItem'
+
 import { sortOptions } from '../../data'
+
+import classNames from 'classnames'
 import styles from './sortModal.module.scss'
 
 const SortModal = ({ sortModalOpen, onChangeOpen }) => {
   const [active, setActive] = useState(0)
-  const { setSortValue } = useActions()
 
   const handleClick = (index) => {
     setActive(index)
@@ -15,24 +18,19 @@ const SortModal = ({ sortModalOpen, onChangeOpen }) => {
     sortModalOpen && (
       <div className={styles.sortModal}>
         {sortOptions.map((option, i) => {
+          //* перенести в SortItem
+          const sortItemStyles = classNames(styles.sortModal__item, {
+            [styles.active]: active === i,
+          })
+
           return (
-            <div
-              key={i}
-              className={`${styles.sortModal__item} ${
-                active === i ? `${styles.active}` : ''
-              }`}
-            >
-              <button
-                className={styles.sortModal__btn}
-                onClick={() => {
-                  onChangeOpen()
-                  setSortValue(option.query)
-                  handleClick(i)
-                }}
-              >
-                {option.name}
-              </button>
-            </div>
+            <SortItem
+              option={option}
+              i={i}
+              sortItemStyles={sortItemStyles}
+              onChangeOpen={onChangeOpen}
+              handleClick={handleClick}
+            />
           )
         })}
       </div>

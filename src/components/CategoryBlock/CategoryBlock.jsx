@@ -6,15 +6,17 @@ import { categories } from '../../redux/slices/categories/selectors'
 import { TfiClose } from 'react-icons/tfi'
 import useActions from '../../hooks/useActions'
 
-function SectionHeader() {
+import styles from './categoryBlock.module.scss'
+
+function CategoryBlock() {
   const { filtredValue } = useSelector(categories)
   const { clearAllFilters } = useActions()
 
   return filtredValue ? (
-    <div className='section-header'>
-      <span className='section-title'>{filtredValue}</span>
+    <div className={styles.categoryBlock}>
+      <span className={styles.title}>{filtredValue}</span>
       <TfiClose
-        className='section-delete'
+        className={styles.delete}
         onClick={clearAllFilters}
       />
     </div>
@@ -23,4 +25,4 @@ function SectionHeader() {
   )
 }
 
-export default SectionHeader
+export default CategoryBlock

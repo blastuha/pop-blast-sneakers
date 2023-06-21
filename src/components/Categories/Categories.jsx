@@ -8,10 +8,7 @@ import styles from './categories.module.scss'
 function Categories() {
   const [sortModalOpen, setSortModalOpen] = useState(false)
 
-  console.log(sortModalOpen)
-
   const onChangeOpen = () => {
-    console.log('hi')
     setSortModalOpen(!sortModalOpen)
   }
 

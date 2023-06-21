@@ -21,7 +21,6 @@ const MobileMenu = ({ mobileMenuOpen }) => {
     useActions()
 
   const mobileMenuSearchOpen = useSelector(mobileMenuSearch)
-  console.log('mobileMenuSearchOpen', mobileMenuSearchOpen)
 
   const menuStyles = mobileMenuOpen
     ? `${styles.menu} ${styles.active}`

@@ -1,0 +1,40 @@
+.categoryBlock {
+  width: calc(100vw - 100px);
+  max-width: 1480px;
+  position: relative;
+  margin: 0 auto 30px auto;
+  display: flex;
+  align-items: flex-end;
+
+  .title {
+    font-family: Jura, sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 1.3rem;
+    margin-right: 12px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      border-bottom: 1px solid #bfb074;
+      top: 100%;
+      margin: 10px 0;
+    }
+  }
+
+  .delete {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    color: #bfb074;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      scale: (1.1);
+      color: #333333;
+    }
+  }
+}
