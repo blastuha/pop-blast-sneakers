@@ -1,8 +1,10 @@
 import React from 'react'
+
 import { useSelector } from 'react-redux'
 import { categories } from '../../redux/slices/categories/selectors'
-import useActions from '../../hooks/useActions'
+
 import { TfiClose } from 'react-icons/tfi'
+import useActions from '../../hooks/useActions'
 
 function SectionHeader() {
   const { filtredValue } = useSelector(categories)
