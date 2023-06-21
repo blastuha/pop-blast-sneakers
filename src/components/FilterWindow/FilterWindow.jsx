@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 import { useSelector } from 'react-redux'
 
@@ -15,26 +16,28 @@ const FilterWindow = () => {
   const { filterWindowOpen } = useSelector(mobileMenu)
   const { setFilterWindowOpen } = useActions()
 
+  const windowClasses = classNames(styles.filter__window, {
+    [styles.active]: filterWindowOpen,
+  })
+
   return (
-    filterWindowOpen && (
-      <div className={styles.filter__window}>
-        <div className={styles.filter__container}>
-          <div className={styles.filter__header}>
-            <h3>Фильтры</h3>
-            <VscClose onClick={() => setFilterWindowOpen(false)} />
-          </div>
-          {categoryList.map((category, i) => {
-            return (
-              <FilterSelect
-                name={category.name}
-                menu={category.menu}
-                key={i}
-              />
-            )
-          })}
+    <div className={windowClasses}>
+      <div className={styles.filter__container}>
+        <div className={styles.filter__header}>
+          <h3>Фильтры</h3>
+          <VscClose onClick={() => setFilterWindowOpen(false)} />
         </div>
+        {categoryList.map((category, i) => {
+          return (
+            <FilterSelect
+              name={category.name}
+              menu={category.menu}
+              key={i}
+            />
+          )
+        })}
       </div>
-    )
+    </div>
   )
 }
 

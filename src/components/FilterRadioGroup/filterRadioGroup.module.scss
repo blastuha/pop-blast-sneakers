@@ -46,29 +46,3 @@
 .realRadio:checked + .customRadio::before {
   transform: translate(-50%, -50%) scale(1);
 }
-
-//* React Transition Group
-
-.radios-enter {
-  opacity: 0;
-  max-height: 0;
-}
-
-.radios-enter-active {
-  opacity: 1;
-  max-height: 260px;
-  transition: opacity 0.5s, max-height 0.5s;
-  overflow: hidden;
-}
-
-.radios-exit {
-  opacity: 1;
-  max-height: 260px;
-  overflow: hidden;
-}
-
-.radios-exit-active {
-  opacity: 0;
-  max-height: 0;
-  transition: opacity 0.5s, max-height 0.5s;
-}

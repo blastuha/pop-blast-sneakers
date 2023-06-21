@@ -31,7 +31,12 @@ const FilterSelect = ({ name, menu, i }) => {
       <CSSTransition
         in={open}
         timeout={300}
-        classNames='radios'
+        classNames={{
+          enter: styles['radios-enter'],
+          enterActive: styles['radios-enter-active'],
+          exit: styles['radios-exit'],
+          exitActive: styles['radios-exit-active'],
+        }}
         unmountOnExit
       >
         <FilterRadioGroup menu={menu} />
