@@ -1,33 +1,25 @@
-import React, { useState } from 'react'
-
+import React from 'react'
 import SortItem from '../SortItem/SortItem'
-
+import useActions from '../../hooks/useActions'
 import { sortOptions } from '../../data'
-
-import classNames from 'classnames'
 import styles from './sortModal.module.scss'
 
 const SortModal = ({ sortModalOpen, onChangeOpen }) => {
-  const [active, setActive] = useState(0)
+  const { setSelectedOption } = useActions()
 
   const handleClick = (index) => {
-    setActive(index)
+    setSelectedOption(index)
   }
 
   return (
     sortModalOpen && (
       <div className={styles.sortModal}>
         {sortOptions.map((option, i) => {
-          //* перенести в SortItem
-          const sortItemStyles = classNames(styles.sortModal__item, {
-            [styles.active]: active === i,
-          })
-
           return (
             <SortItem
+              key={i}
               option={option}
               i={i}
-              sortItemStyles={sortItemStyles}
               onChangeOpen={onChangeOpen}
               handleClick={handleClick}
             />

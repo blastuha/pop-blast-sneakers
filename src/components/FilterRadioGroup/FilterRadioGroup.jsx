@@ -1,4 +1,5 @@
 import React from 'react'
+import Radio from '../UI/Radio/Radio'
 import useActions from '../../hooks/useActions'
 import styles from './filterRadioGroup.module.scss'
 
@@ -6,7 +7,7 @@ const FilterRadioGroup = ({ menu }) => {
   const { setFiltredValue } = useActions()
 
   const onChange = (e) => {
-    const value = e.target.value
+    const { value } = e.target
     setFiltredValue(value)
   }
 
@@ -14,22 +15,11 @@ const FilterRadioGroup = ({ menu }) => {
     <div className={styles.filter__radiogroup}>
       {menu.map((item, i) => {
         return (
-          <div
-            className={styles.radioBtn}
+          <Radio
             key={i}
-          >
-            <label>
-              <input
-                type='radio'
-                name='radio-group'
-                value={item}
-                onChange={onChange}
-                className={styles.realRadio}
-              />
-              <span className={styles.customRadio}></span>
-              {item}
-            </label>
-          </div>
+            name={item}
+            onChange={onChange}
+          />
         )
       })}
     </div>

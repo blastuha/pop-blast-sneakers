@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useSelector } from 'react-redux'
-import { categories } from '../../redux/slices/categories/selectors'
+import { filterSort } from '../../redux/slices/filter&Sort/selectors'
 
 import { TfiClose } from 'react-icons/tfi'
 import useActions from '../../hooks/useActions'
@@ -9,7 +9,7 @@ import useActions from '../../hooks/useActions'
 import styles from './categoryBlock.module.scss'
 
 function CategoryBlock() {
-  const { filtredValue } = useSelector(categories)
+  const { filtredValue } = useSelector(filterSort)
   const { clearAllFilters } = useActions()
 
   return filtredValue ? (

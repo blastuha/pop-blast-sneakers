@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = { filtredValue: '', sortValue: '', selectedOption: 0 }
 
-export const filterSort = createSlice({
+export const filterSortSlice = createSlice({
   name: 'filterSort',
   initialState,
   reducers: {
@@ -27,6 +27,6 @@ export const {
   clearAllFilters,
   setFilterWindowOpen,
   setSelectedOption,
-} = filterSort.actions
+} = filterSortSlice.actions
 
-export default filterSort.reducer
+export default filterSortSlice.reducer

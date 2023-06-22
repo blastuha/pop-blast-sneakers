@@ -9,6 +9,7 @@ import NothingFound from '../components/NothingFound/NothingFound'
 import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
 import FilterPanel from '../components/FilterPanel/FilterPanel'
 import FilterWindow from '../components/FilterWindow/FilterWindow'
+import MobileSorting from '../components/MobileSorting/MobileSorting'
 
 import useInputValue from '../hooks/useInputValue'
 import { scrollToTop } from '../utils/scroll-to-top'
@@ -45,6 +46,7 @@ function Main() {
           />
         </div>
       </div>
+      <MobileSorting />
     </div>
   )
 }

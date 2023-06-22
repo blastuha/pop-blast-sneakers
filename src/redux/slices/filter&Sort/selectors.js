@@ -1,1 +1,1 @@
-export const categories = (state) => state.categories
+export const filterSort = (state) => state.filterSort

@@ -13,7 +13,7 @@ import useActions from './hooks/useActions'
 import useWidth from './hooks/useWidth'
 
 import { useSelector } from 'react-redux'
-import { categories } from './redux/slices/categories/selectors'
+import { filterSort } from './redux/slices/filter&Sort/selectors'
 import { mobileMenu } from './redux/slices/mobileMenu/selectors'
 
 import './App.scss'
@@ -22,7 +22,7 @@ function App() {
   const { mobileMenuOpen, searchWindowOpen, filterWindowOpen } =
     useSelector(mobileMenu)
   const { fetchSneakers } = useActions()
-  const { filtredValue, sortValue } = useSelector(categories)
+  const { filtredValue, sortValue } = useSelector(filterSort)
   const width = useWidth()
 
   // убирает скролл, если открыты окна бургер мобильного меню, мобильного поиска, мобильные фильтры
