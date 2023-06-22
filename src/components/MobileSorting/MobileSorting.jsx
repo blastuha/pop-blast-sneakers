@@ -4,12 +4,13 @@ import useActions from '../../hooks/useActions'
 import { sortOptions } from '../../data'
 import styles from './mobileSorting.module.scss'
 
-const MobileSorting = () => {
+const MobileSorting = ({ onChangeMobileSorting }) => {
   const { setSortValue, setSelectedOption } = useActions()
 
   const onChange = (obj, i) => {
     setSortValue(obj.query)
     setSelectedOption(i)
+    onChangeMobileSorting()
   }
 
   return (

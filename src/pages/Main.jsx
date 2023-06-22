@@ -16,6 +16,7 @@ import { scrollToTop } from '../utils/scroll-to-top'
 
 function Main() {
   const [sortModalOpen, setSortModalOpen] = useState(false)
+  const [mobileSortingOpen, setMobileSortingOpen] = useState(false)
   const sneakersList = useSelector(sneakers)
   const { globalInputValue } = useInputValue()
 
@@ -25,7 +26,11 @@ function Main() {
 
   const onChangeOpen = () => {
     setSortModalOpen(!sortModalOpen)
-    console.log(sortModalOpen)
+  }
+
+  const onChangeMobileSorting = () => {
+    setMobileSortingOpen(!mobileSortingOpen)
+    console.log(mobileSortingOpen)
   }
 
   useEffect(() => scrollToTop(), [])
@@ -35,7 +40,10 @@ function Main() {
       <div className='main__container'>
         <FilterWindow />
         <CategoryBlock />
-        <FilterPanel onChangeOpen={onChangeOpen} />
+        <FilterPanel
+          onChangeOpen={onChangeOpen}
+          onChangeMobileSorting={onChangeMobileSorting}
+        />
         {sneakersFiltered.length === 0 && <NothingFound />}
         <div className='main__sneakers'>
           <AlertsModal />
@@ -46,7 +54,9 @@ function Main() {
           />
         </div>
       </div>
-      <MobileSorting />
+      {mobileSortingOpen && (
+        <MobileSorting onChangeMobileSorting={onChangeMobileSorting} />
+      )}
     </div>
   )
 }
