@@ -7,16 +7,13 @@ import { sortOptions } from '../../data'
 import classNames from 'classnames'
 import styles from './mobileSorting.module.scss'
 
-const MobileSorting = ({
-  onChangeMobileSorting,
-  mobileSortingOpen,
-  sneakersList,
-}) => {
+const MobileSorting = ({ onChangeMobileSorting, mobileSortingOpen }) => {
+  const { selectedOption } = useSelector(filterSort)
   const { setSortValue, setSelectedOption } = useActions()
+
   const classes = classNames(styles.mobileSorting, {
     [styles.active]: mobileSortingOpen,
   })
-  const { selectedOption } = useSelector(filterSort)
 
   const onChange = (obj, i) => {
     setSortValue(obj.query)
@@ -31,7 +28,7 @@ const MobileSorting = ({
           return (
             <Radio
               mobile={'true'}
-              key={i}
+              key={option.name}
               name={option.name}
               onChange={() => onChange(option, i)}
               value={selectedOption}

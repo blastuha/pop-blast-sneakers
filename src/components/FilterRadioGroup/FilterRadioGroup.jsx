@@ -10,20 +10,21 @@ const FilterRadioGroup = ({ menu }) => {
   const { setFiltredValue } = useActions()
 
   const onChange = (e) => {
+    console.log(filtredValue)
     const { value } = e.target
     setFiltredValue(value)
   }
 
   return (
     <div className={styles.filter__radiogroup}>
-      {menu.map((item, i) => {
+      {menu.map((menuItem, i) => {
         return (
           <Radio
-            key={i}
-            name={item}
+            key={menuItem}
+            name={menuItem}
             onChange={onChange}
-            value={item}
-            checked={filtredValue === item}
+            value={menuItem}
+            checked={filtredValue === menuItem}
           />
         )
       })}

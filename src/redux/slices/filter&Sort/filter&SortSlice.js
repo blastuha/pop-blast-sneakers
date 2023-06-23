@@ -12,7 +12,7 @@ export const filterSortSlice = createSlice({
   reducers: {
     setFiltredValue: (state, action) => {
       state.filtredValue = action.payload
-      console.log(action.payload)
+      // console.log(action.payload)
     },
     clearAllFilters: (state) => {
       state.filtredValue = ''

@@ -58,7 +58,7 @@ function Main() {
       <MobileSorting
         onChangeMobileSorting={onChangeMobileSorting}
         mobileSortingOpen={mobileSortingOpen}
-        sneakersList={sneakersList}
+        // sneakersList={sneakersList}
       />
       {mobileSortingOpen && (
         <Overlay setMobileSortingOpen={setMobileSortingOpen} />
