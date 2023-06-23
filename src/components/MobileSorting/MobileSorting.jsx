@@ -1,11 +1,22 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Radio from '../UI/Radio/Radio'
 import useActions from '../../hooks/useActions'
+import { filterSort } from '../../redux/slices/filter&Sort/selectors'
 import { sortOptions } from '../../data'
+import classNames from 'classnames'
 import styles from './mobileSorting.module.scss'
 
-const MobileSorting = ({ onChangeMobileSorting }) => {
+const MobileSorting = ({
+  onChangeMobileSorting,
+  mobileSortingOpen,
+  sneakersList,
+}) => {
   const { setSortValue, setSelectedOption } = useActions()
+  const classes = classNames(styles.mobileSorting, {
+    [styles.active]: mobileSortingOpen,
+  })
+  const { selectedOption } = useSelector(filterSort)
 
   const onChange = (obj, i) => {
     setSortValue(obj.query)
@@ -14,7 +25,7 @@ const MobileSorting = ({ onChangeMobileSorting }) => {
   }
 
   return (
-    <div className={styles.mobileSorting}>
+    <div className={classes}>
       <div className={styles.mobileSorting__container}>
         {sortOptions.map((option, i) => {
           return (
@@ -23,7 +34,8 @@ const MobileSorting = ({ onChangeMobileSorting }) => {
               key={i}
               name={option.name}
               onChange={() => onChange(option, i)}
-              defaultChecked={i === 0}
+              value={selectedOption}
+              checked={selectedOption === i}
             />
           )
         })}
