@@ -18,7 +18,7 @@ import styles from './header.module.scss'
 
 function Header() {
   const { open, itemRef, handleOpen } = useClickOutside(false)
-  const { handleMobileMenu, setMobileMenuSearchOpen } = useActions()
+  const { handleMobileMenu } = useActions()
 
   return (
     <div className={styles.header}>
@@ -74,7 +74,6 @@ function Header() {
             className={styles.burger}
             onClick={() => {
               handleMobileMenu()
-              // setMobileMenuSearchOpen(true)
             }}
           />
           <div className={styles.header__bottom__logo}>

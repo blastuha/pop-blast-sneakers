@@ -1,4 +1,4 @@
-button {
+.sortBtn {
   background-color: rgba(255, 255, 255, 0);
   cursor: pointer;
 
@@ -16,7 +16,7 @@ button {
   }
 }
 
-button[categories='true'] {
+.sortBtn[categories='true'] {
   svg {
     margin-right: 10px;
     font-size: 16px;

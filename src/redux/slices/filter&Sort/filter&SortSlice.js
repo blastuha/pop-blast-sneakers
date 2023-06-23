@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { filtredValue: '', sortValue: '', selectedOption: 0 }
+const initialState = {
+  filtredValue: '',
+  sortValue: '',
+  selectedOption: 0,
+}
 
 export const filterSortSlice = createSlice({
   name: 'filterSort',

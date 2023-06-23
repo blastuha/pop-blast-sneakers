@@ -10,11 +10,13 @@ import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
 import FilterPanel from '../components/FilterPanel/FilterPanel'
 import FilterWindow from '../components/FilterWindow/FilterWindow'
 import MobileSorting from '../components/MobileSorting/MobileSorting'
+import Overlay from '../components/Overlay/Overlay'
 
 import useInputValue from '../hooks/useInputValue'
 import { scrollToTop } from '../utils/scroll-to-top'
 
 function Main() {
+  //* вынести стейты в редакс
   const [sortModalOpen, setSortModalOpen] = useState(false)
   const [mobileSortingOpen, setMobileSortingOpen] = useState(false)
   const sneakersList = useSelector(sneakers)
@@ -30,7 +32,6 @@ function Main() {
 
   const onChangeMobileSorting = () => {
     setMobileSortingOpen(!mobileSortingOpen)
-    console.log(mobileSortingOpen)
   }
 
   useEffect(() => scrollToTop(), [])
@@ -54,8 +55,13 @@ function Main() {
           />
         </div>
       </div>
+      <MobileSorting
+        onChangeMobileSorting={onChangeMobileSorting}
+        mobileSortingOpen={mobileSortingOpen}
+        sneakersList={sneakersList}
+      />
       {mobileSortingOpen && (
-        <MobileSorting onChangeMobileSorting={onChangeMobileSorting} />
+        <Overlay setMobileSortingOpen={setMobileSortingOpen} />
       )}
     </div>
   )

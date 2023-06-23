@@ -4,7 +4,10 @@ import styles from './filterButton.module.scss'
 
 const FilterButton = ({ setFilterWindowOpen }) => {
   return (
-    <button onClick={() => setFilterWindowOpen(true)}>
+    <button
+      className={styles.filterBtn}
+      onClick={() => setFilterWindowOpen(true)}
+    >
       <LuSettings2 />
       <span>Фильтры</span>
     </button>

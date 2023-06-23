@@ -1,10 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { filterSort } from '../../../redux/slices/filter&Sort/selectors'
 import styles from './radio.module.scss'
 
-const Radio = ({ name, onChange, mobile, defaultChecked }) => {
-  const { selectedOption } = useSelector(filterSort)
+const Radio = ({ name, onChange, mobile, value, checked }) => {
   return (
     <div className={styles.radioBtn}>
       <label attr={mobile}>
@@ -12,9 +9,9 @@ const Radio = ({ name, onChange, mobile, defaultChecked }) => {
           type='radio'
           name='radio-group'
           onChange={onChange}
-          value={selectedOption}
+          value={value}
           className={styles.realRadio}
-          defaultChecked={defaultChecked}
+          checked={checked}
         />
         {mobile && name}
         <span className={styles.customRadio}></span>

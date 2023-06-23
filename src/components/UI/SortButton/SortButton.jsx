@@ -6,6 +6,7 @@ const SortButton = ({ categories, onChangeOpen, onChangeMobileSorting }) => {
   return (
     <>
       <button
+        className={styles.sortBtn}
         onClick={() => {
           onChangeOpen()
           !categories && onChangeMobileSorting()

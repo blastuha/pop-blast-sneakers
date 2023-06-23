@@ -1,9 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Radio from '../UI/Radio/Radio'
+import { filterSort } from '../../redux/slices/filter&Sort/selectors'
 import useActions from '../../hooks/useActions'
 import styles from './filterRadioGroup.module.scss'
 
 const FilterRadioGroup = ({ menu }) => {
+  const { filtredValue } = useSelector(filterSort)
   const { setFiltredValue } = useActions()
 
   const onChange = (e) => {
@@ -19,6 +22,8 @@ const FilterRadioGroup = ({ menu }) => {
             key={i}
             name={item}
             onChange={onChange}
+            value={item}
+            checked={filtredValue === item}
           />
         )
       })}
