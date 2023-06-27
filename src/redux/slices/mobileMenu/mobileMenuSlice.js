@@ -4,7 +4,6 @@ const initialState = {
   mobileMenuOpen: false,
   searchWindowOpen: false,
   mobileMenuSearchOpen: false,
-  filterWindowOpen: false,
 }
 
 export const mobileMenuSlice = createSlice({
@@ -23,9 +22,6 @@ export const mobileMenuSlice = createSlice({
     setMobileMenuSearchOpen: (state, action) => {
       state.mobileMenuSearchOpen = action.payload
     },
-    setFilterWindowOpen: (state, action) => {
-      state.filterWindowOpen = action.payload
-    },
   },
 })
 
@@ -34,7 +30,6 @@ export const {
   handleMobileMenu,
   setSearchWindowOpen,
   setMobileMenuSearchOpen,
-  setFilterWindowOpen,
 } = mobileMenuSlice.actions
 
 export default mobileMenuSlice.reducer

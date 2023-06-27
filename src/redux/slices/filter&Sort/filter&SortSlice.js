@@ -4,6 +4,8 @@ const initialState = {
   filtredValue: '',
   sortValue: '',
   selectedOption: 0,
+  filterWindowOpen: false,
+  mobileSortingOpen: false,
 }
 
 export const filterSortSlice = createSlice({
@@ -12,7 +14,6 @@ export const filterSortSlice = createSlice({
   reducers: {
     setFiltredValue: (state, action) => {
       state.filtredValue = action.payload
-      // console.log(action.payload)
     },
     clearAllFilters: (state) => {
       state.filtredValue = ''
@@ -23,6 +24,15 @@ export const filterSortSlice = createSlice({
     setSelectedOption: (state, action) => {
       state.selectedOption = action.payload
     },
+    setFilterWindowOpen: (state, action) => {
+      state.filterWindowOpen = action.payload
+    },
+    setMobileSortingOpen: (state, action) => {
+      state.mobileSortingOpen = action.payload
+    },
+    onChangeMobileSorting: (state) => {
+      state.mobileSortingOpen = !state.mobileSortingOpen
+    }
   },
 })
 
@@ -31,6 +41,8 @@ export const {
   clearAllFilters,
   setFilterWindowOpen,
   setSelectedOption,
+  setMobileSortingOpen,
+  onChangeMobileSorting
 } = filterSortSlice.actions
 
 export default filterSortSlice.reducer

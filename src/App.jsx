@@ -14,26 +14,17 @@ import useWidth from './hooks/useWidth'
 
 import { useSelector } from 'react-redux'
 import { filterSort } from './redux/slices/filter&Sort/selectors'
-import { mobileMenu } from './redux/slices/mobileMenu/selectors'
+
+import useHideBodyScroll from './hooks/useHideBodyScroll'
 
 import './App.scss'
 
 function App() {
-  const { mobileMenuOpen, searchWindowOpen, filterWindowOpen } =
-    useSelector(mobileMenu)
-  const { fetchSneakers } = useActions()
   const { filtredValue, sortValue } = useSelector(filterSort)
+  const { fetchSneakers } = useActions()
   const width = useWidth()
 
-  // убирает скролл, если открыты окна бургер мобильного меню, мобильного поиска, мобильные фильтры
-  useEffect(() => {
-    const bodyStyle = document.querySelector('body').style
-    if (mobileMenuOpen || searchWindowOpen || filterWindowOpen) {
-      bodyStyle.overflow = 'hidden'
-    } else {
-      bodyStyle.overflow = 'scroll'
-    }
-  }, [mobileMenuOpen, searchWindowOpen, filterWindowOpen])
+  useHideBodyScroll()
 
   useEffect(() => {
     getSneakersWithCategory(filtredValue, fetchSneakers, sortValue)
@@ -41,8 +32,8 @@ function App() {
 
   return (
     <div className='wrapper'>
-      <MobileBottomSearch searchWindowOpen={searchWindowOpen} />
-      <MobileMenu mobileMenuOpen={mobileMenuOpen} />
+      <MobileBottomSearch />
+      <MobileMenu />
       <Header />
       <Categories />
       <Outlet />

@@ -7,9 +7,9 @@ import { sortOptions } from '../../data'
 import classNames from 'classnames'
 import styles from './mobileSorting.module.scss'
 
-const MobileSorting = ({ onChangeMobileSorting, mobileSortingOpen }) => {
+const MobileSorting = ({  mobileSortingOpen }) => {
   const { selectedOption } = useSelector(filterSort)
-  const { setSortValue, setSelectedOption } = useActions()
+  const { setSortValue, setSelectedOption, onChangeMobileSorting } = useActions()
 
   const classes = classNames(styles.mobileSorting, {
     [styles.active]: mobileSortingOpen,

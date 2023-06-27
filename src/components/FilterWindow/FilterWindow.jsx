@@ -3,17 +3,17 @@ import classNames from 'classnames'
 
 import { useSelector } from 'react-redux'
 
-import FilterSelect from '../FilterSelect/FilterSelect'
 import { VscClose } from 'react-icons/vsc'
+import FilterSelect from '../FilterSelect/FilterSelect'
 
 import useActions from '../../hooks/useActions'
-import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
+import { filterSort } from '../../redux/slices/filter&Sort/selectors'
 import { categoryList } from '../../data'
 
 import styles from './filterWindow.module.scss'
 
 const FilterWindow = () => {
-  const { filterWindowOpen } = useSelector(mobileMenu)
+  const { filterWindowOpen } = useSelector(filterSort)
   const { setFilterWindowOpen } = useActions()
 
   const windowClasses = classNames(styles.filter__window, {

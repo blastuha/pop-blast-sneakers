@@ -1,14 +1,20 @@
 import React from 'react'
-import styles from './mobileBottomSearch.module.scss'
 
-import useActions from '../../hooks/useActions'
-import useAutoFocus from '../../hooks/useAutoFocus'
-import useInputValue from '../../hooks/useInputValue'
+import { useSelector } from 'react-redux'
 
 import SearchResult from '../SearchResult/SearchResult'
 import { VscClose } from 'react-icons/vsc'
 
-const MobileBottomSearch = ({ searchWindowOpen }) => {
+import useActions from '../../hooks/useActions'
+import useAutoFocus from '../../hooks/useAutoFocus'
+import useInputValue from '../../hooks/useInputValue'
+import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
+
+import styles from './mobileBottomSearch.module.scss'
+
+const MobileBottomSearch = () => {
+  const { searchWindowOpen } = useSelector(mobileMenu)
+
   const { setSearchWindowOpen } = useActions()
   const { value, onChange, globalInputValue } = useInputValue()
   const inputRef = useAutoFocus()

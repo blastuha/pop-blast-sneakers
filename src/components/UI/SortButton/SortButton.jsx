@@ -1,14 +1,16 @@
 import React from 'react'
 import { IoFilterSharp } from 'react-icons/io5'
+import useActions from '../../../hooks/useActions'
 import styles from './sortButton.module.scss'
 
-const SortButton = ({ categories, onChangeOpen, onChangeMobileSorting }) => {
+const SortButton = ({ categories }) => {
+  const {onChangeMobileSorting} = useActions()
+
   return (
     <>
       <button
         className={styles.sortBtn}
         onClick={() => {
-          onChangeOpen()
           !categories && onChangeMobileSorting()
         }}
         categories={categories}

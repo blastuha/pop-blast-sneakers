@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
 import { sneakers } from '../redux/slices/sneakers/selectors'
@@ -12,27 +12,21 @@ import FilterWindow from '../components/FilterWindow/FilterWindow'
 import MobileSorting from '../components/MobileSorting/MobileSorting'
 import Overlay from '../components/Overlay/Overlay'
 
+import { filterSort } from '../redux/slices/filter&Sort/selectors'
 import useInputValue from '../hooks/useInputValue'
 import { scrollToTop } from '../utils/scroll-to-top'
 
+
+
 function Main() {
-  //* вынести стейты в редакс
-  const [sortModalOpen, setSortModalOpen] = useState(false)
-  const [mobileSortingOpen, setMobileSortingOpen] = useState(false)
+  const {mobileSortingOpen} = useSelector(filterSort)
   const sneakersList = useSelector(sneakers)
+
   const { globalInputValue } = useInputValue()
 
   const sneakersFiltered = sneakersList.filter((sneaker) =>
     sneaker.title.toLowerCase().includes(globalInputValue.toLowerCase().trim())
   )
-
-  const onChangeOpen = () => {
-    setSortModalOpen(!sortModalOpen)
-  }
-
-  const onChangeMobileSorting = () => {
-    setMobileSortingOpen(!mobileSortingOpen)
-  }
 
   useEffect(() => scrollToTop(), [])
 
@@ -42,8 +36,6 @@ function Main() {
         <FilterWindow />
         <CategoryBlock />
         <FilterPanel
-          onChangeOpen={onChangeOpen}
-          onChangeMobileSorting={onChangeMobileSorting}
         />
         {sneakersFiltered.length === 0 && <NothingFound />}
         <div className='main__sneakers'>
@@ -56,12 +48,10 @@ function Main() {
         </div>
       </div>
       <MobileSorting
-        onChangeMobileSorting={onChangeMobileSorting}
         mobileSortingOpen={mobileSortingOpen}
-        // sneakersList={sneakersList}
       />
       {mobileSortingOpen && (
-        <Overlay setMobileSortingOpen={setMobileSortingOpen} />
+        <Overlay />
       )}
     </div>
   )

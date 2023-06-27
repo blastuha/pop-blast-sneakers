@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 import { mobileMenuSearch } from '../../redux/slices/mobileMenu/selectors'
+import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
 
 import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
 import SearchInput from '../SearchInput/SearchInput'
@@ -14,20 +15,19 @@ import useActions from '../../hooks/useActions'
 import { headerMenu } from '../../data'
 import { burgerMenuLinks } from '../../data'
 
+import classNames from 'classnames'
 import styles from './mobileMenu.module.scss'
 
-const MobileMenu = ({ mobileMenuOpen }) => {
+const MobileMenu = () => {
+  const { mobileMenuOpen } = useSelector(mobileMenu)
+  const mobileMenuSearchOpen = useSelector(mobileMenuSearch)
   const { handleMobileMenu, setMobileMenuSearchOpen, setGlobalInputValue } =
     useActions()
 
-  const mobileMenuSearchOpen = useSelector(mobileMenuSearch)
-
-  const menuStyles = mobileMenuOpen
-    ? `${styles.menu} ${styles.active}`
-    : `${styles.menu}`
+  const menuStyles2 = classNames(styles.menu, { [styles.active]: mobileMenuOpen })
 
   return (
-    <div className={menuStyles}>
+    <div className={menuStyles2}>
       <div className={styles.close__section}>
         <VscClose
           onClick={() => {
