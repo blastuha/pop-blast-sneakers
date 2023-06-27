@@ -7,7 +7,7 @@ const Radio = ({ name, onChange, mobile, value, checked }) => {
       <label attr={mobile}>
         <input
           type='radio'
-          name='radio-group'
+          name={name}
           onChange={onChange}
           value={value}
           className={styles.realRadio}
