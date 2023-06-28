@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
+
 import Category from './Category'
-import { categoryList } from '../../data'
 import SortButton from '../UI/SortButton/SortButton'
 import SortModal from '../SortModal/SortModal'
+
+import useActions from '../../hooks/useActions'
+import { categoryList } from '../../data'
+
 import styles from './categories.module.scss'
 
 function Categories() {
   const [sortModalOpen, setSortModalOpen] = useState(false)
+  const { onChangeMobileSorting } = useActions()
 
   const onChangeOpen = () => {
     setSortModalOpen(!sortModalOpen)
@@ -28,7 +33,7 @@ function Categories() {
         </div>
         <SortButton
           categories='true'
-          onChangeOpen={onChangeOpen}
+          onChangeMobileSorting={onChangeMobileSorting}
         />
         <SortModal
           sortModalOpen={sortModalOpen}

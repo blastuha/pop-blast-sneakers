@@ -11,11 +11,10 @@ import getSneakersWithCategory from './utils/getSneakersWithCategory'
 
 import useActions from './hooks/useActions'
 import useWidth from './hooks/useWidth'
+import useHideBodyScroll from './hooks/useHideBodyScroll'
 
 import { useSelector } from 'react-redux'
 import { filterSort } from './redux/slices/filter&Sort/selectors'
-
-import useHideBodyScroll from './hooks/useHideBodyScroll'
 
 import './App.scss'
 
