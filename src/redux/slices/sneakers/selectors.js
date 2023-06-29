@@ -1,1 +1,1 @@
-export const sneakers = (state) => state.sneakers.sneakers
+export const sneakers = (state) => state.sneakers

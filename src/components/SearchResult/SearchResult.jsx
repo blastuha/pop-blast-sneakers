@@ -8,9 +8,11 @@ import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
 import useActions from '../../hooks/useActions'
 
 const SearchResult = ({ bottomsearch, setSearchWindowOpen, value }) => {
-  const { handleMobileMenu } = useActions()
-  const sneakersList = useSelector(sneakers)
+  const {sneakersList} = useSelector(sneakers)
   const { searchWindowOpen } = useSelector(mobileMenu)
+
+  const { handleMobileMenu } = useActions()
+  
   const sneakersFiltered = sneakersList.filter((sneaker) =>
     sneaker.title.toLowerCase().includes(value.toLowerCase().trim())
   )

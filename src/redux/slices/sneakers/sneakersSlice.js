@@ -1,23 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { fetchSneakers } from './asyncActions'
 
-const initialState = { sneakers: [], status: '' }
+const initialState = { sneakersList: [], fetchStatus: '' }
 
 export const sneakersSlice = createSlice({
   name: 'sneakers',
   initialState,
   extraReducers: {
     [fetchSneakers.pending]: (state) => {
-      state.sneakers = []
-      state.status = 'loading'
+      state.sneakersList = []
+      state.fetchStatus = 'loading'
     },
     [fetchSneakers.fulfilled]: (state, action) => {
-      state.sneakers = action.payload
-      state.status = 'success'
+      state.sneakersList = action.payload
+      state.fetchStatus = 'success'
     },
     [fetchSneakers.rejected]: (state) => {
-      state.sneakers = []
-      state.status = 'error'
+      state.sneakersList = []
+      state.fetchStatus = 'error'
       console.error('Ошибка при загрузке данных')
     },
   },

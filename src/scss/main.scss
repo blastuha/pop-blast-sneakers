@@ -9,7 +9,7 @@
   padding-bottom: 60px;
 }
 
-.main__sneakers {
+.main__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min((280px), 100%), 1fr));
   grid-template-rows: auto;

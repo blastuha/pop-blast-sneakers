@@ -9,9 +9,14 @@ export const favouritesSlice = createSlice({
   initialState,
   reducers: {
     addToFavourites: (state, action) => {
-      const isSneakerInFavourite = state.favourites.find(
-        (sneaker) => sneaker.id === action.payload.id
-      )
+      const isSneakerInFavourite = state.favourites.find((sneaker) => {
+        console.log(sneaker, action.payload)
+        return sneaker.id === action.payload.id
+      })
+      console.log({
+        action: action.payload,
+        isSneakerInFavourite: isSneakerInFavourite,
+      })
 
       if (isSneakerInFavourite) {
         return
@@ -22,7 +27,7 @@ export const favouritesSlice = createSlice({
 
     deleteFromFavourites: (state, action) => {
       state.favourites = state.favourites.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item.id !== action.payload
       )
     },
   },

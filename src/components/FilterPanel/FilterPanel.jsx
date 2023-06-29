@@ -9,15 +9,14 @@ import useWidth from '../../hooks/useWidth'
 import styles from './filterPanel.module.scss'
 
 const FilterPanel = () => {
-  const { setFilterWindowOpen } = useActions()
+  const { setFilterWindowOpen, onChangeMobileSorting } = useActions()
   const width = useWidth()
 
   return (
     width <= 767 && (
       <div className={styles.filters}>
-        <FilterButton setFilterWindowOpen={setFilterWindowOpen} />
-        <SortButton
-        />
+        <FilterButton onChange={setFilterWindowOpen} />
+        <SortButton onChange={onChangeMobileSorting} />
       </div>
     )
   )

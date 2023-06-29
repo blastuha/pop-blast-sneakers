@@ -33,7 +33,8 @@ function Categories() {
         </div>
         <SortButton
           categories='true'
-          onChangeMobileSorting={onChangeMobileSorting}
+          onChangeMobile={onChangeMobileSorting}
+          onChange={onChangeOpen}
         />
         <SortModal
           sortModalOpen={sortModalOpen}
