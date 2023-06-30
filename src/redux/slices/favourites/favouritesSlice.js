@@ -10,12 +10,7 @@ export const favouritesSlice = createSlice({
   reducers: {
     addToFavourites: (state, action) => {
       const isSneakerInFavourite = state.favourites.find((sneaker) => {
-        console.log(sneaker, action.payload)
         return sneaker.id === action.payload.id
-      })
-      console.log({
-        action: action.payload,
-        isSneakerInFavourite: isSneakerInFavourite,
       })
 
       if (isSneakerInFavourite) {

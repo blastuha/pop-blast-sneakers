@@ -6,29 +6,25 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import styles from './sneakerCard.module.scss'
 
 const SneakerCard = ({
-  imageUrl,
-  id,
-  title,
-  price,
+  sneaker,
   isFavourites,
   isInFavourite,
   addToFavourites,
   deleteFromFavourites,
   addAlert,
   alert,
-  sneaker,
 }) => {
   return (
     <div className={styles.sneaker}>
       <img
-        src={imageUrl}
+        src={sneaker.imageUrl}
         alt='sneaker'
       />
       {isFavourites === 'true' || isInFavourite ? (
         <AiFillHeart
           className={styles.heartIcon}
           isfavourites={isFavourites}
-          onClick={() => deleteFromFavourites(id)}
+          onClick={() => deleteFromFavourites(sneaker.id)}
         />
       ) : (
         <AiOutlineHeart
@@ -40,16 +36,16 @@ const SneakerCard = ({
         />
       )}
       <Link
-        to={'/products/' + id}
+        to={'/products/' + sneaker.id}
         className={styles.sneaker__title}
       >
-        {title}
+        {sneaker.title}
       </Link>
       <a
         href='/'
         className={styles.sneaker__price}
       >
-        {price} руб.
+        {sneaker.price} руб.
       </a>
     </div>
   )

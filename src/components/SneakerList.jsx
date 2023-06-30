@@ -1,23 +1,33 @@
+import { v4 as uuidv4 } from 'uuid'
 import SneakerCard from '../components/SneakerCard/SneakerCard'
+import Skeleton from '../components/Skeleton/Skeleton'
+import { isSneakerInFavourite } from '../utils/isSneakerInFavourite'
 
-export const SneakerList = ({
+const SneakerList = ({
   sneakers,
   isFavourites,
-  isSneakerInFavourite,
   addToFavourites,
   deleteFromFavourites,
   addAlert,
   alert,
-  favourites,
+  favouriteList,
+  fetchStatus,
 }) => {
-  return sneakers.map((sneaker) => {
-    const isInFavourite = isSneakerInFavourite(favourites, sneaker.id)
-    // console.log(favourites, sneaker.id)
+  const isItFavouritesPage = isFavourites === 'false' ? sneakers : favouriteList
+  const isContentLoaded =
+    fetchStatus !== 'success' ? Array(10).fill(0) : isItFavouritesPage
+
+  return isContentLoaded.map((sneaker) => {
+    const isInFavourite = isSneakerInFavourite(favouriteList, sneaker.id)
+
+    if (fetchStatus !== 'success') {
+      return <Skeleton key={uuidv4()} />
+    }
+
     return (
       <SneakerCard
         sneaker={sneaker}
         key={sneaker.id}
-        {...sneaker}
         addToFavourites={addToFavourites}
         deleteFromFavourites={deleteFromFavourites}
         addAlert={addAlert}
@@ -28,3 +38,5 @@ export const SneakerList = ({
     )
   })
 }
+
+export default SneakerList

@@ -1,3 +1,3 @@
-export const isSneakerInFavourite = (favourites, id) => {
-  return favourites.find((item) => item.id === id)
+export const isSneakerInFavourite = (favouriteList, id) => {
+  return favouriteList.find((item) => item.id === id)
 }

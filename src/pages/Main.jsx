@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
-import { sneakers } from '../redux/slices/sneakers/selectors'
 
 // import Sneakers from '../components/Sneakers/Sneakers'
 import CategoryBlock from '../components/CategoryBlock/CategoryBlock'
@@ -11,27 +10,27 @@ import FilterPanel from '../components/FilterPanel/FilterPanel'
 import FilterWindow from '../components/FilterWindow/FilterWindow'
 import MobileSorting from '../components/MobileSorting/MobileSorting'
 import Overlay from '../components/Overlay/Overlay'
+import SneakerList from '../components/SneakerList'
 
 import { filterSort } from '../redux/slices/filter&Sort/selectors'
-import useInputValue from '../hooks/useInputValue'
-import { scrollToTop } from '../utils/scroll-to-top'
+import { sneakers } from '../redux/slices/sneakers/selectors'
+import { favouritesData } from '../redux/slices/favourites/selectors'
 
-//* распределить
+import useInputValue from '../hooks/useInputValue'
 import useAlerts from '../hooks/useAlerts'
 import useActions from '../hooks/useActions'
-import { alertObj } from '../data'
-import { favouritesData } from '../redux/slices/favourites/selectors'
-import { sneakerMap } from '../utils/sneakerMap'
-import { isSneakerInFavourite } from '../utils/isSneakerInFavourite'
+
+import { scrollToTop } from '../utils/scroll-to-top'
 import { getFiltredSneakers } from '../utils/filtredSneakers'
-import { SneakerList } from '../components/SneakerList'
+import { alertObj } from '../data'
+
+//* распределить
+import Skeleton from '../components/Skeleton/Skeleton'
 
 function Main() {
   const { mobileSortingOpen } = useSelector(filterSort)
   const { sneakersList, fetchStatus } = useSelector(sneakers)
-  const favourites = useSelector(favouritesData)
-
-  console.log(favourites)
+  const favouriteList = useSelector(favouritesData)
 
   const { addToFavourites, deleteFromFavourites, addAlert } = useActions()
   const { globalInputValue } = useInputValue()
@@ -42,16 +41,6 @@ function Main() {
   const filtredSneakers = getFiltredSneakers(sneakersList, globalInputValue)
   const alert = alertObj(alertsList, '✓ Товар добавлен в избранное')
 
-  // const sneakersProps = {
-  //   isFavouristes: 'false',
-  //   isSneakerInFavourite: isSneakerInFavourite,
-  //   addToFavourites: (favourites, id) => addToFavourites(favourites, id),
-  //   deleteFromFavourites: deleteFromFavourites,
-  //   addAlert: addAlert,
-  //   alert: alert,
-  //   favourites: favourites,
-  // }
-
   return (
     <div className='main'>
       <div className='main__container'>
@@ -59,19 +48,20 @@ function Main() {
         <FilterWindow />
         <CategoryBlock />
         <FilterPanel />
-        {/* {sneakersFiltered.length === 0 && <NothingFound />} */}
+        {filtredSneakers.length === 0 && fetchStatus === 'success' && (
+          <NothingFound />
+        )}
         <div className='main__grid'>
           <SneakerList
             sneakers={filtredSneakers}
             isFavourites={'false'}
-            isSneakerInFavourite={isSneakerInFavourite}
             addToFavourites={addToFavourites}
             deleteFromFavourites={deleteFromFavourites}
             addAlert={addAlert}
             alert={alert}
-            favourites={favourites}
+            favouriteList={favouriteList}
+            fetchStatus={fetchStatus}
           />
-          {/* {sneakerMap(sneakersList, globalInputValue, sneakersProps)} */}
         </div>
       </div>
       <MobileSorting mobileSortingOpen={mobileSortingOpen} />
