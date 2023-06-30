@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Crumb = ({ pageName, categoryChanger, category }) => {
+  console.log(pageName)
   return pageName ? (
     <div className='breadcrumb__item'>
       <div className='breadcrumb__item-link'>{pageName}</div>

@@ -255,13 +255,6 @@ const categoryList = [
   { name: 'Бренды', menu: brands },
 ]
 
-const alertObj = (alertsArr, text) => {
-  return {
-    id: alertsArr.length + 1,
-    text: text,
-  }
-}
-
 const authTitles = [
   { path: '/auth', title: 'Вход в кабинет покупателя' },
   { path: '/auth/forget', title: 'Восстановление пароля' },
@@ -331,7 +324,6 @@ export {
   brands,
   types,
   sexArray,
-  alertObj,
   categoryList,
   authTitles,
   headerMenu,

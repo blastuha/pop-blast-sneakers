@@ -1,27 +1,32 @@
-import { v4 as uuidv4 } from 'uuid'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { sneakers } from '../redux/slices/sneakers/selectors'
+
 import SneakerCard from '../components/SneakerCard/SneakerCard'
-import Skeleton from '../components/Skeleton/Skeleton'
+import Skeleton from './Skeleton.jsx'
+
 import { isSneakerInFavourite } from '../utils/isSneakerInFavourite'
 
 const SneakerList = ({
-  sneakers,
+  sneakersList,
   isFavourites,
   addToFavourites,
   deleteFromFavourites,
   addAlert,
   alert,
   favouriteList,
-  fetchStatus,
 }) => {
-  const isItFavouritesPage = isFavourites === 'false' ? sneakers : favouriteList
+  const { fetchStatus } = useSelector(sneakers)
+  const isItFavouritesPage =
+    isFavourites === 'false' ? sneakersList : favouriteList
   const isContentLoaded =
     fetchStatus !== 'success' ? Array(10).fill(0) : isItFavouritesPage
 
-  return isContentLoaded.map((sneaker) => {
+  return isContentLoaded.map((sneaker, i) => {
     const isInFavourite = isSneakerInFavourite(favouriteList, sneaker.id)
 
     if (fetchStatus !== 'success') {
-      return <Skeleton key={uuidv4()} />
+      return <Skeleton key={i} />
     }
 
     return (

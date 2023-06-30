@@ -22,10 +22,7 @@ import useActions from '../hooks/useActions'
 
 import { scrollToTop } from '../utils/scroll-to-top'
 import { getFiltredSneakers } from '../utils/filtredSneakers'
-import { alertObj } from '../data'
-
-//* распределить
-import Skeleton from '../components/Skeleton/Skeleton'
+import { makeAlertObj } from '../utils/makeAlertObj'
 
 function Main() {
   const { mobileSortingOpen } = useSelector(filterSort)
@@ -39,7 +36,7 @@ function Main() {
   useEffect(() => scrollToTop(), [])
 
   const filtredSneakers = getFiltredSneakers(sneakersList, globalInputValue)
-  const alert = alertObj(alertsList, '✓ Товар добавлен в избранное')
+  const alert = makeAlertObj(alertsList, '✓ Товар добавлен в избранное')
 
   return (
     <div className='main'>
@@ -53,14 +50,13 @@ function Main() {
         )}
         <div className='main__grid'>
           <SneakerList
-            sneakers={filtredSneakers}
+            sneakersList={filtredSneakers}
             isFavourites={'false'}
             addToFavourites={addToFavourites}
             deleteFromFavourites={deleteFromFavourites}
             addAlert={addAlert}
             alert={alert}
             favouriteList={favouriteList}
-            fetchStatus={fetchStatus}
           />
         </div>
       </div>

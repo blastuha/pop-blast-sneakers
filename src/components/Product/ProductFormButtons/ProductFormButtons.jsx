@@ -1,21 +1,25 @@
 import React from 'react'
-import styles from './productFormButtons.module.scss'
-import { useLoaderData, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { cart } from '../../../redux/slices/cart/selectors'
+import { useLoaderData, Link } from 'react-router-dom'
+
+import { AiOutlineHeart } from 'react-icons/ai'
 
 import useIsSneakerInCart from '../../../hooks/useIsSneakerInCart'
 import useAlerts from '../../../hooks/useAlerts'
 import useActions from '../../../hooks/useActions'
-import { alertObj } from '../../../data'
-import { AiOutlineHeart } from 'react-icons/ai'
+import { makeAlertObj } from '../../../utils/makeAlertObj'
+
+import { cart } from '../../../redux/slices/cart/selectors'
+
+import styles from './productFormButtons.module.scss'
 
 const ProductFormButtons = () => {
   const { cartData, sneakerIndex } = useSelector(cart)
+
   const sneakerData = useLoaderData().data
+
   const isInCart = useIsSneakerInCart(sneakerData.id)
   const alertsList = useAlerts()
-  const alert = alertObj(alertsList, '✓ Товар добавлен в корзину')
   const sneakerId = sneakerData.id
   const {
     addAlert,
@@ -24,6 +28,8 @@ const ProductFormButtons = () => {
     deleteItem,
     increaseQunatity,
   } = useActions()
+
+  const alert = makeAlertObj(alertsList, '✓ Товар добавлен в корзину')
   const sneakerQuantity = cartData[sneakerIndex]?.quantity
 
   return (

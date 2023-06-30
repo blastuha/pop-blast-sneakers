@@ -1,15 +1,14 @@
 import React from 'react'
 import ContentLoader from 'react-content-loader'
 
-const Skeleton = (props) => (
+const Skeleton = () => (
   <ContentLoader
-    speed={2}
+    speed={3}
     width='100%'
     height='100%'
     viewBox='0 0 210 320'
     backgroundColor='#f3f3f3'
     foregroundColor='#ecebeb'
-    {...props}
   >
     <rect
       x='0'
