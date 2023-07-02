@@ -17,6 +17,7 @@ const SneakerCard = ({
   return (
     <div className={styles.sneaker}>
       <img
+        className={styles.sneaker__image}
         src={sneaker.imageUrl}
         alt='sneaker'
       />

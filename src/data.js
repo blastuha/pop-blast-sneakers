@@ -9,14 +9,14 @@ const data = [
   {
     id: '1',
     imageUrl:
-      'https://static.insales-cdn.com/r/WvM-a6seMTo/rs:fit:950:1187:1/q:100/plain/images/products/1/3145/643001417/118894836_1.jpg@webp',
-    title: 'Tommy Hilfiger retro court trainer',
-    brand: 'Tommy Hilfiger',
-    color: ['white', 'grey'],
+      'https://i.ibb.co/2PbN5cj/Ben-Sherman-smart-leather-penny-loafers-in-bordeaux.webp',
+    title: 'Ben Sherman smart leather penny loafers in bordeaux',
+    brand: 'Ben Sherman',
+    color: ['brown', 'black'],
     sizes: ['40', '41', '42'],
     price: 5538,
     description:
-      'Whether it’s an embroidered logo, a bold graphic print or its iconic red, white and blue colour-blocking, there’s no mistaking Tommy Hilfiger. Flying the flag for all things retro 90s, scroll our Tommy Hilfiger at CROSSKING edit, featuring wardrobe-ready casualwear – think T-shirts, sweatshirts and joggers, as well as smart shirts, accessories, underwear and swimwear. Shop Tommy Jeans for classic denim pieces, or filter by Tommy Sport for workout gear that’ll get you motivated.',
+      'Adopted by the Mod movement of the 1960s, Ben Sherman channel their Mod roots to a contemporary range of menswear, including everything from their iconic check shirts to polos and print t-shirts.',
     category: 'Кроссовки',
     sex: 'Мужское',
     link: 'Мужское/sneakers',
@@ -37,8 +37,7 @@ const data = [
   },
   {
     id: '3',
-    imageUrl:
-      'https://static.insales-cdn.com/r/785IDKBK0tA/rs:fit:950:1187:1/q:100/plain/images/products/1/347/642998619/107143782_1.jpg@webp',
+    imageUrl: 'https://i.ibb.co/sFwddKZ/salomon3.webp',
     title: 'Salomon X-Mission 3 trainers in sand',
     brand: 'Salomon',
     color: ['white', 'grey'],
@@ -65,39 +64,38 @@ const data = [
   },
   {
     id: '5',
-    imageUrl:
-      'https://static.insales-cdn.com/r/cnRgr1J-deg/rs:fit:950:1187:1/q:100/plain/images/products/1/357/642474341/116525076_3.jpg@webp',
+    imageUrl: 'https://i.ibb.co/dfrZ4zQ/f2c8fbbd47cc0e4efafb5e9b3588ca8c.jpg',
     title: 'New Balance XC-72 trainers in black and blue',
     brand: 'New Balance',
-    color: 'black/blue',
+    color: ['brown', 'black'],
     sizes: ['40', '41', '42'],
     price: 4690,
     description:
-      'Whether it’s an embroidered logo, a bold graphic print or its iconic red, white and blue colour-blocking, there’s no mistaking Tommy Hilfiger. Flying the flag for all things retro 90s, scroll our Tommy Hilfiger at CROSSKING edit, featuring wardrobe-ready casualwear – think T-shirts, sweatshirts and joggers, as well as smart shirts, accessories, underwear and swimwear. Shop Tommy Jeans for classic denim pieces, or filter by Tommy Sport for workout gear that’ll get you motivated.',
+      'Founded over 100 years ago, New Balance (aka the dad-trainer OG) has been flexing its footwear credentials for as long as we can remember. Shop the New Balance at CROSSKING edit for running trainers with ultra-supportive soles, or earn extra style props with slick lifestyle shoes. Give your wardrobe a certified NB edge with its range of clothing and accessories, too – think T-shirts, hoodies, bags and hats, along with training tops and tights. Five-star aesthetic, we’re coming for you.',
     category: 'Кроссовки',
-    sex: 'Мужское',
+    sex: 'Женские',
   },
   {
     id: '6',
     imageUrl:
-      'https://static.insales-cdn.com/r/q6vaDk0OwEo/rs:fit:950:1187:1/q:100/plain/images/products/1/4818/641905362/106878716_1.jpg@webp',
-    title: 'Asics Gel-Quantum 180 trainers in white',
-    brand: 'Asics',
-    color: 'white',
+      'https://i.ibb.co/CPmGN5r/Napapijri-river-moon-boots-in-silver.webp',
+    title: 'Napapijri river moon boots in silver',
+    brand: 'Napapijri',
+    color: ['silver', 'black'],
     sizes: ['40', '41', '42'],
     price: 5900,
     description:
-      'Founded over 100 years ago, New Balance (aka the dad-trainer OG) has been flexing its footwear credentials for as long as we can remember. Shop the New Balance at CROSSKING edit for running trainers with ultra-supportive soles, or earn extra style props with slick lifestyle shoes. Give your wardrobe a certified NB edge with its range of clothing and accessories, too – think T-shirts, hoodies, bags and hats, along with training tops and tights. Five-star aesthetic, we’re coming for you.',
-    category: 'Кроссовки',
-    sex: 'Мужское',
+      'First thought up in the shadow of Europe’s highest peak, the Monte Bianco, outdoors-loving brand Napapijri has been combining innovative materials with close attention to style since 1987. Take cover when the temperature drops in its quilted jackets and hoodies.',
+    category: 'Зимняя обувь',
+    sex: 'Женское',
   },
   {
     id: '7',
     imageUrl:
-      'https://static.insales-cdn.com/r/M_JCyfbtWTw/rs:fit:950:1187:1/q:100/plain/images/products/1/1947/641894299/122024296_1.jpg@webp',
+      'https://i.ibb.co/BwFvMz6/Salomon-XT-6-Mindful-unisex-trainers-in-beige.webp',
     title: 'Salomon XT-6 Mindful unisex trainers in beige',
     brand: 'Salomon',
-    color: 'beige',
+    color: ['beige'],
     sizes: ['40', '41', '42'],
     price: 14423,
     description:
@@ -108,24 +106,24 @@ const data = [
   {
     id: '8',
     imageUrl:
-      'https://static.insales-cdn.com/r/Zw-zihxQquQ/rs:fit:950:1187:1/q:100/plain/images/products/1/5889/642168577/120053718_1.jpg@webp',
-    title: 'Asics Gel-Sonoma 15-50 trainers in orange and green',
-    brand: 'Salomon',
-    color: 'multi',
+      'https://i.ibb.co/NTbfscx/New-Balance-327-trainers-in-off-white-and-brown.webp',
+    title: 'New Balance 327 trainers in off white and brown',
+    brand: 'New Balance',
+    color: ['brown', 'black'],
     sizes: ['40', '41', '42'],
     price: 13200,
     description:
-      'What do you get when you combine advanced technologies with flex-worthy footwear? Asics, obvs. Designed with top-tier workouts in mind, the brand serves up performance-enhanced styles that’ll support and improve your sessions so you can really get the best out of them. Hop, skip or jump over to our ASICS at CROSSKING edit and scroll for gym-ready styles and running trainers that will take you the distance.',
+      'Founded over 100 years ago, New Balance (aka the dad-trainer OG) has been flexing its footwear credentials for as long as we can remember. Shop the New Balance at CROSSKING edit for running trainers with ultra-supportive soles, or earn extra style props with slick lifestyle shoes. Give your wardrobe a certified NB edge with its range of clothing and accessories, too – think T-shirts, hoodies, bags and hats, along with training tops and tights. Five-star aesthetic, we’re coming for you.',
     category: 'Кроссовки',
     sex: 'Мужское',
   },
   {
     id: '9',
     imageUrl:
-      'https://static.insales-cdn.com/r/EuzGC_Yli8I/rs:fit:950:1187:1/q:100/plain/images/products/1/7563/641883531/123649193_2.jpg@webp',
+      'https://i.ibb.co/JKVqJBc/Ugg-Tasman-Lta-Cali-topo-slippers-in-khaki-quilted-camouflage.webp',
     title: 'Ugg Tasman Lta Cali topo slippers in khaki quilted camouflage',
     brand: 'UGG',
-    color: 'green',
+    color: ['green', 'gray'],
     sizes: ['40', '41', '42'],
     price: 8000,
     description:
@@ -136,38 +134,38 @@ const data = [
   {
     id: '10',
     imageUrl:
-      'https://static.insales-cdn.com/r/iIb7S3cV0dg/rs:fit:950:1187:1/q:100/plain/images/products/1/2476/643000748/1964603_1.jpg@webp',
-    title: 'Nike Running Air Zoom Pegasus 38 trainers in pink',
-    brand: 'Nike',
-    color: 'pink',
+      'https://i.ibb.co/KymNmZk/Timberland-Authentics-3-eye-classic-boat-shoes-in-rust.webp',
+    title: 'Timberland Authentics 3 eye classic boat shoes in rust',
+    brand: 'Timberland',
+    color: ['brown'],
     sizes: ['40', '41', '42'],
     price: 7620,
     description:
-      'When it comes to innovative sportswear, no brand does it better than Nike. Discover the best-selling trainers in the game in our Nike at CROSSKING edit, from Air Force 1s to super-cushioned VaporMax styles. Browse techy T-shirts, shorts and joggers from Nike Training, Nike Running and Nike Football, as well as sports accessories like arm bands and fitness aids. Nike SB nails casual days with hoodies, sweatshirts and chinos, too.',
-    category: 'Кроссовки',
-    sex: 'Женское',
+      'With a rich New England heritage, Timberland signature work boots were quickly adopted by a new wave of youth culture. With a rugged feel and reputation for quality, Timberland keeps it laid-back and low-key across a range of boots, jersey pieces and outerwear.',
+    category: 'Ботинки',
+    sex: 'Мужское',
   },
   {
     id: '11',
     imageUrl:
-      'https://static.insales-cdn.com/r/z3LFJPyI7lc/rs:fit:950:1187:1/q:100/plain/images/products/1/921/642474905/117734124_1.jpg@webp',
-    title: 'Vans Old Skool MTE-1 Varsity trainers in black/yellow',
-    brand: 'Vans',
-    color: 'black/yellow',
+      'https://i.ibb.co/Sc2ckwG/New-Balance-327-trainers-in-off-white-and-burgundy.webp',
+    title: 'New Balance 327 trainers in off white and burgundy',
+    brand: 'New Balance',
+    color: ['red', 'light'],
     sizes: ['40', '41', '42'],
     price: 3810,
     description:
-      'You can’t think iconic skatewear without thinking Vans, right? Rewriting the boarding blueprint back in 1966 with a deck shoe that was better than the rest, the cult brand has flipped, popped and ollied its way into the footwear and fashion mainstream. Get familiar with durable canvas plimsolls, retro high-tops and signature slip-on trainers in our Vans at CROSSKING edit, or give its T-shirts, tops, jackets and accessories some wear-time, stat.',
+      'Founded over 100 years ago, New Balance (aka the dad-trainer OG) has been flexing its footwear credentials for as long as we can remember. Shop the New Balance at CROSSKING edit for running trainers with ultra-supportive soles, or earn extra style props with slick lifestyle shoes. Give your wardrobe a certified NB edge with its range of clothing and accessories, too – think T-shirts, hoodies, bags and hats, along with training tops and tights. Five-star aesthetic, we’re coming for you.',
     category: 'Кроссовки',
     sex: 'Женское',
   },
   {
     id: '12',
     imageUrl:
-      'https://static.insales-cdn.com/r/XUcyIhVG8xI/rs:fit:950:1187:1/q:100/plain/images/products/1/722/642474706/1480484_1.jpg@webp',
+      'https://i.ibb.co/DRJbXmS/Converse-Chuck-70-Hi-parchment-trainers.webp',
     title: 'Converse Chuck 70 Hi parchment trainers',
     brand: 'Converse',
-    color: 'cream',
+    color: ['cream'],
     sizes: ['40', '41', '42'],
     price: 7438,
     description:
@@ -177,63 +175,63 @@ const data = [
   },
   {
     id: '13',
-    imageUrl:
-      'https://static.insales-cdn.com/r/V5tPJDyXcvI/rs:fit:950:1187:1/q:100/plain/images/products/1/6718/642480702/120813385_1.jpg@webp',
-    title: 'Adidas Originals Earlham trainers in white',
-    brand: 'Adidas',
-    color: 'white',
+    imageUrl: 'https://i.ibb.co/3M54wht/Nike-asuna-2-slide-in-pecan.webp',
+    title: 'Nike asuna 2 slide in pecan',
+    brand: 'Nike',
+    color: ['brown', 'gray'],
     sizes: ['40', '41', '42'],
     price: 8799,
     description:
-      'adidas Originals needs no introduction. The brand’s famous 3-Stripes can be seen on the track, field and in the latest streetwear trends. Scroll the adidas Originals at CROSSKING edit to get your fix, from fresh trainers from the iconic Superstar, Stan Smith, Gazelle and Continental 80 collections to archive-inspired adidas Originals tracksuits, T-shirts and sweatshirts. And if you’re in need of some fresh kit, then cop yourself some sweat-wicking shorts, vests and compression tights from adidas Performance.',
-    category: 'Кроссовки',
-    sex: 'Женское',
+      'When it comes to innovative sportswear, no brand does it better than Nike. Discover the best-selling trainers in the game in our Nike at CROSSKING edit, from Air Force 1s to super-cushioned VaporMax styles. Browse techy T-shirts, shorts and joggers from Nike Training, Nike Running and Nike Football, as well as sports accessories like arm bands and fitness aids. Nike SB nails casual days with hoodies, sweatshirts and chinos, too.',
+    category: 'Тапочки',
+    sex: 'Мужские',
   },
   {
     id: '14',
     imageUrl:
-      'https://static.insales-cdn.com/r/rU26JIhqmPc/rs:fit:950:1187:1/q:100/plain/images/products/1/1295/642188559/119239211_1.jpg@webp',
+      'https://i.ibb.co/5RTSYd4/Nike-Training-MC-2-Trainers-in-white.webp',
     title: 'Nike Training MC 2 Trainers in white',
     brand: 'Nike ',
-    color: 'white',
+    color: ['white'],
     sizes: ['40', '41', '42'],
     price: 5199,
     description:
-      'adidas Originals needs no introduction. The brand’s famous 3-Stripes can be seen on the track, field and in the latest streetwear trends. Scroll the adidas Originals at CROSSKING edit to get your fix, from fresh trainers from the iconic Superstar, Stan Smith, Gazelle and Continental 80 collections to archive-inspired adidas Originals tracksuits, T-shirts and sweatshirts. And if you’re in need of some fresh kit, then cop yourself some sweat-wicking shorts, vests and compression tights from adidas Performance.',
+      'When it comes to innovative sportswear, no brand does it better than Nike. Discover the best-selling trainers in the game in our Nike at CROSSKING edit, from Air Force 1s to super-cushioned VaporMax styles. Browse techy T-shirts, shorts and joggers from Nike Training, Nike Running and Nike Football, as well as sports accessories like arm bands and fitness aids. Nike SB nails casual days with hoodies, sweatshirts and chinos, too.',
     category: 'Кроссовки',
     sex: 'Женское',
   },
   {
     id: '15',
     imageUrl:
-      'https://static.insales-cdn.com/r/rntwvA_Eeqo/rs:fit:950:1187:1/q:100/plain/images/products/1/7885/642154189/106758375_1.jpg@webp',
-    title: 'Nike Space Hippie 04 trainers in lime and stone',
+      'https://i.ibb.co/C5jJWbQ/Nike-Running-Trail-Oneonta-next-sandals-in-triple-black.webp',
+    title: 'Nike Running Trail Oneonta next sandals in triple black',
     brand: 'Nike ',
-    color: 'lime',
+    color: ['black', 'orange'],
     sizes: ['40', '41', '42'],
     price: 8500,
     description:
-      'adidas Originals needs no introduction. The brand’s famous 3-Stripes can be seen on the track, field and in the latest streetwear trends. Scroll the adidas Originals at CROSSKING edit to get your fix, from fresh trainers from the iconic Superstar, Stan Smith, Gazelle and Continental 80 collections to archive-inspired adidas Originals tracksuits, T-shirts and sweatshirts. And if you’re in need of some fresh kit, then cop yourself some sweat-wicking shorts, vests and compression tights from adidas Performance.',
+      'When it comes to innovative sportswear, no brand does it better than Nike. Discover the best-selling trainers in the game in our Nike at CROSSKING edit, from Air Force 1s to super-cushioned VaporMax styles. Browse techy T-shirts, shorts and joggers from Nike Training, Nike Running and Nike Football, as well as sports accessories like arm bands and fitness aids. Nike SB nails casual days with hoodies, sweatshirts and chinos, too.',
     category: 'Кроссовки',
     sex: 'Женское',
   },
   {
     id: '16',
     imageUrl:
-      'https://static.insales-cdn.com/r/V5tPJDyXcvI/rs:fit:950:1187:1/q:100/plain/images/products/1/6718/642480702/120813385_1.jpg@webp',
-    title: 'Adidas for men',
-    brand: 'Adidas',
-    color: 'black',
+      'https://i.ibb.co/C8DXnz1/Timberland-authentics-3-eye-classic-boat-shoes-in-burgundy-full-grain-leather.webp',
+    title: 'Timberland authentics 3 eye classic boat shoes',
+    brand: 'Timberland',
+    color: 'brown',
     sizes: ['40', '41', '42'],
     price: 8799,
     description:
-      'adidas Originals needs no introduction. The brand’s famous 3-Stripes can be seen on the track, field and in the latest streetwear trends. Scroll the adidas Originals at CROSSKING edit to get your fix, from fresh trainers from the iconic Superstar, Stan Smith, Gazelle and Continental 80 collections to archive-inspired adidas Originals tracksuits, T-shirts and sweatshirts. And if you’re in need of some fresh kit, then cop yourself some sweat-wicking shorts, vests and compression tights from adidas Performance.',
-    category: 'Кроссовки',
+      'With a rich New England heritage, Timberland signature work boots were quickly adopted by a new wave of youth culture. With a rugged feel and reputation for quality, Timberland keeps it laid-back and low-key across a range of boots, jersey pieces and outerwear.',
+    category: 'Ботинки',
     sex: 'Мужское',
   },
 ]
 
 const brands = [
+  'Ben Sherman',
   'Nike',
   'Adidas',
   'Converse',
@@ -243,9 +241,11 @@ const brands = [
   'Tommy Hilfiger',
   'New Balance',
   'Asics',
+  'Napapijri',
+  'Timberland',
 ]
 
-const types = ['Кроссовки', 'Тапочки']
+const types = ['Кроссовки', 'Тапочки', 'Зимняя обувь', 'Ботинки']
 
 const sexArray = ['Мужское', 'Женское']
 

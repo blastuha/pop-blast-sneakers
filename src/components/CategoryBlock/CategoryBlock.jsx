@@ -10,8 +10,6 @@ import styles from './categoryBlock.module.scss'
 
 function CategoryBlock() {
   const { filtredValue } = useSelector(filterSort)
-  // console.log(filterSort)
-  // console.log(filtredValue)
   const { clearAllFilters } = useActions()
 
   return filtredValue ? (

@@ -2,12 +2,13 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 import Crumb from './Crumb'
+
 import useActions from '../../hooks/useActions'
 import { pageNames } from '../../data'
 
 const Crumbs = ({ sneakerData }) => {
   const location = useLocation()
-  const { onChangeSex, onChangeShoesType, onChangeBrand } = useActions()
+  const { setFiltredValue } = useActions()
 
   return location.pathname
     .split('/')
@@ -28,16 +29,16 @@ const Crumbs = ({ sneakerData }) => {
               key={i}
             >
               <Crumb
-                categoryChanger={onChangeSex}
                 category={sneakerData.sex}
+                setFiltredValue={setFiltredValue}
               />
               <Crumb
-                categoryChanger={onChangeShoesType}
                 category={sneakerData.category}
+                setFiltredValue={setFiltredValue}
               />
               <Crumb
-                categoryChanger={onChangeBrand}
                 category={sneakerData.brand}
+                setFiltredValue={setFiltredValue}
               />
             </div>
           )

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
 
-// import Sneakers from '../components/Sneakers/Sneakers'
 import CategoryBlock from '../components/CategoryBlock/CategoryBlock'
 import NothingFound from '../components/NothingFound/NothingFound'
 import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
