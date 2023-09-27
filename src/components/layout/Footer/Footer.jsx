@@ -1,7 +1,10 @@
+/** @format */
+
 import React from 'react'
-import styles from './footer.module.scss'
+import { Link } from 'react-router-dom'
 import { SlSocialInstagram } from 'react-icons/sl'
 import { SlSocialGithub } from 'react-icons/sl'
+import styles from './footer.module.scss'
 
 function Footer() {
   return (
@@ -17,10 +20,22 @@ function Footer() {
           <br></br>
           <div className={styles.footer__contacts}>
             <h4>Контакты:</h4>
-            <span>Номер: +7-921-777-77-77</span>
-            <span>shevnin.boris2@yandex.ru</span>
-            <SlSocialInstagram className={styles.footer__contacts__icon} />
-            <SlSocialGithub className={styles.footer__contacts__icon} />
+            <span>Номер: +7-995-625-15-88</span>
+            <span>shevnin.boris2@gmail.com</span>
+            <div className={styles.footer__contacts__icons}>
+              <Link
+                to='https://github.com/blastuha'
+                target='_blank'
+              >
+                <SlSocialInstagram className={styles.footer__contacts__icon} />
+              </Link>
+              <Link
+                to='https://github.com/blastuha'
+                target='_blank'
+              >
+                <SlSocialGithub className={styles.footer__contacts__icon} />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

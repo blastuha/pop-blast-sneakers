@@ -1,3 +1,5 @@
+/** @format */
+
 .main {
   position: relative;
 }
@@ -7,6 +9,10 @@
   max-width: 1480px;
   margin: 0 auto;
   padding-bottom: 60px;
+
+  @media (max-width: 575px) {
+    width: calc(100vw - 50px);
+  }
 }
 
 .main__grid {

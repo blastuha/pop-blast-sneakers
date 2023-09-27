@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from 'react'
 
 import Category from './Category'
@@ -5,6 +7,7 @@ import SortButton from '../UI/SortButton/SortButton'
 import SortModal from '../SortModal/SortModal'
 
 import useActions from '../../hooks/useActions'
+
 import { categoryList } from '../../data'
 
 import styles from './categories.module.scss'

@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react'
 
 import FilterButton from '../UI/FilterButton/FilterButton'
@@ -16,7 +18,7 @@ const FilterPanel = () => {
     width <= 767 && (
       <div className={styles.filters}>
         <FilterButton onChange={setFilterWindowOpen} />
-        <SortButton onChange={onChangeMobileSorting} />
+        <SortButton onChangeMobile={onChangeMobileSorting} />
       </div>
     )
   )

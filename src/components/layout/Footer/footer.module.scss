@@ -1,3 +1,5 @@
+/** @format */
+
 .footer {
   width: 100%;
   margin-top: auto;
@@ -102,16 +104,12 @@
       }
       .footer__contacts__icon {
         font-size: 30px;
-        margin: 6px 6px 0 0;
+        margin: 6px 10px 0 0;
         cursor: pointer;
         transition: color 0.5s ease-in;
 
         @media (max-width: 575px) {
           font-size: 28px;
-        }
-
-        &:last-child {
-          margin: 4px 0 0 0;
         }
 
         &:hover {
@@ -120,4 +118,8 @@
       }
     }
   }
+}
+
+.footer__contacts__icons {
+  display: flex;
 }

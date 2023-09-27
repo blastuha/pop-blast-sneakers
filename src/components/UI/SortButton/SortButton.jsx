@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react'
 import { IoFilterSharp } from 'react-icons/io5'
 import styles from './sortButton.module.scss'

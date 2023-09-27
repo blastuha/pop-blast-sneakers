@@ -1,3 +1,5 @@
+/** @format */
+
 .sneaker {
   position: relative;
   display: flex;
@@ -22,8 +24,6 @@
   }
 
   .sneaker__image {
-    max-width: 280px;
-    max-height: 357px;
   }
 
   .sneaker__title {
