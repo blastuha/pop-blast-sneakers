@@ -1,3 +1,5 @@
+/** @format */
+
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { globalValue } from '../redux/slices/input/selectors'
@@ -10,7 +12,7 @@ const useInputValue = () => {
   const { setGlobalInputValue } = useActions()
   const updateGlobalInputValue = useDebounce((value) => {
     setGlobalInputValue(value)
-  }, 250)
+  }, 800)
 
   const onChange = (e) => {
     setValue(e.target.value)

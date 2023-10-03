@@ -1,3 +1,5 @@
+/** @format */
+
 .cart {
   margin-bottom: 40px;
 }
@@ -9,7 +11,7 @@
   // outline: 1px solid black;
 
   @media (max-width: 575px) {
-    width: calc(100vw - 50px);
+    width: calc(100vw - 30px);
   }
 
   .cart__header {

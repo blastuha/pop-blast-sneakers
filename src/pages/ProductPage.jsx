@@ -1,16 +1,31 @@
-import React, { useEffect } from 'react'
+/** @format */
 
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useLoaderData } from 'react-router-dom'
 
 import { scrollToTop } from '../utils/scroll-to-top'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
 import ProductForm from '../components/Product/ProductForm/ProductForm'
+
 import useWidth from '../hooks/useWidth'
+import useActions from '../hooks/useActions'
+
+import { isSneakerInFavourite } from '../utils/isSneakerInFavourite'
+
+import { favouritesData } from '../redux/slices/favourites/selectors'
 
 function ProductPage() {
+  const favouriteList = useSelector(favouritesData)
   const sneakerData = useLoaderData().data
   const width = useWidth()
+  const { deleteFromFavourites, addToFavourites } = useActions()
+
+  const isProductInFavourite = isSneakerInFavourite(
+    favouriteList,
+    sneakerData.id
+  )
 
   useEffect(() => {
     scrollToTop()
@@ -28,7 +43,11 @@ function ProductPage() {
               alt='sneaker'
             />
           </div>
-          <ProductForm />
+          <ProductForm
+            isProductInFavourite={isProductInFavourite}
+            deleteFromFavourites={deleteFromFavourites}
+            addToFavourites={addToFavourites}
+          />
         </div>
         <article className='product__description'>
           <h3 className='description__title'>Описание</h3>

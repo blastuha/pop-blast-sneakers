@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react'
 import Breadcrumb from '../components/Breadcrump/Breadcrumb'
 import useWidth from '../hooks/useWidth'
@@ -12,15 +14,18 @@ function Contacts() {
         <div className='contacts-page__contacts'>
           <h1>Контакты и адреса</h1>
           <p>
-            {'Email: '} <a href='mailto:shop@crossking.ru'>shop@crossking.ru</a>
+            {'Email: '}
+            <a href='mailto:shevnin.boris2@gmail.com'>
+              shevnin.boris2@gmail.com
+            </a>
           </p>
           <p>
             {'Telegram: '}
-            <a href='https://t.me/crosskingru'>https://t.me/crosskingru</a>
+            <a href='https://t.me/blasterblast'>https://t.me/blasterblast</a>
           </p>
           <p>
             {'Вконтакте: '}
-            <a href='https://vk.com/crossking'>https://vk.com/crossking</a>
+            <a href='https://vk.com/solovnk'>https://vk.com/solovnk</a>
           </p>
         </div>
         <div className='contacts-page__timetable'>

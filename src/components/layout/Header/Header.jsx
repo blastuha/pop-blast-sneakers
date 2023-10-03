@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -61,10 +63,10 @@ function Header() {
             </div>
             <div className={styles.header__menu__item}>
               <a
-                href='mailto:shop@crossking.ru'
+                href='mailto:shevnin.boris2@gmail.com'
                 className={styles.header__menu__item__text}
               >
-                shevnin.boris2@yandex.ru
+                shevnin.boris2@gmail.com
               </a>
             </div>
           </div>

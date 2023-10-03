@@ -1,8 +1,11 @@
+/** @format */
+
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useLoaderData, Link } from 'react-router-dom'
 
 import { AiOutlineHeart } from 'react-icons/ai'
+import { AiFillHeart } from 'react-icons/ai'
 
 import useIsSneakerInCart from '../../../hooks/useIsSneakerInCart'
 import useAlerts from '../../../hooks/useAlerts'
@@ -13,7 +16,11 @@ import { cart } from '../../../redux/slices/cart/selectors'
 
 import styles from './productFormButtons.module.scss'
 
-const ProductFormButtons = () => {
+const ProductFormButtons = ({
+  isProductInFavourite,
+  addToFavourites,
+  deleteFromFavourites,
+}) => {
   const { cartData, sneakerIndex } = useSelector(cart)
 
   const sneakerData = useLoaderData().data
@@ -29,7 +36,12 @@ const ProductFormButtons = () => {
     increaseQunatity,
   } = useActions()
 
-  const alert = makeAlertObj(alertsList, '✓ Товар добавлен в корзину')
+  const addToCartAler = makeAlertObj(alertsList, '✓ Товар добавлен в корзину')
+  const addToFavAlert = makeAlertObj(alertsList, '✓ Товар добавлен в избранное')
+  const removeFromFavAlert = makeAlertObj(
+    alertsList,
+    '✓ Товар удален из избранных'
+  )
   const sneakerQuantity = cartData[sneakerIndex]?.quantity
 
   return (
@@ -40,7 +52,7 @@ const ProductFormButtons = () => {
           className={`${styles.form__btn} ${styles.addToCart}`}
           onClick={() => {
             addItemToCart(sneakerData)
-            addAlert(alert)
+            addAlert(addToCartAler)
           }}
         >
           <span>В корзину</span>
@@ -71,13 +83,30 @@ const ProductFormButtons = () => {
           </button>
         </div>
       )}
-
-      <button
-        type='button'
-        className={styles.form__btn}
-      >
-        <AiOutlineHeart className={styles.heart} />
-      </button>
+      {isProductInFavourite ? (
+        <button
+          type='button'
+          isinfavourites='true'
+          className={styles.form__btn}
+          onClick={() => {
+            deleteFromFavourites(sneakerData.id)
+            addAlert(removeFromFavAlert)
+          }}
+        >
+          <AiFillHeart className={styles.heart} />
+        </button>
+      ) : (
+        <button
+          type='button'
+          className={styles.form__btn}
+          onClick={() => {
+            addToFavourites(sneakerData)
+            addAlert(addToFavAlert)
+          }}
+        >
+          <AiOutlineHeart className={styles.heart} />
+        </button>
+      )}
     </div>
   )
 }

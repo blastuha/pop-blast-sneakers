@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
@@ -18,6 +20,7 @@ import ForgetPassForm from './components/Authentication/ForgetPassForm/ForgetPas
 import AuthForm from './components/Authentication/AuthForm/AuthForm'
 import RegistrationForm from './components/Authentication/RegistrationForm/RegistrationForm'
 import Favourites from './pages/Favourites/Favourites'
+import About from './pages/About/About'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: 'contacts',
         element: <Contacts />,
+      },
+      {
+        path: 'about',
+        element: <About />,
       },
       {
         path: 'cart',

@@ -1,12 +1,14 @@
+/** @format */
+
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { favouritesData } from '../../redux/slices/favourites/selectors'
 
 import SneakerList from '../../components/SneakerList'
 import Breadcrumb from '../../components/Breadcrump/Breadcrumb'
 
 import useActions from '../../hooks/useActions'
 import useWidth from '../../hooks/useWidth'
-import { favouritesData } from '../../redux/slices/favourites/selectors'
 
 import styles from './favourites.module.scss'
 

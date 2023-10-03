@@ -1,8 +1,14 @@
+/** @format */
+
 .favourites {
   width: calc(100vw - 100px);
   max-width: 1480px;
   margin: 0 auto;
   padding-bottom: 60px;
+
+  @media (max-width: 575px) {
+    width: calc(100vw - 30px);
+  }
 
   &__header {
     font-family: Jura;

@@ -1,3 +1,5 @@
+/** @format */
+
 .contacts-page__container {
   width: 752px;
   max-width: 1480px;
@@ -9,9 +11,13 @@
     padding: 0 50px 0 50px;
   }
 
+  @media (max-width: 575px) {
+    width: calc(100vw - 30px);
+  }
+
   @media (max-width: 425px) {
     width: 100%;
-    padding: 0 25px 0 25px;
+    padding: 0 18px 0 18px;
   }
 
   h1 {

@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react'
 
 import { useLoaderData } from 'react-router-dom'
@@ -5,7 +7,11 @@ import { useLoaderData } from 'react-router-dom'
 import Selects from '../Selects/Selects'
 import ProductFormButtons from '../ProductFormButtons/ProductFormButtons'
 
-const ProductForm = () => {
+const ProductForm = ({
+  isProductInFavourite,
+  deleteFromFavourites,
+  addToFavourites,
+}) => {
   const sneakerData = useLoaderData().data
 
   const handleSubmit = (e) => {
@@ -25,7 +31,11 @@ const ProductForm = () => {
           <b className='form__price'>{sneakerData.price} руб.</b>
         </div>
         <Selects />
-        <ProductFormButtons />
+        <ProductFormButtons
+          isProductInFavourite={isProductInFavourite}
+          deleteFromFavourites={deleteFromFavourites}
+          addToFavourites={addToFavourites}
+        />
       </div>
     </form>
   )

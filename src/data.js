@@ -1,3 +1,5 @@
+/** @format */
+
 import { FaShoppingCart } from 'react-icons/fa'
 import { AiFillHome } from 'react-icons/ai'
 import { FaSearch } from 'react-icons/fa'
@@ -264,9 +266,8 @@ const authTitles = [
 const headerMenu = [
   { name: 'Главная', link: '/' },
   { name: 'Контакты', link: '/contacts' },
+  { name: 'О проекте', link: '/about' },
   { name: 'Доставка и оплата', link: '/delivery' },
-  { name: 'Возврат и обмен', link: '/return' },
-  { name: 'О нас', link: '/about' },
 ]
 
 const fullnameReg = `^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)`
@@ -304,6 +305,7 @@ const pageNames = {
   contacts: 'Контакты',
   cart: 'Корзина',
   favourites: 'Избранное',
+  about: 'О проекте',
 }
 
 const sortOptions = [

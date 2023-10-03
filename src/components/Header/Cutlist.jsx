@@ -1,4 +1,8 @@
+/** @format */
+
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 function Cutlist({ headerMenu }) {
   return (
     <div className='cutlist'>
@@ -11,7 +15,7 @@ function Cutlist({ headerMenu }) {
                 key={i}
                 className='cutlist-item'
               >
-                {item.name}
+                <Link to={item.link}>{item.name}</Link>
               </div>
             )
           })}

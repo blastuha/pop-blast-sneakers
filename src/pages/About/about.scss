@@ -1,0 +1,25 @@
+/** @format */
+
+.about {
+  width: calc(100vw - 100px);
+  max-width: 1480px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+
+  @media (max-width: 575px) {
+    width: calc(100vw - 30px);
+  }
+
+  h1 {
+    font-family: Jura;
+    font-size: 25px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 1.2em;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 390px) {
+    font-size: 20px;
+  }
+}
