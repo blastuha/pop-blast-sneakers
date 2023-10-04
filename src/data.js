@@ -306,6 +306,7 @@ const pageNames = {
   cart: 'Корзина',
   favourites: 'Избранное',
   about: 'О проекте',
+  delivery: 'Доставка и Оплата',
 }
 
 const sortOptions = [
