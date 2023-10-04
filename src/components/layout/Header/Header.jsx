@@ -9,7 +9,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { AiFillHeart } from 'react-icons/ai'
 
-import Cutlist from '../../Header/Cutlist'
+import Cutlist from '../../Cutlist/Cutlist'
 import SearchInput from '../../SearchInput/SearchInput'
 import { headerMenu } from '../../../data'
 

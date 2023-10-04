@@ -1,5 +1,7 @@
+/** @format */
+
 import React from 'react'
-import styles from '../../../scss/modules/dynamicform.module.scss'
+import styles from './dynamicform.module.scss'
 
 const DynamicForm = ({ handleSubmit, children }) => {
   return (

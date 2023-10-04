@@ -1,5 +1,5 @@
 import React from 'react'
-import Dropdown from '../Header/Dropdown'
+import Dropdown from '../Dropdown/Dropdown'
 import useClickOutside from '../../hooks/useClickOutside'
 import styles from './category.module.scss'
 
