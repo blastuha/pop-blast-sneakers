@@ -21,12 +21,14 @@ import AuthForm from './components/Authentication/AuthForm/AuthForm'
 import RegistrationForm from './components/Authentication/RegistrationForm/RegistrationForm'
 import Favourites from './pages/Favourites/Favourites'
 import About from './pages/About/About'
+import Error from './pages/Error/Error'
+import Delivery from './pages/Delivery/Delivery'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <h1>ERROR!!!</h1>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -43,26 +45,23 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart />,
-        children: [
-          {
-            path: 'forget',
-            element: <h1>Hello</h1>,
-          },
-        ],
       },
       {
         path: 'favourites',
         element: <Favourites />,
       },
       {
+        path: 'delivery',
+        element: <Delivery />,
+      },
+      {
         path: '*',
-        element: <h1>ERROR!</h1>,
+        element: <Error />,
       },
       {
         path: 'products/:id',
         element: <ProductPage />,
         loader: fetchProduct,
-        // мы делаем путь: products/:id, но сам запрос делается по ссылке из loadera
       },
       {
         path: 'auth',

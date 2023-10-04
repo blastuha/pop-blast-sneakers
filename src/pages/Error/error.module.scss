@@ -1,0 +1,28 @@
+/** @format */
+
+.error__container {
+  width: calc(100vw - 100px);
+  max-width: 1480px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 575px) {
+    width: calc(100vw - 30px);
+  }
+
+  h1 {
+    font-family: Jura;
+    font-size: 40px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 1.2em;
+    margin: 50px 0 16px 0;
+
+    @media (max-width: 390px) {
+      font-size: 30px;
+    }
+  }
+}

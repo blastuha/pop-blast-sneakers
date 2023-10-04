@@ -81,7 +81,9 @@ function Header() {
           <div className={styles.header__bottom__logo}>
             <h1>POP BLAST SNEAKERS</h1>
           </div>
-          <FaShoppingCart className={styles.cart__mobile} />
+          <Link to='/cart'>
+            <FaShoppingCart className={styles.cart__mobile} />
+          </Link>
           <SearchInput />
           <div className={styles.header__bottom__icons}>
             <Link

@@ -5,13 +5,13 @@ import Breadcrumb from '../../components/Breadcrump/Breadcrumb'
 
 import useWidth from '../../hooks/useWidth'
 
-import './about.scss'
+import styles from './about.module.scss'
 
 const About = () => {
   const width = useWidth()
 
   return (
-    <div className='about'>
+    <div className={styles.about}>
       {width > 767 && <Breadcrumb />}
       <div style={{ marginBottom: '40px' }}>
         <h1>О проекте</h1>

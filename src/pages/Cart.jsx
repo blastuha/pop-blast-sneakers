@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
@@ -19,7 +21,12 @@ function Cart() {
 
   return (
     <div className='cart'>
-      <div className='cart__container'>
+      <div
+        className='cart__container'
+        style={
+          width <= 767 ? { marginBottom: '80px' } : { marginBottom: '40px' }
+        }
+      >
         {width > 767 && <Breadcrumb />}
         <div className='cart__header'>
           <h3 className='cart-title'>Корзина</h3>
