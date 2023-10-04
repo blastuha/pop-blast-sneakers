@@ -1,17 +1,19 @@
 /** @format */
 
 import React from 'react'
-import Breadcrumb from '../components/Breadcrump/Breadcrumb'
-import useWidth from '../hooks/useWidth'
+import Breadcrumb from '../../components/Breadcrump/Breadcrumb'
+import useWidth from '../../hooks/useWidth'
+
+import styles from './contacts.module.scss'
 
 function Contacts() {
   const width = useWidth()
 
   return (
-    <div className='contacts-page'>
-      <div className='contacts-page__container'>
+    <div className={styles['contacts-page']}>
+      <div className={styles['contacts-page__container']}>
         {width > 767 && <Breadcrumb />}
-        <div className='contacts-page__contacts'>
+        <div className={styles['contacts-page__contacts']}>
           <h1>Контакты и адреса</h1>
           <p>
             {'Email: '}
@@ -28,7 +30,7 @@ function Contacts() {
             <a href='https://vk.com/solovnk'>https://vk.com/solovnk</a>
           </p>
         </div>
-        <div className='contacts-page__timetable'>
+        <div className={styles['contacts-page__timetable']}>
           <h3>График работы отдела поддержки:</h3>
           <table>
             <tbody>
@@ -63,15 +65,17 @@ function Contacts() {
             </tbody>
           </table>
           <h3>Заказы через сайт принимаются круглосуточно!</h3>
-          <div className='line' />
+          <div className={styles['line']} />
         </div>
-        <div className='contacts-page__table-wrapper'>
+        <div className={styles['contacts-page__table-wrapper']}>
           <form
             action='/'
-            className='contacts-page__table-form'
+            className={styles['contacts-page__table-form']}
           >
             <p>
-              <label htmlFor=''>Ваш вопрос, отзыв или пожелание:</label>
+              <label htmlFor='feedback_content'>
+                Ваш вопрос, отзыв или пожелание:
+              </label>
             </p>
             <textarea
               name='feedback_content'
@@ -81,7 +85,7 @@ function Contacts() {
             ></textarea>
             <br />
             <p>
-              <label>Адрес для получения ответа:</label>
+              <label htmlFor='feedback_from'>Адрес для получения ответа:</label>
             </p>
             <input
               id='feedback_from'
@@ -96,7 +100,7 @@ function Contacts() {
               <input
                 type='submit'
                 value='Отправить сообщение'
-                className='sendform'
+                className={styles['sendform']}
               />
             </p>
           </form>

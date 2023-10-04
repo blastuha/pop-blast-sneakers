@@ -4,17 +4,19 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useLoaderData } from 'react-router-dom'
 
-import { scrollToTop } from '../utils/scroll-to-top'
-import Breadcrumb from '../components/Breadcrump/Breadcrumb'
-import AlertsModal from '../components/Alerts/AlertsModal/AlertsModal'
-import ProductForm from '../components/Product/ProductForm/ProductForm'
+import { scrollToTop } from '../../utils/scroll-to-top'
+import Breadcrumb from '../../components/Breadcrump/Breadcrumb'
+import AlertsModal from '../../components/Alerts/AlertsModal/AlertsModal'
+import ProductForm from '../../components/Product/ProductForm/ProductForm'
 
-import useWidth from '../hooks/useWidth'
-import useActions from '../hooks/useActions'
+import useWidth from '../../hooks/useWidth'
+import useActions from '../../hooks/useActions'
 
-import { isSneakerInFavourite } from '../utils/isSneakerInFavourite'
+import { isSneakerInFavourite } from '../../utils/isSneakerInFavourite'
 
-import { favouritesData } from '../redux/slices/favourites/selectors'
+import { favouritesData } from '../../redux/slices/favourites/selectors'
+
+import styles from './productpage.module.scss'
 
 function ProductPage() {
   const favouriteList = useSelector(favouritesData)
@@ -32,12 +34,12 @@ function ProductPage() {
   }, [])
 
   return (
-    <div className='product'>
-      <div className='product__container'>
+    <div className={styles['product']}>
+      <div className={styles['product__container']}>
         {width > 767 ? <Breadcrumb sneakerData={sneakerData} /> : ''}
-        <div className='product__main'>
+        <div className={styles['product__main']}>
           <AlertsModal />
-          <div className='product__photo'>
+          <div className={styles['product__photo']}>
             <img
               src={sneakerData.imageUrl}
               alt='sneaker'
@@ -49,9 +51,11 @@ function ProductPage() {
             addToFavourites={addToFavourites}
           />
         </div>
-        <article className='product__description'>
-          <h3 className='description__title'>Описание</h3>
-          <p className='description__text'>{sneakerData.description}</p>
+        <article className={styles['product__description']}>
+          <h3 className={styles['description__title']}>Описание</h3>
+          <p className={styles['description__text']}>
+            {sneakerData.description}
+          </p>
         </article>
       </div>
     </div>

@@ -1,7 +1,11 @@
+/** @format */
+
 import React from 'react'
 
 import { Outlet, useLocation } from 'react-router-dom'
-import { authTitles } from '../data'
+import { authTitles } from '../../data'
+
+import styles from './authenticationpage.module.scss'
 
 const AuthenticationPage = () => {
   let location = useLocation()
@@ -17,10 +21,10 @@ const AuthenticationPage = () => {
   }
 
   return (
-    <div className='person'>
-      <div className='person__container'>
-        <div className='person__header'>
-          <span className='person-title'>{dynamicTitle()}</span>
+    <div className={styles.person}>
+      <div className={styles.person__container}>
+        <div className={styles.person__header}>
+          <span className={styles['person-title']}>{dynamicTitle()}</span>
         </div>
         <Outlet />
       </div>
