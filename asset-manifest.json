@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/blastuha/pop-blast-sneakers.git/static/css/main.ff67d8eb.css",
+    "main.js": "/blastuha/pop-blast-sneakers.git/static/js/main.6885c5d2.js",
+    "index.html": "/blastuha/pop-blast-sneakers.git/index.html",
+    "main.ff67d8eb.css.map": "/blastuha/pop-blast-sneakers.git/static/css/main.ff67d8eb.css.map",
+    "main.6885c5d2.js.map": "/blastuha/pop-blast-sneakers.git/static/js/main.6885c5d2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff67d8eb.css",
+    "static/js/main.6885c5d2.js"
+  ]
+}
