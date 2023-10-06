@@ -24,7 +24,7 @@ import Delivery from './pages/Delivery/Delivery'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/pop-blast-sneakers',
     element: <App />,
     errorElement: <Error />,
     children: [
