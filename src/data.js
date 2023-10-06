@@ -264,10 +264,10 @@ const authTitles = [
 ]
 
 const headerMenu = [
-  { name: 'Главная', link: '/' },
-  { name: 'О проекте', link: '/about' },
-  { name: 'Контакты', link: '/contacts' },
-  { name: 'Доставка и оплата', link: '/delivery' },
+  { name: 'Главная', link: '/pop-blast-sneakers/' },
+  { name: 'О проекте', link: '/pop-blast-sneakers/about' },
+  { name: 'Контакты', link: '/pop-blast-sneakers/contacts' },
+  { name: 'Доставка и оплата', link: '/pop-blast-sneakers/delivery' },
 ]
 
 const fullnameReg = `^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)`
