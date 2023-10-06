@@ -19,7 +19,7 @@ Go to the folder, install dependencies and run the development server:
 ```
 $ npm install
 
-$ npm run dev
+$ npm start
 
 ```
 
