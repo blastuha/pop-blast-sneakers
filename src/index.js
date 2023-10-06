@@ -33,23 +33,23 @@ const router = createBrowserRouter([
         element: <Main />,
       },
       {
-        path: 'pop-blast-sneakers/contacts',
+        path: '/contacts',
         element: <Contacts />,
       },
       {
-        path: 'pop-blast-sneakers/about',
+        path: '/about',
         element: <About />,
       },
       {
-        path: 'pop-blast-sneakers/cart',
+        path: '/cart',
         element: <Cart />,
       },
       {
-        path: 'pop-blast-sneakers/favourites',
+        path: '/favourites',
         element: <Favourites />,
       },
       {
-        path: 'pop-blast-sneakers/delivery',
+        path: 'delivery',
         element: <Delivery />,
       },
       {
@@ -57,12 +57,12 @@ const router = createBrowserRouter([
         element: <Error />,
       },
       {
-        path: 'pop-blast-sneakers/products/:id',
+        path: 'products/:id',
         element: <ProductPage />,
         loader: fetchProduct,
       },
       {
-        path: 'pop-blast-sneakers/auth',
+        path: 'auth',
         element: <AuthenticationPage />,
         children: [
           {
@@ -70,11 +70,11 @@ const router = createBrowserRouter([
             element: <AuthForm />,
           },
           {
-            path: 'pop-blast-sneakers/forget',
+            path: 'forget',
             element: <ForgetPassForm />,
           },
           {
-            path: 'pop-blast-sneakers/registration',
+            path: 'registration',
             element: <RegistrationForm />,
           },
         ],
