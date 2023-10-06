@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.ff67d8eb.css",
-    "main.js": "/static/js/main.6885c5d2.js",
-    "index.html": "/index.html",
-    "main.ff67d8eb.css.map": "/static/css/main.ff67d8eb.css.map",
-    "main.6885c5d2.js.map": "/static/js/main.6885c5d2.js.map"
+    "main.css": "/pop-blast-sneakers/static/css/main.ff67d8eb.css",
+    "main.js": "/pop-blast-sneakers/static/js/main.fad9fd40.js",
+    "index.html": "/pop-blast-sneakers/index.html",
+    "main.ff67d8eb.css.map": "/pop-blast-sneakers/static/css/main.ff67d8eb.css.map",
+    "main.fad9fd40.js.map": "/pop-blast-sneakers/static/js/main.fad9fd40.js.map"
   },
   "entrypoints": [
     "static/css/main.ff67d8eb.css",
-    "static/js/main.6885c5d2.js"
+    "static/js/main.fad9fd40.js"
   ]
 }
