@@ -1,5 +1,3 @@
-/** @format */
-
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { favouritesData } from '../../redux/slices/favourites/selectors'

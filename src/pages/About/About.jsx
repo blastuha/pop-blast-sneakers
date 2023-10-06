@@ -1,14 +1,18 @@
-/** @format */
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Breadcrumb from '../../components/Breadcrump/Breadcrumb'
 
 import useWidth from '../../hooks/useWidth'
+import { scrollToTop } from '../../utils/scroll-to-top'
 
 import styles from './about.module.scss'
 
 const About = () => {
   const width = useWidth()
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   return (
     <div className={styles.about}>
@@ -36,8 +40,8 @@ const About = () => {
         <ol>
           <li>
             <p>
-              <b>Взаимодействие с API:</b> Запросы к данным, которые хранятся на
-              сервисе mockapi.
+              <b>Взаимодействие с API:</b> Запросы к данным с помощью библиотеки{' '}
+              <b>Axios</b>, которые хранятся на сервисе mockapi.
             </p>
           </li>
           <li>
@@ -49,7 +53,13 @@ const About = () => {
           <li>
             <p>
               <b>Взаимодействие с Корзиной и Избранными:</b> Данные хранятся в
-              localStorage с использованием библиотеки Redux Persist.
+              localStorage с использованием библиотеки <b>Redux Persist</b>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <b>Селекторы в корзине:</b> Реализованы компоненты селекторов в
+              корзине без дополнительных библиотек.
             </p>
           </li>
           <li>
@@ -61,7 +71,7 @@ const About = () => {
           <li>
             <p>
               <b>Поиск с debounce:</b> Реализован поиск с задержкой из
-              библиотеки lodash.
+              библиотеки <b>lodash</b>.
             </p>
           </li>
           <li>

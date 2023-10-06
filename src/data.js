@@ -265,8 +265,8 @@ const authTitles = [
 
 const headerMenu = [
   { name: 'Главная', link: '/' },
-  { name: 'Контакты', link: '/contacts' },
   { name: 'О проекте', link: '/about' },
+  { name: 'Контакты', link: '/contacts' },
   { name: 'Доставка и оплата', link: '/delivery' },
 ]
 

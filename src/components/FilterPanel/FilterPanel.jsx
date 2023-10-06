@@ -1,5 +1,3 @@
-/** @format */
-
 import React from 'react'
 
 import FilterButton from '../UI/FilterButton/FilterButton'

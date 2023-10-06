@@ -1,5 +1,3 @@
-/** @format */
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { SlSocialInstagram } from 'react-icons/sl'
@@ -13,9 +11,9 @@ function Footer() {
         <h1 className={styles.footer__logo}>POP BLAST SNEAKERS</h1>
         <div className={styles.footer__column}>
           <ul>
-            <a href='/'>Доставка и оплата</a>
-            <a href='/'>Возврат и обмен</a>
-            <a href='/'>О магазине</a>
+            <Link to='/delivery'>Доставка и оплата</Link>
+            <Link to='/contacts'>Контакты</Link>
+            <Link to='/about'>О проекте</Link>
           </ul>
           <br></br>
           <div className={styles.footer__contacts}>
@@ -24,7 +22,7 @@ function Footer() {
             <span>shevnin.boris2@gmail.com</span>
             <div className={styles.footer__contacts__icons}>
               <Link
-                to='https://github.com/blastuha'
+                to='https://www.instagram.com/'
                 target='_blank'
               >
                 <SlSocialInstagram className={styles.footer__contacts__icon} />

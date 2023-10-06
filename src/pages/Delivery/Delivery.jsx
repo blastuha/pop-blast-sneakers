@@ -1,14 +1,18 @@
-/** @format */
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Breadcrumb from '../../components/Breadcrump/Breadcrumb'
 
 import useWidth from '../../hooks/useWidth'
+import { scrollToTop } from '../../utils/scroll-to-top'
 
 import styles from './delivery.module.scss'
 
 const Delivery = () => {
   const width = useWidth()
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   return (
     <div className={styles.about}>

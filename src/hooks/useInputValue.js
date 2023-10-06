@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { globalValue } from '../redux/slices/input/selectors'

@@ -1,22 +1,23 @@
 import React from 'react'
+
 import { Link } from 'react-router-dom'
-
 import { useSelector } from 'react-redux'
-import { mobileMenuSearch } from '../../redux/slices/mobileMenu/selectors'
-import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
-
-import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
-import SearchInput from '../SearchInput/SearchInput'
+import classNames from 'classnames'
 
 import { VscClose } from 'react-icons/vsc'
 import { CiSearch } from 'react-icons/ci'
 
+import { mobileMenuSearch } from '../../redux/slices/mobileMenu/selectors'
+import { mobileMenu } from '../../redux/slices/mobileMenu/selectors'
+
 import useActions from '../../hooks/useActions'
+
+import MobileMenuFoooter from '../MobileMenuFooter/MobileMenuFoooter'
+import SearchInput from '../SearchInput/SearchInput'
+import styles from './mobileMenu.module.scss'
+
 import { headerMenu } from '../../data'
 import { burgerMenuLinks } from '../../data'
-
-import classNames from 'classnames'
-import styles from './mobileMenu.module.scss'
 
 const MobileMenu = () => {
   const { mobileMenuOpen } = useSelector(mobileMenu)
@@ -24,7 +25,9 @@ const MobileMenu = () => {
   const { handleMobileMenu, setMobileMenuSearchOpen, setGlobalInputValue } =
     useActions()
 
-  const menuStyles2 = classNames(styles.menu, { [styles.active]: mobileMenuOpen })
+  const menuStyles2 = classNames(styles.menu, {
+    [styles.active]: mobileMenuOpen,
+  })
 
   return (
     <div className={menuStyles2}>
@@ -58,6 +61,7 @@ const MobileMenu = () => {
                   <Link
                     key={i}
                     to={item.link}
+                    onClick={handleMobileMenu}
                   >
                     {item.icon}
                   </Link>
