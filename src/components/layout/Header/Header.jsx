@@ -85,7 +85,7 @@ function Header() {
           <SearchInput />
           <div className={styles.header__bottom__icons}>
             <Link
-              to='auth'
+              to='/auth'
               className={styles.link}
             >
               <BsFillPersonFill className={styles.link__icon} />

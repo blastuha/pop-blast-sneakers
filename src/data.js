@@ -258,28 +258,23 @@ const categoryList = [
 ]
 
 const authTitles = [
-  { path: '/pop-blast-sneakers/auth', title: 'Вход в кабинет покупателя' },
-  { path: '/pop-blast-sneakers/auth/forget', title: 'Восстановление пароля' },
-  { path: '/pop-blast-sneakers/auth/registration', title: 'Регистрация' },
+  { path: '/auth', title: 'Вход в кабинет покупателя' },
+  { path: '/auth/forget', title: 'Восстановление пароля' },
+  { path: '/auth/registration', title: 'Регистрация' },
 ]
 
 const headerMenu = [
   { name: 'Главная', link: '/' },
-  { name: 'О проекте', link: 'about' },
-  { name: 'Контакты', link: 'contacts' },
-  { name: 'Доставка и оплата', link: 'delivery' },
+  { name: 'О проекте', link: '/about' },
+  { name: 'Контакты', link: '/contacts' },
+  { name: 'Доставка и оплата', link: '/delivery' },
 ]
 
 const fullnameReg = `^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)`
 const passwordReg = `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`
 
 const nav__bottom = [
-  {
-    text: 'Главная',
-    icon: <AiFillHome />,
-    link: '/pop-blast-sneakers',
-    searchOpen: 'close',
-  },
+  { text: 'Главная', icon: <AiFillHome />, link: '/', searchOpen: 'close' },
   {
     text: 'Поиск',
     icon: <FaSearch />,
@@ -289,19 +284,19 @@ const nav__bottom = [
   {
     text: 'Корзина',
     icon: <FaShoppingCart />,
-    link: 'cart',
+    link: '/cart',
     searchOpen: 'close',
   },
   {
     text: 'Избранное',
     icon: <MdFavorite />,
-    link: 'favourites',
+    link: '/favourites',
     searchOpen: 'close',
   },
   {
     text: 'Профиль',
     icon: <BsFillPersonFill />,
-    link: 'auth',
+    link: '/auth',
     searchOpen: 'close',
   },
 ]
